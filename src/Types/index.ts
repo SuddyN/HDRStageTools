@@ -93,11 +93,16 @@ export interface LineFlags {
 }
 
 export interface Spawn {
-
+    entry: Entry;
+    pos: Vec2;
 } 
 
 export interface Boundary {
-
+    entry: Entry;
+    left: number;
+    right: number;
+    top: number;
+    bottom: number;
 }
 
 export interface ItemSpawner {
