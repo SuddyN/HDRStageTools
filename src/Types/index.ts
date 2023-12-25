@@ -12,6 +12,7 @@ export interface Lvd {
     // fs_cam_limit
     // damage_shapes
     item_spawners: ItemSpawner[];
+    // ptrainer_ranges
     ptrainer_platforms: PTrainerPlatform[];
     // general_shapes
     // general_points
@@ -106,11 +107,19 @@ export interface Boundary {
 }
 
 export interface ItemSpawner {
+    entry: Entry;
+    // id
+    // unk
+    sections: Path[];
+}
 
+export interface Path {
+    points: [Vec2, Vec2];
 }
 
 export interface PTrainerPlatform {
-
+    entry: Entry;
+    pos: Vec3;
 }
 
 export interface Vec2 {
