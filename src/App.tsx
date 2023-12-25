@@ -1,8 +1,16 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import * as yaml from 'js-yaml';
+import { galaxy00 } from './Types/galaxy00';
 
 function App() {
+  try {
+    const doc = yaml.load(galaxy00);
+    console.log(doc);
+  } catch (e) {
+    console.log(e);
+  }
   return (
     <div className="App">
       <header className="App-header">
