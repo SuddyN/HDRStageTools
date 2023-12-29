@@ -1,16 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import * as yaml from 'js-yaml';
-import { galaxy00 } from './Types/galaxy00';
+import { lvdService } from './Services/LvdService';
 
 function App() {
-  try {
-    const doc = yaml.load(galaxy00);
-    console.log(doc);
-  } catch (e) {
-    console.log(e);
-  }
+  const lvdMap = lvdService.readLvdFromUrl("https://suddyn.github.io/HDRStageTools/lvd/ultimate/lvd.zip")
   return (
     <div className="App">
       <header className="App-header">
