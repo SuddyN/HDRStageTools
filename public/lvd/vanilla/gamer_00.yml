@@ -1,0 +1,7571 @@
+---
+collisions:
+  - entry:
+      name: COL_00_Floor01
+      subname: 00_Floor01
+      start_pos:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    col_flags:
+      flag1: false
+      rig_col: false
+      flag3: false
+      drop_through: false
+    vertices:
+      - x: -76.59345
+        y: -117.99999
+      - x: -76.59345
+        y: -9.486387
+      - x: -91.0
+        y: -4.1
+      - x: -91.0
+        y: 0.0
+      - x: -86.0
+        y: 0.0
+      - x: 86.0
+        y: 0.0
+      - x: 91.0
+        y: 0.0
+      - x: 91.0
+        y: -4.1
+      - x: 76.59345
+        y: -9.486387
+      - x: 76.59345
+        y: -117.99999
+    normals:
+      - x: -1.0
+        y: 0.0
+      - x: -0.35020733
+        y: -0.9366722
+      - x: -1.0
+        y: 0.0
+      - x: 0.0
+        y: 1.0
+      - x: 0.0
+        y: 1.0
+      - x: 0.0
+        y: 1.0
+      - x: 1.0
+        y: 0.0
+      - x: 0.35020733
+        y: -0.9366722
+      - x: 1.0
+        y: 0.0
+    cliffs:
+      - entry:
+          name: CLIFF_00_Floor01L
+          subname: 00_Floor01L
+          start_pos:
+            x: -91.0
+            y: 0.0
+            z: 0.0
+          use_start: false
+          unk: 0
+          unk2:
+            x: 0.0
+            y: 0.0
+            z: 0.0
+          unk3: 4294967295
+          bone_name: ""
+        pos:
+          x: -91.0
+          y: 0.0
+        angle: -1.0
+        line_index: 3
+      - entry:
+          name: CLIFF_00_Floor01R
+          subname: 00_Floor01R
+          start_pos:
+            x: 91.0
+            y: 0.0
+            z: 0.0
+          use_start: false
+          unk: 0
+          unk2:
+            x: 0.0
+            y: 0.0
+            z: 0.0
+          unk3: 4294967295
+          bone_name: ""
+        pos:
+          x: 91.0
+          y: 0.0
+        angle: 1.0
+        line_index: 5
+    materials:
+      - line_material: GROUND_COLL_ATTR_WOOD
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: true
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_WOOD
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_WOOD
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_WOOD
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: true
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_WOOD
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_WOOD
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: true
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_WOOD
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_WOOD
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_WOOD
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: true
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+    unknowns:
+      - entry:
+          name: ""
+          subname: ""
+          start_pos:
+            x: 0.0
+            y: 0.0
+            z: 0.0
+          use_start: false
+          unk: 0
+          unk2:
+            x: 0.0
+            y: 0.0
+            z: 0.0
+          unk3: 4294967295
+          bone_name: ""
+        unk: 3
+        string: curve1
+        unk2:
+          x: 1.0
+          y: 1.0
+        unk3:
+          x: 1.0
+          y: 1.0
+        unk4:
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+      - entry:
+          name: ""
+          subname: ""
+          start_pos:
+            x: 0.0
+            y: 0.0
+            z: 0.0
+          use_start: false
+          unk: 0
+          unk2:
+            x: 0.0
+            y: 0.0
+            z: 0.0
+          unk3: 4294967295
+          bone_name: ""
+        unk: 4
+        string: curve1
+        unk2:
+          x: 1.0
+          y: 1.0
+        unk3:
+          x: 1.0
+          y: 1.0
+        unk4:
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+      - entry:
+          name: ""
+          subname: ""
+          start_pos:
+            x: 0.0
+            y: 0.0
+            z: 0.0
+          use_start: false
+          unk: 0
+          unk2:
+            x: 0.0
+            y: 0.0
+            z: 0.0
+          unk3: 4294967295
+          bone_name: ""
+        unk: 5
+        string: curve1
+        unk2:
+          x: 1.0
+          y: 1.0
+        unk3:
+          x: 1.0
+          y: 1.0
+        unk4:
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+  - entry:
+      name: COL_00_Book01_through
+      subname: stc_Book01_set
+      start_pos:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      use_start: true
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    col_flags:
+      flag1: false
+      rig_col: true
+      flag3: false
+      drop_through: true
+    vertices:
+      - x: -19.419441
+        y: 27.848648
+      - x: 19.679974
+        y: 27.848648
+    normals:
+      - x: 0.0
+        y: 1.0
+    cliffs: []
+    materials:
+      - line_material: GROUND_COLL_ATTR_NONE
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+    unknowns: []
+  - entry:
+      name: COL_00_Book03_through
+      subname: stc_Book03_set
+      start_pos:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      use_start: true
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    col_flags:
+      flag1: false
+      rig_col: true
+      flag3: false
+      drop_through: true
+    vertices:
+      - x: -78.73146
+        y: 27.460653
+      - x: -41.485405
+        y: 33.048862
+    normals:
+      - x: -0.14837424
+        y: 0.9889313
+    cliffs: []
+    materials:
+      - line_material: GROUND_COLL_ATTR_NONE
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+    unknowns: []
+  - entry:
+      name: COL_00_Book04_through
+      subname: stc_Book04_set
+      start_pos:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      use_start: true
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    col_flags:
+      flag1: false
+      rig_col: true
+      flag3: false
+      drop_through: true
+    vertices:
+      - x: -11.377405
+        y: 24.602528
+      - x: 19.81379
+        y: 31.339458
+      - x: 21.230778
+        y: 32.756447
+      - x: 22.688416
+        y: 33.118946
+      - x: 24.214758
+        y: 33.25798
+      - x: 25.688726
+        y: 33.180054
+      - x: 27.161999
+        y: 32.88751
+      - x: 28.050549
+        y: 31.99878
+      - x: 62.318527
+        y: 31.995296
+    normals:
+      - x: -0.2111199
+        y: 0.97746015
+      - x: -0.70710695
+        y: 0.7071066
+      - x: -0.24133839
+        y: 0.97044104
+      - x: -0.090714246
+        y: 0.99587697
+      - x: 0.052794855
+        y: 0.9986054
+      - x: 0.19476572
+        y: 0.9808498
+      - x: 0.7071781
+        y: 0.7070355
+      - x: 0.00010163478
+        y: 1.0
+    cliffs: []
+    materials:
+      - line_material: GROUND_COLL_ATTR_NONE
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_NONE
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_NONE
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_NONE
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_NONE
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_NONE
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_NONE
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_NONE
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+    unknowns: []
+  - entry:
+      name: COL_00_Block02_through
+      subname: stc_Block02_set
+      start_pos:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      use_start: true
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    col_flags:
+      flag1: false
+      rig_col: true
+      flag3: false
+      drop_through: true
+    vertices:
+      - x: 38.336235
+        y: 32.089874
+      - x: 81.13379
+        y: 32.089867
+    normals:
+      - x: 1.7826707e-7
+        y: 1.0
+    cliffs: []
+    materials:
+      - line_material: GROUND_COLL_ATTR_WOOD
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+    unknowns: []
+  - entry:
+      name: COL_00_Block03
+      subname: stc_Block03_set
+      start_pos:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      use_start: true
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    col_flags:
+      flag1: false
+      rig_col: true
+      flag3: false
+      drop_through: false
+    vertices:
+      - x: -25.389082
+        y: 40.614445
+      - x: -25.389082
+        y: 49.62755
+      - x: 25.389082
+        y: 49.62755
+      - x: 25.389082
+        y: 40.614445
+      - x: -2.7327019e-8
+        y: 40.614445
+      - x: -25.389082
+        y: 40.614445
+    normals:
+      - x: -1.0
+        y: 0.0
+      - x: 0.0
+        y: 1.0
+      - x: 1.0
+        y: 0.0
+      - x: 0.0
+        y: -1.0
+      - x: 0.0
+        y: -1.0
+    cliffs: []
+    materials:
+      - line_material: GROUND_COLL_ATTR_WOOD
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_WOOD
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_WOOD
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_WOOD
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_WOOD
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+    unknowns: []
+  - entry:
+      name: COL_00_Block04
+      subname: stc_Block04_set
+      start_pos:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      use_start: true
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    col_flags:
+      flag1: false
+      rig_col: true
+      flag3: false
+      drop_through: false
+    vertices:
+      - x: -76.5
+        y: 40.5243
+      - x: -76.5
+        y: 52.524338
+      - x: -40.30732
+        y: 52.524338
+      - x: -40.30732
+        y: 65.09355
+      - x: -26.97734
+        y: 65.09355
+      - x: -26.97734
+        y: 52.524338
+      - x: -12.500036
+        y: 52.524338
+      - x: -12.500036
+        y: 40.5243
+      - x: -44.50002
+        y: 40.5243
+      - x: -76.5
+        y: 40.5243
+    normals:
+      - x: -1.0
+        y: 0.0
+      - x: 0.0
+        y: 1.0
+      - x: -1.0
+        y: 0.0
+      - x: 0.0
+        y: 1.0
+      - x: 1.0
+        y: 0.0
+      - x: 0.0
+        y: 1.0
+      - x: 1.0
+        y: 0.0
+      - x: 0.0
+        y: -1.0
+      - x: 0.0
+        y: -1.0
+    cliffs: []
+    materials:
+      - line_material: GROUND_COLL_ATTR_WOOD
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_WOOD
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_WOOD
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_WOOD
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_WOOD
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_WOOD
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_WOOD
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_WOOD
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_WOOD
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+    unknowns: []
+  - entry:
+      name: COL_00_Building01a_through
+      subname: stc_Building_set
+      start_pos:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      use_start: true
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    col_flags:
+      flag1: false
+      rig_col: true
+      flag3: false
+      drop_through: true
+    vertices:
+      - x: -24.056482
+        y: 25.343924
+      - x: 23.387371
+        y: 25.343924
+    normals:
+      - x: 0.0
+        y: 1.0
+    cliffs: []
+    materials:
+      - line_material: GROUND_COLL_ATTR_NONE
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+    unknowns: []
+  - entry:
+      name: COL_00_Building01b_through
+      subname: stc_Building_set
+      start_pos:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      use_start: true
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    col_flags:
+      flag1: false
+      rig_col: true
+      flag3: false
+      drop_through: true
+    vertices:
+      - x: -24.207106
+        y: 46.842564
+      - x: 23.53799
+        y: 46.842564
+    normals:
+      - x: 0.0
+        y: 1.0
+    cliffs: []
+    materials:
+      - line_material: GROUND_COLL_ATTR_NONE
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+    unknowns: []
+spawns:
+  - entry:
+      name: START_00_P01
+      subname: 00_P01
+      start_pos:
+        x: -30.0
+        y: 0.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: -30.0
+      y: 0.0
+  - entry:
+      name: START_00_P02
+      subname: 00_P02
+      start_pos:
+        x: 30.0
+        y: 0.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: 30.0
+      y: 0.0
+  - entry:
+      name: START_00_P03
+      subname: 00_P03
+      start_pos:
+        x: -70.0
+        y: 0.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: -70.0
+      y: 0.0
+  - entry:
+      name: START_00_P04
+      subname: 00_P04
+      start_pos:
+        x: 70.0
+        y: 0.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: 70.0
+      y: 0.0
+  - entry:
+      name: START_00_P05
+      subname: 00_P05
+      start_pos:
+        x: -50.0
+        y: 0.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: -50.0
+      y: 0.0
+  - entry:
+      name: START_00_P06
+      subname: 00_P06
+      start_pos:
+        x: 50.0
+        y: 0.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: 50.0
+      y: 0.0
+  - entry:
+      name: START_00_P07
+      subname: 00_P07
+      start_pos:
+        x: -10.0
+        y: 0.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: -10.0
+      y: 0.0
+  - entry:
+      name: START_00_P08
+      subname: 00_P08
+      start_pos:
+        x: 10.0
+        y: 0.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: 10.0
+      y: 0.0
+respawns:
+  - entry:
+      name: RESTART_00_P01
+      subname: 00_P01
+      start_pos:
+        x: 0.0
+        y: 80.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: 0.0
+      y: 80.0
+  - entry:
+      name: RESTART_00_P02
+      subname: 00_P02
+      start_pos:
+        x: 35.0
+        y: 80.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: 35.0
+      y: 80.0
+  - entry:
+      name: RESTART_00_P03
+      subname: 00_P03
+      start_pos:
+        x: -35.0
+        y: 80.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: -35.0
+      y: 80.0
+  - entry:
+      name: RESTART_00_P04
+      subname: 00_P04
+      start_pos:
+        x: 70.0
+        y: 80.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: 70.0
+      y: 80.0
+  - entry:
+      name: RESTART_00_P05
+      subname: 00_P05
+      start_pos:
+        x: -17.5
+        y: 95.5
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: -17.5
+      y: 95.5
+  - entry:
+      name: RESTART_00_P06
+      subname: 00_P06
+      start_pos:
+        x: 17.5
+        y: 95.5
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: 17.5
+      y: 95.5
+  - entry:
+      name: RESTART_00_P07
+      subname: 00_P07
+      start_pos:
+        x: -52.5
+        y: 95.5
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: -52.5
+      y: 95.5
+  - entry:
+      name: RESTART_00_P08
+      subname: 00_P08
+      start_pos:
+        x: 52.5
+        y: 95.5
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: 52.5
+      y: 95.5
+camera_boundary:
+  - entry:
+      name: CAMERA_00
+      subname: "00"
+      start_pos:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    left: -160.0
+    right: 160.0
+    top: 130.0
+    bottom: -60.0
+blast_zone:
+  - entry:
+      name: DEATH_00
+      subname: "00"
+      start_pos:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    left: -230.0
+    right: 229.99998
+    top: 192.0
+    bottom: -117.99999
+enemy_generators:
+  count: 0
+unk1:
+  count: 0
+unk2:
+  count: 0
+unk3:
+  count: 0
+fs_area_cam:
+  count: 0
+fs_cam_limit:
+  count: 0
+damage_shapes: []
+item_spawners:
+  - entry:
+      name: ItemPopup__tag_IPP0001_00_item0
+      subname: 00_Item
+      start_pos:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      use_start: true
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    id: 159645697
+    unk: 1
+    sections:
+      - Path:
+          points:
+            - x: -83.5
+              y: 90.0
+            - x: 83.5
+              y: 90.0
+  - entry:
+      name: ItemPopup__tag_IPP0002_00_item0
+      subname: 00_Item
+      start_pos:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      use_start: true
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    id: 159645698
+    unk: 1
+    sections:
+      - Path:
+          points:
+            - x: -19.419441
+              y: 22.848648
+            - x: 19.679974
+              y: 22.848648
+  - entry:
+      name: ItemPopup__tag_IPP0003_00_item0
+      subname: 00_Item
+      start_pos:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      use_start: true
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    id: 159645699
+    unk: 1
+    sections:
+      - Path:
+          points:
+            - x: -78.73146
+              y: 22.460653
+            - x: -41.485405
+              y: 28.048862
+  - entry:
+      name: ItemPopup__tag_IPP0004_00_item0
+      subname: 00_Item
+      start_pos:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      use_start: true
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    id: 159645700
+    unk: 1
+    sections:
+      - Path:
+          points:
+            - x: -11.377405
+              y: 19.602528
+            - x: 62.318527
+              y: 26.995296
+  - entry:
+      name: ItemPopup__tag_IPP0005_00_item0
+      subname: 00_Item
+      start_pos:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      use_start: true
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    id: 159645701
+    unk: 1
+    sections:
+      - Path:
+          points:
+            - x: 38.336235
+              y: 27.089874
+            - x: 81.13379
+              y: 27.089867
+  - entry:
+      name: ItemPopup__tag_IPP0006_00_item0
+      subname: 00_Item
+      start_pos:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      use_start: true
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    id: 159645702
+    unk: 1
+    sections:
+      - Path:
+          points:
+            - x: -25.389082
+              y: 35.614445
+            - x: 25.389082
+              y: 35.614445
+  - entry:
+      name: ItemPopup__tag_IPP0007_00_item0
+      subname: 00_Item
+      start_pos:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      use_start: true
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    id: 159645703
+    unk: 1
+    sections:
+      - Path:
+          points:
+            - x: -76.5
+              y: 35.5243
+            - x: -12.500036
+              y: 35.5243
+  - entry:
+      name: ItemPopup__tag_IPP0008_00_item0
+      subname: 00_Item
+      start_pos:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      use_start: true
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    id: 159645704
+    unk: 1
+    sections:
+      - Path:
+          points:
+            - x: -24.207106
+              y: 41.842564
+            - x: 23.53799
+              y: 41.842564
+      - Path:
+          points:
+            - x: -24.056482
+              y: 20.343924
+            - x: 23.387371
+              y: 20.343924
+ptrainer_ranges: []
+ptrainer_platforms:
+  - entry:
+      name: PTrainerFloatingFloor_curve1
+      subname: curve1
+      start_pos:
+        x: -30.0
+        y: 35.0
+        z: -50.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: -30.0
+      y: 35.0
+      z: -50.0
+  - entry:
+      name: PTrainerFloatingFloor_curve2
+      subname: curve2
+      start_pos:
+        x: 30.0
+        y: 35.0
+        z: -50.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: 30.0
+      y: 35.0
+      z: -50.0
+general_shapes:
+  - entry:
+      name: GeneralRect__tag_SBA0001_00_Boo
+      subname: _tag_SBA0001_00_Book01_Door
+      start_pos:
+        x: 1.25
+        y: 23.75
+        z: 7.1054274e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 319832065
+    shape:
+      Rectangle:
+        left: -20.0
+        right: 22.5
+        bottom: 20.0
+        top: 27.5
+  - entry:
+      name: GeneralRect__tag_SBA0002_00_Boo
+      subname: _tag_SBA0002_00_Book01_Door
+      start_pos:
+        x: 6.25
+        y: 16.25
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 319832066
+    shape:
+      Rectangle:
+        left: -15.0
+        right: 27.5
+        bottom: 12.5
+        top: 20.0
+  - entry:
+      name: GeneralRect__tag_SBA0003_00_Boo
+      subname: _tag_SBA0003_00_Book01_Door
+      start_pos:
+        x: 8.75
+        y: 10.0
+        z: 1.7763568e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 319832067
+    shape:
+      Rectangle:
+        left: -12.5
+        right: 30.0
+        bottom: 7.5000005
+        top: 12.5
+  - entry:
+      name: GeneralRect__tag_SBA0004_00_Boo
+      subname: _tag_SBA0004_00_Book01_Door
+      start_pos:
+        x: 10.000001
+        y: 3.7500002
+        z: 1.3322676e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 319832068
+    shape:
+      Rectangle:
+        left: -9.999998
+        right: 30.0
+        bottom: -2.4193905e-31
+        top: 7.5000005
+  - entry:
+      name: GeneralRect__tag_SBB0001_00_Boo
+      subname: _tag_SBB0001_00_Book01_WindowL
+      start_pos:
+        x: 1.25
+        y: 22.5
+        z: 3.5527137e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 319848449
+    shape:
+      Rectangle:
+        left: -20.0
+        right: 22.5
+        bottom: 17.5
+        top: 27.5
+  - entry:
+      name: GeneralRect__tag_SBB0002_00_Boo
+      subname: _tag_SBB0002_00_Book01_WindowL
+      start_pos:
+        x: 6.25
+        y: 8.75
+        z: -8.881784e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 319848450
+    shape:
+      Rectangle:
+        left: -17.5
+        right: 30.0
+        bottom: 4.7683716e-7
+        top: 17.5
+  - entry:
+      name: GeneralRect__tag_SBC0001_00_Boo
+      subname: _tag_SBC0001_00_Book01_WindowR
+      start_pos:
+        x: 0.0
+        y: 21.25
+        z: 3.5527137e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 319864833
+    shape:
+      Rectangle:
+        left: -20.0
+        right: 20.0
+        bottom: 15.0
+        top: 27.5
+  - entry:
+      name: GeneralRect__tag_SBC0002_00_Boo
+      subname: _tag_SBC0002_00_Book01_WindowR
+      start_pos:
+        x: 1.25
+        y: 7.5
+        z: -5.3290705e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 319864834
+    shape:
+      Rectangle:
+        left: -20.0
+        right: 22.5
+        bottom: -4.7683716e-7
+        top: 15.0
+  - entry:
+      name: GeneralRect__tag_SBD0001_00_Boo
+      subname: _tag_SBD0001_00_Book01_TV
+      start_pos:
+        x: -1.25
+        y: 21.25
+        z: 7.1054274e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 319881217
+    shape:
+      Rectangle:
+        left: -22.5
+        right: 20.0
+        bottom: 15.0
+        top: 27.5
+  - entry:
+      name: GeneralRect__tag_SBD0002_00_Boo
+      subname: _tag_SBD0002_00_Book01_TV
+      start_pos:
+        x: -2.5
+        y: 10.0
+        z: -3.5527137e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 319881218
+    shape:
+      Rectangle:
+        left: -22.5
+        right: 17.5
+        bottom: 4.9999995
+        top: 15.0
+  - entry:
+      name: GeneralRect__tag_SBD0003_00_Boo
+      subname: _tag_SBD0003_00_Book01_TV
+      start_pos:
+        x: -3.7500005
+        y: 2.5000002
+        z: -4.440892e-16
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 319881219
+    shape:
+      Rectangle:
+        left: -22.5
+        right: 14.999999
+        bottom: 4.7683716e-7
+        top: 5.0
+  - entry:
+      name: GeneralRect__tag_SBE0001_00_Boo
+      subname: _tag_SBE0001_00_Book01_TV_Look
+      start_pos:
+        x: 0.0
+        y: 13.75
+        z: 5.3290705e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 319897601
+    shape:
+      Rectangle:
+        left: -20.0
+        right: 20.0
+        bottom: -3.395838e-31
+        top: 27.5
+  - entry:
+      name: GeneralRect__tag_SBF0001_00_Boo
+      subname: _tag_SBF0001_00_Book01_Walk
+      start_pos:
+        x: 0.0
+        y: 18.75
+        z: 3.5527137e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 319913985
+    shape:
+      Rectangle:
+        left: -20.0
+        right: 20.0
+        bottom: 10.0
+        top: 27.5
+  - entry:
+      name: GeneralRect__tag_SBF0002_00_Boo
+      subname: _tag_SBF0002_00_Book01_Walk
+      start_pos:
+        x: 2.5
+        y: 5.0
+        z: -1.3322676e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 319913986
+    shape:
+      Rectangle:
+        left: -20.0
+        right: 25.0
+        bottom: -4.7683716e-7
+        top: 10.0
+  - entry:
+      name: GeneralRect__tag_SBG0001_00_Boo
+      subname: _tag_SBG0001_00_Book01_Desk
+      start_pos:
+        x: 0.0
+        y: 21.25
+        z: 3.5527137e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 319930369
+    shape:
+      Rectangle:
+        left: -20.0
+        right: 20.0
+        bottom: 15.0
+        top: 27.5
+  - entry:
+      name: GeneralRect__tag_SBG0002_00_Boo
+      subname: _tag_SBG0002_00_Book01_Desk
+      start_pos:
+        x: 1.25
+        y: 7.5
+        z: -2.5757174e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 319930370
+    shape:
+      Rectangle:
+        left: -22.5
+        right: 25.0
+        bottom: -4.7683716e-7
+        top: 15.0
+  - entry:
+      name: GeneralRect__tag_SDA0001_00_Boo
+      subname: _tag_SDA0001_00_Book03_Door
+      start_pos:
+        x: -53.75
+        y: 33.75
+        z: 3.5527137e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 320880641
+    shape:
+      Rectangle:
+        left: -70.0
+        right: -37.5
+        bottom: 27.5
+        top: 40.0
+  - entry:
+      name: GeneralRect__tag_SDA0002_00_Boo
+      subname: _tag_SDA0002_00_Book03_Door
+      start_pos:
+        x: -56.25
+        y: 25.0
+        z: 1.4210855e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 320880642
+    shape:
+      Rectangle:
+        left: -80.0
+        right: -32.5
+        bottom: 22.5
+        top: 27.5
+  - entry:
+      name: GeneralRect__tag_SDA0003_00_Boo
+      subname: _tag_SDA0003_00_Book03_Door
+      start_pos:
+        x: -51.25
+        y: 18.75
+        z: 1.7763568e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 320880643
+    shape:
+      Rectangle:
+        left: -75.0
+        right: -27.5
+        bottom: 15.0
+        top: 22.5
+  - entry:
+      name: GeneralRect__tag_SDA0004_00_Boo
+      subname: _tag_SDA0004_00_Book03_Door
+      start_pos:
+        x: -47.5
+        y: 7.5
+        z: 8.881784e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 320880644
+    shape:
+      Rectangle:
+        left: -72.5
+        right: -22.500002
+        bottom: -2.6814564e-31
+        top: 15.0
+  - entry:
+      name: GeneralRect__tag_SDB0001_00_Boo
+      subname: _tag_SDB0001_00_Book03_WindowL
+      start_pos:
+        x: -62.5
+        y: 33.75
+        z: 2.1316282e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 320897025
+    shape:
+      Rectangle:
+        left: -77.5
+        right: -47.5
+        bottom: 27.5
+        top: 40.0
+  - entry:
+      name: GeneralRect__tag_SDB0002_00_Boo
+      subname: _tag_SDB0002_00_Book03_WindowL
+      start_pos:
+        x: -60.0
+        y: 23.75
+        z: 7.1054274e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 320897026
+    shape:
+      Rectangle:
+        left: -80.0
+        right: -40.0
+        bottom: 20.0
+        top: 27.5
+  - entry:
+      name: GeneralRect__tag_SDB0003_00_Boo
+      subname: _tag_SDB0003_00_Book03_WindowL
+      start_pos:
+        x: -66.25
+        y: 10.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 320897027
+    shape:
+      Rectangle:
+        left: -77.5
+        right: -55.0
+        bottom: 4.7683716e-7
+        top: 20.0
+  - entry:
+      name: GeneralRect__tag_SDB0004_00_Boo
+      subname: _tag_SDB0004_00_Book03_WindowL
+      start_pos:
+        x: -41.25
+        y: 12.5
+        z: 8.881784e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 320897028
+    shape:
+      Rectangle:
+        left: -47.5
+        right: -35.0
+        bottom: -2.9073586e-31
+        top: 25.0
+  - entry:
+      name: GeneralRect__tag_SDC0001_00_Boo
+      subname: _tag_SDC0001_00_Book03_WindowR
+      start_pos:
+        x: -61.25
+        y: 20.0
+        z: 7.1054274e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 320913409
+    shape:
+      Rectangle:
+        left: -82.5
+        right: -40.0
+        bottom: -4.7683716e-7
+        top: 40.0
+  - entry:
+      name: GeneralRect__tag_SDD0001_00_Boo
+      subname: _tag_SDD0001_00_Book03_TV
+      start_pos:
+        x: -63.75
+        y: 20.0
+        z: 1.7763568e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 320929793
+    shape:
+      Rectangle:
+        left: -90.0
+        right: -37.5
+        bottom: -4.7683716e-7
+        top: 40.0
+  - entry:
+      name: GeneralRect__tag_SDE0001_00_Boo
+      subname: _tag_SDE0001_00_Book03_TV_Look
+      start_pos:
+        x: -62.5
+        y: 20.0
+        z: 1.0658141e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 320946177
+    shape:
+      Rectangle:
+        left: -85.0
+        right: -40.0
+        bottom: -4.7683716e-7
+        top: 40.0
+  - entry:
+      name: GeneralRect__tag_SDF0001_00_Boo
+      subname: _tag_SDF0001_00_Book03_Walk
+      start_pos:
+        x: -66.25
+        y: 35.0
+        z: 2.1316282e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 320962561
+    shape:
+      Rectangle:
+        left: -80.0
+        right: -52.5
+        bottom: 30.0
+        top: 40.0
+  - entry:
+      name: GeneralRect__tag_SDF0002_00_Boo
+      subname: _tag_SDF0002_00_Book03_Walk
+      start_pos:
+        x: -60.0
+        y: 22.5
+        z: 1.0658141e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 320962562
+    shape:
+      Rectangle:
+        left: -80.0
+        right: -40.0
+        bottom: 15.0
+        top: 30.0
+  - entry:
+      name: GeneralRect__tag_SDF0003_00_Boo
+      subname: _tag_SDF0003_00_Book03_Walk
+      start_pos:
+        x: -70.0
+        y: 7.5000005
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 320962563
+    shape:
+      Rectangle:
+        left: -80.0
+        right: -60.0
+        bottom: 4.7683716e-7
+        top: 15.0
+  - entry:
+      name: GeneralRect__tag_SDF0004_00_Boo
+      subname: _tag_SDF0004_00_Book03_Walk
+      start_pos:
+        x: -45.0
+        y: 7.5000005
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 320962564
+    shape:
+      Rectangle:
+        left: -50.0
+        right: -40.0
+        bottom: 4.7683716e-7
+        top: 15.0
+  - entry:
+      name: GeneralRect__tag_SDG0001_00_Boo
+      subname: _tag_SDG0001_00_Book03_Desk
+      start_pos:
+        x: -61.25
+        y: 20.0
+        z: 1.0658141e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 320978945
+    shape:
+      Rectangle:
+        left: -85.0
+        right: -37.5
+        bottom: -4.7683716e-7
+        top: 40.0
+  - entry:
+      name: GeneralRect__tag_SEA0001_00_Boo
+      subname: _tag_SEA0001_00_Book04_Door
+      start_pos:
+        x: 60.0
+        y: 35.0
+        z: 2.1316282e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 321404929
+    shape:
+      Rectangle:
+        left: 27.500002
+        right: 92.5
+        bottom: 27.5
+        top: 42.5
+  - entry:
+      name: GeneralRect__tag_SEA0002_00_Boo
+      subname: _tag_SEA0002_00_Book04_Door
+      start_pos:
+        x: 40.0
+        y: 23.75
+        z: 1.4210855e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 321404930
+    shape:
+      Rectangle:
+        left: -12.5
+        right: 92.5
+        bottom: 20.0
+        top: 27.5
+  - entry:
+      name: GeneralRect__tag_SEA0003_00_Boo
+      subname: _tag_SEA0003_00_Book04_Door
+      start_pos:
+        x: 40.0
+        y: 10.0
+        z: 7.1054274e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 321404931
+    shape:
+      Rectangle:
+        left: -12.499998
+        right: 92.5
+        bottom: -4.7683716e-7
+        top: 20.0
+  - entry:
+      name: GeneralRect__tag_SEB0001_00_Boo
+      subname: _tag_SEB0001_00_Book04_WindowL
+      start_pos:
+        x: 42.5
+        y: 33.75
+        z: 1.4210855e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 321421313
+    shape:
+      Rectangle:
+        left: 0.0000019073486
+        right: 85.0
+        bottom: 27.5
+        top: 40.0
+  - entry:
+      name: GeneralRect__tag_SEB0002_00_Boo
+      subname: _tag_SEB0002_00_Book04_WindowL
+      start_pos:
+        x: 36.25
+        y: 23.75
+        z: 7.1054274e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 321421314
+    shape:
+      Rectangle:
+        left: -12.5
+        right: 85.0
+        bottom: 20.0
+        top: 27.5
+  - entry:
+      name: GeneralRect__tag_SEB0003_00_Boo
+      subname: _tag_SEB0003_00_Book04_WindowL
+      start_pos:
+        x: 32.5
+        y: 10.000001
+        z: 1.7763568e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 321421315
+    shape:
+      Rectangle:
+        left: -20.0
+        right: 85.0
+        bottom: 4.7683716e-7
+        top: 20.000002
+  - entry:
+      name: GeneralRect__tag_SEC0001_00_Boo
+      subname: _tag_SEC0001_00_Book04_WindowR
+      start_pos:
+        x: 60.0
+        y: 37.5
+        z: 2.1316282e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 321437697
+    shape:
+      Rectangle:
+        left: 40.0
+        right: 80.0
+        bottom: 32.5
+        top: 42.5
+  - entry:
+      name: GeneralRect__tag_SEC0002_00_Boo
+      subname: _tag_SEC0002_00_Book04_WindowR
+      start_pos:
+        x: 40.0
+        y: 30.0
+        z: 1.4210855e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 321437698
+    shape:
+      Rectangle:
+        left: 0.0000019073486
+        right: 80.0
+        bottom: 27.5
+        top: 32.5
+  - entry:
+      name: GeneralRect__tag_SEC0003_00_Boo
+      subname: _tag_SEC0003_00_Book04_WindowR
+      start_pos:
+        x: 33.75
+        y: 23.75
+        z: 1.4210855e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 321437699
+    shape:
+      Rectangle:
+        left: -12.500002
+        right: 80.0
+        bottom: 20.0
+        top: 27.5
+  - entry:
+      name: GeneralRect__tag_SEC0004_00_Boo
+      subname: _tag_SEC0004_00_Book04_WindowR
+      start_pos:
+        x: -2.500002
+        y: 10.0
+        z: 7.1054274e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 321437700
+    shape:
+      Rectangle:
+        left: -20.000002
+        right: 14.999998
+        bottom: -4.7683716e-7
+        top: 20.0
+  - entry:
+      name: GeneralRect__tag_SEC0005_00_Boo
+      subname: _tag_SEC0005_00_Book04_WindowR
+      start_pos:
+        x: 61.25
+        y: 10.0
+        z: 7.1054274e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 321437701
+    shape:
+      Rectangle:
+        left: 42.5
+        right: 80.0
+        bottom: -4.7683716e-7
+        top: 20.0
+  - entry:
+      name: GeneralRect__tag_SED0001_00_Boo
+      subname: _tag_SED0001_00_Book04_TV
+      start_pos:
+        x: 52.5
+        y: 37.5
+        z: 2.1316282e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 321454081
+    shape:
+      Rectangle:
+        left: 30.000002
+        right: 75.0
+        bottom: 32.5
+        top: 42.5
+  - entry:
+      name: GeneralRect__tag_SED0002_00_Boo
+      subname: _tag_SED0002_00_Book04_TV
+      start_pos:
+        x: 38.75
+        y: 30.0
+        z: 1.4210855e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 321454082
+    shape:
+      Rectangle:
+        left: 2.500002
+        right: 75.0
+        bottom: 27.5
+        top: 32.5
+  - entry:
+      name: GeneralRect__tag_SED0003_00_Boo
+      subname: _tag_SED0003_00_Book04_TV
+      start_pos:
+        x: 31.25
+        y: 23.750002
+        z: 1.4210855e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 321454083
+    shape:
+      Rectangle:
+        left: -12.5
+        right: 75.0
+        bottom: 20.0
+        top: 27.500002
+  - entry:
+      name: GeneralRect__tag_SED0004_00_Boo
+      subname: _tag_SED0004_00_Book04_TV
+      start_pos:
+        x: -6.25
+        y: 10.0
+        z: 7.1054274e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 321454084
+    shape:
+      Rectangle:
+        left: -19.999998
+        right: 7.499998
+        bottom: -4.7683716e-7
+        top: 20.0
+  - entry:
+      name: GeneralRect__tag_SED0005_00_Boo
+      subname: _tag_SED0005_00_Book04_TV
+      start_pos:
+        x: 53.75
+        y: 10.0
+        z: 1.2434498e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 321454085
+    shape:
+      Rectangle:
+        left: 32.5
+        right: 75.0
+        bottom: -4.7683716e-7
+        top: 20.0
+  - entry:
+      name: GeneralRect__tag_SEE0001_00_Boo
+      subname: _tag_SEE0001_00_Book04_TV_Look
+      start_pos:
+        x: 57.5
+        y: 37.5
+        z: 2.1316282e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 321470465
+    shape:
+      Rectangle:
+        left: 37.5
+        right: 77.5
+        bottom: 32.5
+        top: 42.5
+  - entry:
+      name: GeneralRect__tag_SEE0002_00_Boo
+      subname: _tag_SEE0002_00_Book04_TV_Look
+      start_pos:
+        x: 41.25
+        y: 30.0
+        z: 1.4210855e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 321470466
+    shape:
+      Rectangle:
+        left: 5.000002
+        right: 77.5
+        bottom: 27.5
+        top: 32.5
+  - entry:
+      name: GeneralRect__tag_SEE0003_00_Boo
+      subname: _tag_SEE0003_00_Book04_TV_Look
+      start_pos:
+        x: 32.5
+        y: 23.75
+        z: 1.4210855e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 321470467
+    shape:
+      Rectangle:
+        left: -12.500002
+        right: 77.5
+        bottom: 20.0
+        top: 27.5
+  - entry:
+      name: GeneralRect__tag_SEE0004_00_Boo
+      subname: _tag_SEE0004_00_Book04_TV_Look
+      start_pos:
+        x: -5.0
+        y: 10.0
+        z: 7.1054274e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 321470468
+    shape:
+      Rectangle:
+        left: -22.499998
+        right: 12.499998
+        bottom: -2.4193905e-31
+        top: 20.0
+  - entry:
+      name: GeneralRect__tag_SEE0005_00_Boo
+      subname: _tag_SEE0005_00_Book04_TV_Look
+      start_pos:
+        x: 58.75
+        y: 10.0
+        z: 7.1054274e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 321470469
+    shape:
+      Rectangle:
+        left: 40.0
+        right: 77.5
+        bottom: -4.7683716e-7
+        top: 20.0
+  - entry:
+      name: GeneralRect__tag_SEF0001_00_Boo
+      subname: _tag_SEF0001_00_Book04_Walk
+      start_pos:
+        x: 60.0
+        y: 37.5
+        z: 2.1316282e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 321486849
+    shape:
+      Rectangle:
+        left: 40.0
+        right: 80.0
+        bottom: 32.5
+        top: 42.5
+  - entry:
+      name: GeneralRect__tag_SEF0002_00_Boo
+      subname: _tag_SEF0002_00_Book04_Walk
+      start_pos:
+        x: 47.5
+        y: 30.0
+        z: 1.7763568e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 321486850
+    shape:
+      Rectangle:
+        left: 15.000002
+        right: 80.0
+        bottom: 27.5
+        top: 32.5
+  - entry:
+      name: GeneralRect__tag_SEF0003_00_Boo
+      subname: _tag_SEF0003_00_Book04_Walk
+      start_pos:
+        x: 33.75
+        y: 23.75
+        z: 7.1054274e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 321486851
+    shape:
+      Rectangle:
+        left: -12.5
+        right: 80.0
+        bottom: 20.0
+        top: 27.5
+  - entry:
+      name: GeneralRect__tag_SEF0004_00_Boo
+      subname: _tag_SEF0004_00_Book04_Walk
+      start_pos:
+        x: -2.499999
+        y: 10.0
+        z: 1.7763568e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 321486852
+    shape:
+      Rectangle:
+        left: -22.5
+        right: 17.500002
+        bottom: 4.7683716e-7
+        top: 20.0
+  - entry:
+      name: GeneralRect__tag_SEF0005_00_Boo
+      subname: _tag_SEF0005_00_Book04_Walk
+      start_pos:
+        x: 63.75
+        y: 10.0
+        z: 1.7763568e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 321486853
+    shape:
+      Rectangle:
+        left: 45.0
+        right: 82.5
+        bottom: 4.7683716e-7
+        top: 20.0
+  - entry:
+      name: GeneralRect__tag_SEG0001_00_Boo
+      subname: _tag_SEG0001_00_Book04_Desk
+      start_pos:
+        x: 60.0
+        y: 36.25
+        z: 2.1316282e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 321503233
+    shape:
+      Rectangle:
+        left: 40.0
+        right: 80.0
+        bottom: 32.5
+        top: 40.0
+  - entry:
+      name: GeneralRect__tag_SEG0002_00_Boo
+      subname: _tag_SEG0002_00_Book04_Desk
+      start_pos:
+        x: 41.25
+        y: 30.0
+        z: 1.4210855e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 321503234
+    shape:
+      Rectangle:
+        left: 2.500002
+        right: 80.0
+        bottom: 27.5
+        top: 32.5
+  - entry:
+      name: GeneralRect__tag_SEG0003_00_Boo
+      subname: _tag_SEG0003_00_Book04_Desk
+      start_pos:
+        x: 33.75
+        y: 23.75
+        z: 1.4210855e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 321503235
+    shape:
+      Rectangle:
+        left: -12.500002
+        right: 80.0
+        bottom: 20.0
+        top: 27.5
+  - entry:
+      name: GeneralRect__tag_SEG0004_00_Boo
+      subname: _tag_SEG0004_00_Book04_Desk
+      start_pos:
+        x: 3.75
+        y: 10.0
+        z: 7.1054274e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 321503236
+    shape:
+      Rectangle:
+        left: -17.499998
+        right: 24.999998
+        bottom: -6.2862353e-31
+        top: 20.0
+  - entry:
+      name: GeneralRect__tag_SEG0005_00_Boo
+      subname: _tag_SEG0005_00_Book04_Desk
+      start_pos:
+        x: 61.25
+        y: 10.0
+        z: 7.1054274e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 321503237
+    shape:
+      Rectangle:
+        left: 42.5
+        right: 80.0
+        bottom: -5.6699378e-31
+        top: 20.0
+  - entry:
+      name: GeneralRect__tag_SGA0001_00_Blo
+      subname: _tag_SGA0001_00_Block02_Door
+      start_pos:
+        x: 66.25
+        y: 26.25
+        z: 1.7763568e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322453505
+    shape:
+      Rectangle:
+        left: 32.5
+        right: 100.0
+        bottom: -4.7683716e-7
+        top: 52.5
+  - entry:
+      name: GeneralRect__tag_SGB0001_00_Blo
+      subname: _tag_SGB0001_00_Block02_WindowL
+      start_pos:
+        x: 58.75
+        y: 26.25
+        z: 1.7763568e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322469889
+    shape:
+      Rectangle:
+        left: 30.000002
+        right: 87.5
+        bottom: -4.7683716e-7
+        top: 52.5
+  - entry:
+      name: GeneralRect__tag_SGC0001_00_Blo
+      subname: _tag_SGC0001_00_Block02_WindowR
+      start_pos:
+        x: 42.5
+        y: 43.75
+        z: 4.2632564e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322486273
+    shape:
+      Rectangle:
+        left: 35.0
+        right: 50.0
+        bottom: 32.5
+        top: 55.0
+  - entry:
+      name: GeneralRect__tag_SGC0002_00_Blo
+      subname: _tag_SGC0002_00_Block02_WindowR
+      start_pos:
+        x: 72.5
+        y: 43.75
+        z: 3.5527137e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322486274
+    shape:
+      Rectangle:
+        left: 65.0
+        right: 80.0
+        bottom: 32.5
+        top: 55.0
+  - entry:
+      name: GeneralRect__tag_SGC0003_00_Blo
+      subname: _tag_SGC0003_00_Block02_WindowR
+      start_pos:
+        x: 56.25
+        y: 23.75
+        z: 3.1974423e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322486275
+    shape:
+      Rectangle:
+        left: 32.5
+        right: 80.0
+        bottom: 14.999998
+        top: 32.5
+  - entry:
+      name: GeneralRect__tag_SGC0004_00_Blo
+      subname: _tag_SGC0004_00_Block02_WindowR
+      start_pos:
+        x: 37.5
+        y: 13.75
+        z: 1.7763568e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322486276
+    shape:
+      Rectangle:
+        left: 30.000002
+        right: 45.0
+        bottom: -2.4193905e-31
+        top: 27.5
+  - entry:
+      name: GeneralRect__tag_SGC0005_00_Blo
+      subname: _tag_SGC0005_00_Block02_WindowR
+      start_pos:
+        x: 77.5
+        y: 13.75
+        z: 1.4210855e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322486277
+    shape:
+      Rectangle:
+        left: 67.5
+        right: 87.5
+        bottom: -2.4193905e-31
+        top: 27.5
+  - entry:
+      name: GeneralRect__tag_SGD0001_00_Blo
+      subname: _tag_SGD0001_00_Block02_TV
+      start_pos:
+        x: 36.25
+        y: 50.0
+        z: 8.526513e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322502657
+    shape:
+      Rectangle:
+        left: 27.500002
+        right: 45.0
+        bottom: 45.0
+        top: 55.0
+  - entry:
+      name: GeneralRect__tag_SGD0002_00_Blo
+      subname: _tag_SGD0002_00_Block02_TV
+      start_pos:
+        x: 67.5
+        y: 50.0
+        z: 7.1054274e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322502658
+    shape:
+      Rectangle:
+        left: 57.5
+        right: 77.5
+        bottom: 45.0
+        top: 55.0
+  - entry:
+      name: GeneralRect__tag_SGD0003_00_Blo
+      subname: _tag_SGD0003_00_Block02_TV
+      start_pos:
+        x: 35.0
+        y: 38.750004
+        z: 6.3948846e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322502659
+    shape:
+      Rectangle:
+        left: 25.0
+        right: 45.0
+        bottom: 32.500004
+        top: 45.0
+  - entry:
+      name: GeneralRect__tag_SGD0004_00_Blo
+      subname: _tag_SGD0004_00_Block02_TV
+      start_pos:
+        x: 66.25
+        y: 38.75
+        z: 4.973799e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322502660
+    shape:
+      Rectangle:
+        left: 55.0
+        right: 77.5
+        bottom: 32.499996
+        top: 45.0
+  - entry:
+      name: GeneralRect__tag_SGD0005_00_Blo
+      subname: _tag_SGD0005_00_Block02_TV
+      start_pos:
+        x: 52.5
+        y: 22.500002
+        z: 4.6185278e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322502661
+    shape:
+      Rectangle:
+        left: 22.5
+        right: 82.5
+        bottom: 12.499998
+        top: 32.500004
+  - entry:
+      name: GeneralRect__tag_SGD0006_00_Blo
+      subname: _tag_SGD0006_00_Block02_TV
+      start_pos:
+        x: 30.0
+        y: 8.75
+        z: 2.3092639e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322502662
+    shape:
+      Rectangle:
+        left: 17.5
+        right: 42.5
+        bottom: -4.7683716e-7
+        top: 17.5
+  - entry:
+      name: GeneralRect__tag_SGD0007_00_Blo
+      subname: _tag_SGD0007_00_Block02_TV
+      start_pos:
+        x: 70.0
+        y: 6.25
+        z: 1.5099033e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322502663
+    shape:
+      Rectangle:
+        left: 57.5
+        right: 82.5
+        bottom: -4.7683716e-7
+        top: 12.5
+  - entry:
+      name: GeneralRect__tag_SGE0001_00_Blo
+      subname: _tag_SGE0001_00_Block02_TV_Look
+      start_pos:
+        x: 40.0
+        y: 43.75
+        z: 3.5527137e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322519041
+    shape:
+      Rectangle:
+        left: 32.5
+        right: 47.5
+        bottom: 32.5
+        top: 55.0
+  - entry:
+      name: GeneralRect__tag_SGE0002_00_Blo
+      subname: _tag_SGE0002_00_Block02_TV_Look
+      start_pos:
+        x: 71.25
+        y: 43.75
+        z: 4.2632564e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322519042
+    shape:
+      Rectangle:
+        left: 62.5
+        right: 80.0
+        bottom: 32.5
+        top: 55.0
+  - entry:
+      name: GeneralRect__tag_SGE0003_00_Blo
+      subname: _tag_SGE0003_00_Block02_TV_Look
+      start_pos:
+        x: 53.75
+        y: 23.75
+        z: 2.1316282e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322519043
+    shape:
+      Rectangle:
+        left: 27.5
+        right: 80.0
+        bottom: 15.0
+        top: 32.5
+  - entry:
+      name: GeneralRect__tag_SGE0004_00_Blo
+      subname: _tag_SGE0004_00_Block02_TV_Look
+      start_pos:
+        x: 35.0
+        y: 11.25
+        z: 1.2434498e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322519044
+    shape:
+      Rectangle:
+        left: 25.000002
+        right: 45.0
+        bottom: -2.4193905e-31
+        top: 22.5
+  - entry:
+      name: GeneralRect__tag_SGE0005_00_Blo
+      subname: _tag_SGE0005_00_Block02_TV_Look
+      start_pos:
+        x: 75.0
+        y: 13.75
+        z: 1.4210855e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322519045
+    shape:
+      Rectangle:
+        left: 65.0
+        right: 85.0
+        bottom: -4.7683716e-7
+        top: 27.5
+  - entry:
+      name: GeneralRect__tag_SGF0001_00_Blo
+      subname: _tag_SGF0001_00_Block02_Walk
+      start_pos:
+        x: 43.75
+        y: 43.75
+        z: 2.1316282e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322535425
+    shape:
+      Rectangle:
+        left: 37.5
+        right: 50.0
+        bottom: 32.5
+        top: 55.0
+  - entry:
+      name: GeneralRect__tag_SGF0002_00_Blo
+      subname: _tag_SGF0002_00_Block02_Walk
+      start_pos:
+        x: 73.75
+        y: 43.75
+        z: 2.842171e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322535426
+    shape:
+      Rectangle:
+        left: 67.5
+        right: 80.0
+        bottom: 32.5
+        top: 54.999996
+  - entry:
+      name: GeneralRect__tag_SGF0003_00_Blo
+      subname: _tag_SGF0003_00_Block02_Walk
+      start_pos:
+        x: 58.75
+        y: 23.75
+        z: 2.842171e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322535427
+    shape:
+      Rectangle:
+        left: 37.5
+        right: 80.0
+        bottom: 15.0
+        top: 32.5
+  - entry:
+      name: GeneralRect__tag_SGF0004_00_Blo
+      subname: _tag_SGF0004_00_Block02_Walk
+      start_pos:
+        x: 40.0
+        y: 13.75
+        z: 7.1054274e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322535428
+    shape:
+      Rectangle:
+        left: 32.5
+        right: 47.5
+        bottom: -2.4193905e-31
+        top: 27.5
+  - entry:
+      name: GeneralRect__tag_SGF0005_00_Blo
+      subname: _tag_SGF0005_00_Block02_Walk
+      start_pos:
+        x: 80.0
+        y: 13.75
+        z: 7.1054274e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322535429
+    shape:
+      Rectangle:
+        left: 72.50001
+        right: 87.5
+        bottom: -2.4193905e-31
+        top: 27.5
+  - entry:
+      name: GeneralRect__tag_SGG0001_00_Blo
+      subname: _tag_SGG0001_00_Block02_Desk
+      start_pos:
+        x: 42.5
+        y: 43.75
+        z: 2.1316282e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322551809
+    shape:
+      Rectangle:
+        left: 35.0
+        right: 50.0
+        bottom: 32.5
+        top: 55.0
+  - entry:
+      name: GeneralRect__tag_SGG0002_00_Blo
+      subname: _tag_SGG0002_00_Block02_Desk
+      start_pos:
+        x: 72.5
+        y: 43.75
+        z: 4.2632564e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322551810
+    shape:
+      Rectangle:
+        left: 65.0
+        right: 80.0
+        bottom: 32.5
+        top: 55.0
+  - entry:
+      name: GeneralRect__tag_SGG0003_00_Blo
+      subname: _tag_SGG0003_00_Block02_Desk
+      start_pos:
+        x: 56.25
+        y: 23.75
+        z: 1.4210855e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322551811
+    shape:
+      Rectangle:
+        left: 32.5
+        right: 80.0
+        bottom: 15.0
+        top: 32.5
+  - entry:
+      name: GeneralRect__tag_SGG0004_00_Blo
+      subname: _tag_SGG0004_00_Block02_Desk
+      start_pos:
+        x: 37.5
+        y: 13.75
+        z: 1.4210855e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322551812
+    shape:
+      Rectangle:
+        left: 30.000002
+        right: 45.0
+        bottom: -2.4193905e-31
+        top: 27.5
+  - entry:
+      name: GeneralRect__tag_SGG0005_00_Blo
+      subname: _tag_SGG0005_00_Block02_Desk
+      start_pos:
+        x: 78.75
+        y: 13.75
+        z: 1.0658141e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322551813
+    shape:
+      Rectangle:
+        left: 70.00001
+        right: 87.5
+        bottom: -4.7683716e-7
+        top: 27.5
+  - entry:
+      name: GeneralRect__tag_SHA0001_00_Blo
+      subname: _tag_SHA0001_00_Block03_Door
+      start_pos:
+        x: -8.75
+        y: 65.0
+        z: 9.947598e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322977793
+    shape:
+      Rectangle:
+        left: -20.0
+        right: 2.5
+        bottom: 62.499996
+        top: 67.5
+  - entry:
+      name: GeneralRect__tag_SHA0002_00_Blo
+      subname: _tag_SHA0002_00_Block03_Door
+      start_pos:
+        x: -6.25
+        y: 56.25
+        z: 6.3948846e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322977794
+    shape:
+      Rectangle:
+        left: -20.0
+        right: 7.5
+        bottom: 50.0
+        top: 62.5
+  - entry:
+      name: GeneralRect__tag_SHA0003_00_Blo
+      subname: _tag_SHA0003_00_Block03_Door
+      start_pos:
+        x: 2.5
+        y: 45.0
+        z: 4.2632564e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322977795
+    shape:
+      Rectangle:
+        left: -27.5
+        right: 32.5
+        bottom: 40.000004
+        top: 49.999996
+  - entry:
+      name: GeneralRect__tag_SHA0004_00_Blo
+      subname: _tag_SHA0004_00_Block03_Door
+      start_pos:
+        x: 6.25
+        y: 35.0
+        z: 3.5527137e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322977796
+    shape:
+      Rectangle:
+        left: -25.0
+        right: 37.5
+        bottom: 29.999998
+        top: 40.000004
+  - entry:
+      name: GeneralRect__tag_SHA0005_00_Blo
+      subname: _tag_SHA0005_00_Block03_Door
+      start_pos:
+        x: -8.750002
+        y: 14.999999
+        z: 1.0658141e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322977797
+    shape:
+      Rectangle:
+        left: -20.000002
+        right: 2.499998
+        bottom: -3.4402067e-31
+        top: 29.999998
+  - entry:
+      name: GeneralRect__tag_SHA0006_00_Blo
+      subname: _tag_SHA0006_00_Block03_Door
+      start_pos:
+        x: 27.5
+        y: 14.999999
+        z: 1.0658141e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322977798
+    shape:
+      Rectangle:
+        left: 17.500002
+        right: 37.5
+        bottom: -3.6195364e-31
+        top: 29.999998
+  - entry:
+      name: GeneralRect__tag_SHB0001_00_Blo
+      subname: _tag_SHB0001_00_Block03_WindowL
+      start_pos:
+        x: -12.500001
+        y: 65.0
+        z: 7.1054274e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322994177
+    shape:
+      Rectangle:
+        left: -22.5
+        right: -2.500002
+        bottom: 62.499996
+        top: 67.5
+  - entry:
+      name: GeneralRect__tag_SHB0002_00_Blo
+      subname: _tag_SHB0002_00_Block03_WindowL
+      start_pos:
+        x: -11.25
+        y: 56.25
+        z: 4.973799e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322994178
+    shape:
+      Rectangle:
+        left: -22.5
+        right: 0.0
+        bottom: 50.0
+        top: 62.5
+  - entry:
+      name: GeneralRect__tag_SHB0003_00_Blo
+      subname: _tag_SHB0003_00_Block03_WindowL
+      start_pos:
+        x: 0.0
+        y: 45.0
+        z: 3.5527137e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322994179
+    shape:
+      Rectangle:
+        left: -27.5
+        right: 27.5
+        bottom: 40.000004
+        top: 49.999996
+  - entry:
+      name: GeneralRect__tag_SHB0004_00_Blo
+      subname: _tag_SHB0004_00_Block03_WindowL
+      start_pos:
+        x: 1.249999
+        y: 35.0
+        z: 2.842171e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322994180
+    shape:
+      Rectangle:
+        left: -27.5
+        right: 29.999998
+        bottom: 29.999998
+        top: 40.000004
+  - entry:
+      name: GeneralRect__tag_SHB0005_00_Blo
+      subname: _tag_SHB0005_00_Block03_WindowL
+      start_pos:
+        x: -16.250002
+        y: 15.0
+        z: 1.0658141e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322994181
+    shape:
+      Rectangle:
+        left: -25.000002
+        right: -7.500002
+        bottom: -4.7683716e-7
+        top: 30.0
+  - entry:
+      name: GeneralRect__tag_SHB0006_00_Blo
+      subname: _tag_SHB0006_00_Block03_WindowL
+      start_pos:
+        x: 15.0
+        y: 15.0
+        z: 1.0658141e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 322994182
+    shape:
+      Rectangle:
+        left: 5.000002
+        right: 24.999998
+        bottom: -2.4193905e-31
+        top: 30.0
+  - entry:
+      name: GeneralRect__tag_SHC0001_00_Blo
+      subname: _tag_SHC0001_00_Block03_WindowR
+      start_pos:
+        x: -13.750001
+        y: 58.75
+        z: 4.2632564e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323010561
+    shape:
+      Rectangle:
+        left: -22.5
+        right: -5.000002
+        bottom: 50.0
+        top: 67.5
+  - entry:
+      name: GeneralRect__tag_SHC0002_00_Blo
+      subname: _tag_SHC0002_00_Block03_WindowR
+      start_pos:
+        x: 0.0
+        y: 43.75
+        z: 2.842171e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323010562
+    shape:
+      Rectangle:
+        left: -27.5
+        right: 27.5
+        bottom: 37.5
+        top: 49.999996
+  - entry:
+      name: GeneralRect__tag_SHC0003_00_Blo
+      subname: _tag_SHC0003_00_Block03_WindowR
+      start_pos:
+        x: -1.25
+        y: 33.75
+        z: 2.1316282e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323010563
+    shape:
+      Rectangle:
+        left: -30.0
+        right: 27.5
+        bottom: 30.000002
+        top: 37.499996
+  - entry:
+      name: GeneralRect__tag_SHC0004_00_Blo
+      subname: _tag_SHC0004_00_Block03_WindowR
+      start_pos:
+        x: -15.000002
+        y: 15.0
+        z: 1.0658141e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323010564
+    shape:
+      Rectangle:
+        left: -25.000002
+        right: -5.000002
+        bottom: -4.7683716e-7
+        top: 30.0
+  - entry:
+      name: GeneralRect__tag_SHC0005_00_Blo
+      subname: _tag_SHC0005_00_Block03_WindowR
+      start_pos:
+        x: 15.0
+        y: 15.0
+        z: 1.0658141e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323010565
+    shape:
+      Rectangle:
+        left: 7.500002
+        right: 22.499998
+        bottom: -4.7683716e-7
+        top: 30.0
+  - entry:
+      name: GeneralRect__tag_SHD0001_00_Blo
+      subname: _tag_SHD0001_00_Block03_TV
+      start_pos:
+        x: -18.75
+        y: 65.0
+        z: 7.1054274e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323026945
+    shape:
+      Rectangle:
+        left: -29.999998
+        right: -7.500002
+        bottom: 62.499996
+        top: 67.5
+  - entry:
+      name: GeneralRect__tag_SHD0002_00_Blo
+      subname: _tag_SHD0002_00_Block03_TV
+      start_pos:
+        x: -20.0
+        y: 56.25
+        z: 4.973799e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323026946
+    shape:
+      Rectangle:
+        left: -32.5
+        right: -7.500002
+        bottom: 50.0
+        top: 62.5
+  - entry:
+      name: GeneralRect__tag_SHD0003_00_Blo
+      subname: _tag_SHD0003_00_Block03_TV
+      start_pos:
+        x: -3.75
+        y: 45.0
+        z: 3.5527137e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323026947
+    shape:
+      Rectangle:
+        left: -35.0
+        right: 27.5
+        bottom: 40.000004
+        top: 49.999996
+  - entry:
+      name: GeneralRect__tag_SHD0004_00_Blo
+      subname: _tag_SHD0004_00_Block03_TV
+      start_pos:
+        x: -6.25
+        y: 35.0
+        z: 4.2632564e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323026948
+    shape:
+      Rectangle:
+        left: -40.0
+        right: 27.5
+        bottom: 29.999998
+        top: 40.0
+  - entry:
+      name: GeneralRect__tag_SHD0005_00_Blo
+      subname: _tag_SHD0005_00_Block03_TV
+      start_pos:
+        x: -27.5
+        y: 15.000001
+        z: 1.7763568e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323026949
+    shape:
+      Rectangle:
+        left: -37.5
+        right: -17.5
+        bottom: -4.7683716e-7
+        top: 30.000002
+  - entry:
+      name: GeneralRect__tag_SHD0006_00_Blo
+      subname: _tag_SHD0006_00_Block03_TV
+      start_pos:
+        x: 7.5
+        y: 15.000001
+        z: 1.7763568e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323026950
+    shape:
+      Rectangle:
+        left: -5.0
+        right: 20.0
+        bottom: -4.7683716e-7
+        top: 30.000002
+  - entry:
+      name: GeneralRect__tag_SHE0001_00_Blo
+      subname: _tag_SHE0001_00_Block03_TV_Look
+      start_pos:
+        x: -15.000001
+        y: 65.0
+        z: 1.1368684e-13
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323043329
+    shape:
+      Rectangle:
+        left: -25.0
+        right: -5.000002
+        bottom: 62.499996
+        top: 67.5
+  - entry:
+      name: GeneralRect__tag_SHE0002_00_Blo
+      subname: _tag_SHE0002_00_Block03_TV_Look
+      start_pos:
+        x: -16.25
+        y: 56.25
+        z: 5.684342e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323043330
+    shape:
+      Rectangle:
+        left: -27.5
+        right: -5.000002
+        bottom: 50.0
+        top: 62.5
+  - entry:
+      name: GeneralRect__tag_SHE0003_00_Blo
+      subname: _tag_SHE0003_00_Block03_TV_Look
+      start_pos:
+        x: -1.250001
+        y: 40.0
+        z: 3.5527137e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323043331
+    shape:
+      Rectangle:
+        left: -30.000002
+        right: 27.5
+        bottom: 30.000002
+        top: 49.999996
+  - entry:
+      name: GeneralRect__tag_SHE0004_00_Blo
+      subname: _tag_SHE0004_00_Block03_TV_Look
+      start_pos:
+        x: -21.250002
+        y: 15.0
+        z: 1.0658141e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323043332
+    shape:
+      Rectangle:
+        left: -30.000002
+        right: -12.500002
+        bottom: -2.4193905e-31
+        top: 30.0
+  - entry:
+      name: GeneralRect__tag_SHE0005_00_Blo
+      subname: _tag_SHE0005_00_Block03_TV_Look
+      start_pos:
+        x: 13.75
+        y: 15.0
+        z: 1.0658141e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323043333
+    shape:
+      Rectangle:
+        left: 5.000002
+        right: 22.499998
+        bottom: -2.4193905e-31
+        top: 30.0
+  - entry:
+      name: GeneralRect__tag_SHF0001_00_Blo
+      subname: _tag_SHF0001_00_Block03_Walk
+      start_pos:
+        x: -13.750001
+        y: 58.75
+        z: 4.973799e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323059713
+    shape:
+      Rectangle:
+        left: -22.5
+        right: -5.000002
+        bottom: 50.0
+        top: 67.5
+  - entry:
+      name: GeneralRect__tag_SHF0002_00_Blo
+      subname: _tag_SHF0002_00_Block03_Walk
+      start_pos:
+        x: 0.0
+        y: 40.0
+        z: 2.1316282e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323059714
+    shape:
+      Rectangle:
+        left: -27.5
+        right: 27.5
+        bottom: 30.0
+        top: 50.0
+  - entry:
+      name: GeneralRect__tag_SHF0003_00_Blo
+      subname: _tag_SHF0003_00_Block03_Walk
+      start_pos:
+        x: -18.75
+        y: 15.0
+        z: 3.5527137e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323059715
+    shape:
+      Rectangle:
+        left: -25.0
+        right: -12.5
+        bottom: 4.7683716e-7
+        top: 30.0
+  - entry:
+      name: GeneralRect__tag_SHF0004_00_Blo
+      subname: _tag_SHF0004_00_Block03_Walk
+      start_pos:
+        x: 17.499998
+        y: 15.0
+        z: 1.0658141e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323059716
+    shape:
+      Rectangle:
+        left: 9.999998
+        right: 24.999998
+        bottom: -2.4193905e-31
+        top: 30.0
+  - entry:
+      name: GeneralRect__tag_SHG0001_00_Blo
+      subname: _tag_SHG0001_00_Block03_Desk
+      start_pos:
+        x: -15.000001
+        y: 58.75
+        z: 4.2632564e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323076097
+    shape:
+      Rectangle:
+        left: -25.0
+        right: -5.000002
+        bottom: 50.0
+        top: 67.5
+  - entry:
+      name: GeneralRect__tag_SHG0002_00_Blo
+      subname: _tag_SHG0002_00_Block03_Desk
+      start_pos:
+        x: -1.25
+        y: 40.0
+        z: 2.842171e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323076098
+    shape:
+      Rectangle:
+        left: -30.0
+        right: 27.5
+        bottom: 30.000002
+        top: 49.999996
+  - entry:
+      name: GeneralRect__tag_SHG0003_00_Blo
+      subname: _tag_SHG0003_00_Block03_Desk
+      start_pos:
+        x: -2.5
+        y: 14.999999
+        z: 1.2434498e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323076099
+    shape:
+      Rectangle:
+        left: -29.999998
+        right: 24.999998
+        bottom: -4.7683716e-7
+        top: 29.999998
+  - entry:
+      name: GeneralRect__tag_SIA0001_00_Blo
+      subname: _tag_SIA0001_00_Block04_Door
+      start_pos:
+        x: -31.25
+        y: 60.0
+        z: 6.3948846e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323502081
+    shape:
+      Rectangle:
+        left: -55.0
+        right: -7.500002
+        bottom: 52.5
+        top: 67.5
+  - entry:
+      name: GeneralRect__tag_SIA0002_00_Blo
+      subname: _tag_SIA0002_00_Block04_Door
+      start_pos:
+        x: -37.5
+        y: 48.75
+        z: 4.973799e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323502082
+    shape:
+      Rectangle:
+        left: -75.0
+        right: 0.0
+        bottom: 45.000004
+        top: 52.499996
+  - entry:
+      name: GeneralRect__tag_SIA0003_00_Blo
+      subname: _tag_SIA0003_00_Block04_Door
+      start_pos:
+        x: -33.75
+        y: 42.5
+        z: 4.973799e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323502083
+    shape:
+      Rectangle:
+        left: -75.0
+        right: 7.499998
+        bottom: 39.999996
+        top: 45.000004
+  - entry:
+      name: GeneralRect__tag_SIA0004_00_Blo
+      subname: _tag_SIA0004_00_Block04_Door
+      start_pos:
+        x: -33.75
+        y: 35.0
+        z: 4.2632564e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323502084
+    shape:
+      Rectangle:
+        left: -82.5
+        right: 14.999998
+        bottom: 29.999998
+        top: 40.000004
+  - entry:
+      name: GeneralRect__tag_SIA0005_00_Blo
+      subname: _tag_SIA0005_00_Block04_Door
+      start_pos:
+        x: -68.75
+        y: 14.999999
+        z: 1.4210855e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323502085
+    shape:
+      Rectangle:
+        left: -82.5
+        right: -55.0
+        bottom: -4.7683716e-7
+        top: 29.999998
+  - entry:
+      name: GeneralRect__tag_SIA0006_00_Blo
+      subname: _tag_SIA0006_00_Block04_Door
+      start_pos:
+        x: 0.0
+        y: 14.999999
+        z: 1.4210855e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323502086
+    shape:
+      Rectangle:
+        left: -19.999998
+        right: 19.999998
+        bottom: -4.7683716e-7
+        top: 29.999998
+  - entry:
+      name: GeneralRect__tag_SIB0001_00_Blo
+      subname: _tag_SIB0001_00_Block04_WindowL
+      start_pos:
+        x: -40.0
+        y: 60.0
+        z: 6.3948846e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323518465
+    shape:
+      Rectangle:
+        left: -57.5
+        right: -22.500002
+        bottom: 52.5
+        top: 67.5
+  - entry:
+      name: GeneralRect__tag_SIB0002_00_Blo
+      subname: _tag_SIB0002_00_Block04_WindowL
+      start_pos:
+        x: -43.75
+        y: 46.25
+        z: 4.2632564e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323518466
+    shape:
+      Rectangle:
+        left: -75.0
+        right: -12.5
+        bottom: 40.000004
+        top: 52.499996
+  - entry:
+      name: GeneralRect__tag_SIB0003_00_Blo
+      subname: _tag_SIB0003_00_Block04_WindowL
+      start_pos:
+        x: -39.999985
+        y: 35.0
+        z: 3.5527137e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323518467
+    shape:
+      Rectangle:
+        left: -85.0
+        right: 5.0000286
+        bottom: 29.999998
+        top: 40.000004
+  - entry:
+      name: GeneralRect__tag_SIB0004_00_Blo
+      subname: _tag_SIB0004_00_Block04_WindowL
+      start_pos:
+        x: -75.0
+        y: 15.0
+        z: 1.2434498e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323518468
+    shape:
+      Rectangle:
+        left: -85.0
+        right: -65.0
+        bottom: -4.7683716e-7
+        top: 30.0
+  - entry:
+      name: GeneralRect__tag_SIB0005_00_Blo
+      subname: _tag_SIB0005_00_Block04_WindowL
+      start_pos:
+        x: -7.5
+        y: 15.0
+        z: 1.2434498e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323518469
+    shape:
+      Rectangle:
+        left: -19.999998
+        right: 4.999998
+        bottom: -2.4193905e-31
+        top: 30.0
+  - entry:
+      name: GeneralRect__tag_SIC0001_00_Blo
+      subname: _tag_SIC0001_00_Block04_WindowR
+      start_pos:
+        x: -55.0
+        y: 60.0
+        z: 4.973799e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323534849
+    shape:
+      Rectangle:
+        left: -85.0
+        right: -25.000002
+        bottom: 52.5
+        top: 67.5
+  - entry:
+      name: GeneralRect__tag_SIC0002_00_Blo
+      subname: _tag_SIC0002_00_Block04_WindowR
+      start_pos:
+        x: -48.75
+        y: 46.25
+        z: 3.5527137e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323534850
+    shape:
+      Rectangle:
+        left: -85.0
+        right: -12.5
+        bottom: 40.000004
+        top: 52.499996
+  - entry:
+      name: GeneralRect__tag_SIC0003_00_Blo
+      subname: _tag_SIC0003_00_Block04_WindowR
+      start_pos:
+        x: -40.0
+        y: 20.000002
+        z: 1.7763568e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323534851
+    shape:
+      Rectangle:
+        left: -85.0
+        right: 4.999998
+        bottom: -4.7683716e-7
+        top: 40.000004
+  - entry:
+      name: GeneralRect__tag_SID0001_00_Blo
+      subname: _tag_SID0001_00_Block04_TV
+      start_pos:
+        x: -61.25
+        y: 60.0
+        z: 4.973799e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323551233
+    shape:
+      Rectangle:
+        left: -95.0
+        right: -27.500002
+        bottom: 52.5
+        top: 67.5
+  - entry:
+      name: GeneralRect__tag_SID0002_00_Blo
+      subname: _tag_SID0002_00_Block04_TV
+      start_pos:
+        x: -53.75
+        y: 45.0
+        z: 3.5527137e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323551234
+    shape:
+      Rectangle:
+        left: -95.0
+        right: -12.5
+        bottom: 37.500004
+        top: 52.499996
+  - entry:
+      name: GeneralRect__tag_SID0003_00_Blo
+      subname: _tag_SID0003_00_Block04_TV
+      start_pos:
+        x: -46.249996
+        y: 18.75
+        z: 2.4868996e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323551235
+    shape:
+      Rectangle:
+        left: -94.99999
+        right: 2.5
+        bottom: -2.5546208e-31
+        top: 37.5
+  - entry:
+      name: GeneralRect__tag_SIE0001_00_Blo
+      subname: _tag_SIE0001_00_Block04_TV_Look
+      start_pos:
+        x: -58.75
+        y: 60.0
+        z: 4.973799e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323567617
+    shape:
+      Rectangle:
+        left: -90.0
+        right: -27.500002
+        bottom: 52.5
+        top: 67.5
+  - entry:
+      name: GeneralRect__tag_SIE0002_00_Blo
+      subname: _tag_SIE0002_00_Block04_TV_Look
+      start_pos:
+        x: -51.25
+        y: 46.25
+        z: 4.2632564e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323567618
+    shape:
+      Rectangle:
+        left: -90.0
+        right: -12.5
+        bottom: 40.000004
+        top: 52.499996
+  - entry:
+      name: GeneralRect__tag_SIE0003_00_Blo
+      subname: _tag_SIE0003_00_Block04_TV_Look
+      start_pos:
+        x: -43.75
+        y: 20.000002
+        z: 2.842171e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323567619
+    shape:
+      Rectangle:
+        left: -90.0
+        right: 2.499998
+        bottom: -4.7683716e-7
+        top: 40.000004
+  - entry:
+      name: GeneralRect__tag_SIF0001_00_Blo
+      subname: _tag_SIF0001_00_Block04_Walk
+      start_pos:
+        x: -42.5
+        y: 60.0
+        z: 4.973799e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323584001
+    shape:
+      Rectangle:
+        left: -57.5
+        right: -27.500002
+        bottom: 52.5
+        top: 67.5
+  - entry:
+      name: GeneralRect__tag_SIF0002_00_Blo
+      subname: _tag_SIF0002_00_Block04_Walk
+      start_pos:
+        x: -43.75
+        y: 46.25
+        z: 4.2632564e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323584002
+    shape:
+      Rectangle:
+        left: -75.0
+        right: -12.5
+        bottom: 40.000004
+        top: 52.499996
+  - entry:
+      name: GeneralRect__tag_SIF0003_00_Blo
+      subname: _tag_SIF0003_00_Block04_Walk
+      start_pos:
+        x: -40.0
+        y: 35.0
+        z: 2.842171e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323584003
+    shape:
+      Rectangle:
+        left: -85.0
+        right: 4.999998
+        bottom: 29.999998
+        top: 40.000004
+  - entry:
+      name: GeneralRect__tag_SIF0004_00_Blo
+      subname: _tag_SIF0004_00_Block04_Walk
+      start_pos:
+        x: -77.5
+        y: 14.999999
+        z: 1.0658141e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323584004
+    shape:
+      Rectangle:
+        left: -85.0
+        right: -70.00001
+        bottom: -4.7683716e-7
+        top: 29.999998
+  - entry:
+      name: GeneralRect__tag_SIF0005_00_Blo
+      subname: _tag_SIF0005_00_Block04_Walk
+      start_pos:
+        x: -8.75
+        y: 14.999999
+        z: 1.0658141e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323584005
+    shape:
+      Rectangle:
+        left: -22.499998
+        right: 4.999998
+        bottom: -4.7683716e-7
+        top: 29.999998
+  - entry:
+      name: GeneralRect__tag_SIG0001_00_Blo
+      subname: _tag_SIG0001_00_Block04_Desk
+      start_pos:
+        x: -56.25
+        y: 60.0
+        z: 4.973799e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323600385
+    shape:
+      Rectangle:
+        left: -87.5
+        right: -25.000002
+        bottom: 52.5
+        top: 67.5
+  - entry:
+      name: GeneralRect__tag_SIG0002_00_Blo
+      subname: _tag_SIG0002_00_Block04_Desk
+      start_pos:
+        x: -50.0
+        y: 46.25
+        z: 4.2632564e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323600386
+    shape:
+      Rectangle:
+        left: -87.5
+        right: -12.5
+        bottom: 40.000004
+        top: 52.499996
+  - entry:
+      name: GeneralRect__tag_SIG0003_00_Blo
+      subname: _tag_SIG0003_00_Block04_Desk
+      start_pos:
+        x: -41.25
+        y: 20.000002
+        z: 2.1316282e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 323600387
+    shape:
+      Rectangle:
+        left: -87.5
+        right: 4.999998
+        bottom: -4.7683716e-7
+        top: 40.000004
+  - entry:
+      name: GeneralRect__tag_SJA0001_00_Gam
+      subname: _tag_SJA0001_00_GameMachine_Door
+      start_pos:
+        x: 5.0
+        y: 12.5
+        z: -3.5527137e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 324026369
+    shape:
+      Rectangle:
+        left: -17.5
+        right: 27.5
+        bottom: -4.7683716e-7
+        top: 25.0
+  - entry:
+      name: GeneralRect__tag_SJB0001_00_Gam
+      subname: _tag_SJB0001_00_GameMachine_WindowL
+      start_pos:
+        x: 2.5
+        y: 12.5
+        z: -3.5527137e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 324042753
+    shape:
+      Rectangle:
+        left: -20.0
+        right: 25.0
+        bottom: -4.7683716e-7
+        top: 25.0
+  - entry:
+      name: GeneralRect__tag_SJC0001_00_Gam
+      subname: _tag_SJC0001_00_GameMachine_WindowR
+      start_pos:
+        x: -2.5
+        y: 12.5
+        z: -3.5527137e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 324059137
+    shape:
+      Rectangle:
+        left: -25.0
+        right: 20.0
+        bottom: -4.7683716e-7
+        top: 25.0
+  - entry:
+      name: GeneralRect__tag_SJD0001_00_Gam
+      subname: _tag_SJD0001_00_GameMachine_TV
+      start_pos:
+        x: -5.0
+        y: 12.5
+        z: -3.5527137e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 324075521
+    shape:
+      Rectangle:
+        left: -27.5
+        right: 17.5
+        bottom: -4.7683716e-7
+        top: 25.0
+  - entry:
+      name: GeneralRect__tag_SJE0001_00_Gam
+      subname: _tag_SJE0001_00_GameMachine_TV_Look
+      start_pos:
+        x: -2.5
+        y: 12.5
+        z: -3.5527137e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 324091905
+    shape:
+      Rectangle:
+        left: -25.0
+        right: 20.0
+        bottom: -4.7683716e-7
+        top: 25.0
+  - entry:
+      name: GeneralRect__tag_SJF0001_00_Gam
+      subname: _tag_SJF0001_00_GameMachine_Walk
+      start_pos:
+        x: 0.0
+        y: 12.499999
+        z: -3.5527137e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 324108289
+    shape:
+      Rectangle:
+        left: -22.5
+        right: 22.5
+        bottom: -4.7683716e-7
+        top: 24.999998
+  - entry:
+      name: GeneralRect__tag_SJG0001_00_Gam
+      subname: _tag_SJG0001_00_GameMachine_Desk
+      start_pos:
+        x: 0.0
+        y: 12.5
+        z: -3.5527137e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 324124673
+    shape:
+      Rectangle:
+        left: -22.5
+        right: 22.5
+        bottom: -4.7683716e-7
+        top: 25.0
+  - entry:
+      name: GeneralRect__tag_SKA0001_00_Eas
+      subname: _tag_SKA0001_00_Easel_Door
+      start_pos:
+        x: -56.25
+        y: 31.25
+        z: 4.2632564e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 324550657
+    shape:
+      Rectangle:
+        left: -80.0
+        right: -32.5
+        bottom: 17.5
+        top: 45.0
+  - entry:
+      name: GeneralRect__tag_SKA0002_00_Eas
+      subname: _tag_SKA0002_00_Easel_Door
+      start_pos:
+        x: -72.5
+        y: 13.75
+        z: 3.907985e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 324550658
+    shape:
+      Rectangle:
+        left: -77.5
+        right: -67.5
+        bottom: 10.0
+        top: 17.5
+  - entry:
+      name: GeneralRect__tag_SKA0003_00_Eas
+      subname: _tag_SKA0003_00_Easel_Door
+      start_pos:
+        x: -35.0
+        y: 13.75
+        z: 3.907985e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 324550659
+    shape:
+      Rectangle:
+        left: -40.0
+        right: -29.999998
+        bottom: 10.0
+        top: 17.5
+  - entry:
+      name: GeneralRect__tag_SKA0004_00_Eas
+      subname: _tag_SKA0004_00_Easel_Door
+      start_pos:
+        x: -70.0
+        y: 5.0
+        z: 3.0198066e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 324550660
+    shape:
+      Rectangle:
+        left: -75.0
+        right: -65.0
+        bottom: -4.7683716e-7
+        top: 10.0
+  - entry:
+      name: GeneralRect__tag_SKA0005_00_Eas
+      subname: _tag_SKA0005_00_Easel_Door
+      start_pos:
+        x: -32.5
+        y: 5.0
+        z: 3.0198066e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 324550661
+    shape:
+      Rectangle:
+        left: -37.5
+        right: -27.499998
+        bottom: -4.7683716e-7
+        top: 10.0
+  - entry:
+      name: GeneralRect__tag_SKB0001_00_Eas
+      subname: _tag_SKB0001_00_Easel_WindowL
+      start_pos:
+        x: -58.75
+        y: 25.0
+        z: 1.0658141e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 324567041
+    shape:
+      Rectangle:
+        left: -80.0
+        right: -37.5
+        bottom: 17.5
+        top: 45.0
+  - entry:
+      name: GeneralRect__tag_SKB0002_00_Eas
+      subname: _tag_SKB0002_00_Easel_WindowL
+      start_pos:
+        x: -77.5
+        y: 8.75
+        z: 5.5067062e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 324567042
+    shape:
+      Rectangle:
+        left: -80.0
+        right: -75.0
+        bottom: -4.7683716e-7
+        top: 17.5
+  - entry:
+      name: GeneralRect__tag_SKB0003_00_Eas
+      subname: _tag_SKB0003_00_Easel_WindowL
+      start_pos:
+        x: -41.25
+        y: 13.75
+        z: 4.6185278e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 324567043
+    shape:
+      Rectangle:
+        left: -45.0
+        right: -37.5
+        bottom: 10.0
+        top: 17.5
+  - entry:
+      name: GeneralRect__tag_SKB0004_00_Eas
+      subname: _tag_SKB0004_00_Easel_WindowL
+      start_pos:
+        x: -38.75
+        y: 5.0
+        z: 3.1974423e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 324567044
+    shape:
+      Rectangle:
+        left: -42.5
+        right: -35.0
+        bottom: -4.7683716e-7
+        top: 10.0
+  - entry:
+      name: GeneralRect__tag_SKC0001_00_Eas
+      subname: _tag_SKC0001_00_Easel_WindowR
+      start_pos:
+        x: -61.25
+        y: 25.0
+        z: 1.0658141e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 324583425
+    shape:
+      Rectangle:
+        left: -80.0
+        right: -37.5
+        bottom: 17.5
+        top: 45.0
+  - entry:
+      name: GeneralRect__tag_SKD0001_00_Eas
+      subname: _tag_SKD0001_00_Easel_TV
+      start_pos:
+        x: -58.75
+        y: 31.25
+        z: 2.1316282e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 324599809
+    shape:
+      Rectangle:
+        left: -80.0
+        right: -37.5
+        bottom: 17.5
+        top: 45.0
+  - entry:
+      name: GeneralRect__tag_SKE0001_00_Eas
+      subname: _tag_SKE0001_00_Easel_TV_Look
+      start_pos:
+        x: -58.75
+        y: 31.25
+        z: 2.1316282e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 324616193
+    shape:
+      Rectangle:
+        left: -80.0
+        right: -37.5
+        bottom: 17.5
+        top: 45.0
+  - entry:
+      name: GeneralRect__tag_SKF0001_00_Eas
+      subname: _tag_SKF0001_00_Easel_Walk
+      start_pos:
+        x: -60.0
+        y: 25.0
+        z: 1.0658141e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 324632577
+    shape:
+      Rectangle:
+        left: -80.0
+        right: -37.5
+        bottom: 17.5
+        top: 45.0
+  - entry:
+      name: GeneralRect__tag_SKF0002_00_Eas
+      subname: _tag_SKF0002_00_Easel_Walk
+      start_pos:
+        x: -78.75
+        y: 8.75
+        z: 5.151435e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 324632578
+    shape:
+      Rectangle:
+        left: -82.5
+        right: -75.0
+        bottom: -4.7683716e-7
+        top: 17.5
+  - entry:
+      name: GeneralRect__tag_SKF0003_00_Eas
+      subname: _tag_SKF0003_00_Easel_Walk
+      start_pos:
+        x: -41.25
+        y: 8.75
+        z: 5.151435e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 324632579
+    shape:
+      Rectangle:
+        left: -45.0
+        right: -37.5
+        bottom: -4.7683716e-7
+        top: 17.5
+  - entry:
+      name: GeneralRect__tag_SKG0001_00_Eas
+      subname: _tag_SKG0001_00_Easel_Desk
+      start_pos:
+        x: -58.749996
+        y: 31.25
+        z: 2.1316282e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 324648961
+    shape:
+      Rectangle:
+        left: -79.99999
+        right: -37.5
+        bottom: 17.5
+        top: 45.0
+  - entry:
+      name: GeneralRect__tag_SLA0001_00_Bir
+      subname: _tag_SLA0001_00_Bird_Door
+      start_pos:
+        x: 65.0
+        y: 11.25
+        z: -5.3290705e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325074945
+    shape:
+      Rectangle:
+        left: 42.5
+        right: 87.5
+        bottom: -4.7683716e-7
+        top: 22.5
+  - entry:
+      name: GeneralCircle__tag_SLA1001_00_B
+      subname: _tag_SLA1001_00_Bird_Door
+      start_pos:
+        x: 80.0
+        y: 35.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325075945
+    shape:
+      Circle:
+        x: 80.0
+        y: 35.0
+        radius: 10.0
+  - entry:
+      name: GeneralRect__tag_SLA1002_00_Bir
+      subname: _tag_SLA1002_00_Bird_Door
+      start_pos:
+        x: 80.0
+        y: 30.0
+        z: 2.1316282e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325075946
+    shape:
+      Rectangle:
+        left: 67.5
+        right: 92.5
+        bottom: 22.5
+        top: 37.5
+  - entry:
+      name: GeneralRect__tag_SLB0001_00_Bir
+      subname: _tag_SLB0001_00_Bird_WindowL
+      start_pos:
+        x: 62.5
+        y: 11.25
+        z: -5.3290705e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325091329
+    shape:
+      Rectangle:
+        left: 40.0
+        right: 85.0
+        bottom: -4.7683716e-7
+        top: 22.5
+  - entry:
+      name: GeneralCircle__tag_SLB1001_00_B
+      subname: _tag_SLB1001_00_Bird_WindowL
+      start_pos:
+        x: 77.5
+        y: 35.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325092329
+    shape:
+      Circle:
+        x: 77.5
+        y: 35.0
+        radius: 10.0
+  - entry:
+      name: GeneralRect__tag_SLB1002_00_Bir
+      subname: _tag_SLB1002_00_Bird_WindowL
+      start_pos:
+        x: 77.5
+        y: 30.0
+        z: 3.5527137e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325092330
+    shape:
+      Rectangle:
+        left: 65.0
+        right: 90.0
+        bottom: 22.5
+        top: 37.5
+  - entry:
+      name: GeneralRect__tag_SLC0001_00_Bir
+      subname: _tag_SLC0001_00_Bird_WindowR
+      start_pos:
+        x: 57.5
+        y: 11.25
+        z: -8.881784e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325107713
+    shape:
+      Rectangle:
+        left: 35.0
+        right: 80.0
+        bottom: -4.7683716e-7
+        top: 22.5
+  - entry:
+      name: GeneralCircle__tag_SLC1001_00_B
+      subname: _tag_SLC1001_00_Bird_WindowR
+      start_pos:
+        x: 75.0
+        y: 35.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325108713
+    shape:
+      Circle:
+        x: 75.0
+        y: 35.0
+        radius: 10.0
+  - entry:
+      name: GeneralRect__tag_SLC1002_00_Bir
+      subname: _tag_SLC1002_00_Bird_WindowR
+      start_pos:
+        x: 75.0
+        y: 30.0
+        z: 7.1054274e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325108714
+    shape:
+      Rectangle:
+        left: 62.5
+        right: 87.5
+        bottom: 22.5
+        top: 37.5
+  - entry:
+      name: GeneralRect__tag_SLD0001_00_Bir
+      subname: _tag_SLD0001_00_Bird_TV
+      start_pos:
+        x: 48.75
+        y: 11.25
+        z: -5.3290705e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325124097
+    shape:
+      Rectangle:
+        left: 25.000002
+        right: 72.5
+        bottom: -4.7683716e-7
+        top: 22.5
+  - entry:
+      name: GeneralCircle__tag_SLD1001_00_B
+      subname: _tag_SLD1001_00_Bird_TV
+      start_pos:
+        x: 62.5
+        y: 35.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325125097
+    shape:
+      Circle:
+        x: 62.5
+        y: 35.0
+        radius: 10.0
+  - entry:
+      name: GeneralRect__tag_SLD1002_00_Bir
+      subname: _tag_SLD1002_00_Bird_TV
+      start_pos:
+        x: 62.5
+        y: 30.0
+        z: 2.1316282e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325125098
+    shape:
+      Rectangle:
+        left: 50.0
+        right: 75.0
+        bottom: 22.5
+        top: 37.5
+  - entry:
+      name: GeneralRect__tag_SLE0001_00_Bir
+      subname: _tag_SLE0001_00_Bird_TV_Look
+      start_pos:
+        x: 53.75
+        y: 11.25
+        z: -5.3290705e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325140481
+    shape:
+      Rectangle:
+        left: 30.000002
+        right: 77.5
+        bottom: -4.7683716e-7
+        top: 22.5
+  - entry:
+      name: GeneralCircle__tag_SLE1001_00_B
+      subname: _tag_SLE1001_00_Bird_TV_Look
+      start_pos:
+        x: 72.5
+        y: 35.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325141481
+    shape:
+      Circle:
+        x: 72.5
+        y: 35.0
+        radius: 10.0
+  - entry:
+      name: GeneralRect__tag_SLE1002_00_Bir
+      subname: _tag_SLE1002_00_Bird_TV_Look
+      start_pos:
+        x: 72.5
+        y: 28.75
+        z: 1.0658141e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325141482
+    shape:
+      Rectangle:
+        left: 60.0
+        right: 85.0
+        bottom: 22.5
+        top: 37.5
+  - entry:
+      name: GeneralRect__tag_SLF0001_00_Bir
+      subname: _tag_SLF0001_00_Bird_Walk
+      start_pos:
+        x: 60.0
+        y: 11.25
+        z: -5.3290705e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325156865
+    shape:
+      Rectangle:
+        left: 37.5
+        right: 82.5
+        bottom: -4.7683716e-7
+        top: 22.5
+  - entry:
+      name: GeneralCircle__tag_SLF1001_00_B
+      subname: _tag_SLF1001_00_Bird_Walk
+      start_pos:
+        x: 75.0
+        y: 35.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325157865
+    shape:
+      Circle:
+        x: 75.0
+        y: 35.0
+        radius: 10.0
+  - entry:
+      name: GeneralRect__tag_SLF1002_00_Bir
+      subname: _tag_SLF1002_00_Bird_Walk
+      start_pos:
+        x: 75.0
+        y: 30.0
+        z: 1.4210855e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325157866
+    shape:
+      Rectangle:
+        left: 62.5
+        right: 87.5
+        bottom: 22.5
+        top: 37.5
+  - entry:
+      name: GeneralRect__tag_SLG0001_00_Bir
+      subname: _tag_SLG0001_00_Bird_Desk
+      start_pos:
+        x: 57.5
+        y: 11.25
+        z: 1.7763568e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325173249
+    shape:
+      Rectangle:
+        left: 35.0
+        right: 80.0
+        bottom: -4.7683716e-7
+        top: 22.5
+  - entry:
+      name: GeneralCircle__tag_SLG1001_00_B
+      subname: _tag_SLG1001_00_Bird_Desk
+      start_pos:
+        x: 75.0
+        y: 35.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325174249
+    shape:
+      Circle:
+        x: 75.0
+        y: 35.0
+        radius: 10.0
+  - entry:
+      name: GeneralRect__tag_SLG1002_00_Bir
+      subname: _tag_SLG1002_00_Bird_Desk
+      start_pos:
+        x: 75.0
+        y: 30.0
+        z: 3.907985e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325174250
+    shape:
+      Rectangle:
+        left: 62.5
+        right: 87.5
+        bottom: 22.5
+        top: 37.5
+  - entry:
+      name: GeneralCircle__tag_SMA0001_00_B
+      subname: _tag_SMA0001_00_Building_Door
+      start_pos:
+        x: -2.5
+        y: 57.5
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325599233
+    shape:
+      Circle:
+        x: -2.5
+        y: 57.5
+        radius: 15.0
+  - entry:
+      name: GeneralCircle__tag_SMA0002_00_B
+      subname: _tag_SMA0002_00_Building_Door
+      start_pos:
+        x: 17.5
+        y: 57.5
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325599234
+    shape:
+      Circle:
+        x: 17.5
+        y: 57.5
+        radius: 15.0
+  - entry:
+      name: GeneralRect__tag_SMA0003_00_Bui
+      subname: _tag_SMA0003_00_Building_Door
+      start_pos:
+        x: 7.5
+        y: 67.5
+        z: 7.1054274e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325599235
+    shape:
+      Rectangle:
+        left: -2.5
+        right: 17.5
+        bottom: 62.500004
+        top: 72.5
+  - entry:
+      name: GeneralRect__tag_SMA0004_00_Bui
+      subname: _tag_SMA0004_00_Building_Door
+      start_pos:
+        x: 7.5
+        y: 28.749998
+        z: 2.842171e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325599236
+    shape:
+      Rectangle:
+        left: -17.5
+        right: 32.5
+        bottom: -4.7683716e-7
+        top: 57.499996
+  - entry:
+      name: GeneralCircle__tag_SMB0001_00_B
+      subname: _tag_SMB0001_00_Building_WindowL
+      start_pos:
+        x: -7.5
+        y: 57.5
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325615617
+    shape:
+      Circle:
+        x: -7.5
+        y: 57.5
+        radius: 15.0
+  - entry:
+      name: GeneralCircle__tag_SMB0002_00_B
+      subname: _tag_SMB0002_00_Building_WindowL
+      start_pos:
+        x: 12.5
+        y: 57.5
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325615618
+    shape:
+      Circle:
+        x: 12.5
+        y: 57.5
+        radius: 15.0
+  - entry:
+      name: GeneralRect__tag_SMB0003_00_Bui
+      subname: _tag_SMB0003_00_Building_WindowL
+      start_pos:
+        x: 2.499998
+        y: 65.0
+        z: 7.1054274e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325615619
+    shape:
+      Rectangle:
+        left: -7.500002
+        right: 12.499998
+        bottom: 57.499996
+        top: 72.5
+  - entry:
+      name: GeneralRect__tag_SMB0004_00_Bui
+      subname: _tag_SMB0004_00_Building_WindowL
+      start_pos:
+        x: 2.5
+        y: 28.749998
+        z: 2.842171e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325615620
+    shape:
+      Rectangle:
+        left: -22.500002
+        right: 27.500002
+        bottom: -4.7683716e-7
+        top: 57.499996
+  - entry:
+      name: GeneralCircle__tag_SMC0001_00_B
+      subname: _tag_SMC0001_00_Building_WindowR
+      start_pos:
+        x: -12.5
+        y: 57.5
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325632001
+    shape:
+      Circle:
+        x: -12.5
+        y: 57.5
+        radius: 15.0
+  - entry:
+      name: GeneralCircle__tag_SMC0002_00_B
+      subname: _tag_SMC0002_00_Building_WindowR
+      start_pos:
+        x: 7.5
+        y: 57.5
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325632002
+    shape:
+      Circle:
+        x: 7.5
+        y: 57.5
+        radius: 15.0
+  - entry:
+      name: GeneralRect__tag_SMC0003_00_Bui
+      subname: _tag_SMC0003_00_Building_WindowR
+      start_pos:
+        x: -2.499998
+        y: 65.0
+        z: 7.1054274e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325632003
+    shape:
+      Rectangle:
+        left: -12.499998
+        right: 7.500002
+        bottom: 57.500004
+        top: 72.5
+  - entry:
+      name: GeneralRect__tag_SMC0004_00_Bui
+      subname: _tag_SMC0004_00_Building_WindowR
+      start_pos:
+        x: -2.499998
+        y: 28.749998
+        z: 2.842171e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325632004
+    shape:
+      Rectangle:
+        left: -27.499998
+        right: 22.500002
+        bottom: -4.7683716e-7
+        top: 57.499996
+  - entry:
+      name: GeneralCircle__tag_SMD0001_00_B
+      subname: _tag_SMD0001_00_Building_TV
+      start_pos:
+        x: -15.0
+        y: 57.5
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325648385
+    shape:
+      Circle:
+        x: -15.0
+        y: 57.5
+        radius: 15.0
+  - entry:
+      name: GeneralCircle__tag_SMD0002_00_B
+      subname: _tag_SMD0002_00_Building_TV
+      start_pos:
+        x: 5.0
+        y: 57.5
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325648386
+    shape:
+      Circle:
+        x: 5.0
+        y: 57.5
+        radius: 15.0
+  - entry:
+      name: GeneralRect__tag_SMD0003_00_Bui
+      subname: _tag_SMD0003_00_Building_TV
+      start_pos:
+        x: -4.999998
+        y: 66.181305
+        z: 7.1054274e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325648387
+    shape:
+      Rectangle:
+        left: -14.999998
+        right: 5.000002
+        bottom: 59.862606
+        top: 72.5
+  - entry:
+      name: GeneralRect__tag_SMD0004_00_Bui
+      subname: _tag_SMD0004_00_Building_TV
+      start_pos:
+        x: -5.0
+        y: 29.9313
+        z: 2.842171e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325648388
+    shape:
+      Rectangle:
+        left: -29.999998
+        right: 19.999998
+        bottom: -4.7683716e-7
+        top: 59.8626
+  - entry:
+      name: GeneralCircle__tag_SME0001_00_B
+      subname: _tag_SME0001_00_Building_TV_Look
+      start_pos:
+        x: -12.5
+        y: 57.5
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325664769
+    shape:
+      Circle:
+        x: -12.5
+        y: 57.5
+        radius: 15.0
+  - entry:
+      name: GeneralCircle__tag_SME0002_00_B
+      subname: _tag_SME0002_00_Building_TV_Look
+      start_pos:
+        x: 7.5
+        y: 57.5
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325664770
+    shape:
+      Circle:
+        x: 7.5
+        y: 57.5
+        radius: 15.0
+  - entry:
+      name: GeneralRect__tag_SME0003_00_Bui
+      subname: _tag_SME0003_00_Building_TV_Look
+      start_pos:
+        x: -2.499999
+        y: 65.600006
+        z: 7.1054274e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325664771
+    shape:
+      Rectangle:
+        left: -12.5
+        right: 7.500002
+        bottom: 58.70001
+        top: 72.5
+  - entry:
+      name: GeneralRect__tag_SME0004_00_Bui
+      subname: _tag_SME0004_00_Building_TV_Look
+      start_pos:
+        x: -2.500002
+        y: 29.35
+        z: 3.1974423e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325664772
+    shape:
+      Rectangle:
+        left: -27.500002
+        right: 22.499998
+        bottom: -4.7683716e-7
+        top: 58.7
+  - entry:
+      name: GeneralCircle__tag_SMF0001_00_B
+      subname: _tag_SMF0001_00_Building_Walk
+      start_pos:
+        x: -10.0
+        y: 57.5
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325681153
+    shape:
+      Circle:
+        x: -10.0
+        y: 57.5
+        radius: 15.0
+  - entry:
+      name: GeneralCircle__tag_SMF0002_00_B
+      subname: _tag_SMF0002_00_Building_Walk
+      start_pos:
+        x: 10.0
+        y: 57.5
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325681154
+    shape:
+      Circle:
+        x: 10.0
+        y: 57.5
+        radius: 15.0
+  - entry:
+      name: GeneralRect__tag_SMF0003_00_Bui
+      subname: _tag_SMF0003_00_Building_Walk
+      start_pos:
+        x: 0.0
+        y: 65.0
+        z: 4.2632564e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325681155
+    shape:
+      Rectangle:
+        left: -9.999998
+        right: 9.999998
+        bottom: 57.500004
+        top: 72.5
+  - entry:
+      name: GeneralRect__tag_SMF0004_00_Bui
+      subname: _tag_SMF0004_00_Building_Walk
+      start_pos:
+        x: 0.0
+        y: 28.749998
+        z: 1.7763568e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325681156
+    shape:
+      Rectangle:
+        left: -25.000002
+        right: 25.000002
+        bottom: -0.0000014305115
+        top: 57.499996
+  - entry:
+      name: GeneralCircle__tag_SMG0001_00_B
+      subname: _tag_SMG0001_00_Building_Desk
+      start_pos:
+        x: -10.0
+        y: 57.5
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325697537
+    shape:
+      Circle:
+        x: -10.0
+        y: 57.5
+        radius: 15.0
+  - entry:
+      name: GeneralCircle__tag_SMG0002_00_B
+      subname: _tag_SMG0002_00_Building_Desk
+      start_pos:
+        x: 10.0
+        y: 57.5
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325697538
+    shape:
+      Circle:
+        x: 10.0
+        y: 57.5
+        radius: 15.0
+  - entry:
+      name: GeneralRect__tag_SMG0003_00_Bui
+      subname: _tag_SMG0003_00_Building_Desk
+      start_pos:
+        x: 0.0000019073486
+        y: 65.600006
+        z: 4.2632564e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325697539
+    shape:
+      Rectangle:
+        left: -9.999998
+        right: 10.000002
+        bottom: 58.70001
+        top: 72.5
+  - entry:
+      name: GeneralRect__tag_SMG0004_00_Bui
+      subname: _tag_SMG0004_00_Building_Desk
+      start_pos:
+        x: -0.0000019073486
+        y: 29.349998
+        z: 1.7763568e-14
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 325697540
+    shape:
+      Rectangle:
+        left: -25.000002
+        right: 24.999998
+        bottom: -0.0000014305115
+        top: 58.699997
+  - entry:
+      name: GeneralRect__tag_DAA0001_00_Att
+      subname: _tag_DAA0001_00_AttackZone_Door
+      start_pos:
+        x: -75.886406
+        y: -4.7904243
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 67649537
+    shape:
+      Rectangle:
+        left: -111.0
+        right: -0.34010917
+        bottom: -39.561913
+        top: 58.95748
+  - entry:
+      name: GeneralRect__tag_DAB0001_00_Att
+      subname: _tag_DAB0001_00_AttackZone_WindowL
+      start_pos:
+        x: -75.886406
+        y: -4.7904243
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 67665921
+    shape:
+      Rectangle:
+        left: -111.0
+        right: -0.34010917
+        bottom: -39.561913
+        top: 58.95748
+  - entry:
+      name: GeneralRect__tag_DAC0001_00_Att
+      subname: _tag_DAC0001_00_AttackZone_WindowR
+      start_pos:
+        x: -75.886406
+        y: -4.7904243
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 67682305
+    shape:
+      Rectangle:
+        left: 0.0000015948098
+        right: 111.00001
+        bottom: -39.561913
+        top: 58.95748
+  - entry:
+      name: GeneralRect__tag_DAD0001_00_Att
+      subname: _tag_DAD0001_00_AttackZone_TV
+      start_pos:
+        x: -75.886406
+        y: -4.7904243
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 67698689
+    shape:
+      Rectangle:
+        left: 0.0000015948098
+        right: 111.00001
+        bottom: -39.561913
+        top: 58.95748
+  - entry:
+      name: GeneralRect__tag_DAE0001_00_Att
+      subname: _tag_DAE0001_00_AttackZone_TV_Look
+      start_pos:
+        x: -75.886406
+        y: -4.7904243
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 67715073
+    shape:
+      Rectangle:
+        left: 0.0000015948098
+        right: 111.00001
+        bottom: -39.561913
+        top: 58.95748
+  - entry:
+      name: GeneralRect__tag_DAF0001_00_Att
+      subname: _tag_DAF0001_00_AttackZone_Walk
+      start_pos:
+        x: -75.886406
+        y: -4.7904243
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 67731457
+    shape:
+      Rectangle:
+        left: -29.999998
+        right: 29.999994
+        bottom: -39.561913
+        top: 58.95748
+  - entry:
+      name: GeneralRect__tag_DAG0001_00_Att
+      subname: _tag_DAG0001_00_AttackZone_Desk
+      start_pos:
+        x: -75.886406
+        y: -4.7904243
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    unk1: 67747841
+    shape:
+      Rectangle:
+        left: 30.000002
+        right: 111.00001
+        bottom: -39.561913
+        top: 58.95748
+general_points:
+  - entry:
+      name: GeneralPoint3D__tag____0000_Kir
+      subname: _tag____0000_KirifudaPikmin
+      start_pos:
+        x: 0.0
+        y: 90.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    id: 0
+    ty: 4
+    pos:
+      x: 0.0
+      y: 90.0
+      z: 0.0
+  - entry:
+      name: GeneralPoint3D__tag____0000_Kir
+      subname: _tag____0000_KirifudaIke1
+      start_pos:
+        x: 0.0
+        y: 90.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    id: 0
+    ty: 4
+    pos:
+      x: 0.0
+      y: 90.0
+      z: 0.0
+  - entry:
+      name: GeneralPoint3D__tag____0000_Kir
+      subname: _tag____0000_KirifudaNess
+      start_pos:
+        x: 0.0
+        y: 161.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    id: 0
+    ty: 4
+    pos:
+      x: 0.0
+      y: 161.0
+      z: 0.0
+unk4:
+  count: 0
+unk5:
+  count: 0
+unk6:
+  count: 0
+unk7:
+  count: 0
+shrunken_camera_boundary:
+  - entry:
+      name: ShrinkedCamera_pPlane1
+      subname: pPlane1
+      start_pos:
+        x: 0.0
+        y: 9.3
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    left: -37.80929
+    right: 37.80929
+    top: 30.673979
+    bottom: -12.073978
+shrunken_blast_zone:
+  - entry:
+      name: ShrinkedDeath_pPlane1
+      subname: pPlane1
+      start_pos:
+        x: 0.0
+        y: 9.308448
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    left: -50.0
+    right: 50.0
+    top: 42.308453
+    bottom: -23.691553

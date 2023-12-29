@@ -1,0 +1,72 @@
+---
+collisions: []
+spawns: []
+respawns: []
+camera_boundary:
+  - entry:
+      name: CAMERA_stc_
+      subname: stc_
+      start_pos:
+        x: 6.42157
+        y: 35.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    left: -157.62447
+    right: 158.32666
+    top: 162.35788
+    bottom: -70.0
+blast_zone:
+  - entry:
+      name: DEATH_stc_
+      subname: stc_
+      start_pos:
+        x: 8.202621
+        y: 35.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    left: -227.66339
+    right: 228.7828
+    top: 199.7
+    bottom: -129.7
+enemy_generators:
+  count: 0
+unk1:
+  count: 0
+unk2:
+  count: 0
+unk3:
+  count: 0
+fs_area_cam:
+  count: 0
+fs_cam_limit:
+  count: 0
+damage_shapes: []
+item_spawners: []
+ptrainer_ranges: []
+ptrainer_platforms: []
+general_shapes: []
+general_points: []
+unk4:
+  count: 0
+unk5:
+  count: 0
+unk6:
+  count: 0
+unk7:
+  count: 0
+shrunken_camera_boundary: []
+shrunken_blast_zone: []
