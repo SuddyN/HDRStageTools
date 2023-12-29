@@ -7,13 +7,10 @@ import glob
 def run_example_exe(executable_path, input_directory, output_directory):
     # Ensure the directory path ends with a separator
     input_directory = input_directory.rstrip(os.path.sep) + os.path.sep
-    print(input_directory)
     output_directory = output_directory.rstrip(os.path.sep) + os.path.sep
-    print(output_directory)
 
     # List all files in the directory
-    files = glob.glob(input_directory + "**/*.lvd", recursive=True)
-    print(files)
+    files = glob.glob(input_directory + "**/normal*/param/*.lvd", recursive=True)
 
     # Run example.exe for each .lvd file
     for file in files:
