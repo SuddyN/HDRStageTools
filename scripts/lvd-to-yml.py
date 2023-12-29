@@ -17,12 +17,25 @@ def run_example_exe(executable_path, input_directory, output_directory):
 
     # Run example.exe for each .lvd file
     for file in files:
+        # construct the input path
         file_path = os.path.join(input_directory, file)
-        output_path = os.path.join(
-            output_directory, os.path.splitext(os.path.basename(file_path))[0] + ".yml"
-        )
-        command = [executable_path, file_path, output_path]
 
+        # construct the output path
+        output_file_path = os.path.join(
+            output_directory, os.path.splitext(file_path.replace(input_directory, ""))[0] + ".yml"
+        )
+
+        # make the output directory if it doesn't exist
+        output_file_directory = output_file_path.replace(os.path.basename(output_file_path), "")
+        if not os.path.exists(output_file_directory):
+            # Create a new directory because it does not exist
+            os.makedirs(output_file_directory)
+            print(f"Made a new directory: {output_file_directory}")
+
+        # construct the final command
+        command = [executable_path, file_path, output_file_path]
+
+        # run the command
         try:
             subprocess.run(command, check=True)
             # print(f"Successfully ran for {file}")
