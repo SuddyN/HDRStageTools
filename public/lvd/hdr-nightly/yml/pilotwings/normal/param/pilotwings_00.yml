@@ -1,0 +1,1356 @@
+---
+collisions:
+  - entry:
+      name: COL_00_RedPlaneC
+      subname: dyr_RedPlane_set
+      start_pos:
+        x: -0.0822
+        y: 2.9904
+        z: -19.9991
+      use_start: true
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    col_flags:
+      flag1: false
+      rig_col: true
+      flag3: false
+      drop_through: false
+    vertices:
+      - x: -82.72638
+        y: 10.47536
+      - x: -75.0
+        y: 5.0
+      - x: -15.786837
+        y: -21.79605
+      - x: 0.0
+        y: -24.0
+      - x: -15.622436
+        y: 8.559314
+      - x: 15.786836
+        y: 8.559314
+      - x: 0.0
+        y: -24.0
+      - x: 15.786837
+        y: -21.79605
+      - x: 75.0
+        y: 5.0
+      - x: 82.72638
+        y: 10.47536
+    normals:
+      - x: -1.0
+        y: -0.5
+      - x: -0.5422865
+        y: -0.8401936
+      - x: -0.4
+        y: -1.0
+      - x: -1.0
+        y: 5.9510484e-8
+      - x: 0.0
+        y: 1.0
+      - x: 1.0
+        y: 5.9510484e-8
+      - x: 0.4
+        y: -1.0
+      - x: 0.54243946
+        y: -0.8400949
+      - x: 1.0
+        y: -0.5
+    cliffs: []
+    materials:
+      - line_material: GROUND_COLL_ATTR_NIBUIRON
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_NIBUIRON
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_NIBUIRON
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_NIBUIRON
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_NIBUIRON
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_NIBUIRON
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_NIBUIRON
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_NIBUIRON
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_NIBUIRON
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: false
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+    unknowns: []
+  - entry:
+      name: COL_00_WingLU_through
+      subname: dyr_RedPlane_set
+      start_pos:
+        x: -0.0822
+        y: 2.9904
+        z: -19.9991
+      use_start: true
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    col_flags:
+      flag1: false
+      rig_col: true
+      flag3: false
+      drop_through: false
+    vertices:
+      - x: -82.72638
+        y: 10.47536
+      - x: -80.29508
+        y: 10.919624
+      - x: -15.622436
+        y: 8.559314
+    normals:
+      - x: -0.17975096
+        y: 0.98371214
+      - x: 0.03647199
+        y: 0.9993347
+    cliffs: []
+    materials:
+      - line_material: GROUND_COLL_ATTR_NIBUIRON
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: true
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: true
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_NIBUIRON
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: true
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+    unknowns: []
+  - entry:
+      name: COL_00_WingRU_through
+      subname: dyr_RedPlane_set
+      start_pos:
+        x: -0.0822
+        y: 2.9904
+        z: -19.9991
+      use_start: true
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    col_flags:
+      flag1: false
+      rig_col: true
+      flag3: false
+      drop_through: false
+    vertices:
+      - x: 15.786836
+        y: 8.559314
+      - x: 80.45948
+        y: 10.919624
+      - x: 82.89078
+        y: 10.47536
+    normals:
+      - x: -0.03647199
+        y: 0.9993347
+      - x: 0.17975096
+        y: 0.98371214
+    cliffs: []
+    materials:
+      - line_material: GROUND_COLL_ATTR_NIBUIRON
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: true
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_NIBUIRON
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: true
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: true
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+    unknowns: []
+  - entry:
+      name: COL_00_WingLD
+      subname: dyr_RedPlane_set
+      start_pos:
+        x: -0.0822
+        y: 2.9904
+        z: -19.9991
+      use_start: true
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    col_flags:
+      flag1: false
+      rig_col: true
+      flag3: false
+      drop_through: true
+    vertices:
+      - x: -59.5
+        y: 41.5
+      - x: -59.5
+        y: 41.5
+      - x: -25.5
+        y: 41.5
+    normals:
+      - x: -0.17954928
+        y: 0.983749
+      - x: 0.03636371
+        y: 0.9993386
+    cliffs:
+      - entry:
+          name: CLIFF_00_WingLDL
+          subname: 00_WingLDL
+          start_pos:
+            x: -82.74665
+            y: -16.900654
+            z: 0.0
+          use_start: false
+          unk: 0
+          unk2:
+            x: 0.0
+            y: 0.0
+            z: 0.0
+          unk3: 4294967295
+          bone_name: ""
+        pos:
+          x: -82.74665
+          y: -16.900654
+        angle: -1.0
+        line_index: 0
+    materials:
+      - line_material: GROUND_COLL_ATTR_NIBUIRON
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: true
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_NIBUIRON
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: true
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+    unknowns: []
+  - entry:
+      name: COL_00_WingRD
+      subname: dyr_RedPlane_set
+      start_pos:
+        x: -0.0822
+        y: 2.9904
+        z: -19.9991
+      use_start: true
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    col_flags:
+      flag1: false
+      rig_col: true
+      flag3: false
+      drop_through: true
+    vertices:
+      - x: 24.8
+        y: 41.5
+      - x: 59.0
+        y: 41.5
+      - x: 59.0
+        y: 41.5
+    normals:
+      - x: -0.036339432
+        y: 0.9993395
+      - x: 0.17954928
+        y: 0.983749
+    cliffs:
+      - entry:
+          name: CLIFF_00_WingRDR
+          subname: 00_WingRDR
+          start_pos:
+            x: 82.74665
+            y: -16.900654
+            z: 0.0
+          use_start: false
+          unk: 0
+          unk2:
+            x: 0.0
+            y: 0.0
+            z: 0.0
+          unk3: 4294967295
+          bone_name: ""
+        pos:
+          x: 82.74665
+          y: -16.900654
+        angle: 1.0
+        line_index: 1
+    materials:
+      - line_material: GROUND_COLL_ATTR_NIBUIRON
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: true
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+      - line_material: GROUND_COLL_ATTR_NIBUIRON
+        line_flags:
+          length_zero: false
+          pacman_final_ignore: true
+          fall: false
+          ignore_ray_check: false
+          dive: false
+          unpaintable: false
+          item: false
+          ignore_fighter_other: false
+          right: false
+          left: false
+          upper: false
+          under: false
+          not_attach: false
+          throughable: false
+          hang_l: false
+          hang_r: false
+          ignore_link_from_left: false
+          cloud: false
+          ignore_link_from_right: false
+          not_expand_near_search: false
+          ignore: false
+          breakable: false
+          immediate_relanding_ban: false
+          ignore_line_type1: false
+          pickel_block: false
+          deceleration: false
+          virtual_hit_line_up: false
+          virtual_hit_line_left: false
+          virtual_hit_line_right: false
+          virtual_hit_line_down: false
+          virtual_wall_hit_line: false
+          ignore_boss: false
+    unknowns: []
+spawns:
+  - entry:
+      name: START_00_P01
+      subname: 00_P01
+      start_pos:
+        x: -72.0
+        y: -16.758757
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: -30.0
+      y: 44.0
+  - entry:
+      name: START_00_P02
+      subname: 00_P02
+      start_pos:
+        x: 72.0
+        y: -16.758554
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: 30.0
+      y: 44.0
+  - entry:
+      name: START_00_P03
+      subname: 00_P03
+      start_pos:
+        x: -24.0
+        y: 11.852464
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: -24.0
+      y: 11.852464
+  - entry:
+      name: START_00_P04
+      subname: 00_P04
+      start_pos:
+        x: 24.0
+        y: 11.852464
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: 24.0
+      y: 11.852464
+  - entry:
+      name: START_00_P05
+      subname: 00_P05
+      start_pos:
+        x: -31.0
+        y: -18.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: -50.0
+      y: 14.0
+  - entry:
+      name: START_00_P06
+      subname: 00_P06
+      start_pos:
+        x: 31.0
+        y: -18.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: 50.0
+      y: 14.0
+  - entry:
+      name: START_00_P07
+      subname: 00_P07
+      start_pos:
+        x: -74.0
+        y: 14.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: -74.0
+      y: 14.0
+  - entry:
+      name: START_00_P08
+      subname: 00_P08
+      start_pos:
+        x: 74.0
+        y: 14.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: 74.0
+      y: 14.0
+respawns:
+  - entry:
+      name: RESTART_00_P01
+      subname: 00_P01
+      start_pos:
+        x: 0.0
+        y: 60.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: 0.0
+      y: 80.0
+  - entry:
+      name: RESTART_00_P02
+      subname: 00_P02
+      start_pos:
+        x: 30.0
+        y: 60.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: 30.0
+      y: 80.0
+  - entry:
+      name: RESTART_00_P03
+      subname: 00_P03
+      start_pos:
+        x: -30.0
+        y: 60.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: -30.0
+      y: 80.0
+  - entry:
+      name: RESTART_00_P04
+      subname: 00_P04
+      start_pos:
+        x: 60.0
+        y: 60.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: 60.0
+      y: 80.0
+  - entry:
+      name: RESTART_00_P05
+      subname: 00_P05
+      start_pos:
+        x: -15.0
+        y: 80.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: -15.0
+      y: 100.0
+  - entry:
+      name: RESTART_00_P06
+      subname: 00_P06
+      start_pos:
+        x: 15.0
+        y: 80.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: 15.0
+      y: 100.0
+  - entry:
+      name: RESTART_00_P07
+      subname: 00_P07
+      start_pos:
+        x: -45.0
+        y: 80.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: -45.0
+      y: 100.0
+  - entry:
+      name: RESTART_00_P08
+      subname: 00_P08
+      start_pos:
+        x: 45.0
+        y: 80.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: 45.0
+      y: 100.0
+camera_boundary:
+  - entry:
+      name: CAMERA_00
+      subname: "00"
+      start_pos:
+        x: 0.0
+        y: 12.499996
+        z: 7.1054274e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    left: -195.0
+    right: 195.0
+    top: 120.0
+    bottom: -95.00001
+blast_zone:
+  - entry:
+      name: DEATH_00
+      subname: "00"
+      start_pos:
+        x: 0.0
+        y: 12.5
+        z: 7.1054274e-15
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    left: -255.0
+    right: 255.0
+    top: 190.0
+    bottom: -165.0
+enemy_generators:
+  count: 0
+unk1:
+  count: 0
+unk2:
+  count: 0
+unk3:
+  count: 0
+fs_area_cam:
+  count: 0
+fs_cam_limit:
+  count: 0
+damage_shapes: []
+item_spawners:
+  - entry:
+      name: ItemPopup__tag_IPP0001_00_item0
+      subname: dyr_RedPlane_set
+      start_pos:
+        x: -0.0822
+        y: 2.9904
+        z: -19.9991
+      use_start: true
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    id: 159645697
+    unk: 1
+    sections:
+      - Path:
+          points:
+            - x: -72.80858
+              y: 81.54971
+            - x: 72.80858
+              y: 81.54971
+      - Path:
+          points:
+            - x: -72.80858
+              y: 8.633795
+            - x: -20.704636
+              y: 6.7321954
+      - Path:
+          points:
+            - x: 20.704636
+              y: 6.7321954
+            - x: 72.80858
+              y: 8.633795
+ptrainer_ranges: []
+ptrainer_platforms:
+  - entry:
+      name: PTrainerFloatingFloor_curve1
+      subname: curve1
+      start_pos:
+        x: 60.0
+        y: 20.0
+        z: -40.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: 60.0
+      y: 20.0
+      z: -40.0
+  - entry:
+      name: PTrainerFloatingFloor_curve2
+      subname: curve2
+      start_pos:
+        x: -60.0
+        y: 20.0
+        z: -40.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: -60.0
+      y: 20.0
+      z: -40.0
+general_shapes: []
+general_points:
+  - entry:
+      name: GeneralPoint3D__tag____0000_Kir
+      subname: _tag____0000_KirifudaPikmin
+      start_pos:
+        x: 0.0
+        y: 85.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    id: 0
+    ty: 4
+    pos:
+      x: 0.0
+      y: 85.0
+      z: 0.0
+  - entry:
+      name: GeneralPoint3D__tag____0000_Kir
+      subname: _tag____0000_KirifudaIke1
+      start_pos:
+        x: 0.0
+        y: 85.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    id: 0
+    ty: 4
+    pos:
+      x: 0.0
+      y: 85.0
+      z: 0.0
+  - entry:
+      name: GeneralPoint3D__tag____0000_Kir
+      subname: _tag____0000_KirifudaNess
+      start_pos:
+        x: 0.0
+        y: 155.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    id: 0
+    ty: 4
+    pos:
+      x: 0.0
+      y: 155.0
+      z: 0.0
+unk4:
+  count: 0
+unk5:
+  count: 0
+unk6:
+  count: 0
+unk7:
+  count: 0
+shrunken_camera_boundary:
+  - entry:
+      name: ShrinkedCamera_pPlane1
+      subname: pPlane1
+      start_pos:
+        x: 0.0
+        y: 21.693226
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    left: -37.80929
+    right: 37.80929
+    top: 43.067204
+    bottom: 0.3192478
+shrunken_blast_zone:
+  - entry:
+      name: ShrinkedDeath_pPlane1
+      subname: pPlane1
+      start_pos:
+        x: 0.0
+        y: 21.701674
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    left: -50.0
+    right: 50.0
+    top: 54.70168
+    bottom: -11.2983265

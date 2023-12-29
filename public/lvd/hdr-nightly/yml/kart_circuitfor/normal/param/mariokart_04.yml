@@ -1,0 +1,425 @@
+---
+collisions: []
+spawns:
+  - entry:
+      name: START_04_P01
+      subname: 04_P01
+      start_pos:
+        x: -90.0
+        y: -2.7548344
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: -90.0
+      y: -2.7548344
+  - entry:
+      name: START_04_P02
+      subname: 04_P02
+      start_pos:
+        x: 90.0
+        y: -0.24563228
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: 90.0
+      y: -0.24563228
+  - entry:
+      name: START_04_P03
+      subname: 04_P03
+      start_pos:
+        x: -50.0
+        y: -1.1553769
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: -50.0
+      y: -1.1553769
+  - entry:
+      name: START_04_P04
+      subname: 04_P04
+      start_pos:
+        x: 50.0
+        y: 0.853974
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: 50.0
+      y: 0.853974
+respawns:
+  - entry:
+      name: RESTART_04_P01
+      subname: 04_P01
+      start_pos:
+        x: -27.933983
+        y: 40.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: -27.933983
+      y: 40.0
+  - entry:
+      name: RESTART_04_P02
+      subname: 04_P02
+      start_pos:
+        x: 8.066016
+        y: 40.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: 8.066016
+      y: 40.0
+  - entry:
+      name: RESTART_04_P03
+      subname: 04_P03
+      start_pos:
+        x: -63.933983
+        y: 40.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: -63.933983
+      y: 40.0
+  - entry:
+      name: RESTART_04_P04
+      subname: 04_P04
+      start_pos:
+        x: 44.066017
+        y: 40.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: 44.066017
+      y: 40.0
+  - entry:
+      name: RESTART_04_P05
+      subname: 04_P05
+      start_pos:
+        x: -9.218215
+        y: 54.80501
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: -9.218215
+      y: 54.80501
+  - entry:
+      name: RESTART_04_P06
+      subname: 04_P06
+      start_pos:
+        x: 26.781786
+        y: 54.80501
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: 26.781786
+      y: 54.80501
+  - entry:
+      name: RESTART_04_P07
+      subname: 04_P07
+      start_pos:
+        x: -45.218216
+        y: 54.80501
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: -45.218216
+      y: 54.80501
+  - entry:
+      name: RESTART_04_P08
+      subname: 04_P08
+      start_pos:
+        x: 62.781784
+        y: 54.80501
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    pos:
+      x: 62.781784
+      y: 54.80501
+camera_boundary:
+  - entry:
+      name: CAMERA_04
+      subname: "04"
+      start_pos:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    left: -120.0
+    right: 120.0
+    top: 72.0
+    bottom: -72.0
+blast_zone:
+  - entry:
+      name: DEATH_04
+      subname: "04"
+      start_pos:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    left: -200.0
+    right: 200.0
+    top: 152.0
+    bottom: -152.0
+enemy_generators:
+  count: 0
+unk1:
+  count: 0
+unk2:
+  count: 0
+unk3:
+  count: 0
+fs_area_cam:
+  count: 0
+fs_cam_limit:
+  count: 0
+damage_shapes: []
+item_spawners:
+  - entry:
+      name: ItemPopup__tag_IPP0401_04_item0
+      subname: _tag_IPP0401_04_item01
+      start_pos:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    id: 159646097
+    unk: 1
+    sections:
+      - Path:
+          points:
+            - x: -110.0
+              y: 57.6
+            - x: -43.363903
+              y: 57.6
+      - Path:
+          points:
+            - x: -10.0
+              y: 57.6
+            - x: 10.0
+              y: 57.6
+      - Path:
+          points:
+            - x: 43.269722
+              y: 57.6
+            - x: 110.0
+              y: 57.6
+ptrainer_ranges: []
+ptrainer_platforms: []
+general_shapes: []
+general_points:
+  - entry:
+      name: GeneralPoint3D__tag____0000_Kir
+      subname: _tag____0000_KirifudaPikmin
+      start_pos:
+        x: 0.0
+        y: 50.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    id: 0
+    ty: 4
+    pos:
+      x: 0.0
+      y: 50.0
+      z: 0.0
+  - entry:
+      name: GeneralPoint3D__tag____0000_Kir
+      subname: _tag____0000_KirifudaIke1
+      start_pos:
+        x: 0.0
+        y: 50.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    id: 0
+    ty: 4
+    pos:
+      x: 0.0
+      y: 50.0
+      z: 0.0
+  - entry:
+      name: GeneralPoint3D__tag____0000_Kir
+      subname: _tag____0000_KirifudaNess
+      start_pos:
+        x: 0.0
+        y: 112.0
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    id: 0
+    ty: 4
+    pos:
+      x: 0.0
+      y: 112.0
+      z: 0.0
+unk4:
+  count: 0
+unk5:
+  count: 0
+unk6:
+  count: 0
+unk7:
+  count: 0
+shrunken_camera_boundary:
+  - entry:
+      name: ShrinkedCamera_pPlane1
+      subname: pPlane1
+      start_pos:
+        x: 0.0
+        y: -37.739773
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    left: -34.0
+    right: 34.0
+    top: -16.739775
+    bottom: -58.739773
+shrunken_blast_zone:
+  - entry:
+      name: ShrinkedDeath_pPlane1
+      subname: pPlane1
+      start_pos:
+        x: 0.0
+        y: -37.739773
+        z: 0.0
+      use_start: false
+      unk: 0
+      unk2:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+      unk3: 4294967295
+      bone_name: ""
+    left: -50.0
+    right: 50.0
+    top: -4.73977
+    bottom: -70.73978
