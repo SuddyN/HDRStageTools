@@ -101,7 +101,7 @@ export default class App extends React.Component<AppProps, AppState> {
           color="blue"
           style={{ width: window.innerWidth, height: window.innerHeight }}
         />
-        <div className="sidebar-left">
+        <div className="sidebar-right">
           <div className="sidebar-item">
             <label>Draw Stages? </label>
             <Checkbox
@@ -143,7 +143,7 @@ export default class App extends React.Component<AppProps, AppState> {
             />
           </div>
         </div>
-        <div className="sidebar-right">
+        <div className="sidebar-left">
           <ListBox
             multiple
             filter
