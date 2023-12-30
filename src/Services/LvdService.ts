@@ -1,11 +1,33 @@
 import JSZip, { file } from "jszip";
 import * as JSYaml from "js-yaml";
 import * as lodash from "lodash";
-import { Lvd, Vec2 } from "../Types";
+import { Lvd, LvdStats, Vec2 } from "../Types";
+import { platform } from "os";
 
 export const lvdService = {
   initLvdFromUrl,
 };
+
+async function initLvdFromUrl(url: string): Promise<Map<string, Lvd>> {
+  const lvdMap = new Map<string, Lvd>();
+
+  // load ult lvd
+  const ultBlob = await getBlobFromUrl(
+    "https://suddyn.github.io/HDRStageTools/lvd/ultimate/lvd.zip"
+  );
+  await writeLvdFromZip(ultBlob, lvdMap);
+
+  // load new lvd on top of ult lvd
+  const blob = await getBlobFromUrl(url);
+  await writeLvdFromZip(blob, lvdMap);
+
+  const mergedLvdMap = mergeLvd(lvdMap);
+  Array.from(mergedLvdMap.values()).forEach((lvd) => {
+    calcLvdStats(lvd);
+  });
+
+  return mergedLvdMap;
+}
 
 async function getBlobFromUrl(url: string): Promise<Blob> {
   return new Promise<any>(function (resolve, reject) {
@@ -220,20 +242,72 @@ function mergeLvd(lvdMap: Map<string, Lvd>): Map<string, Lvd> {
   return newMap;
 }
 
-async function initLvdFromUrl(url: string): Promise<Map<string, Lvd>> {
-  const lvdMap = new Map<string, Lvd>();
+function calcLvdStats(lvd: Lvd): void {
+  const stats: LvdStats = {
+    stageMinX: Infinity,
+    stageMaxX: -Infinity,
+    stageMinY: Infinity,
+    stageMaxY: -Infinity,
 
-  // load ult lvd
-  const ultBlob = await getBlobFromUrl(
-    "https://suddyn.github.io/HDRStageTools/lvd/ultimate/lvd.zip"
-  );
-  await writeLvdFromZip(ultBlob, lvdMap);
+    platNum: 0,
+    platMinX: Infinity,
+    platMaxX: -Infinity,
+    platMinY: Infinity,
+    platMaxY: -Infinity,
+    platWidthMin: Infinity,
+    platWidthMax: -Infinity,
+  };
 
-  // load new lvd on top of ult lvd
-  const blob = await getBlobFromUrl(url);
-  await writeLvdFromZip(blob, lvdMap);
+  // platforms
+  lvd.collisions.forEach((plat) => {
+    if (!plat.col_flags.drop_through) {
+      return;
+    }
+    stats.platNum++;
 
-  return mergeLvd(lvdMap);
+    // calculate min/max for this specific platform
+    let platMinX = Infinity;
+    let platMaxX = -Infinity;
+    let platMinY = Infinity;
+    let platMaxY = -Infinity;
+    plat.vertices.forEach((vert) => {
+      platMinX = Math.min(platMinX, vert.x);
+      platMaxX = Math.max(platMaxX, vert.x);
+      platMinY = Math.min(platMinY, vert.y);
+      platMaxY = Math.max(platMaxY, vert.y);
+    });
+
+    // calculate min/max for all the platforms
+    stats.platMinX = Math.min(stats.platMinX, platMinX);
+    stats.platMaxX = Math.max(stats.platMaxX, platMaxX);
+    stats.platMinY = Math.min(stats.platMinY, platMinY);
+    stats.platMaxY = Math.max(stats.platMaxY, platMaxY);
+
+    if (
+      Number.isFinite(platMinX) &&
+      Number.isFinite(platMaxX) &&
+      platMinX != platMaxX
+    ) {
+      stats.platWidthMin = Math.min(stats.platWidthMin, platMaxX - platMinX);
+      stats.platWidthMax = Math.max(stats.platWidthMax, platMaxX - platMinX);
+    }
+  });
+
+  // non-platforms
+  lvd.collisions.forEach((stage) => {
+    if (stage.col_flags.drop_through) {
+      return;
+    }
+    stage.vertices.forEach((vert) => {
+      stats.stageMinX = Math.min(stats.stageMinX, vert.x);
+      stats.stageMaxX = Math.max(stats.stageMaxX, vert.x);
+      stats.stageMinY = Math.min(stats.stageMinY, vert.y);
+      stats.stageMaxY = Math.max(stats.stageMaxY, vert.y);
+    });
+  });
+
+  lvd.lvdStats = stats;
+  console.log(lvd.lvdStats);
 }
 
 const MERGE_BLACKLIST = [

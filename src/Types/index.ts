@@ -1,3 +1,18 @@
+export interface LvdStats {
+  stageMinX: number;
+  stageMaxX: number;
+  stageMinY: number;
+  stageMaxY: number;
+
+  platNum: number;
+  platMinX: number;
+  platMaxX: number;
+  platMinY: number;
+  platMaxY: number;
+  platWidthMin: number;
+  platWidthMax: number;
+}
+
 export interface Lvd {
   collisions: Collision[];
   spawns: Spawn[];
@@ -24,6 +39,7 @@ export interface Lvd {
   shrunken_blast_zone: Boundary[];
 
   remove?: boolean;
+  lvdStats?: LvdStats;
 }
 
 export interface Collision {
