@@ -3,6 +3,8 @@ import logo from "../../logo.svg";
 import "./App.css";
 import { lvdService } from "../../Services/LvdService";
 import { Boundary, Lvd, Vec2 } from "../../Types";
+import { Checkbox } from "primereact/checkbox";
+import { ListBox } from "primereact/listbox";
 
 interface AppProps {}
 
@@ -17,6 +19,7 @@ interface AppState {
   drawPTrainerPlatforms: boolean;
   drawShrunkenCameras: boolean;
   drawShrunkenBlastZones: boolean;
+  selectedStages: string[];
   loading: boolean;
   lvdMap?: Map<string, Lvd>;
 }
@@ -38,6 +41,7 @@ export default class App extends React.Component<AppProps, AppState> {
       drawPTrainerPlatforms: false,
       drawShrunkenCameras: false,
       drawShrunkenBlastZones: false,
+      selectedStages: ["battlefield/normal/param/battlefield_00.yml"],
       loading: true,
       lvdMap: undefined,
     };
@@ -97,6 +101,58 @@ export default class App extends React.Component<AppProps, AppState> {
           color="blue"
           style={{ width: window.innerWidth, height: window.innerHeight }}
         />
+        <div className="sidebar">
+          <div className="sidebar-item">
+            <label>Draw Stages? </label>
+            <Checkbox
+              checked={this.state.drawStages}
+              onChange={(e) => {
+                console.log(e);
+                this.setState({ drawStages: e.checked ?? true });
+              }}
+            />
+          </div>
+          <div className="sidebar-item">
+            <label>Draw Platforms? </label>
+            <Checkbox
+              checked={this.state.drawPlatforms}
+              onChange={(e) => {
+                console.log(e);
+                this.setState({ drawPlatforms: e.checked ?? true });
+              }}
+            />
+          </div>
+          <div className="sidebar-item">
+            <label>Draw BlastZones? </label>
+            <Checkbox
+              checked={this.state.drawBlastZones}
+              onChange={(e) => {
+                console.log(e);
+                this.setState({ drawBlastZones: e.checked ?? true });
+              }}
+            />
+          </div>
+          <div className="sidebar-item">
+            <label>Draw Camera? </label>
+            <Checkbox
+              checked={this.state.drawCameras}
+              onChange={(e) => {
+                console.log(e);
+                this.setState({ drawCameras: e.checked ?? false });
+              }}
+            />
+          </div>
+          <div className="sidebar-item">
+            <ListBox
+              multiple
+              value={this.state.selectedStages}
+              options={
+                this.state.lvdMap ? Array.from(this.state.lvdMap.keys()) : []
+              }
+              onChange={(e) => this.setState({ selectedStages: e.value })}
+            />
+          </div>
+        </div>
       </div>
     );
   }
@@ -144,9 +200,12 @@ export default class App extends React.Component<AppProps, AppState> {
     );
 
     var hueIndex = 0;
-    this.state.lvdMap.forEach((key, value) =>
-      this.drawStage(ctx, value, key, hueIndex++)
-    );
+    this.state.lvdMap.forEach((name, lvd) => {
+      if (!this.state.selectedStages.includes(lvd)) {
+        return;
+      }
+      this.drawStage(ctx, lvd, name, hueIndex++);
+    });
   };
 
   drawStage = (
@@ -160,7 +219,7 @@ export default class App extends React.Component<AppProps, AppState> {
       return;
     }
 
-    const length = this.state.lvdMap.size;
+    const length = this.state.selectedStages.length;
     const hue = (hueIndex * 360) / length + (length < 3 ? 22 : 0);
 
     // draw blast_zones
@@ -174,7 +233,7 @@ export default class App extends React.Component<AppProps, AppState> {
     ctx.lineWidth = 4;
     ctx.setLineDash([8, 8]);
     if (this.state.drawCameras && lvd.camera_boundary[0]) {
-      // this.drawBoundary(ctx, lvd.camera_boundary[0], hue);
+      this.drawBoundary(ctx, lvd.camera_boundary[0], hue);
     }
 
     // draw collisions
