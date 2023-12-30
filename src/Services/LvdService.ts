@@ -1,5 +1,6 @@
-import JSZip from "jszip";
+import JSZip, { file } from "jszip";
 import * as JSYaml from "js-yaml";
+import * as lodash from "lodash";
 import { Lvd, Vec2 } from "../Types";
 
 export const lvdService = {
@@ -69,7 +70,7 @@ async function readLvdFromZip(blob: Blob): Promise<Map<string, Lvd>> {
     }
   }
 
-  return lvdMap;
+  return mergeLvd(lvdMap);
 }
 
 function alignLvd(lvd: Lvd) {
@@ -158,6 +159,66 @@ function alignLvd(lvd: Lvd) {
     blast_zone.top -= center.y;
     blast_zone.bottom -= center.y;
   });
+}
+
+function lvdPartExists(name: string, other: string) {
+  const d = name.split("/");
+  const o = other.split("/");
+  for (var i = 0; i < d.length - 1; i++) {
+    if (d[i] != o[i]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function mergeStage(lvd: Lvd, other: Lvd) {
+  lvd.collisions.push(...other.collisions);
+}
+
+function lvdEqual(lvd: Lvd, other: Lvd) {
+  if (lodash.isEqual(lvd, other)) {
+    return true;
+  }
+  return false;
+}
+
+function mergeLvd(lvdMap: Map<string, Lvd>): Map<string, Lvd> {
+  const newMap: Map<string, Lvd> = new Map<string, Lvd>();
+  for (const entry of Array.from(lvdMap.entries())) {
+    const dir = entry[0].split("/");
+    for (const other of Array.from(lvdMap.entries())) {
+      if (entry[0] == other[0]) {
+        continue;
+      }
+      if (lvdEqual(entry[1], other[1])) {
+        console.log("removed", other[0], "equal");
+        other[1].remove = true;
+        continue;
+      }
+      if (lvdPartExists(entry[0], other[0])) {
+        mergeStage(entry[1], other[1]);
+        console.log("removed", other[0], "merged");
+        other[1].remove = true;
+        continue;
+      }
+    }
+
+    if (entry[1].remove) {
+      continue;
+    }
+
+    const altNum = parseInt(dir[1].replace(/\D/g, ""));
+    const fileName = dir[dir.length - 1].split(".")[0];
+    const partNum = parseInt(fileName.slice(-2).replace(/\D/g, ""));
+    const name =
+      dir[0] +
+      (isNaN(altNum) ? "" : ` (Alt ${altNum})`) +
+      (isNaN(partNum) || partNum == 0 ? "" : ` (Part ${partNum + 1})`);
+    newMap.set(name, entry[1]);
+  }
+
+  return newMap;
 }
 
 async function readLvdFromUrl(url: string): Promise<Map<string, Lvd>> {

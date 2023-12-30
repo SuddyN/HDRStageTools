@@ -22,6 +22,8 @@ export interface Lvd {
   // unk7
   shrunken_camera_boundary: Boundary[];
   shrunken_blast_zone: Boundary[];
+
+  remove?: boolean;
 }
 
 export interface Collision {

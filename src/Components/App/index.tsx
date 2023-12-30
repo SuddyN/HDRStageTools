@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../../logo.svg";
 import "./App.css";
 import { lvdService } from "../../Services/LvdService";
-import { Boundary, Lvd, Vec2 } from "../../Types";
+import { Boundary, Collision, Lvd, Vec2 } from "../../Types";
 import { Checkbox } from "primereact/checkbox";
 import { ListBox } from "primereact/listbox";
 
@@ -243,12 +243,12 @@ export default class App extends React.Component<AppProps, AppState> {
       if (collision.col_flags.drop_through) {
         // platform
         if (this.state.drawPlatforms) {
-          this.drawPath(ctx, collision.vertices, hue);
+          this.drawCollision(ctx, collision, hue);
         }
       } else {
         // stage
         if (this.state.drawStages) {
-          this.drawPath(ctx, collision.vertices, hue);
+          this.drawCollision(ctx, collision, hue);
         }
       }
     }
@@ -271,12 +271,23 @@ export default class App extends React.Component<AppProps, AppState> {
     ctx.strokeRect(left * zoom, bottom * zoom, width * zoom, height * zoom);
   };
 
-  drawPath = (ctx: CanvasRenderingContext2D, path: Vec2[], hue: number) => {
+  drawCollision = (
+    ctx: CanvasRenderingContext2D,
+    collision: Collision,
+    hue: number
+  ) => {
     const zoom = this.zoom;
+    const path = collision.vertices;
     ctx.beginPath();
-    ctx.moveTo(path[0].x * zoom, path[0].y * zoom);
+    ctx.moveTo(
+      (path[0].x + collision.entry.start_pos.x) * zoom,
+      (path[0].y + collision.entry.start_pos.y) * zoom
+    );
     for (var i = 1; i < path.length; i++) {
-      ctx.lineTo(path[i].x * zoom, path[i].y * zoom);
+      ctx.lineTo(
+        (path[i].x + collision.entry.start_pos.x) * zoom,
+        (path[i].y + collision.entry.start_pos.y) * zoom
+      );
     }
     ctx.strokeStyle = this.makeHslaFromHue(hue);
     ctx.stroke();
