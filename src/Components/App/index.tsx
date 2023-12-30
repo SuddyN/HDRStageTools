@@ -5,6 +5,7 @@ import { lvdService } from "../../Services/LvdService";
 import { Boundary, Collision, Lvd, Vec2 } from "../../Types";
 import { Checkbox } from "primereact/checkbox";
 import { ListBox } from "primereact/listbox";
+import LvdTable from "../LvdTable";
 
 interface AppProps {}
 
@@ -21,7 +22,7 @@ interface AppState {
   drawShrunkenBlastZones: boolean;
   selectedStages: string[];
   loading: boolean;
-  lvdMap?: Map<string, Lvd>;
+  lvdMap: Map<string, Lvd>;
 }
 
 export default class App extends React.Component<AppProps, AppState> {
@@ -43,7 +44,7 @@ export default class App extends React.Component<AppProps, AppState> {
       drawShrunkenBlastZones: false,
       selectedStages: ["battlefield"],
       loading: true,
-      lvdMap: undefined,
+      lvdMap: new Map<string, Lvd>(),
     };
   }
 
@@ -71,6 +72,8 @@ export default class App extends React.Component<AppProps, AppState> {
   }
 
   render() {
+    const { lvdMap } = this.state;
+
     if (this.state.loading) {
       return (
         <div className="App">
@@ -144,12 +147,14 @@ export default class App extends React.Component<AppProps, AppState> {
             multiple
             filter
             value={this.state.selectedStages}
-            options={
-              this.state.lvdMap ? Array.from(this.state.lvdMap.keys()) : []
-            }
+            options={Array.from(this.state.lvdMap.keys())}
             onChange={(e) => this.setState({ selectedStages: e.value })}
             listStyle={{ height: "100%", paddingBottom: "2rem" }}
-            style={{ maxHeight: "100%" }}
+            style={{ height: "100%" }}
+          />
+          <LvdTable
+            lvdMap={lvdMap}
+            selectedStages={this.state.selectedStages}
           />
         </div>
       </div>
@@ -161,10 +166,6 @@ export default class App extends React.Component<AppProps, AppState> {
   };
 
   draw = () => {
-    if (!this.state.lvdMap) {
-      console.error("could not draw because lvdMap is null or undefined");
-      return;
-    }
     if (!this.canvas) {
       console.error("could not draw because canvas is null or undefined");
       return;
@@ -213,11 +214,6 @@ export default class App extends React.Component<AppProps, AppState> {
     lvd: Lvd,
     hueIndex: number
   ) => {
-    if (!this.state.lvdMap) {
-      console.error("could not draw because lvdMap is null or undefined");
-      return;
-    }
-
     const length = this.state.selectedStages.length;
     const hue = (hueIndex * 360) / length + (length < 3 ? 22 : 0);
 

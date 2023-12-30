@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -9,6 +9,90 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.sidebar-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  max-height: 100vh;
+}
+
+.sidebar-item {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 100%;
+  margin-bottom: 0.125rem;
+  max-height: 100%;
+}
+
+.sidebar-left {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.p-listbox {
+  background: rgba(24, 24, 24, 0.75);
+}
+
+.p-listbox .p-listbox-header {
+  padding: 0.125rem;
+  background: transparent;
+}
+
+.p-listbox .p-listbox-list {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.p-listbox .p-listbox-list .p-listbox-item {
+  padding: 0.125rem 0.25rem;
+  text-align: start;
+}
+
+.p-inputtext {
+  padding: 0.125rem;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.lvdTable {
+  padding-left: 0.125rem;
+  height: 100%;
+  width: auto;
+}
+
+.lvdTable-listbox {
+  padding: 0.5rem;
+  height: 100%;
+}
+
+.p-datatable {
+  height: 100%;
+}
+
+.p-datatable-wrapper {
+  height: 100%;
+}
+
+.p-datatable-table {
+  max-height: 100%;
+}
+
+.p-datatable-tbody {
+  max-height: 100%;
 }

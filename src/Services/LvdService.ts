@@ -22,8 +22,8 @@ async function initLvdFromUrl(url: string): Promise<Map<string, Lvd>> {
   await writeLvdFromZip(blob, lvdMap);
 
   const mergedLvdMap = mergeLvd(lvdMap);
-  Array.from(mergedLvdMap.values()).forEach((lvd) => {
-    calcLvdStats(lvd);
+  Array.from(mergedLvdMap.entries()).forEach((entry) => {
+    calcLvdStats(entry[0], entry[1]);
   });
 
   return mergedLvdMap;
@@ -242,20 +242,23 @@ function mergeLvd(lvdMap: Map<string, Lvd>): Map<string, Lvd> {
   return newMap;
 }
 
-function calcLvdStats(lvd: Lvd): void {
+function calcLvdStats(name: string, lvd: Lvd): void {
   const stats: LvdStats = {
+    name: name,
+    stageWidth: 0,
+    platNum: 0,
+
     stageMinX: Infinity,
     stageMaxX: -Infinity,
     stageMinY: Infinity,
     stageMaxY: -Infinity,
 
-    platNum: 0,
     platMinX: Infinity,
     platMaxX: -Infinity,
     platMinY: Infinity,
     platMaxY: -Infinity,
-    platWidthMin: Infinity,
-    platWidthMax: -Infinity,
+    platLengthMin: Infinity,
+    platLengthMax: -Infinity,
   };
 
   // platforms
@@ -271,6 +274,19 @@ function calcLvdStats(lvd: Lvd): void {
     let platMinY = Infinity;
     let platMaxY = -Infinity;
     plat.vertices.forEach((vert) => {
+      const bound = lvd.blast_zone[0];
+      if (!bound) {
+        return;
+      }
+      if (
+        vert.x > bound.right ||
+        vert.x < bound.left ||
+        vert.y > bound.top ||
+        vert.y < bound.bottom
+      ) {
+        return;
+      }
+
       platMinX = Math.min(platMinX, vert.x);
       platMaxX = Math.max(platMaxX, vert.x);
       platMinY = Math.min(platMinY, vert.y);
@@ -288,8 +304,8 @@ function calcLvdStats(lvd: Lvd): void {
       Number.isFinite(platMaxX) &&
       platMinX != platMaxX
     ) {
-      stats.platWidthMin = Math.min(stats.platWidthMin, platMaxX - platMinX);
-      stats.platWidthMax = Math.max(stats.platWidthMax, platMaxX - platMinX);
+      stats.platLengthMin = Math.min(stats.platLengthMin, platMaxX - platMinX);
+      stats.platLengthMax = Math.max(stats.platLengthMax, platMaxX - platMinX);
     }
   });
 
@@ -299,6 +315,19 @@ function calcLvdStats(lvd: Lvd): void {
       return;
     }
     stage.vertices.forEach((vert) => {
+      const bound = lvd.blast_zone[0];
+      if (!bound) {
+        return;
+      }
+      if (
+        vert.x > bound.right ||
+        vert.x < bound.left ||
+        vert.y > bound.top ||
+        vert.y < bound.bottom
+      ) {
+        return;
+      }
+
       stats.stageMinX = Math.min(stats.stageMinX, vert.x);
       stats.stageMaxX = Math.max(stats.stageMaxX, vert.x);
       stats.stageMinY = Math.min(stats.stageMinY, vert.y);
@@ -306,6 +335,8 @@ function calcLvdStats(lvd: Lvd): void {
     });
   });
 
+  stats.stageWidth = stats.stageMaxX - stats.stageMinX;
+  stats.stageWidth = Number.isFinite(stats.stageWidth) ? stats.stageWidth : 0;
   lvd.lvdStats = stats;
 }
 

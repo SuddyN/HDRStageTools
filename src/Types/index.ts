@@ -1,16 +1,21 @@
 export interface LvdStats {
+  // display stats
+  name: string;
+  stageWidth: number;
+  platNum: number;
+
+  // raw stats
   stageMinX: number;
   stageMaxX: number;
   stageMinY: number;
   stageMaxY: number;
 
-  platNum: number;
   platMinX: number;
   platMaxX: number;
   platMinY: number;
   platMaxY: number;
-  platWidthMin: number;
-  platWidthMax: number;
+  platLengthMin: number;
+  platLengthMax: number;
 }
 
 export interface Lvd {
