@@ -73,6 +73,14 @@ async function readLvdFromZip(blob: Blob): Promise<Map<string, Lvd>> {
   return mergeLvd(lvdMap);
 }
 
+function getMinSpawnLoc(lvd: Lvd) {
+  let min = Number.MAX_VALUE;
+  for (const spawn of lvd.spawns) {
+    min = Math.min(min, spawn.pos.y);
+  }
+  return min;
+}
+
 function alignLvd(lvd: Lvd) {
   if (!lvd.blast_zone[0] && !lvd.camera_boundary[0]) {
     return;
@@ -82,7 +90,7 @@ function alignLvd(lvd: Lvd) {
     lvd.blast_zone[0] ?? lvd.camera_boundary[0];
   const center: Vec2 = {
     x: (left + right) / 2,
-    y: 0.0,
+    y: getMinSpawnLoc(lvd),
   };
 
   lvd.collisions.forEach((collision) => {
