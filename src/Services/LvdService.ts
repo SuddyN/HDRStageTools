@@ -86,44 +86,32 @@ function alignLvd(lvd: Lvd) {
   };
 
   lvd.collisions.forEach((collision) => {
-    collision.entry.start_pos.x -= center.x;
-    collision.entry.start_pos.y -= center.y;
     collision.vertices.forEach((vertex) => {
       vertex.x -= center.x;
       vertex.y -= center.y;
     });
   });
   lvd.spawns.forEach((spawn) => {
-    spawn.entry.start_pos.x -= center.x;
-    spawn.entry.start_pos.y -= center.y;
     spawn.pos.x -= center.x;
     spawn.pos.y -= center.y;
   });
   lvd.respawns.forEach((respawn) => {
-    respawn.entry.start_pos.x -= center.x;
-    respawn.entry.start_pos.y -= center.y;
     respawn.pos.x -= center.x;
     respawn.pos.y -= center.y;
   });
   lvd.camera_boundary.forEach((camera_boundary) => {
-    camera_boundary.entry.start_pos.x -= center.x;
-    camera_boundary.entry.start_pos.y -= center.y;
     camera_boundary.left -= center.x;
     camera_boundary.right -= center.x;
     camera_boundary.top -= center.y;
     camera_boundary.bottom -= center.y;
   });
   lvd.blast_zone.forEach((blast_zone) => {
-    blast_zone.entry.start_pos.x -= center.x;
-    blast_zone.entry.start_pos.y -= center.y;
     blast_zone.left -= center.x;
     blast_zone.right -= center.x;
     blast_zone.top -= center.y;
     blast_zone.bottom -= center.y;
   });
   lvd.item_spawners.forEach((item_spawner) => {
-    item_spawner.entry.start_pos.x -= center.x;
-    item_spawner.entry.start_pos.y -= center.y;
     item_spawner.sections.forEach((section) => {
       if (section.Path) {
         section.Path.points[0].x -= center.x;
@@ -138,22 +126,16 @@ function alignLvd(lvd: Lvd) {
     });
   });
   lvd.ptrainer_platforms.forEach((ptrainer_platform) => {
-    ptrainer_platform.entry.start_pos.x -= center.x;
-    ptrainer_platform.entry.start_pos.y -= center.y;
     ptrainer_platform.pos.x -= center.x;
     ptrainer_platform.pos.y -= center.y;
   });
   lvd.shrunken_camera_boundary.forEach((camera_boundary) => {
-    camera_boundary.entry.start_pos.x -= center.x;
-    camera_boundary.entry.start_pos.y -= center.y;
     camera_boundary.left -= center.x;
     camera_boundary.right -= center.x;
     camera_boundary.top -= center.y;
     camera_boundary.bottom -= center.y;
   });
   lvd.shrunken_blast_zone.forEach((blast_zone) => {
-    blast_zone.entry.start_pos.x -= center.x;
-    blast_zone.entry.start_pos.y -= center.y;
     blast_zone.left -= center.x;
     blast_zone.right -= center.x;
     blast_zone.top -= center.y;
