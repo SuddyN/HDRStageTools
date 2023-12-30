@@ -307,7 +307,6 @@ function calcLvdStats(lvd: Lvd): void {
   });
 
   lvd.lvdStats = stats;
-  console.log(lvd.lvdStats);
 }
 
 const MERGE_BLACKLIST = [

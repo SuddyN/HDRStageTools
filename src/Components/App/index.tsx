@@ -107,7 +107,6 @@ export default class App extends React.Component<AppProps, AppState> {
             <Checkbox
               checked={this.state.drawStages}
               onChange={(e) => {
-                console.log(e);
                 this.setState({ drawStages: e.checked ?? true });
               }}
             />
@@ -117,7 +116,6 @@ export default class App extends React.Component<AppProps, AppState> {
             <Checkbox
               checked={this.state.drawPlatforms}
               onChange={(e) => {
-                console.log(e);
                 this.setState({ drawPlatforms: e.checked ?? true });
               }}
             />
@@ -127,7 +125,6 @@ export default class App extends React.Component<AppProps, AppState> {
             <Checkbox
               checked={this.state.drawBlastZones}
               onChange={(e) => {
-                console.log(e);
                 this.setState({ drawBlastZones: e.checked ?? true });
               }}
             />
@@ -137,7 +134,6 @@ export default class App extends React.Component<AppProps, AppState> {
             <Checkbox
               checked={this.state.drawCameras}
               onChange={(e) => {
-                console.log(e);
                 this.setState({ drawCameras: e.checked ?? false });
               }}
             />
