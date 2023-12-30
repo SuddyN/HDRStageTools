@@ -41,7 +41,7 @@ export default class App extends React.Component<AppProps, AppState> {
       drawPTrainerPlatforms: false,
       drawShrunkenCameras: false,
       drawShrunkenBlastZones: false,
-      selectedStages: ["battlefield/normal/param/battlefield_00.yml"],
+      selectedStages: ["battlefield"],
       loading: true,
       lvdMap: undefined,
     };
@@ -101,7 +101,7 @@ export default class App extends React.Component<AppProps, AppState> {
           color="blue"
           style={{ width: window.innerWidth, height: window.innerHeight }}
         />
-        <div className="sidebar">
+        <div className="sidebar-left">
           <div className="sidebar-item">
             <label>Draw Stages? </label>
             <Checkbox
@@ -142,16 +142,19 @@ export default class App extends React.Component<AppProps, AppState> {
               }}
             />
           </div>
-          <div className="sidebar-item">
-            <ListBox
-              multiple
-              value={this.state.selectedStages}
-              options={
-                this.state.lvdMap ? Array.from(this.state.lvdMap.keys()) : []
-              }
-              onChange={(e) => this.setState({ selectedStages: e.value })}
-            />
-          </div>
+        </div>
+        <div className="sidebar-right">
+          <ListBox
+            multiple
+            filter
+            value={this.state.selectedStages}
+            options={
+              this.state.lvdMap ? Array.from(this.state.lvdMap.keys()) : []
+            }
+            onChange={(e) => this.setState({ selectedStages: e.value })}
+            listStyle={{ height: "100%", paddingBottom: "2rem" }}
+            style={{ maxHeight: "100%" }}
+          />
         </div>
       </div>
     );
