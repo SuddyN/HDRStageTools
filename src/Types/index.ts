@@ -2,9 +2,9 @@ export interface Lvd {
   collisions: Collision[];
   spawns: Spawn[];
   respawns: Spawn[];
-  camera_boundary: Boundary;
-  blast_zone: Boundary;
-  enemy_generators: number;
+  camera_boundary: Boundary[];
+  blast_zone: Boundary[];
+  enemy_generators: { count: number };
   // unk1
   // unk2
   // unk3
@@ -20,8 +20,8 @@ export interface Lvd {
   // unk5
   // unk6
   // unk7
-  shrunken_camera_boundary: Boundary;
-  shrunken_blast_zone: Boundary;
+  shrunken_camera_boundary: Boundary[];
+  shrunken_blast_zone: Boundary[];
 }
 
 export interface Collision {

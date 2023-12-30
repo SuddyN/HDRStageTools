@@ -1,9 +1,9 @@
 import JSZip from "jszip";
-import * as JSYaml from 'js-yaml';
+import * as JSYaml from "js-yaml";
 import { Lvd } from "../Types";
 
 export const lvdService = {
-  readLvdFromUrl
+  readLvdFromUrl,
 };
 
 async function getLvdZipFromUrl(url: string): Promise<Blob> {
@@ -54,9 +54,16 @@ async function readLvdFromZip(blob: Blob): Promise<Map<string, Lvd>> {
     try {
       const stageLvd = JSYaml.load(stageYml) as Lvd;
       console.log(file.name, stageLvd);
+      if (
+        !stageLvd.blast_zone ||
+        !stageLvd.camera_boundary ||
+        !stageLvd.collisions
+      ) {
+        throw `bad lvd for ${file.name}`;
+      }
       lvdMap.set(file.name, stageLvd);
     } catch (e) {
-      console.log(e);
+      console.warn(e);
     }
   }
 
