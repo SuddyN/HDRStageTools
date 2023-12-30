@@ -13,7 +13,7 @@ interface AppState {
 
 export default class App extends React.Component<AppProps, AppState> {
   canvas: HTMLCanvasElement | null = null;
-  zoom: number = 1.5;
+  zoom: number = 2;
 
   constructor(props: AppProps) {
     super(props);
@@ -43,7 +43,6 @@ export default class App extends React.Component<AppProps, AppState> {
     prevState: Readonly<AppState>,
     snapshot?: any
   ): void {
-    console.log("component updated");
     this.draw();
   }
 
@@ -107,7 +106,7 @@ export default class App extends React.Component<AppProps, AppState> {
       this.canvas.width / 2,
       this.canvas.height / 2
     );
-    ctx.lineWidth = 2;
+    ctx.lineWidth = 1;
     ctx.fillStyle = "rgb(30, 30, 30)";
     ctx.globalCompositeOperation = "lighter";
     ctx.clearRect(
@@ -146,7 +145,7 @@ export default class App extends React.Component<AppProps, AppState> {
 
     // stageName = stage.stage;
 
-    ctx.setLineDash([8, 8]);
+    ctx.setLineDash([4, 4]);
 
     if (lvd.blast_zone[0]) {
       this.drawBoundary(ctx, lvd.blast_zone[0], hue);
@@ -157,10 +156,10 @@ export default class App extends React.Component<AppProps, AppState> {
     // drawRect(stage.camera, hue);
     // }
 
-    ctx.setLineDash([4, 4]);
+    ctx.setLineDash([2, 2]);
 
     if (lvd.camera_boundary[0]) {
-      this.drawBoundary(ctx, lvd.camera_boundary[0], hue);
+      // this.drawBoundary(ctx, lvd.camera_boundary[0], hue);
     }
 
     ctx.setLineDash([]);

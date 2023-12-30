@@ -113,7 +113,8 @@ export interface ItemSpawner {
 }
 
 export interface Path {
-  points: [Vec2, Vec2];
+  Path?: { points: [Vec2, Vec2] };
+  Point?: Vec2;
 }
 
 export interface PTrainerPlatform {
