@@ -23,7 +23,7 @@ interface AppState {
 
 export default class App extends React.Component<AppProps, AppState> {
   canvas: HTMLCanvasElement | null = null;
-  zoom: number = 2;
+  zoom: number = 4;
 
   constructor(props: AppProps) {
     super(props);
@@ -92,9 +92,10 @@ export default class App extends React.Component<AppProps, AppState> {
       <div className="App">
         <canvas
           ref={(element) => (this.canvas = element)}
-          width={window.innerWidth * devicePixelRatio}
-          height={window.innerHeight * devicePixelRatio}
+          width={window.innerWidth * devicePixelRatio * 2}
+          height={window.innerHeight * devicePixelRatio * 2}
           color="blue"
+          style={{ width: window.innerWidth, height: window.innerHeight }}
         />
       </div>
     );
@@ -163,21 +164,21 @@ export default class App extends React.Component<AppProps, AppState> {
     const hue = (hueIndex * 360) / length + (length < 3 ? 22 : 0);
 
     // draw blast_zones
-    ctx.lineWidth = 1;
-    ctx.setLineDash([4, 4]);
+    ctx.lineWidth = 4;
+    ctx.setLineDash([16, 16]);
     if (this.state.drawBlastZones && lvd.blast_zone[0]) {
       this.drawBoundary(ctx, lvd.blast_zone[0], hue);
     }
 
     // draw camera_boundary
-    ctx.lineWidth = 1;
-    ctx.setLineDash([2, 2]);
+    ctx.lineWidth = 4;
+    ctx.setLineDash([8, 8]);
     if (this.state.drawCameras && lvd.camera_boundary[0]) {
       // this.drawBoundary(ctx, lvd.camera_boundary[0], hue);
     }
 
     // draw collisions
-    ctx.lineWidth = 2;
+    ctx.lineWidth = 4;
     ctx.setLineDash([]);
     for (const collision of lvd.collisions) {
       if (collision.col_flags.drop_through) {
@@ -212,10 +213,11 @@ export default class App extends React.Component<AppProps, AppState> {
   };
 
   drawPath = (ctx: CanvasRenderingContext2D, path: Vec2[], hue: number) => {
+    const zoom = this.zoom;
     ctx.beginPath();
-    ctx.moveTo(path[0].x, path[0].y);
+    ctx.moveTo(path[0].x * zoom, path[0].y * zoom);
     for (var i = 1; i < path.length; i++) {
-      ctx.lineTo(path[i].x, path[i].y);
+      ctx.lineTo(path[i].x * zoom, path[i].y * zoom);
     }
     ctx.strokeStyle = this.makeHslaFromHue(hue);
     ctx.stroke();
