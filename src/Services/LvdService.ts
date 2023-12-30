@@ -136,6 +136,12 @@ function alignLvd(lvd: Lvd) {
       }
     });
   });
+  lvd.ptrainer_platforms.forEach((ptrainer_platform) => {
+    ptrainer_platform.entry.start_pos.x -= center.x;
+    ptrainer_platform.entry.start_pos.y -= center.y;
+    ptrainer_platform.pos.x -= center.x;
+    ptrainer_platform.pos.y -= center.y;
+  });
   lvd.shrunken_camera_boundary.forEach((camera_boundary) => {
     camera_boundary.entry.start_pos.x -= center.x;
     camera_boundary.entry.start_pos.y -= center.y;
