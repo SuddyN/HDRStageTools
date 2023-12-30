@@ -82,7 +82,8 @@
 }
 
 .p-listbox .p-listbox-list .p-listbox-item {
-  padding: 0.125rem;
+  padding: 0.125rem 0.25rem;
+  text-align: start;
 }
 
 .p-inputtext {

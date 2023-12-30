@@ -50,7 +50,7 @@ export default class App extends React.Component<AppProps, AppState> {
   async componentDidMount(): Promise<void> {
     this.setState({
       loading: false,
-      lvdMap: await lvdService.readLvdFromUrl(
+      lvdMap: await lvdService.initLvdFromUrl(
         "https://suddyn.github.io/HDRStageTools/lvd/hdr-nightly/lvd.zip"
       ),
     });

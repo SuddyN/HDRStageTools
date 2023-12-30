@@ -4,10 +4,10 @@ import * as lodash from "lodash";
 import { Lvd, Vec2 } from "../Types";
 
 export const lvdService = {
-  readLvdFromUrl,
+  initLvdFromUrl,
 };
 
-async function getLvdZipFromUrl(url: string): Promise<Blob> {
+async function getBlobFromUrl(url: string): Promise<Blob> {
   return new Promise<any>(function (resolve, reject) {
     const createCORSRequest = function (method: string, url: string | URL) {
       const xhr = new XMLHttpRequest();
@@ -41,13 +41,18 @@ async function getLvdZipFromUrl(url: string): Promise<Blob> {
   });
 }
 
-async function readLvdFromZip(blob: Blob): Promise<Map<string, Lvd>> {
-  const lvdMap: Map<string, Lvd> = new Map<string, Lvd>();
-
+async function writeLvdFromZip(
+  blob: Blob,
+  baseMap: Map<string, Lvd>
+): Promise<void> {
   const jszip = new JSZip();
   const zip = await jszip.loadAsync(blob);
   for (const file of Object.values(zip.files)) {
     if (file.dir) {
+      continue;
+    }
+    if (LVD_BLACKLIST.includes(file.name)) {
+      console.log("blacklisted", file.name);
       continue;
     }
     const stageYml = await file.async("string");
@@ -64,13 +69,11 @@ async function readLvdFromZip(blob: Blob): Promise<Map<string, Lvd>> {
 
       alignLvd(stageLvd);
 
-      lvdMap.set(file.name, stageLvd);
+      baseMap.set(file.name, stageLvd);
     } catch (e) {
       console.warn(e);
     }
   }
-
-  return mergeLvd(lvdMap);
 }
 
 function getMinSpawnLoc(lvd: Lvd) {
@@ -182,13 +185,19 @@ function mergeLvd(lvdMap: Map<string, Lvd>): Map<string, Lvd> {
         continue;
       }
       if (lvdEqual(entry[1], other[1])) {
-        console.log("removed", other[0], "equal");
+        console.log("removed", other[0], "(equal)");
         other[1].remove = true;
         continue;
       }
       if (lvdPartExists(entry[0], other[0])) {
+        if (
+          MERGE_BLACKLIST.includes(entry[0]) ||
+          MERGE_BLACKLIST.includes(other[0])
+        ) {
+          continue;
+        }
         mergeStage(entry[1], other[1]);
-        console.log("removed", other[0], "merged");
+        console.log("removed", other[0], "(merged)");
         other[1].remove = true;
         continue;
       }
@@ -211,7 +220,196 @@ function mergeLvd(lvdMap: Map<string, Lvd>): Map<string, Lvd> {
   return newMap;
 }
 
-async function readLvdFromUrl(url: string): Promise<Map<string, Lvd>> {
-  const blob = await getLvdZipFromUrl(url);
-  return await readLvdFromZip(blob);
+async function initLvdFromUrl(url: string): Promise<Map<string, Lvd>> {
+  const lvdMap = new Map<string, Lvd>();
+
+  // load ult lvd
+  const ultBlob = await getBlobFromUrl(
+    "https://suddyn.github.io/HDRStageTools/lvd/ultimate/lvd.zip"
+  );
+  await writeLvdFromZip(ultBlob, lvdMap);
+
+  // load new lvd on top of ult lvd
+  const blob = await getBlobFromUrl(url);
+  await writeLvdFromZip(blob, lvdMap);
+
+  return mergeLvd(lvdMap);
 }
+
+const MERGE_BLACKLIST = [
+  "brave_altar/normal/param/brave_altar_00.yml",
+  "brave_altar/normal/param/brave_altar_01.yml",
+
+  "pickel_world/normal/param/pickel_world_01.yml",
+  "pickel_world/normal/param/pickel_world_02.yml",
+  "pickel_world/normal/param/pickel_world_03.yml",
+  "pickel_world/normal/param/pickel_world_04.yml",
+  "pickel_world/normal/param/pickel_world_05.yml",
+
+  "pilotwings/normal/param/pilotwings_00.yml",
+  "pilotwings/normal/param/pilotwings_01.yml",
+];
+
+const LVD_BLACKLIST = [
+  "animal_island/normal/param/island_01.yml",
+  "animal_island/normal/param/island_02.yml",
+  "animal_island/normal/param/island_03.yml",
+  "animal_island/normal/param/island_04.yml",
+  "animal_island/normal/param/island_05.yml",
+
+  "balloonfight/normal/param/balloonfight_01.yml",
+  "balloonfight/normal/param/balloonfight_02.yml",
+
+  "bonusgame/normal/param/bonus_game_00.yml",
+  "bonusgame/normal/param/bonus_game_01.yml",
+  "bonusgame/normal/param/bonus_game_02.yml",
+  "bonusgame/normal/param/bonus_game_03.yml",
+
+  "bossstage_dracula/normal/param/bossstage_dracula00.yml",
+  "bossstage_galleom/normal/param/bossstage_galleom00.yml",
+  "bossstage_ganonboss/normal/param/bossstage_ganonboss00.yml",
+  "bossstage_marx/normal/param/bossstage_marx00.yml",
+  "bossstage_rathalos/normal/param/bossstage_rathalos00.yml",
+
+  "campaignmap/normal/param/blank_00.yml",
+
+  "fe_shrine/normal/param/fe_shrine_01.yml",
+  "fe_shrine/normal/param/fe_shrine_02.yml",
+  "fe_shrine/normal/param/fe_shrine_03.yml",
+  "fe_shrine/normal/param/fe_shrine_04.yml",
+
+  "fe_siege/normal/param/xemblem01.yml",
+  "fe_siege/normal/param/xemblem02.yml",
+
+  "ff_midgar/normal/param/midgar_f01.yml",
+
+  "homeruncontest/normal/param/homerun_f_00.yml",
+
+  "icarus_skyworld/normal/param/xpalutena_01.yml",
+
+  "icarus_uprising/normal/param/uprising_01.yml",
+
+  "kirby_halberd/normal/param/xhalberd_01.yml", // 2nd form might actually have a different blastzone
+
+  "mario_3dland/normal/param/3dland_01.yml",
+  "mario_3dland/normal/param/3dland_02.yml",
+  "mario_3dland/normal/param/3dland_03.yml",
+  "mario_3dland/normal_s01/param/3dland_01.yml",
+  "mario_3dland/normal_s01/param/3dland_02.yml",
+  "mario_3dland/normal_s01/param/3dland_03.yml",
+
+  "mario_dolpic/normal/param/xdolpic_01.yml",
+  "mario_dolpic/normal/param/xdolpic_02.yml",
+  "mario_dolpic/normal/param/xdolpic_03.yml",
+  "mario_dolpic/normal/param/xdolpic_04.yml",
+  "mario_dolpic/normal/param/xdolpic_05.yml",
+  "mario_dolpic/normal/param/xdolpic_06.yml",
+  "mario_dolpic/normal/param/xdolpic_07.yml",
+  "mario_dolpic/normal/param/xdolpic_08.yml",
+  "mario_dolpic/normal/param/xdolpic_09.yml",
+  "mario_dolpic/normal/param/xdolpic_10.yml",
+  "mario_dolpic/normal/param/xdolpic_11.yml",
+  "mario_dolpic/normal/param/xdolpic_12.yml",
+
+  "mario_maker/normal/param/mariomaker_01.yml",
+  "mario_maker/normal/param/mariomaker_02.yml",
+  "mario_maker/normal/param/mariomaker_03.yml",
+  "mario_maker/normal/param/mariomaker_f_00.yml",
+
+  "mario_odyssey/normal/param/mario_odyssey_01.yml",
+  "mario_odyssey/normal/param/mario_odyssey_02.yml",
+  "mario_odyssey/normal/param/mario_odyssey_03.yml",
+  "mario_odyssey/normal/param/mario_odyssey_04.yml",
+  "mario_odyssey/normal/param/mario_odyssey_05.yml",
+  "mario_odyssey/normal/param/mario_odyssey_06.yml",
+
+  "mario_paper/normal/param/paper_01.yml",
+  "mario_paper/normal/param/paper_02.yml",
+
+  "mario_pastx/normal/param/xmariopast_01.yml",
+  "mario_pastx/normal/param/xmariopast_02.yml",
+  "mario_pastx/normal/param/xmariopast_03.yml",
+
+  "mario_rainbow/normal/param/mario_rainbow_01.yml",
+
+  "mario_uworld/normal/param/mariou_00.yml",
+  "mario_uworld/normal/param/mariou_02.yml",
+  "mario_uworld/normal/param/mariou_03.yml",
+
+  "pac_land/normal/param/pacland_01.yml",
+  "pac_land/normal/param/pacland_02.yml",
+  "pac_land/normal/param/pacland_03.yml",
+
+  "photostage/normal/param/photostage.yml",
+
+  "pickel_world/normal/param/pickel_world_00_gimmick_off.yml",
+  "pickel_world/normal/param/pickel_world_01_gimmick_off.yml",
+  "pickel_world/normal/param/pickel_world_02_gimmick_off.yml",
+  "pickel_world/normal/param/pickel_world_03_gimmick_off.yml",
+  "pickel_world/normal/param/pickel_world_04_gimmick_off.yml",
+  "pickel_world/normal/param/pickel_world_05_gimmick_off.yml",
+
+  "poke_kalos/normal/param/kalos_01.yml",
+
+  "poke_stadium2/normal/param/xstadium_01.yml",
+  "poke_stadium2/normal/param/xstadium_02.yml",
+  "poke_stadium2/normal/param/xstadium_03.yml",
+  "poke_stadium2/normal/param/xstadium_04.yml",
+
+  "poke_tower/normal/param/prism_01.yml",
+
+  "punchoutw/normal/param/punchout_00.yml",
+
+  "resultstage/normal/param/blank_00.yml",
+  "resultstage_edge/normal/param/blank_00.yml",
+  "resultstage_jack/normal/param/blank_00.yml",
+
+  "settingstage/normal/param/settingstage.yml",
+
+  "spiritsroulette/normal/param/spiritsroulette.yml",
+
+  "sp_edit/normal/param/level_00.yml",
+  "sp_edit/normal/param/level_01.yml",
+  "sp_edit/normal/param/level_02.yml",
+
+  "staffroll/normal/param/dummy.yml",
+
+  "streetpass/normal/param/steetpass_01.yml",
+
+  "training/normal/param/blank_00.yml",
+
+  "wufuisland/normal/param/wufu_01.yml",
+  "wufuisland/normal/param/wufu_02.yml",
+  "wufuisland/normal/param/wufu_03.yml",
+  "wufuisland/normal/param/wufu_04.yml",
+  "wufuisland/normal/param/wufu_05.yml",
+  "wufuisland/normal/param/wufu_06.yml",
+  "wufuisland/normal/param/wufu_07.yml",
+  "wufuisland/normal/param/wufu_08.yml",
+  "wufuisland/normal/param/wufu_09.yml",
+  "wufuisland/normal/param/wufu_10.yml",
+  "wufuisland/normal/param/wufu_11.yml",
+  "wufuisland/normal/param/wufu_12.yml",
+
+  "yoshi_story/normal/param/yoshi_story_01.yml",
+
+  "zelda_gerudo/normal/param/gerudo_01.yml",
+  "zelda_gerudo/normal/param/gerudo_02.yml",
+
+  "zelda_oldin/normal/param/xoldin_01.yml",
+
+  "zelda_skyward/normal/param/skyward01.yml",
+  "zelda_skyward/normal/param/skyward02.yml",
+  "zelda_skyward/normal/param/skyward03.yml",
+  "zelda_skyward/normal/param/skyward04.yml",
+  "zelda_skyward/normal/param/skyward05.yml",
+  "zelda_skyward/normal/param/skyward06.yml",
+  "zelda_skyward/normal/param/skyward07.yml",
+  "zelda_skyward/normal/param/skyward08.yml",
+  "zelda_skyward/normal/param/skyward09.yml",
+  "zelda_skyward/normal/param/skyward10.yml",
+  "zelda_skyward/normal/param/skyward11.yml",
+  "zelda_skyward/normal/param/skyward12.yml",
+  "zelda_skyward/normal/param/skyward13.yml",
+  "zelda_skyward/normal/param/skyward14.yml",
+];
