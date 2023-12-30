@@ -7,6 +7,16 @@ import { Boundary, Lvd, Vec2 } from "../../Types";
 interface AppProps {}
 
 interface AppState {
+  drawCameras: boolean;
+  drawBlastZones: boolean;
+  drawPlatforms: boolean;
+  drawStages: boolean;
+  drawSpawns: boolean;
+  drawRespawns: boolean;
+  drawItemSpawners: boolean;
+  drawPTrainerPlatforms: boolean;
+  drawShrunkenCameras: boolean;
+  drawShrunkenBlastZones: boolean;
   loading: boolean;
   lvdMap?: Map<string, Lvd>;
 }
@@ -18,6 +28,16 @@ export default class App extends React.Component<AppProps, AppState> {
   constructor(props: AppProps) {
     super(props);
     this.state = {
+      drawCameras: false,
+      drawBlastZones: true,
+      drawPlatforms: true,
+      drawStages: true,
+      drawSpawns: false,
+      drawRespawns: false,
+      drawItemSpawners: false,
+      drawPTrainerPlatforms: false,
+      drawShrunkenCameras: false,
+      drawShrunkenBlastZones: false,
       loading: true,
       lvdMap: undefined,
     };
@@ -141,46 +161,37 @@ export default class App extends React.Component<AppProps, AppState> {
 
     const length = this.state.lvdMap.size;
     const hue = (hueIndex * 360) / length + (length < 3 ? 22 : 0);
-    // labelColor(stage.stage, hue);
 
-    // stageName = stage.stage;
-
+    // draw blast_zones
+    ctx.lineWidth = 1;
     ctx.setLineDash([4, 4]);
-
-    if (lvd.blast_zone[0]) {
+    if (this.state.drawBlastZones && lvd.blast_zone[0]) {
       this.drawBoundary(ctx, lvd.blast_zone[0], hue);
     }
 
-    // if (getDisplayOption("camera")) {
-    // ctx.setLineDash([10, 10]);
-    // drawRect(stage.camera, hue);
-    // }
-
+    // draw camera_boundary
+    ctx.lineWidth = 1;
     ctx.setLineDash([2, 2]);
-
-    if (lvd.camera_boundary[0]) {
+    if (this.state.drawCameras && lvd.camera_boundary[0]) {
       // this.drawBoundary(ctx, lvd.camera_boundary[0], hue);
     }
 
+    // draw collisions
+    ctx.lineWidth = 2;
     ctx.setLineDash([]);
-
-    // if (getDisplayOption("stage")) {
-    // for (const collision of stage.collisions) {
-    //   if (collision.nocalc) {
-    //     continue;
-    //   }
-    //   drawPath(collision.vertex, hue);
-    // }
-    // }
-
-    // if (getDisplayOption("platforms")) {
-    // for (const platform of stage.platforms) {
-    //   if (platform.nocalc) {
-    //     continue;
-    //   }
-    //   drawPath(platform.vertex, hue);
-    // }
-    // }
+    for (const collision of lvd.collisions) {
+      if (collision.col_flags.drop_through) {
+        // platform
+        if (this.state.drawPlatforms) {
+          this.drawPath(ctx, collision.vertices, hue);
+        }
+      } else {
+        // stage
+        if (this.state.drawStages) {
+          this.drawPath(ctx, collision.vertices, hue);
+        }
+      }
+    }
   };
 
   drawBoundary = (
@@ -206,7 +217,6 @@ export default class App extends React.Component<AppProps, AppState> {
     for (var i = 1; i < path.length; i++) {
       ctx.lineTo(path[i].x, path[i].y);
     }
-    ctx.lineWidth = 2;
     ctx.strokeStyle = this.makeHslaFromHue(hue);
     ctx.stroke();
   };
@@ -216,6 +226,6 @@ export default class App extends React.Component<AppProps, AppState> {
     const l = 50;
     const a = 1;
 
-    return "hsla(" + hue + ", " + s + "%, " + l + "%, " + a + ")";
+    return `hsla(${hue}, ${s}%, ${l}%, ${a})`;
   };
 }
