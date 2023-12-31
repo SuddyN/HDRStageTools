@@ -266,6 +266,27 @@ function calcLvdStats(name: string, lvd: Lvd): void {
     if (!plat.col_flags.drop_through) {
       return;
     }
+
+    // ignore plats that are out of bounds
+    if (
+      plat.vertices.every((vert) => {
+        const bound = lvd.blast_zone[0];
+        if (!bound) {
+          return true;
+        }
+        if (
+          vert.x + plat.entry.start_pos.x > bound.right ||
+          vert.x + plat.entry.start_pos.x < bound.left ||
+          vert.y + plat.entry.start_pos.y > bound.top ||
+          vert.y + plat.entry.start_pos.y < bound.bottom
+        ) {
+          return true;
+        }
+        return false;
+      })
+    ) {
+      return;
+    }
     stats.platNum++;
 
     // calculate min/max for this specific platform
@@ -279,18 +300,18 @@ function calcLvdStats(name: string, lvd: Lvd): void {
         return;
       }
       if (
-        vert.x > bound.right ||
-        vert.x < bound.left ||
-        vert.y > bound.top ||
-        vert.y < bound.bottom
+        vert.x + plat.entry.start_pos.x > bound.right ||
+        vert.x + plat.entry.start_pos.x < bound.left ||
+        vert.y + plat.entry.start_pos.y > bound.top ||
+        vert.y + plat.entry.start_pos.y < bound.bottom
       ) {
         return;
       }
 
-      platMinX = Math.min(platMinX, vert.x);
-      platMaxX = Math.max(platMaxX, vert.x);
-      platMinY = Math.min(platMinY, vert.y);
-      platMaxY = Math.max(platMaxY, vert.y);
+      platMinX = Math.min(platMinX, vert.x + plat.entry.start_pos.x);
+      platMaxX = Math.max(platMaxX, vert.x + plat.entry.start_pos.x);
+      platMinY = Math.min(platMinY, vert.y + plat.entry.start_pos.y);
+      platMaxY = Math.max(platMaxY, vert.y + plat.entry.start_pos.y);
     });
 
     // calculate min/max for all the platforms
@@ -314,24 +335,58 @@ function calcLvdStats(name: string, lvd: Lvd): void {
     if (stage.col_flags.drop_through) {
       return;
     }
+
+    // ignore stages that are out of bounds
+    if (
+      stage.vertices.every((vert) => {
+        const bound = lvd.blast_zone[0];
+        if (!bound) {
+          return true;
+        }
+        if (
+          vert.x + stage.entry.start_pos.x > bound.right ||
+          vert.x + stage.entry.start_pos.x < bound.left ||
+          vert.y + stage.entry.start_pos.y > bound.top ||
+          vert.y + stage.entry.start_pos.y < bound.bottom
+        ) {
+          return true;
+        }
+        return false;
+      })
+    ) {
+      return;
+    }
+
     stage.vertices.forEach((vert) => {
       const bound = lvd.blast_zone[0];
       if (!bound) {
         return;
       }
       if (
-        vert.x > bound.right ||
-        vert.x < bound.left ||
-        vert.y > bound.top ||
-        vert.y < bound.bottom
+        vert.x + stage.entry.start_pos.x > bound.right ||
+        vert.x + stage.entry.start_pos.x < bound.left ||
+        vert.y + stage.entry.start_pos.y > bound.top ||
+        vert.y + stage.entry.start_pos.y < bound.bottom
       ) {
         return;
       }
 
-      stats.stageMinX = Math.min(stats.stageMinX, vert.x);
-      stats.stageMaxX = Math.max(stats.stageMaxX, vert.x);
-      stats.stageMinY = Math.min(stats.stageMinY, vert.y);
-      stats.stageMaxY = Math.max(stats.stageMaxY, vert.y);
+      stats.stageMinX = Math.min(
+        stats.stageMinX,
+        vert.x + stage.entry.start_pos.x
+      );
+      stats.stageMaxX = Math.max(
+        stats.stageMaxX,
+        vert.x + stage.entry.start_pos.x
+      );
+      stats.stageMinY = Math.min(
+        stats.stageMinY,
+        vert.y + stage.entry.start_pos.y
+      );
+      stats.stageMaxY = Math.max(
+        stats.stageMaxY,
+        vert.y + stage.entry.start_pos.y
+      );
     });
   });
 

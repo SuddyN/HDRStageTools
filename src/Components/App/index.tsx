@@ -158,7 +158,13 @@ export default class App extends React.Component<AppProps, AppState> {
             listStyle={{ height: "100%", paddingBottom: "2rem" }}
             style={{ height: "100%" }}
           />
-          <div style={{ flexDirection: "column", alignItems: "flex-start" }}>
+          <div
+            style={{
+              flexDirection: "column",
+              alignItems: "flex-start",
+              height: "100%",
+            }}
+          >
             <div
               className="sidebar-item"
               style={{
