@@ -20,6 +20,7 @@ interface AppState {
   drawPTrainerPlatforms: boolean;
   drawShrunkenCameras: boolean;
   drawShrunkenBlastZones: boolean;
+  showStats: boolean;
   selectedStages: string[];
   loading: boolean;
   lvdMap: Map<string, Lvd>;
@@ -42,6 +43,7 @@ export default class App extends React.Component<AppProps, AppState> {
       drawPTrainerPlatforms: false,
       drawShrunkenCameras: false,
       drawShrunkenBlastZones: false,
+      showStats: false,
       selectedStages: ["battlefield"],
       loading: true,
       lvdMap: new Map<string, Lvd>(),
@@ -105,42 +107,46 @@ export default class App extends React.Component<AppProps, AppState> {
           style={{ width: window.innerWidth, height: window.innerHeight }}
         />
         <div className="sidebar-right">
-          <div className="sidebar-item">
-            <label>Draw Stages? </label>
-            <Checkbox
-              checked={this.state.drawStages}
-              onChange={(e) => {
-                this.setState({ drawStages: e.checked ?? true });
-              }}
-            />
-          </div>
-          <div className="sidebar-item">
-            <label>Draw Platforms? </label>
-            <Checkbox
-              checked={this.state.drawPlatforms}
-              onChange={(e) => {
-                this.setState({ drawPlatforms: e.checked ?? true });
-              }}
-            />
-          </div>
-          <div className="sidebar-item">
-            <label>Draw BlastZones? </label>
-            <Checkbox
-              checked={this.state.drawBlastZones}
-              onChange={(e) => {
-                this.setState({ drawBlastZones: e.checked ?? true });
-              }}
-            />
-          </div>
-          <div className="sidebar-item">
-            <label>Draw Camera? </label>
-            <Checkbox
-              checked={this.state.drawCameras}
-              onChange={(e) => {
-                this.setState({ drawCameras: e.checked ?? false });
-              }}
-            />
-          </div>
+          {!this.state.showStats && (
+            <>
+              <div className="sidebar-item">
+                <label>Draw Stages? </label>
+                <Checkbox
+                  checked={this.state.drawStages}
+                  onChange={(e) => {
+                    this.setState({ drawStages: e.checked ?? true });
+                  }}
+                />
+              </div>
+              <div className="sidebar-item">
+                <label>Draw Platforms? </label>
+                <Checkbox
+                  checked={this.state.drawPlatforms}
+                  onChange={(e) => {
+                    this.setState({ drawPlatforms: e.checked ?? true });
+                  }}
+                />
+              </div>
+              <div className="sidebar-item">
+                <label>Draw BlastZones? </label>
+                <Checkbox
+                  checked={this.state.drawBlastZones}
+                  onChange={(e) => {
+                    this.setState({ drawBlastZones: e.checked ?? true });
+                  }}
+                />
+              </div>
+              <div className="sidebar-item">
+                <label>Draw Camera? </label>
+                <Checkbox
+                  checked={this.state.drawCameras}
+                  onChange={(e) => {
+                    this.setState({ drawCameras: e.checked ?? false });
+                  }}
+                />
+              </div>
+            </>
+          )}
         </div>
         <div className="sidebar-left">
           <ListBox
@@ -152,10 +158,31 @@ export default class App extends React.Component<AppProps, AppState> {
             listStyle={{ height: "100%", paddingBottom: "2rem" }}
             style={{ height: "100%" }}
           />
-          <LvdTable
-            lvdMap={lvdMap}
-            selectedStages={this.state.selectedStages}
-          />
+          <div style={{ flexDirection: "column", alignItems: "flex-start" }}>
+            <div
+              className="sidebar-item"
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "flex-start",
+              }}
+            >
+              <Checkbox
+                checked={this.state.showStats}
+                onChange={(e) => {
+                  this.setState({ showStats: e.checked ?? false });
+                }}
+                style={{ paddingRight: "0.125rem" }}
+              />
+              <label> Show Stats?</label>
+            </div>
+            {this.state.showStats && (
+              <LvdTable
+                lvdMap={lvdMap}
+                selectedStages={this.state.selectedStages}
+              />
+            )}
+          </div>
         </div>
       </div>
     );
