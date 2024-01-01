@@ -113,49 +113,49 @@ export default class App extends React.Component<AppProps, AppState> {
           color="blue"
           style={{ width: window.innerWidth, height: window.innerHeight }}
         />
-        <div className="sidebar-right">
+        <div className="sidebar-left">
           {!this.state.showStats && (
             <>
               <div className="sidebar-item">
-                <label>Draw Stages? </label>
                 <Checkbox
                   checked={this.state.drawStages}
                   onChange={(e) => {
                     this.setState({ drawStages: e.checked ?? true });
                   }}
                 />
+                <label> Draw Stages? </label>
               </div>
               <div className="sidebar-item">
-                <label>Draw Platforms? </label>
                 <Checkbox
                   checked={this.state.drawPlatforms}
                   onChange={(e) => {
                     this.setState({ drawPlatforms: e.checked ?? true });
                   }}
                 />
+                <label> Draw Platforms? </label>
               </div>
               <div className="sidebar-item">
-                <label>Draw BlastZones? </label>
                 <Checkbox
                   checked={this.state.drawBlastZones}
                   onChange={(e) => {
                     this.setState({ drawBlastZones: e.checked ?? true });
                   }}
                 />
+                <label> Draw BlastZones? </label>
               </div>
               <div className="sidebar-item">
-                <label>Draw Camera? </label>
                 <Checkbox
                   checked={this.state.drawCameras}
                   onChange={(e) => {
                     this.setState({ drawCameras: e.checked ?? false });
                   }}
                 />
+                <label> Draw Camera? </label>
               </div>
             </>
           )}
         </div>
-        <div className="sidebar-left">
+        <div className="sidebar-right">
           <Dropdown
             className="listbox-sorter"
             value={this.state.selectedSort}
