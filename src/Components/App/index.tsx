@@ -80,91 +80,8 @@ export default class App extends React.Component<AppProps, AppState> {
     this.draw();
   }
 
-  stageListTemplate = (selectedStage: string): ReactNode => {
-    const stageName = selectedStage;
-    const lvd = this.state.lvdMap.get(selectedStage);
-    if (!lvd || !lvd.lvdStats) {
-      return stageName;
-    }
-    const { lvdStats: stats } = lvd;
-    var stageSubtitle = ": ";
-    switch (this.state.selectedSort) {
-      case "Platform Count":
-        stageSubtitle += stats.platNum.toFixed(0);
-        break;
-      default:
-        stageSubtitle = "";
-        break;
-    }
-
-    return (
-      <>
-        {stageName}
-        {stageSubtitle}
-      </>
-    );
-  };
-
   render() {
     const { lvdMap } = this.state;
-
-    const groupedSorters = [
-      {
-        label: "General",
-        items: [
-          { label: "Name", value: "Name" },
-          { label: "Platform Count", value: "Platform Count" },
-          { label: "Stage Width", value: "Stage Width" },
-          { label: "Stage+Plat Width", value: "Stage+Plat Width" },
-        ],
-      },
-      {
-        label: "Blastzones",
-        items: [
-          { label: "Blastzone Left", value: "Blastzone Left" },
-          { label: "Blastzone Right", value: "Blastzone Right" },
-          { label: "Blastzone Top", value: "Blastzone Top" },
-          { label: "Blastzone Bottom", value: "Blastzone Bottom" },
-          { label: "Blastzone Width", value: "Blastzone Width" },
-          { label: "Blastzone Height", value: "Blastzone Height" },
-          {
-            label: "Stage to Blastzone Left (min)",
-            value: "Stage to Blastzone Left (min)",
-          },
-          {
-            label: "Stage to Blastzone Left (max)",
-            value: "Stage to Blastzone Left (max)",
-          },
-          {
-            label: "Stage to Blastzone Right (min)",
-            value: "Stage to Blastzone Right (min)",
-          },
-          {
-            label: "Stage to Blastzone Right (max)",
-            value: "Stage to Blastzone Right (max)",
-          },
-          {
-            label: "Platform to Blastzone Top (min)",
-            value: "Platform to Blastzone Top (min)",
-          },
-          {
-            label: "Platform to Blastzone Top (max)",
-            value: "Platform to Blastzone Top (max)",
-          },
-        ],
-      },
-      {
-        label: "Platforms",
-        items: [
-          { label: "Platform Length (min)", value: "Platform Length (min)" },
-          { label: "Platform Length (max)", value: "Platform Length (max)" },
-          { label: "Platform Height (min)", value: "Platform Height (min)" },
-          { label: "Platform Height (max)", value: "Platform Height (max)" },
-          { label: "Platform Width Span", value: "Platform Width Span" },
-          { label: "Platform Height Span", value: "Platform Height Span" },
-        ],
-      },
-    ];
 
     if (this.state.loading) {
       return (
@@ -242,7 +159,7 @@ export default class App extends React.Component<AppProps, AppState> {
           <Dropdown
             className="listbox-sorter"
             value={this.state.selectedSort}
-            options={groupedSorters}
+            options={this.groupedSorters}
             optionLabel="label"
             optionGroupLabel="label"
             optionGroupChildren="items"
@@ -267,6 +184,104 @@ export default class App extends React.Component<AppProps, AppState> {
     );
   }
 
+  groupedSorters = [
+    {
+      label: "General",
+      items: [
+        { label: "Name", value: "Name" },
+        { label: "Platform Count", value: "Platform Count" },
+        { label: "Stage Width", value: "Stage Width" },
+        // { label: "Stage+Plat Width", value: "Stage+Plat Width" },
+      ],
+    },
+    {
+      label: "Blastzones",
+      items: [
+        { label: "Blastzone Left", value: "Blastzone Left" },
+        { label: "Blastzone Right", value: "Blastzone Right" },
+        { label: "Blastzone Top", value: "Blastzone Top" },
+        { label: "Blastzone Bottom", value: "Blastzone Bottom" },
+        //   { label: "Blastzone Width", value: "Blastzone Width" },
+        //   { label: "Blastzone Height", value: "Blastzone Height" },
+        //   {
+        //     label: "Stage to Blastzone Left (min)",
+        //     value: "Stage to Blastzone Left (min)",
+        //   },
+        //   {
+        //     label: "Stage to Blastzone Left (max)",
+        //     value: "Stage to Blastzone Left (max)",
+        //   },
+        //   {
+        //     label: "Stage to Blastzone Right (min)",
+        //     value: "Stage to Blastzone Right (min)",
+        //   },
+        //   {
+        //     label: "Stage to Blastzone Right (max)",
+        //     value: "Stage to Blastzone Right (max)",
+        //   },
+        //   {
+        //     label: "Platform to Blastzone Top (min)",
+        //     value: "Platform to Blastzone Top (min)",
+        //   },
+        //   {
+        //     label: "Platform to Blastzone Top (max)",
+        //     value: "Platform to Blastzone Top (max)",
+        //   },
+      ],
+    },
+    // {
+    //   label: "Platforms",
+    //   items: [
+    //     { label: "Platform Length (min)", value: "Platform Length (min)" },
+    //     { label: "Platform Length (max)", value: "Platform Length (max)" },
+    //     { label: "Platform Height (min)", value: "Platform Height (min)" },
+    //     { label: "Platform Height (max)", value: "Platform Height (max)" },
+    //     { label: "Platform Width Span", value: "Platform Width Span" },
+    //     { label: "Platform Height Span", value: "Platform Height Span" },
+    //   ],
+    // },
+  ];
+
+  stageListTemplate = (selectedStage: string): ReactNode => {
+    const stageName = selectedStage;
+    const lvd = this.state.lvdMap.get(selectedStage);
+    if (!lvd || !lvd.lvdStats) {
+      return stageName;
+    }
+    const { lvdStats: stats } = lvd;
+    var stageSubtitle = ": ";
+    switch (this.state.selectedSort) {
+      case "Platform Count":
+        stageSubtitle += stats.platNum.toFixed(0);
+        break;
+      case "Stage Width":
+        stageSubtitle += stats.stageWidth.toFixed(1);
+        break;
+      case "Blastzone Left":
+        stageSubtitle += (lvd.blast_zone[0]?.left * -1).toFixed(0);
+        break;
+      case "Blastzone Right":
+        stageSubtitle += lvd.blast_zone[0]?.right.toFixed(0);
+        break;
+      case "Blastzone Top":
+        stageSubtitle += lvd.blast_zone[0]?.top.toFixed(0);
+        break;
+      case "Blastzone Bottom":
+        stageSubtitle += (lvd.blast_zone[0]?.bottom * -1).toFixed(0);
+        break;
+      default:
+        stageSubtitle = "";
+        break;
+    }
+
+    return (
+      <>
+        {stageName}
+        {stageSubtitle}
+      </>
+    );
+  };
+
   lvdSorter = (): string[] => {
     const { lvdMap, selectedSort, selectedSortDir } = this.state;
     var lvdStatsArray = Array.from(lvdMap.entries()).flatMap((entry) => {
@@ -286,9 +301,64 @@ export default class App extends React.Component<AppProps, AppState> {
 
     const platNumCompareFn = (a: LvdStats, b: LvdStats): number => {
       const mul = selectedSortDir == "Ascending" ? 1 : -1;
-      if (a.platNum < b.platNum) return -1 * mul;
-      else if (a.platNum > b.platNum) return 1 * mul;
-      return 0;
+      return (a.platNum - b.platNum) * mul;
+    };
+
+    const stageWidthCompareFn = (a: LvdStats, b: LvdStats): number => {
+      const mul = selectedSortDir == "Ascending" ? 1 : -1;
+      return (a.stageWidth - b.stageWidth) * mul;
+    };
+
+    const blastzoneLeftCompareFn = (a: LvdStats, b: LvdStats): number => {
+      const mul = selectedSortDir == "Ascending" ? 1 : -1;
+      const aBlstZone = lvdMap.get(a.name)?.blast_zone[0];
+      const bBlstZone = lvdMap.get(b.name)?.blast_zone[0];
+      if (!aBlstZone) {
+        return -1 * mul;
+      }
+      if (!bBlstZone) {
+        return 1 * mul;
+      }
+      return (bBlstZone.left - aBlstZone.left) * mul;
+    };
+
+    const blastzoneRightCompareFn = (a: LvdStats, b: LvdStats): number => {
+      const mul = selectedSortDir == "Ascending" ? 1 : -1;
+      const aBlstZone = lvdMap.get(a.name)?.blast_zone[0];
+      const bBlstZone = lvdMap.get(b.name)?.blast_zone[0];
+      if (!aBlstZone) {
+        return -1 * mul;
+      }
+      if (!bBlstZone) {
+        return 1 * mul;
+      }
+      return (aBlstZone.right - bBlstZone.right) * mul;
+    };
+
+    const blastzoneTopCompareFn = (a: LvdStats, b: LvdStats): number => {
+      const mul = selectedSortDir == "Ascending" ? 1 : -1;
+      const aBlstZone = lvdMap.get(a.name)?.blast_zone[0];
+      const bBlstZone = lvdMap.get(b.name)?.blast_zone[0];
+      if (!aBlstZone) {
+        return -1 * mul;
+      }
+      if (!bBlstZone) {
+        return 1 * mul;
+      }
+      return (aBlstZone.top - bBlstZone.top) * mul;
+    };
+
+    const blastzoneBottomCompareFn = (a: LvdStats, b: LvdStats): number => {
+      const mul = selectedSortDir == "Ascending" ? 1 : -1;
+      const aBlstZone = lvdMap.get(a.name)?.blast_zone[0];
+      const bBlstZone = lvdMap.get(b.name)?.blast_zone[0];
+      if (!aBlstZone) {
+        return -1 * mul;
+      }
+      if (!bBlstZone) {
+        return 1 * mul;
+      }
+      return (bBlstZone.bottom - aBlstZone.bottom) * mul;
     };
 
     // initial sort
@@ -299,6 +369,21 @@ export default class App extends React.Component<AppProps, AppState> {
     switch (selectedSort) {
       case "Platform Count":
         compareFn = platNumCompareFn;
+        break;
+      case "Stage Width":
+        compareFn = stageWidthCompareFn;
+        break;
+      case "Blastzone Left":
+        compareFn = blastzoneLeftCompareFn;
+        break;
+      case "Blastzone Right":
+        compareFn = blastzoneRightCompareFn;
+        break;
+      case "Blastzone Top":
+        compareFn = blastzoneTopCompareFn;
+        break;
+      case "Blastzone Bottom":
+        compareFn = blastzoneBottomCompareFn;
         break;
       default:
         compareFn = nameCompareFn;
