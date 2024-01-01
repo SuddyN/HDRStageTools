@@ -96,3 +96,39 @@ code {
 .p-datatable-tbody {
   max-height: 100%;
 }
+
+.p-selectbutton .p-button {
+  background: rgba(24, 24, 24, 0.75);
+}
+
+.p-selectbutton .p-button.p-highlight {
+  background: #2dd4bf;
+}
+
+.p-dropdown {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item-group {
+  background: rgba(64, 64, 64, 0.75);
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.p-dropdown-panel {
+  background: rgba(24, 24, 24, 1);
+}
+
+.p-dropdown-items-wrapper {
+  max-height: 50vh !important;
+}
+
+.p-checkbox .p-checkbox-box {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.p-checkbox .p-checkbox-box.p-highlight {
+  background: #2dd4bf;
+}
