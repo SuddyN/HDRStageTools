@@ -269,20 +269,46 @@ export default class App extends React.Component<AppProps, AppState> {
 
   lvdSorter = (): string[] => {
     const { lvdMap, selectedSort, selectedSortDir } = this.state;
-    const lvdStatsArray = Array.from(lvdMap.entries()).flatMap((entry) => {
+    var lvdStatsArray = Array.from(lvdMap.entries()).flatMap((entry) => {
       if (!entry[1].lvdStats) {
         return [];
       }
       return [entry[1].lvdStats];
     });
 
-    var compareFn = (a: LvdStats, b: LvdStats): number => {
-      if (a.name < b.name) return -1;
-      else if (a.name < b.name) return 1;
+    // define sort functions
+    const nameCompareFn = (a: LvdStats, b: LvdStats): number => {
+      const mul = selectedSortDir == "Ascending" ? 1 : -1;
+      if (a.name < b.name) return -1 * mul;
+      else if (a.name > b.name) return 1 * mul;
       return 0;
     };
-    lvdStatsArray.sort(compareFn);
 
+    const platNumCompareFn = (a: LvdStats, b: LvdStats): number => {
+      const mul = selectedSortDir == "Ascending" ? 1 : -1;
+      if (a.platNum < b.platNum) return -1 * mul;
+      else if (a.platNum > b.platNum) return 1 * mul;
+      return 0;
+    };
+
+    // initial sort
+    var compareFn = nameCompareFn;
+    lvdStatsArray = lvdStatsArray.sort(compareFn);
+
+    // select the correct sort
+    switch (selectedSort) {
+      case "Platform Count":
+        compareFn = platNumCompareFn;
+        break;
+      default:
+        compareFn = nameCompareFn;
+        break;
+    }
+
+    // real sort
+    lvdStatsArray = lvdStatsArray.sort(compareFn);
+
+    // map to string arr
     const nameArr: string[] = lvdStatsArray.map((e) => e.name);
     return nameArr;
   };
