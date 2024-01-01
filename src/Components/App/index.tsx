@@ -1,11 +1,14 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import logo from "../../logo.svg";
 import "./App.css";
 import { lvdService } from "../../Services/LvdService";
-import { Boundary, Collision, Lvd, Vec2 } from "../../Types";
+import { Boundary, Collision, Lvd, LvdStats, Vec2 } from "../../Types";
 import { Checkbox } from "primereact/checkbox";
 import { ListBox } from "primereact/listbox";
 import LvdTable from "../LvdTable";
+import { Dropdown } from "primereact/dropdown";
+import { ToggleButton } from "primereact/togglebutton";
+import { SelectButton } from "primereact/selectbutton";
 
 interface AppProps {}
 
@@ -22,6 +25,8 @@ interface AppState {
   drawShrunkenBlastZones: boolean;
   showStats: boolean;
   selectedStages: string[];
+  selectedSort: string;
+  selectedSortDir: string;
   loading: boolean;
   lvdMap: Map<string, Lvd>;
 }
@@ -45,6 +50,8 @@ export default class App extends React.Component<AppProps, AppState> {
       drawShrunkenBlastZones: false,
       showStats: false,
       selectedStages: ["battlefield"],
+      selectedSort: "Name",
+      selectedSortDir: "Ascending",
       loading: true,
       lvdMap: new Map<string, Lvd>(),
     };
@@ -73,8 +80,91 @@ export default class App extends React.Component<AppProps, AppState> {
     this.draw();
   }
 
+  stageListTemplate = (selectedStage: string): ReactNode => {
+    const stageName = selectedStage;
+    const lvd = this.state.lvdMap.get(selectedStage);
+    if (!lvd || !lvd.lvdStats) {
+      return stageName;
+    }
+    const { lvdStats: stats } = lvd;
+    var stageSubtitle = ": ";
+    switch (this.state.selectedSort) {
+      case "Platform Count":
+        stageSubtitle += stats.platNum.toFixed(0);
+        break;
+      default:
+        stageSubtitle = "";
+        break;
+    }
+
+    return (
+      <>
+        {stageName}
+        {stageSubtitle}
+      </>
+    );
+  };
+
   render() {
     const { lvdMap } = this.state;
+
+    const groupedSorters = [
+      {
+        label: "General",
+        items: [
+          { label: "Name", value: "Name" },
+          { label: "Platform Count", value: "Platform Count" },
+          { label: "Stage Width", value: "Stage Width" },
+          { label: "Stage+Plat Width", value: "Stage+Plat Width" },
+        ],
+      },
+      {
+        label: "Blastzones",
+        items: [
+          { label: "Blastzone Left", value: "Blastzone Left" },
+          { label: "Blastzone Right", value: "Blastzone Right" },
+          { label: "Blastzone Top", value: "Blastzone Top" },
+          { label: "Blastzone Bottom", value: "Blastzone Bottom" },
+          { label: "Blastzone Width", value: "Blastzone Width" },
+          { label: "Blastzone Height", value: "Blastzone Height" },
+          {
+            label: "Stage to Blastzone Left (min)",
+            value: "Stage to Blastzone Left (min)",
+          },
+          {
+            label: "Stage to Blastzone Left (max)",
+            value: "Stage to Blastzone Left (max)",
+          },
+          {
+            label: "Stage to Blastzone Right (min)",
+            value: "Stage to Blastzone Right (min)",
+          },
+          {
+            label: "Stage to Blastzone Right (max)",
+            value: "Stage to Blastzone Right (max)",
+          },
+          {
+            label: "Platform to Blastzone Top (min)",
+            value: "Platform to Blastzone Top (min)",
+          },
+          {
+            label: "Platform to Blastzone Top (max)",
+            value: "Platform to Blastzone Top (max)",
+          },
+        ],
+      },
+      {
+        label: "Platforms",
+        items: [
+          { label: "Platform Length (min)", value: "Platform Length (min)" },
+          { label: "Platform Length (max)", value: "Platform Length (max)" },
+          { label: "Platform Height (min)", value: "Platform Height (min)" },
+          { label: "Platform Height (max)", value: "Platform Height (max)" },
+          { label: "Platform Width Span", value: "Platform Width Span" },
+          { label: "Platform Height Span", value: "Platform Height Span" },
+        ],
+      },
+    ];
 
     if (this.state.loading) {
       return (
@@ -149,50 +239,53 @@ export default class App extends React.Component<AppProps, AppState> {
           )}
         </div>
         <div className="sidebar-left">
+          <Dropdown
+            className="listbox-sorter"
+            value={this.state.selectedSort}
+            options={groupedSorters}
+            optionLabel="label"
+            optionGroupLabel="label"
+            optionGroupChildren="items"
+            onChange={(e) => this.setState({ selectedSort: e.value })}
+          />
+          <SelectButton
+            value={this.state.selectedSortDir}
+            options={["Ascending", "Descending"]}
+            onChange={(e) => this.setState({ selectedSortDir: e.value })}
+            style={{ width: "100%", display: "flex" }}
+          />
           <ListBox
             multiple
             filter
             value={this.state.selectedStages}
-            options={Array.from(this.state.lvdMap.keys())}
+            options={this.lvdSorter()}
             onChange={(e) => this.setState({ selectedStages: e.value })}
-            listStyle={{ height: "100%", paddingBottom: "2rem" }}
-            style={{ height: "100%" }}
+            itemTemplate={this.stageListTemplate}
           />
-          <div
-            style={{
-              flexDirection: "column",
-              alignItems: "flex-start",
-              height: "100%",
-            }}
-          >
-            <div
-              className="sidebar-item"
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "flex-start",
-              }}
-            >
-              <Checkbox
-                checked={this.state.showStats}
-                onChange={(e) => {
-                  this.setState({ showStats: e.checked ?? false });
-                }}
-                style={{ paddingRight: "0.125rem" }}
-              />
-              <label> Show Stats?</label>
-            </div>
-            {this.state.showStats && (
-              <LvdTable
-                lvdMap={lvdMap}
-                selectedStages={this.state.selectedStages}
-              />
-            )}
-          </div>
         </div>
       </div>
     );
   }
+
+  lvdSorter = (): string[] => {
+    const { lvdMap, selectedSort, selectedSortDir } = this.state;
+    const lvdStatsArray = Array.from(lvdMap.entries()).flatMap((entry) => {
+      if (!entry[1].lvdStats) {
+        return [];
+      }
+      return [entry[1].lvdStats];
+    });
+
+    var compareFn = (a: LvdStats, b: LvdStats): number => {
+      if (a.name < b.name) return -1;
+      else if (a.name < b.name) return 1;
+      return 0;
+    };
+    lvdStatsArray.sort(compareFn);
+
+    const nameArr: string[] = lvdStatsArray.map((e) => e.name);
+    return nameArr;
+  };
 
   resize = () => {
     this.forceUpdate();
