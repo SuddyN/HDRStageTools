@@ -25,6 +25,8 @@ interface AppState {
   drawShrunkenCameras: boolean;
   drawShrunkenBlastZones: boolean;
   showStats: boolean;
+  selectedFilter: string;
+  selectedFilterFunc: (name: string) => boolean;
   selectedStages: string[];
   selectedSort: string;
   selectedSortDir: string;
@@ -52,6 +54,8 @@ export default class App extends React.Component<AppProps, AppState> {
       drawShrunkenCameras: false,
       drawShrunkenBlastZones: false,
       showStats: false,
+      selectedFilter: "Recommended",
+      selectedFilterFunc: this.recommendedFilterFunc,
       selectedStages: ["Battlefield"],
       selectedSort: "Name",
       selectedSortDir: "Ascending",
@@ -83,6 +87,25 @@ export default class App extends React.Component<AppProps, AppState> {
   ): void {
     this.draw();
   }
+
+  recommendedFilterFunc = (name: string): boolean => {
+    if (
+      [
+        "Hollow Bastion",
+        "Garreg Mach Monastery",
+        "Battlefield",
+        "Smashville",
+        "Bramble Blast",
+        "3D Land",
+        "Lylat Cruise",
+        "Realm of GameCube",
+        "Sky Sanctuary Zone",
+      ].includes(name)
+    ) {
+      return true;
+    }
+    return false;
+  };
 
   render() {
     const { lvdMap, lvdSource } = this.state;
@@ -183,6 +206,33 @@ export default class App extends React.Component<AppProps, AppState> {
             optionGroupLabel="label"
             optionGroupChildren="items"
             onChange={(e) => this.setState({ selectedSort: e.value })}
+          />
+          <Dropdown
+            className="listbox-sorter"
+            value={this.state.selectedFilter}
+            options={["All", "Recommended", "Gigaton Hammer 2"]}
+            onChange={(e) => {
+              let filterFunc = this.state.selectedFilterFunc;
+              switch (e.value) {
+                case "All":
+                  filterFunc = (name: string) => {
+                    return true;
+                  };
+                  break;
+                case "Recommended":
+                  filterFunc = this.recommendedFilterFunc;
+                  break;
+                case "Gigaton Hammer 2":
+                  filterFunc = this.recommendedFilterFunc;
+                  break;
+                default:
+                  break;
+              }
+              this.setState({
+                selectedFilter: e.value,
+                selectedFilterFunc: filterFunc,
+              });
+            }}
           />
           <SelectButton
             value={this.state.selectedSortDir}
@@ -305,6 +355,9 @@ export default class App extends React.Component<AppProps, AppState> {
     const { lvdMap, selectedSort, selectedSortDir } = this.state;
     var lvdStatsArray = Array.from(lvdMap.entries()).flatMap((entry) => {
       if (!entry[1].lvdStats) {
+        return [];
+      }
+      if (!this.state.selectedFilterFunc(entry[0])) {
         return [];
       }
       return [entry[1].lvdStats];
