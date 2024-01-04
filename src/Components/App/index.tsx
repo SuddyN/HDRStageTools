@@ -13,6 +13,7 @@ import { SelectButton } from "primereact/selectbutton";
 interface AppProps {}
 
 interface AppState {
+  debug: boolean;
   drawCameras: boolean;
   drawBlastZones: boolean;
   drawPlatforms: boolean;
@@ -29,6 +30,7 @@ interface AppState {
   selectedSortDir: string;
   loading: boolean;
   lvdMap: Map<string, Lvd>;
+  lvdSource: string;
 }
 
 export default class App extends React.Component<AppProps, AppState> {
@@ -38,6 +40,7 @@ export default class App extends React.Component<AppProps, AppState> {
   constructor(props: AppProps) {
     super(props);
     this.state = {
+      debug: false,
       drawCameras: false,
       drawBlastZones: true,
       drawPlatforms: true,
@@ -49,20 +52,21 @@ export default class App extends React.Component<AppProps, AppState> {
       drawShrunkenCameras: false,
       drawShrunkenBlastZones: false,
       showStats: false,
-      selectedStages: ["battlefield"],
+      selectedStages: ["Battlefield"],
       selectedSort: "Name",
       selectedSortDir: "Ascending",
       loading: true,
       lvdMap: new Map<string, Lvd>(),
+      lvdSource:
+        "https://suddyn.github.io/HDRStageTools/lvd/hdr-nightly/lvd.zip",
     };
   }
 
   async componentDidMount(): Promise<void> {
+    const { lvdSource, debug } = this.state;
     this.setState({
       loading: false,
-      lvdMap: await lvdService.initLvdFromUrl(
-        "https://suddyn.github.io/HDRStageTools/lvd/hdr-nightly/lvd.zip"
-      ),
+      lvdMap: await lvdService.initLvdFromUrl(lvdSource, debug),
     });
     window.addEventListener("resize", this.resize);
     this.resize();
@@ -81,7 +85,7 @@ export default class App extends React.Component<AppProps, AppState> {
   }
 
   render() {
-    const { lvdMap } = this.state;
+    const { lvdMap, lvdSource } = this.state;
 
     if (this.state.loading) {
       return (
@@ -148,6 +152,24 @@ export default class App extends React.Component<AppProps, AppState> {
                   }}
                 />
                 <label> Draw Camera? </label>
+              </div>
+              <div className="sidebar-item">
+                <Checkbox
+                  checked={this.state.debug}
+                  onChange={(e) => {
+                    this.setState({ loading: true }, async () => {
+                      this.setState({
+                        debug: e.checked ?? false,
+                        loading: false,
+                        lvdMap: await lvdService.initLvdFromUrl(
+                          lvdSource,
+                          e.checked
+                        ),
+                      });
+                    });
+                  }}
+                />
+                <label> Debug Mode? </label>
               </div>
             </>
           )}

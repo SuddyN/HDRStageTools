@@ -8,7 +8,10 @@ export const lvdService = {
   initLvdFromUrl,
 };
 
-async function initLvdFromUrl(url: string): Promise<Map<string, Lvd>> {
+async function initLvdFromUrl(
+  url: string,
+  debug?: boolean
+): Promise<Map<string, Lvd>> {
   const lvdMap = new Map<string, Lvd>();
 
   // load ult lvd
@@ -21,7 +24,7 @@ async function initLvdFromUrl(url: string): Promise<Map<string, Lvd>> {
   const blob = await getBlobFromUrl(url);
   await writeLvdFromZip(blob, lvdMap);
 
-  const mergedLvdMap = mergeLvd(lvdMap);
+  const mergedLvdMap = mergeLvd(lvdMap, debug ?? false);
   Array.from(mergedLvdMap.entries()).forEach((entry) => {
     calcLvdStats(entry[0], entry[1]);
   });
@@ -179,7 +182,7 @@ function alignLvd(lvd: Lvd) {
 function lvdPartExists(name: string, other: string) {
   const d = name.split("/");
   const o = other.split("/");
-  for (var i = 0; i < d.length - 1; i++) {
+  for (let i = 0; i < d.length - 1; i++) {
     if (d[i] != o[i]) {
       return false;
     }
@@ -198,45 +201,50 @@ function lvdEqual(lvd: Lvd, other: Lvd) {
   return false;
 }
 
-function mergeLvd(lvdMap: Map<string, Lvd>): Map<string, Lvd> {
+function handleSimilarLvd(entry: [string, Lvd], lvdMap: Map<string, Lvd>) {
+  for (const other of Array.from(lvdMap.entries())) {
+    if (entry[0] == other[0]) {
+      continue;
+    }
+    if (lvdEqual(entry[1], other[1])) {
+      console.log("removed", other[0], "(equal)");
+      other[1].remove = true;
+      continue;
+    }
+    if (lvdPartExists(entry[0], other[0])) {
+      if (
+        MERGE_BLACKLIST.includes(entry[0]) ||
+        MERGE_BLACKLIST.includes(other[0])
+      ) {
+        continue;
+      }
+      mergeStage(entry[1], other[1]);
+      console.log("removed", other[0], "(merged)");
+      other[1].remove = true;
+    }
+  }
+}
+
+function mergeLvd(lvdMap: Map<string, Lvd>, debug: boolean): Map<string, Lvd> {
   const newMap: Map<string, Lvd> = new Map<string, Lvd>();
   for (const entry of Array.from(lvdMap.entries())) {
-    const dir = entry[0].split("/");
-    for (const other of Array.from(lvdMap.entries())) {
-      if (entry[0] == other[0]) {
-        continue;
-      }
-      if (lvdEqual(entry[1], other[1])) {
-        console.log("removed", other[0], "(equal)");
-        other[1].remove = true;
-        continue;
-      }
-      if (lvdPartExists(entry[0], other[0])) {
-        if (
-          MERGE_BLACKLIST.includes(entry[0]) ||
-          MERGE_BLACKLIST.includes(other[0])
-        ) {
-          continue;
-        }
-        mergeStage(entry[1], other[1]);
-        console.log("removed", other[0], "(merged)");
-        other[1].remove = true;
-        continue;
-      }
-    }
+    handleSimilarLvd(entry, lvdMap);
 
     if (entry[1].remove) {
       continue;
     }
 
+    const dir = entry[0].split("/");
+    const translatedName = LVD_NAME_MAP.get(dir[0]) ?? dir[0];
+    const baseName = debug ? dir[0] : translatedName;
     const altNum = parseInt(dir[1].replace(/\D/g, ""));
     const fileName = dir[dir.length - 1].split(".")[0];
     const partNum = parseInt(fileName.slice(-2).replace(/\D/g, ""));
-    const name =
-      dir[0] +
+    const fullName =
+      baseName +
       (isNaN(altNum) ? "" : ` (Alt ${altNum})`) +
       (isNaN(partNum) || partNum == 0 ? "" : ` (Part ${partNum + 1})`);
-    newMap.set(name, entry[1]);
+    newMap.set(fullName, entry[1]);
   }
 
   return newMap;
@@ -394,6 +402,122 @@ function calcLvdStats(name: string, lvd: Lvd): void {
   stats.stageWidth = Number.isFinite(stats.stageWidth) ? stats.stageWidth : 0;
   lvd.lvdStats = stats;
 }
+
+const LVD_NAME_MAP: Map<string, string> = new Map<string, string>([
+  ["animal_city", "Town & City"],
+  ["animal_island", "Tortimer Island"],
+  ["animal_village", "Smashville"],
+  ["balloonfight", "Balloon Fight"],
+  ["battlefield", "Battlefield"],
+  ["battlefield_l", "Big Battlefield"],
+  ["battlefield_s", "Duel Battlefield"],
+  ["bayo_clock", "Umbra Clock Tower"],
+  ["bossstage_final1", "Final Destination"],
+  ["bossstage_final2", "Deadline"],
+  ["brave_altar", "Yggdrasil's Altar"],
+  ["demon_dojo", "Mishima Dojo"],
+  ["dk_jungle", "Bramble Blast"],
+  ["dk_lodge", "Jungle Japes"],
+  ["dk_waterfall", "Kongo Falls"],
+  ["dracula_castle", "Dracula's Castle"],
+  ["duckhunt", "Duck Hunt"],
+  ["end", "bossstage_final1"],
+  ["fe_arena", "Arena Ferox"],
+  ["fe_colloseum", "Coliseum"],
+  ["fe_shrine", "Garreg Mach Monastery"],
+  ["fe_siege", "Castle Siege"],
+  ["ff_cave", "Northern Cave"],
+  ["ff_midgar", "Midgar"],
+  ["flatzonex", "Flat Zone X"],
+  ["fox_corneria", "Corneria"],
+  ["fox_lylatcruise", "Lylat Cruise"],
+  ["fox_venom", "Venom"],
+  ["fzero_bigblue", "Big Blue"],
+  ["fzero_mutecity3ds", "Mute City SNES"],
+  ["fzero_porttown", "Port Town Aero Dive"],
+  ["icarus_angeland", "Palutena's Temple"],
+  ["icarus_skyworld", "Skyworld"],
+  ["icarus_uprising", "Reset Bomb Forest"],
+  ["ice_top", "Summit"],
+  ["jack_mementoes", "Mementos"],
+  ["kart_circuitfor", "Mario Circuit"],
+  ["kart_circuitx", "Figure-8 Circuit"],
+  ["kirby_cave", "Great Cave Offensive"],
+  ["kirby_fountain", "Fountain of Dreams"],
+  ["kirby_gameboy", "Dream Land GB"],
+  ["kirby_greens", "Green Greens"],
+  ["kirby_halberd", "Halberd"],
+  ["kirby_pupupu64", "Dream Land"],
+  ["luigimansion", "Luigi's Mansion"],
+  ["mario_3dland", "3D Land"],
+  ["mario_castle64", "Peach's Castle"],
+  ["mario_castledx", "Bowser's Castle"],
+  ["mario_dolpic", "Delfino Plaza"],
+  ["mario_galaxy", "Mario Galaxy"],
+  ["mario_maker", "Super Mario Maker"],
+  ["mario_newbros2", "World 1-2"],
+  ["mario_odyssey", "New Donk City Hall"],
+  ["mario_paper", "Paper Mario"],
+  ["mario_past64", "Mushroom Kingdom"],
+  ["mario_pastusa", "Mushroom Kingdom II"],
+  ["mario_pastx", "Mushroomy Kingdom"],
+  ["mario_rainbow", "Rainbow Cruise"],
+  ["mario_uworld", "Snake Train Chamber"],
+  ["mariobros", "Mario Bros"],
+  ["metroid_kraid", "Brinstar Depths"],
+  ["metroid_norfair", "Norfair"],
+  ["metroid_orpheon", "Frigate Orpheon"],
+  ["metroid_zebesdx", "Brinstar"],
+  ["mg_shadowmoses", "Shadow Moses Island"],
+  ["mother_fourside", "Fourside"],
+  ["mother_magicant", "Magicant"],
+  ["mother_newpork", "New Pork City"],
+  ["mother_onett", "Onett"],
+  ["nintendogs", "Living Room"],
+  ["pac_land", "Pac-Land"],
+  ["pickel_world", "Minecraft World"],
+  ["pictochat2", "Pictochat 2"],
+  ["pikmin_garden", "Garden of Hope"],
+  ["pikmin_planet", "Distant Planet"],
+  ["pilotwings", "Pilotwings"],
+  ["plankton", "Hanenbow"],
+  ["poke_kalos", "Kalos Pokemon League"],
+  ["poke_stadium", "Pokemon Stadium"],
+  ["poke_stadium2", "Pokemon Stadium 3"],
+  ["poke_tengam", "Spear Pillar"],
+  ["poke_tower", "Prism Tower"],
+  ["poke_unova", "Unova Pokemon League"],
+  ["poke_yamabuki", "Saffron City"],
+  ["punchoutsb", "Boxing Ring"],
+  ["rock_wily", "Wily Castle"],
+  ["sf_suzaku", "Suzaku Castle"],
+  ["sonic_greenhill", "Sky Sanctuary Zone"],
+  ["sonic_windyhill", "Windy Hill Zone"],
+  ["spla_parking", "Moray Towers"],
+  ["streetpass", "Find Mii"],
+  ["tantan_spring", "Spring Stadium"],
+  ["tomodachi", "Tomodachi Life"],
+  ["trail_castle", "Hollow Bastion"],
+  ["wario_gamer", "Gamer"],
+  ["wario_madein", "WarioWare, Inc."],
+  ["wiifit", "Wii Fit Studio"],
+  ["wreckingcrew", "Realm of GameCube"],
+  ["wufuisland", "Wuhu Island"],
+  ["xeno_gaur", "Gaur Plain"],
+  ["yoshi_cartboard", "Yoshi's Story"],
+  ["yoshi_island", "Yoshi's Island"],
+  ["yoshi_story", "Super Happy Tree"],
+  ["yoshi_yoster", "Dinosaur Land"],
+  ["zelda_gerudo", "Gerudo Valley"],
+  ["zelda_greatbay", "Great Bay"],
+  ["zelda_hyrule", "Hyrule Castle"],
+  ["zelda_oldin", "Bridge of Eldin"],
+  ["zelda_pirates", "Ganon's Tower"],
+  ["zelda_skyward", "Skyloft"],
+  ["zelda_temple", "Temple"],
+  ["zelda_tower", "Great Plateau Tower"],
+  ["zelda_train", "Spirit Train"],
+]);
 
 const MERGE_BLACKLIST = [
   "brave_altar/normal/param/brave_altar_00.yml",
