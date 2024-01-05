@@ -125,6 +125,24 @@ code {
   max-height: 50vh !important;
 }
 
+.p-dropdown-label {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  flex: 1 1 auto;
+  width: auto;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.p-dropdown .p-dropdown-trigger {
+  width: auto;
+}
+
+svg.p-icon {
+  margin: 0.125rem;
+}
+
 .p-checkbox .p-checkbox-box {
   background: rgba(0, 0, 0, 0.75);
 }

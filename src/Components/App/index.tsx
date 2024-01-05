@@ -54,7 +54,7 @@ export default class App extends React.Component<AppProps, AppState> {
       drawShrunkenCameras: false,
       drawShrunkenBlastZones: false,
       showStats: false,
-      selectedFilter: "Recommended",
+      selectedFilter: "Suggested Stages",
       selectedFilterFunc: this.recommendedFilterFunc,
       selectedStages: ["Battlefield"],
       selectedSort: "Name",
@@ -100,6 +100,16 @@ export default class App extends React.Component<AppProps, AppState> {
         "Lylat Cruise",
         "Realm of GameCube",
         "Sky Sanctuary Zone",
+
+        "trail_castle",
+        "fe_shrine",
+        "battlefield",
+        "animal_village",
+        "dk_jungle",
+        "mario_3dland",
+        "fox_lylatcruise",
+        "wreckingcrew",
+        "sonic_greenhill",
       ].includes(name)
     ) {
       return true;
@@ -200,26 +210,17 @@ export default class App extends React.Component<AppProps, AppState> {
         <div className="sidebar-right">
           <Dropdown
             className="listbox-sorter"
-            value={this.state.selectedSort}
-            options={this.groupedSorters}
-            optionLabel="label"
-            optionGroupLabel="label"
-            optionGroupChildren="items"
-            onChange={(e) => this.setState({ selectedSort: e.value })}
-          />
-          <Dropdown
-            className="listbox-sorter"
             value={this.state.selectedFilter}
-            options={["All", "Recommended", "Gigaton Hammer 2"]}
+            options={["All Stages", "Suggested Stages", "Gigaton Hammer 2"]}
             onChange={(e) => {
               let filterFunc = this.state.selectedFilterFunc;
               switch (e.value) {
-                case "All":
+                case "All Stages":
                   filterFunc = (name: string) => {
                     return true;
                   };
                   break;
-                case "Recommended":
+                case "Suggested Stages":
                   filterFunc = this.recommendedFilterFunc;
                   break;
                 case "Gigaton Hammer 2":
@@ -233,6 +234,15 @@ export default class App extends React.Component<AppProps, AppState> {
                 selectedFilterFunc: filterFunc,
               });
             }}
+          />
+          <Dropdown
+            className="listbox-sorter"
+            value={this.state.selectedSort}
+            options={this.groupedSorters}
+            optionLabel="label"
+            optionGroupLabel="label"
+            optionGroupChildren="items"
+            onChange={(e) => this.setState({ selectedSort: e.value })}
           />
           <SelectButton
             value={this.state.selectedSortDir}

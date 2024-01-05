@@ -415,10 +415,12 @@ const LVD_NAME_MAP: Map<string, string> = new Map<string, string>([
   ["bossstage_final1", "Final Destination"],
   ["bossstage_final2", "Deadline"],
   ["brave_altar", "Yggdrasil's Altar"],
+  ["buddy_spiral", "Spiral Mountain"],
   ["demon_dojo", "Mishima Dojo"],
   ["dk_jungle", "Bramble Blast"],
   ["dk_lodge", "Jungle Japes"],
   ["dk_waterfall", "Kongo Falls"],
+  ["dolly_stadium", "King of Fighters Stadium"],
   ["dracula_castle", "Dracula's Castle"],
   ["duckhunt", "Duck Hunt"],
   ["end", "bossstage_final1"],
@@ -503,6 +505,7 @@ const LVD_NAME_MAP: Map<string, string> = new Map<string, string>([
   ["wiifit", "Wii Fit Studio"],
   ["wreckingcrew", "Realm of GameCube"],
   ["wufuisland", "Wuhu Island"],
+  ["xeno_alst", "Cloud Sea of Alrest"],
   ["xeno_gaur", "Gaur Plain"],
   ["yoshi_cartboard", "Yoshi's Story"],
   ["yoshi_island", "Yoshi's Island"],
@@ -549,12 +552,15 @@ const LVD_BLACKLIST = [
   "bonusgame/normal/param/bonus_game_03.yml",
 
   "bossstage_dracula/normal/param/bossstage_dracula00.yml",
+  "bossstage_final3/normal/param/bossstage_final3_00.yml",
   "bossstage_galleom/normal/param/bossstage_galleom00.yml",
   "bossstage_ganonboss/normal/param/bossstage_ganonboss00.yml",
   "bossstage_marx/normal/param/bossstage_marx00.yml",
   "bossstage_rathalos/normal/param/bossstage_rathalos00.yml",
 
   "campaignmap/normal/param/blank_00.yml",
+
+  "end/normal/param/end_00.yml",
 
   "fe_shrine/normal/param/fe_shrine_01.yml",
   "fe_shrine/normal/param/fe_shrine_02.yml",
@@ -648,6 +654,8 @@ const LVD_BLACKLIST = [
   "resultstage_jack/normal/param/blank_00.yml",
 
   "settingstage/normal/param/settingstage.yml",
+
+  "shamfight/normal/param/battlefield_00.yml",
 
   "spiritsroulette/normal/param/spiritsroulette.yml",
 
