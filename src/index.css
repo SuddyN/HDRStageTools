@@ -154,4 +154,5 @@ svg.p-icon {
 .p-selectbutton .p-button {
   padding: 0.25rem 1.25rem;
   text-align: center;
+  width: 100%;
 }
