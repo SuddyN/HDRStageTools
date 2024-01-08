@@ -309,22 +309,14 @@ export default class App extends React.Component<AppProps, AppState> {
         { label: "Blastzone Bottom", value: "Blastzone Bottom" },
         { label: "Blastzone Width", value: "Blastzone Width" },
         { label: "Blastzone Height", value: "Blastzone Height" },
-        //   {
-        //     label: "Stage to Blastzone Left (min)",
-        //     value: "Stage to Blastzone Left (min)",
-        //   },
-        //   {
-        //     label: "Stage to Blastzone Left (max)",
-        //     value: "Stage to Blastzone Left (max)",
-        //   },
-        //   {
-        //     label: "Stage to Blastzone Right (min)",
-        //     value: "Stage to Blastzone Right (min)",
-        //   },
-        //   {
-        //     label: "Stage to Blastzone Right (max)",
-        //     value: "Stage to Blastzone Right (max)",
-        //   },
+        {
+          label: "Stage to Blastzone Left",
+          value: "Stage to Blastzone Left",
+        },
+        {
+          label: "Stage to Blastzone Right",
+          value: "Stage to Blastzone Right",
+        },
         //   {
         //     label: "Platform to Blastzone Top (min)",
         //     value: "Platform to Blastzone Top (min)",
@@ -384,6 +376,16 @@ export default class App extends React.Component<AppProps, AppState> {
         stageSubtitle += (
           lvd.blast_zone[0]?.top - lvd.blast_zone[0]?.bottom
         ).toFixed(0);
+        break;
+      case "Stage to Blastzone Left":
+        stageSubtitle += (
+          lvd.lvdStats.stageMinX - lvd.blast_zone[0].left
+        ).toFixed(1);
+        break;
+      case "Stage to Blastzone Right":
+        stageSubtitle += (
+          lvd.blast_zone[0].right - lvd.lvdStats.stageMaxX
+        ).toFixed(1);
         break;
       default:
         stageSubtitle = "";
@@ -507,6 +509,38 @@ export default class App extends React.Component<AppProps, AppState> {
     return (aNum - bNum) * mul;
   };
 
+  stageToBlastzoneLeftCompareFn = (a: LvdStats, b: LvdStats): number => {
+    const { lvdMap, selectedSortDir } = this.state;
+    const mul = selectedSortDir == "Ascending" ? 1 : -1;
+    const aLvd = lvdMap.get(a.name);
+    const bLvd = lvdMap.get(b.name);
+    if (!aLvd?.blast_zone[0] || !aLvd.lvdStats) {
+      return -1 * mul;
+    }
+    if (!bLvd?.blast_zone[0] || !bLvd.lvdStats) {
+      return 1 * mul;
+    }
+    const aNum = aLvd.lvdStats.stageMinX - aLvd.blast_zone[0].left;
+    const bNum = bLvd.lvdStats.stageMinX - bLvd.blast_zone[0].left;
+    return (aNum - bNum) * mul;
+  };
+
+  stageToBlastzoneRightCompareFn = (a: LvdStats, b: LvdStats): number => {
+    const { lvdMap, selectedSortDir } = this.state;
+    const mul = selectedSortDir == "Ascending" ? 1 : -1;
+    const aLvd = lvdMap.get(a.name);
+    const bLvd = lvdMap.get(b.name);
+    if (!aLvd?.blast_zone[0] || !aLvd.lvdStats) {
+      return -1 * mul;
+    }
+    if (!bLvd?.blast_zone[0] || !bLvd.lvdStats) {
+      return 1 * mul;
+    }
+    const aNum = aLvd.blast_zone[0].right - aLvd.lvdStats.stageMaxX;
+    const bNum = bLvd.blast_zone[0].right - bLvd.lvdStats.stageMaxX;
+    return (aNum - bNum) * mul;
+  };
+
   lvdSorter = (): string[] => {
     const { lvdMap, selectedSort } = this.state;
     let lvdStatsArray = Array.from(lvdMap.entries()).flatMap((entry) => {
@@ -548,6 +582,12 @@ export default class App extends React.Component<AppProps, AppState> {
         break;
       case "Blastzone Height":
         compareFn = this.blastzoneHeightCompareFn;
+        break;
+      case "Stage to Blastzone Left":
+        compareFn = this.stageToBlastzoneLeftCompareFn;
+        break;
+      case "Stage to Blastzone Right":
+        compareFn = this.stageToBlastzoneRightCompareFn;
         break;
       default:
         compareFn = this.nameCompareFn;
