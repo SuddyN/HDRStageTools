@@ -5,9 +5,7 @@ import { lvdService } from "../../Services/LvdService";
 import { Boundary, Collision, Lvd, LvdStats, Vec2 } from "../../Types";
 import { Checkbox } from "primereact/checkbox";
 import { ListBox } from "primereact/listbox";
-import LvdTable from "../LvdTable";
 import { Dropdown } from "primereact/dropdown";
-import { ToggleButton } from "primereact/togglebutton";
 import { SelectButton } from "primereact/selectbutton";
 
 interface AppProps {}
@@ -89,6 +87,35 @@ export default class App extends React.Component<AppProps, AppState> {
   }
 
   recommendedFilterFunc = (name: string): boolean => {
+    if (
+      [
+        "Hollow Bastion",
+        "Garreg Mach Monastery",
+        "Battlefield",
+        "Smashville",
+        "Bramble Blast",
+        "3D Land",
+        "Lylat Cruise",
+        "Realm of GameCube",
+        "Sky Sanctuary Zone",
+
+        "trail_castle",
+        "fe_shrine",
+        "battlefield",
+        "animal_village",
+        "dk_jungle",
+        "mario_3dland",
+        "fox_lylatcruise",
+        "wreckingcrew",
+        "sonic_greenhill",
+      ].includes(name)
+    ) {
+      return true;
+    }
+    return false;
+  };
+
+  gigaton2FilterFunc = (name: string): boolean => {
     if (
       [
         "Hollow Bastion",
@@ -224,7 +251,7 @@ export default class App extends React.Component<AppProps, AppState> {
                   filterFunc = this.recommendedFilterFunc;
                   break;
                 case "Gigaton Hammer 2":
-                  filterFunc = this.recommendedFilterFunc;
+                  filterFunc = this.gigaton2FilterFunc;
                   break;
                 default:
                   break;
@@ -280,8 +307,8 @@ export default class App extends React.Component<AppProps, AppState> {
         { label: "Blastzone Right", value: "Blastzone Right" },
         { label: "Blastzone Top", value: "Blastzone Top" },
         { label: "Blastzone Bottom", value: "Blastzone Bottom" },
-        //   { label: "Blastzone Width", value: "Blastzone Width" },
-        //   { label: "Blastzone Height", value: "Blastzone Height" },
+        { label: "Blastzone Width", value: "Blastzone Width" },
+        { label: "Blastzone Height", value: "Blastzone Height" },
         //   {
         //     label: "Stage to Blastzone Left (min)",
         //     value: "Stage to Blastzone Left (min)",
@@ -328,7 +355,7 @@ export default class App extends React.Component<AppProps, AppState> {
       return stageName;
     }
     const { lvdStats: stats } = lvd;
-    var stageSubtitle = ": ";
+    let stageSubtitle = ": ";
     switch (this.state.selectedSort) {
       case "Platform Count":
         stageSubtitle += stats.platNum.toFixed(0);
@@ -348,6 +375,16 @@ export default class App extends React.Component<AppProps, AppState> {
       case "Blastzone Bottom":
         stageSubtitle += (lvd.blast_zone[0]?.bottom * -1).toFixed(0);
         break;
+      case "Blastzone Width":
+        stageSubtitle += (
+          lvd.blast_zone[0]?.right - lvd.blast_zone[0]?.left
+        ).toFixed(0);
+        break;
+      case "Blastzone Height":
+        stageSubtitle += (
+          lvd.blast_zone[0]?.top - lvd.blast_zone[0]?.bottom
+        ).toFixed(0);
+        break;
       default:
         stageSubtitle = "";
         break;
@@ -361,9 +398,118 @@ export default class App extends React.Component<AppProps, AppState> {
     );
   };
 
+  // define sort functions
+  nameCompareFn = (a: LvdStats, b: LvdStats): number => {
+    const { selectedSortDir } = this.state;
+    const mul = selectedSortDir == "Ascending" ? 1 : -1;
+    if (a.name < b.name) return -1 * mul;
+    else if (a.name > b.name) return 1 * mul;
+    return 0;
+  };
+
+  platNumCompareFn = (a: LvdStats, b: LvdStats): number => {
+    const { selectedSortDir } = this.state;
+    const mul = selectedSortDir == "Ascending" ? 1 : -1;
+    return (a.platNum - b.platNum) * mul;
+  };
+
+  stageWidthCompareFn = (a: LvdStats, b: LvdStats): number => {
+    const { selectedSortDir } = this.state;
+    const mul = selectedSortDir == "Ascending" ? 1 : -1;
+    return (a.stageWidth - b.stageWidth) * mul;
+  };
+
+  blastzoneLeftCompareFn = (a: LvdStats, b: LvdStats): number => {
+    const { lvdMap, selectedSortDir } = this.state;
+    const mul = selectedSortDir == "Ascending" ? 1 : -1;
+    const aBlstZone = lvdMap.get(a.name)?.blast_zone[0];
+    const bBlstZone = lvdMap.get(b.name)?.blast_zone[0];
+    if (!aBlstZone) {
+      return -1 * mul;
+    }
+    if (!bBlstZone) {
+      return 1 * mul;
+    }
+    return (bBlstZone.left - aBlstZone.left) * mul;
+  };
+
+  blastzoneRightCompareFn = (a: LvdStats, b: LvdStats): number => {
+    const { lvdMap, selectedSortDir } = this.state;
+    const mul = selectedSortDir == "Ascending" ? 1 : -1;
+    const aBlstZone = lvdMap.get(a.name)?.blast_zone[0];
+    const bBlstZone = lvdMap.get(b.name)?.blast_zone[0];
+    if (!aBlstZone) {
+      return -1 * mul;
+    }
+    if (!bBlstZone) {
+      return 1 * mul;
+    }
+    return (aBlstZone.right - bBlstZone.right) * mul;
+  };
+
+  blastzoneTopCompareFn = (a: LvdStats, b: LvdStats): number => {
+    const { lvdMap, selectedSortDir } = this.state;
+    const mul = selectedSortDir == "Ascending" ? 1 : -1;
+    const aBlstZone = lvdMap.get(a.name)?.blast_zone[0];
+    const bBlstZone = lvdMap.get(b.name)?.blast_zone[0];
+    if (!aBlstZone) {
+      return -1 * mul;
+    }
+    if (!bBlstZone) {
+      return 1 * mul;
+    }
+    return (aBlstZone.top - bBlstZone.top) * mul;
+  };
+
+  blastzoneBottomCompareFn = (a: LvdStats, b: LvdStats): number => {
+    const { lvdMap, selectedSortDir } = this.state;
+    const mul = selectedSortDir == "Ascending" ? 1 : -1;
+    const aBlstZone = lvdMap.get(a.name)?.blast_zone[0];
+    const bBlstZone = lvdMap.get(b.name)?.blast_zone[0];
+    if (!aBlstZone) {
+      return -1 * mul;
+    }
+    if (!bBlstZone) {
+      return 1 * mul;
+    }
+    return (bBlstZone.bottom - aBlstZone.bottom) * mul;
+  };
+
+  blastzoneWidthCompareFn = (a: LvdStats, b: LvdStats): number => {
+    const { lvdMap, selectedSortDir } = this.state;
+    const mul = selectedSortDir == "Ascending" ? 1 : -1;
+    const aBlstZone = lvdMap.get(a.name)?.blast_zone[0];
+    const bBlstZone = lvdMap.get(b.name)?.blast_zone[0];
+    if (!aBlstZone) {
+      return -1 * mul;
+    }
+    if (!bBlstZone) {
+      return 1 * mul;
+    }
+    const aNum = aBlstZone.right - aBlstZone.left;
+    const bNum = bBlstZone.right - bBlstZone.left;
+    return (aNum - bNum) * mul;
+  };
+
+  blastzoneHeightCompareFn = (a: LvdStats, b: LvdStats): number => {
+    const { lvdMap, selectedSortDir } = this.state;
+    const mul = selectedSortDir == "Ascending" ? 1 : -1;
+    const aBlstZone = lvdMap.get(a.name)?.blast_zone[0];
+    const bBlstZone = lvdMap.get(b.name)?.blast_zone[0];
+    if (!aBlstZone) {
+      return -1 * mul;
+    }
+    if (!bBlstZone) {
+      return 1 * mul;
+    }
+    const aNum = aBlstZone.top - aBlstZone.bottom;
+    const bNum = bBlstZone.top - bBlstZone.bottom;
+    return (aNum - bNum) * mul;
+  };
+
   lvdSorter = (): string[] => {
-    const { lvdMap, selectedSort, selectedSortDir } = this.state;
-    var lvdStatsArray = Array.from(lvdMap.entries()).flatMap((entry) => {
+    const { lvdMap, selectedSort } = this.state;
+    let lvdStatsArray = Array.from(lvdMap.entries()).flatMap((entry) => {
       if (!entry[1].lvdStats) {
         return [];
       }
@@ -373,102 +519,38 @@ export default class App extends React.Component<AppProps, AppState> {
       return [entry[1].lvdStats];
     });
 
-    // define sort functions
-    const nameCompareFn = (a: LvdStats, b: LvdStats): number => {
-      const mul = selectedSortDir == "Ascending" ? 1 : -1;
-      if (a.name < b.name) return -1 * mul;
-      else if (a.name > b.name) return 1 * mul;
-      return 0;
-    };
-
-    const platNumCompareFn = (a: LvdStats, b: LvdStats): number => {
-      const mul = selectedSortDir == "Ascending" ? 1 : -1;
-      return (a.platNum - b.platNum) * mul;
-    };
-
-    const stageWidthCompareFn = (a: LvdStats, b: LvdStats): number => {
-      const mul = selectedSortDir == "Ascending" ? 1 : -1;
-      return (a.stageWidth - b.stageWidth) * mul;
-    };
-
-    const blastzoneLeftCompareFn = (a: LvdStats, b: LvdStats): number => {
-      const mul = selectedSortDir == "Ascending" ? 1 : -1;
-      const aBlstZone = lvdMap.get(a.name)?.blast_zone[0];
-      const bBlstZone = lvdMap.get(b.name)?.blast_zone[0];
-      if (!aBlstZone) {
-        return -1 * mul;
-      }
-      if (!bBlstZone) {
-        return 1 * mul;
-      }
-      return (bBlstZone.left - aBlstZone.left) * mul;
-    };
-
-    const blastzoneRightCompareFn = (a: LvdStats, b: LvdStats): number => {
-      const mul = selectedSortDir == "Ascending" ? 1 : -1;
-      const aBlstZone = lvdMap.get(a.name)?.blast_zone[0];
-      const bBlstZone = lvdMap.get(b.name)?.blast_zone[0];
-      if (!aBlstZone) {
-        return -1 * mul;
-      }
-      if (!bBlstZone) {
-        return 1 * mul;
-      }
-      return (aBlstZone.right - bBlstZone.right) * mul;
-    };
-
-    const blastzoneTopCompareFn = (a: LvdStats, b: LvdStats): number => {
-      const mul = selectedSortDir == "Ascending" ? 1 : -1;
-      const aBlstZone = lvdMap.get(a.name)?.blast_zone[0];
-      const bBlstZone = lvdMap.get(b.name)?.blast_zone[0];
-      if (!aBlstZone) {
-        return -1 * mul;
-      }
-      if (!bBlstZone) {
-        return 1 * mul;
-      }
-      return (aBlstZone.top - bBlstZone.top) * mul;
-    };
-
-    const blastzoneBottomCompareFn = (a: LvdStats, b: LvdStats): number => {
-      const mul = selectedSortDir == "Ascending" ? 1 : -1;
-      const aBlstZone = lvdMap.get(a.name)?.blast_zone[0];
-      const bBlstZone = lvdMap.get(b.name)?.blast_zone[0];
-      if (!aBlstZone) {
-        return -1 * mul;
-      }
-      if (!bBlstZone) {
-        return 1 * mul;
-      }
-      return (bBlstZone.bottom - aBlstZone.bottom) * mul;
-    };
-
     // initial sort
-    var compareFn = nameCompareFn;
+    let compareFn = this.nameCompareFn;
     lvdStatsArray = lvdStatsArray.sort(compareFn);
 
     // select the correct sort
     switch (selectedSort) {
       case "Platform Count":
-        compareFn = platNumCompareFn;
+        compareFn = this.platNumCompareFn;
         break;
       case "Stage Width":
-        compareFn = stageWidthCompareFn;
+        compareFn = this.stageWidthCompareFn;
         break;
       case "Blastzone Left":
-        compareFn = blastzoneLeftCompareFn;
+        compareFn = this.blastzoneLeftCompareFn;
         break;
       case "Blastzone Right":
-        compareFn = blastzoneRightCompareFn;
+        compareFn = this.blastzoneRightCompareFn;
         break;
       case "Blastzone Top":
-        compareFn = blastzoneTopCompareFn;
+        compareFn = this.blastzoneTopCompareFn;
         break;
       case "Blastzone Bottom":
-        compareFn = blastzoneBottomCompareFn;
+        compareFn = this.blastzoneBottomCompareFn;
+        break;
+      case "Blastzone Width":
+        compareFn = this.blastzoneWidthCompareFn;
+        break;
+      case "Blastzone Height":
+        compareFn = this.blastzoneHeightCompareFn;
         break;
       default:
-        compareFn = nameCompareFn;
+        compareFn = this.nameCompareFn;
         break;
     }
 
@@ -518,7 +600,7 @@ export default class App extends React.Component<AppProps, AppState> {
       this.canvas.height
     );
 
-    var hueIndex = 0;
+    let hueIndex = 0;
     this.state.lvdMap.forEach((name, lvd) => {
       if (!this.state.selectedStages.includes(lvd)) {
         return;
