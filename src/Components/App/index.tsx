@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import logo from "../../logo.svg";
 import "./App.css";
 import { lvdService } from "../../Services/LvdService";
-import { Boundary, Collision, Lvd, LvdStats, Vec2 } from "../../Types";
+import { Boundary, Collision, Lvd, LvdStats } from "../../Types";
 import { Checkbox } from "primereact/checkbox";
 import { ListBox } from "primereact/listbox";
 import { Dropdown } from "primereact/dropdown";
@@ -145,7 +145,7 @@ export default class App extends React.Component<AppProps, AppState> {
   };
 
   render() {
-    const { lvdMap, lvdSource } = this.state;
+    const { lvdSource } = this.state;
 
     if (this.state.loading) {
       return (
@@ -317,14 +317,14 @@ export default class App extends React.Component<AppProps, AppState> {
           label: "Stage to Blastzone Right",
           value: "Stage to Blastzone Right",
         },
-        //   {
-        //     label: "Platform to Blastzone Top (min)",
-        //     value: "Platform to Blastzone Top (min)",
-        //   },
-        //   {
-        //     label: "Platform to Blastzone Top (max)",
-        //     value: "Platform to Blastzone Top (max)",
-        //   },
+        {
+          label: "Platform to Blastzone Top (min)",
+          value: "Platform to Blastzone Top (min)",
+        },
+        {
+          label: "Platform to Blastzone Top (max)",
+          value: "Platform to Blastzone Top (max)",
+        },
       ],
     },
     // {
@@ -343,7 +343,7 @@ export default class App extends React.Component<AppProps, AppState> {
   stageListTemplate = (selectedStage: string): ReactNode => {
     const stageName = selectedStage;
     const lvd = this.state.lvdMap.get(selectedStage);
-    if (!lvd || !lvd.lvdStats) {
+    if (!lvd?.lvdStats) {
       return stageName;
     }
     const { lvdStats: stats } = lvd;
@@ -385,6 +385,16 @@ export default class App extends React.Component<AppProps, AppState> {
       case "Stage to Blastzone Right":
         stageSubtitle += (
           lvd.blast_zone[0].right - lvd.lvdStats.stageMaxX
+        ).toFixed(1);
+        break;
+      case "Platform to Blastzone Top (min)":
+        stageSubtitle += (
+          lvd.blast_zone[0].top - lvd.lvdStats.platMaxY
+        ).toFixed(1);
+        break;
+      case "Platform to Blastzone Top (max)":
+        stageSubtitle += (
+          lvd.blast_zone[0].top - lvd.lvdStats.platMinY
         ).toFixed(1);
         break;
       default:
@@ -541,6 +551,38 @@ export default class App extends React.Component<AppProps, AppState> {
     return (aNum - bNum) * mul;
   };
 
+  platformToBlastzoneTopMinCompareFn = (a: LvdStats, b: LvdStats): number => {
+    const { lvdMap, selectedSortDir } = this.state;
+    const mul = selectedSortDir == "Ascending" ? 1 : -1;
+    const aLvd = lvdMap.get(a.name);
+    const bLvd = lvdMap.get(b.name);
+    if (!aLvd?.blast_zone[0] || !aLvd.lvdStats) {
+      return -1 * mul;
+    }
+    if (!bLvd?.blast_zone[0] || !bLvd.lvdStats) {
+      return 1 * mul;
+    }
+    const aNum = aLvd.blast_zone[0].top - aLvd.lvdStats.platMaxY;
+    const bNum = bLvd.blast_zone[0].top - bLvd.lvdStats.platMaxY;
+    return (aNum - bNum) * mul;
+  };
+
+  platformToBlastzoneTopMaxCompareFn = (a: LvdStats, b: LvdStats): number => {
+    const { lvdMap, selectedSortDir } = this.state;
+    const mul = selectedSortDir == "Ascending" ? 1 : -1;
+    const aLvd = lvdMap.get(a.name);
+    const bLvd = lvdMap.get(b.name);
+    if (!aLvd?.blast_zone[0] || !aLvd.lvdStats) {
+      return -1 * mul;
+    }
+    if (!bLvd?.blast_zone[0] || !bLvd.lvdStats) {
+      return 1 * mul;
+    }
+    const aNum = aLvd.blast_zone[0].top - aLvd.lvdStats.platMinY;
+    const bNum = bLvd.blast_zone[0].top - bLvd.lvdStats.platMinY;
+    return (aNum - bNum) * mul;
+  };
+
   lvdSorter = (): string[] => {
     const { lvdMap, selectedSort } = this.state;
     let lvdStatsArray = Array.from(lvdMap.entries()).flatMap((entry) => {
@@ -588,6 +630,12 @@ export default class App extends React.Component<AppProps, AppState> {
         break;
       case "Stage to Blastzone Right":
         compareFn = this.stageToBlastzoneRightCompareFn;
+        break;
+      case "Platform to Blastzone Top (min)":
+        compareFn = this.platformToBlastzoneTopMinCompareFn;
+        break;
+      case "Platform to Blastzone Top (max)":
+        compareFn = this.platformToBlastzoneTopMaxCompareFn;
         break;
       default:
         compareFn = this.nameCompareFn;
@@ -719,7 +767,7 @@ export default class App extends React.Component<AppProps, AppState> {
       (path[0].x + collision.entry.start_pos.x) * zoom,
       (path[0].y + collision.entry.start_pos.y) * zoom
     );
-    for (var i = 1; i < path.length; i++) {
+    for (let i = 1; i < path.length; i++) {
       ctx.lineTo(
         (path[i].x + collision.entry.start_pos.x) * zoom,
         (path[i].y + collision.entry.start_pos.y) * zoom
