@@ -327,17 +327,17 @@ export default class App extends React.Component<AppProps, AppState> {
         },
       ],
     },
-    // {
-    //   label: "Platforms",
-    //   items: [
-    //     { label: "Platform Length (min)", value: "Platform Length (min)" },
-    //     { label: "Platform Length (max)", value: "Platform Length (max)" },
-    //     { label: "Platform Height (min)", value: "Platform Height (min)" },
-    //     { label: "Platform Height (max)", value: "Platform Height (max)" },
-    //     { label: "Platform Width Span", value: "Platform Width Span" },
-    //     { label: "Platform Height Span", value: "Platform Height Span" },
-    //   ],
-    // },
+    {
+      label: "Platforms",
+      items: [
+        //     { label: "Platform Length (min)", value: "Platform Length (min)" },
+        //     { label: "Platform Length (max)", value: "Platform Length (max)" },
+        //     { label: "Platform Height (min)", value: "Platform Height (min)" },
+        //     { label: "Platform Height (max)", value: "Platform Height (max)" },
+        { label: "Platform Width Span", value: "Platform Width Span" },
+        { label: "Platform Height Span", value: "Platform Height Span" },
+      ],
+    },
   ];
 
   stageListTemplate = (selectedStage: string): ReactNode => {
@@ -397,10 +397,23 @@ export default class App extends React.Component<AppProps, AppState> {
           lvd.blast_zone[0].top - lvd.lvdStats.platMinY
         ).toFixed(1);
         break;
+      case "Platform Width Span":
+        stageSubtitle += (
+          lvd.lvdStats.platMaxX - lvd.lvdStats.platMinX
+        ).toFixed(1);
+        break;
+      case "Platform Height Span":
+        stageSubtitle += (
+          lvd.lvdStats.platMaxY - lvd.lvdStats.platMinY
+        ).toFixed(1);
+        break;
       default:
         stageSubtitle = "";
         break;
     }
+    stageSubtitle = stageSubtitle
+      .replace("-Infinity", "N/A")
+      .replace("Infinity", "N/A");
 
     return (
       <>
@@ -583,6 +596,38 @@ export default class App extends React.Component<AppProps, AppState> {
     return (aNum - bNum) * mul;
   };
 
+  platformWidthSpanCompareFn = (a: LvdStats, b: LvdStats): number => {
+    const { lvdMap, selectedSortDir } = this.state;
+    const mul = selectedSortDir == "Ascending" ? 1 : -1;
+    const aLvd = lvdMap.get(a.name);
+    const bLvd = lvdMap.get(b.name);
+    if (!aLvd?.lvdStats) {
+      return -1 * mul;
+    }
+    if (!bLvd?.lvdStats) {
+      return 1 * mul;
+    }
+    const aNum = aLvd.lvdStats.platMaxX - aLvd.lvdStats.platMinX;
+    const bNum = bLvd.lvdStats.platMaxX - bLvd.lvdStats.platMinX;
+    return (aNum - bNum) * mul;
+  };
+
+  platformHeightSpanCompareFn = (a: LvdStats, b: LvdStats): number => {
+    const { lvdMap, selectedSortDir } = this.state;
+    const mul = selectedSortDir == "Ascending" ? 1 : -1;
+    const aLvd = lvdMap.get(a.name);
+    const bLvd = lvdMap.get(b.name);
+    if (!aLvd?.lvdStats) {
+      return -1 * mul;
+    }
+    if (!bLvd?.lvdStats) {
+      return 1 * mul;
+    }
+    const aNum = aLvd.lvdStats.platMaxY - aLvd.lvdStats.platMinY;
+    const bNum = bLvd.lvdStats.platMaxY - bLvd.lvdStats.platMinY;
+    return (aNum - bNum) * mul;
+  };
+
   lvdSorter = (): string[] => {
     const { lvdMap, selectedSort } = this.state;
     let lvdStatsArray = Array.from(lvdMap.entries()).flatMap((entry) => {
@@ -636,6 +681,12 @@ export default class App extends React.Component<AppProps, AppState> {
         break;
       case "Platform to Blastzone Top (max)":
         compareFn = this.platformToBlastzoneTopMaxCompareFn;
+        break;
+      case "Platform Width Span":
+        compareFn = this.platformWidthSpanCompareFn;
+        break;
+      case "Platform Height Span":
+        compareFn = this.platformHeightSpanCompareFn;
         break;
       default:
         compareFn = this.nameCompareFn;
