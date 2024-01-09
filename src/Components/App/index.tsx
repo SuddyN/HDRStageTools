@@ -52,8 +52,8 @@ export default class App extends React.Component<AppProps, AppState> {
       drawShrunkenCameras: false,
       drawShrunkenBlastZones: false,
       showStats: false,
-      selectedFilter: "Suggested Stages",
-      selectedFilterFunc: this.recommendedFilterFunc,
+      selectedFilter: "Legal Stages",
+      selectedFilterFunc: this.legalFilterFunc,
       selectedStages: ["Battlefield"],
       selectedSort: "Name",
       selectedSortDir: "Ascending",
@@ -86,28 +86,71 @@ export default class App extends React.Component<AppProps, AppState> {
     this.draw();
   }
 
-  recommendedFilterFunc = (name: string): boolean => {
+  legalFilterFunc = (name: string): boolean => {
     if (
       [
-        "Hollow Bastion",
-        "Garreg Mach Monastery",
-        "Battlefield",
-        "Smashville",
-        "Bramble Blast",
         "3D Land",
+        "Arena Ferox",
+        "Battlefield",
+        "Bowser's Castle",
+        "Bramble Blast",
+        "Brinstar Depths",
+        "Duel Battlefield",
+        "Final Destination",
+        "Fountain of Dreams",
+        "Fourside",
+        "Frigate Orpheon",
+        "Ganon's Tower",
+        "Garreg Mach Monastery",
+        "Green Greens",
+        "Hollow Bastion",
+        "Kalos Pokemon League",
+        "Kongo Falls",
         "Lylat Cruise",
+        "Mario Galaxy",
+        "Moray Towers",
+        "Northern Cave",
+        "Palutena's Temple",
+        "Paper Mario",
+        "Pokemon Stadium 3",
         "Realm of GameCube",
         "Sky Sanctuary Zone",
+        "Skyworld",
+        "Smashville",
+        "Spear Pillar",
+        "Town & City",
+        "Unova Pokemon League",
+        "Venom",
+        "World 1-2",
+        "Yggdrasil's Altar (Part 2)",
+        "Yoshi's Story",
+      ].includes(name)
+    ) {
+      return true;
+    }
+    return false;
+  };
 
-        "trail_castle",
-        "fe_shrine",
-        "battlefield",
-        "animal_village",
-        "dk_jungle",
-        "mario_3dland",
-        "fox_lylatcruise",
-        "wreckingcrew",
-        "sonic_greenhill",
+  supportedFilterFunc = (name: string): boolean => {
+    if (this.legalFilterFunc(name)) {
+      return true;
+    }
+    if (
+      [
+        "Boxing Ring",
+        "Brinstar Depths",
+        "Deadline",
+        "Dream Land",
+        "Find Mii",
+        "Gerudo Valley",
+        "Hyrule Castle",
+        "Luigi's Mansion",
+        "Midgar",
+        "Mishima Dojo",
+        "New Pork City",
+        "Pokemon Stadium",
+        "Snake Train Chamber (Part 2)",
+        "Tomodachi Life",
       ].includes(name)
     ) {
       return true;
@@ -127,16 +170,6 @@ export default class App extends React.Component<AppProps, AppState> {
         "Lylat Cruise",
         "Realm of GameCube",
         "Sky Sanctuary Zone",
-
-        "trail_castle",
-        "fe_shrine",
-        "battlefield",
-        "animal_village",
-        "dk_jungle",
-        "mario_3dland",
-        "fox_lylatcruise",
-        "wreckingcrew",
-        "sonic_greenhill",
       ].includes(name)
     ) {
       return true;
@@ -215,8 +248,9 @@ export default class App extends React.Component<AppProps, AppState> {
               </div>
               <div className="sidebar-item">
                 <Checkbox
-                  checked={this.state.debug}
+                  checked={false}
                   onChange={(e) => {
+                    return; // TODO: support this!s
                     this.setState({ loading: true }, async () => {
                       this.setState({
                         debug: e.checked ?? false,
@@ -238,7 +272,12 @@ export default class App extends React.Component<AppProps, AppState> {
           <Dropdown
             className="listbox-sorter"
             value={this.state.selectedFilter}
-            options={["All Stages", "Suggested Stages", "Gigaton Hammer 2"]}
+            options={[
+              "All Stages",
+              "Legal Stages",
+              "Supported Stages",
+              "Gigaton Hammer 2",
+            ]}
             onChange={(e) => {
               let filterFunc = this.state.selectedFilterFunc;
               switch (e.value) {
@@ -247,8 +286,11 @@ export default class App extends React.Component<AppProps, AppState> {
                     return true;
                   };
                   break;
-                case "Suggested Stages":
-                  filterFunc = this.recommendedFilterFunc;
+                case "Legal Stages":
+                  filterFunc = this.legalFilterFunc;
+                  break;
+                case "Supported Stages":
+                  filterFunc = this.supportedFilterFunc;
                   break;
                 case "Gigaton Hammer 2":
                   filterFunc = this.gigaton2FilterFunc;

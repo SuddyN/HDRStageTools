@@ -4,10 +4,6 @@ import * as lodash from "lodash";
 import { Lvd, LvdStats, Vec2 } from "../Types";
 import { platform } from "os";
 
-export const lvdService = {
-  initLvdFromUrl,
-};
-
 async function initLvdFromUrl(
   url: string,
   debug?: boolean
@@ -704,3 +700,8 @@ const LVD_BLACKLIST = [
   "zelda_skyward/normal/param/skyward13.yml",
   "zelda_skyward/normal/param/skyward14.yml",
 ];
+
+export const lvdService = {
+  initLvdFromUrl,
+  LVD_NAME_MAP,
+};
