@@ -295,9 +295,21 @@ export default class App extends React.Component<AppProps, AppState> {
       label: "General",
       items: [
         { label: "Name", value: "Name" },
-        { label: "Platform Count", value: "Platform Count" },
         { label: "Stage Width", value: "Stage Width" },
         // { label: "Stage+Plat Width", value: "Stage+Plat Width" },
+      ],
+    },
+    {
+      label: "Platforms",
+      items: [
+        //     { label: "Platform Length (min)", value: "Platform Length (min)" },
+        //     { label: "Platform Length (max)", value: "Platform Length (max)" },
+        //     { label: "Platform Height (min)", value: "Platform Height (min)" },
+        //     { label: "Platform Height (max)", value: "Platform Height (max)" },
+        { label: "Platform Count", value: "Platform Count" },
+        { label: "Platform Height", value: "Platform Height" },
+        { label: "Platform Height Span", value: "Platform Height Span" },
+        { label: "Platform Width Span", value: "Platform Width Span" },
       ],
     },
     {
@@ -327,17 +339,6 @@ export default class App extends React.Component<AppProps, AppState> {
         },
       ],
     },
-    {
-      label: "Platforms",
-      items: [
-        //     { label: "Platform Length (min)", value: "Platform Length (min)" },
-        //     { label: "Platform Length (max)", value: "Platform Length (max)" },
-        //     { label: "Platform Height (min)", value: "Platform Height (min)" },
-        //     { label: "Platform Height (max)", value: "Platform Height (max)" },
-        { label: "Platform Width Span", value: "Platform Width Span" },
-        { label: "Platform Height Span", value: "Platform Height Span" },
-      ],
-    },
   ];
 
   stageListTemplate = (selectedStage: string): ReactNode => {
@@ -354,7 +355,7 @@ export default class App extends React.Component<AppProps, AppState> {
       return stageName;
     }
     const { lvdStats: stats } = lvd;
-    let stageSubtitle = ": ";
+    let stageSubtitle = "";
     switch (this.state.selectedSort) {
       case "Platform Count":
         stageSubtitle += stats.platNum.toFixed(0);
@@ -404,18 +405,28 @@ export default class App extends React.Component<AppProps, AppState> {
           lvd.blast_zone[0].top - lvd.lvdStats.platMinY
         ).toFixed(1);
         break;
-      case "Platform Width Span":
-        stageSubtitle += (
-          lvd.lvdStats.platMaxX - lvd.lvdStats.platMinX
-        ).toFixed(1);
+      case "Platform Height":
+        let min = lvd.lvdStats.platMinY;
+        let max = lvd.lvdStats.platMaxY;
+        if (min.toFixed(1) == max.toFixed(1)) {
+          stageSubtitle += min.toFixed(1);
+        } else if (this.state.selectedSortDir == "Descending") {
+          stageSubtitle += `${max.toFixed(1)} (${min.toFixed(1)})`;
+        } else {
+          stageSubtitle += `${min.toFixed(1)} (${max.toFixed(1)})`;
+        }
         break;
       case "Platform Height Span":
         stageSubtitle += (
           lvd.lvdStats.platMaxY - lvd.lvdStats.platMinY
         ).toFixed(1);
         break;
+      case "Platform Width Span":
+        stageSubtitle += (
+          lvd.lvdStats.platMaxX - lvd.lvdStats.platMinX
+        ).toFixed(1);
+        break;
       default:
-        stageSubtitle = "";
         break;
     }
     stageSubtitle = stageSubtitle
@@ -423,10 +434,10 @@ export default class App extends React.Component<AppProps, AppState> {
       .replace("Infinity", "N/A");
 
     return (
-      <div style={{ color: hslaStr }}>
-        {stageName}
-        {stageSubtitle}
-      </div>
+      <>
+        <div style={{ color: hslaStr }}>{stageName}</div>
+        <div style={{ fontSize: "75%" }}>{stageSubtitle}</div>
+      </>
     );
   };
 
@@ -603,7 +614,7 @@ export default class App extends React.Component<AppProps, AppState> {
     return (aNum - bNum) * mul;
   };
 
-  platformWidthSpanCompareFn = (a: LvdStats, b: LvdStats): number => {
+  platformHeightCompareFn = (a: LvdStats, b: LvdStats): number => {
     const { lvdMap, selectedSortDir } = this.state;
     const mul = selectedSortDir == "Ascending" ? 1 : -1;
     const aLvd = lvdMap.get(a.name);
@@ -614,9 +625,11 @@ export default class App extends React.Component<AppProps, AppState> {
     if (!bLvd?.lvdStats) {
       return 1 * mul;
     }
-    const aNum = aLvd.lvdStats.platMaxX - aLvd.lvdStats.platMinX;
-    const bNum = bLvd.lvdStats.platMaxX - bLvd.lvdStats.platMinX;
-    return (aNum - bNum) * mul;
+    if (selectedSortDir == "Ascending") {
+      return aLvd.lvdStats.platMinY - bLvd.lvdStats.platMinY;
+    } else {
+      return bLvd.lvdStats.platMaxY - aLvd.lvdStats.platMaxY;
+    }
   };
 
   platformHeightSpanCompareFn = (a: LvdStats, b: LvdStats): number => {
@@ -632,6 +645,22 @@ export default class App extends React.Component<AppProps, AppState> {
     }
     const aNum = aLvd.lvdStats.platMaxY - aLvd.lvdStats.platMinY;
     const bNum = bLvd.lvdStats.platMaxY - bLvd.lvdStats.platMinY;
+    return (aNum - bNum) * mul;
+  };
+
+  platformWidthSpanCompareFn = (a: LvdStats, b: LvdStats): number => {
+    const { lvdMap, selectedSortDir } = this.state;
+    const mul = selectedSortDir == "Ascending" ? 1 : -1;
+    const aLvd = lvdMap.get(a.name);
+    const bLvd = lvdMap.get(b.name);
+    if (!aLvd?.lvdStats) {
+      return -1 * mul;
+    }
+    if (!bLvd?.lvdStats) {
+      return 1 * mul;
+    }
+    const aNum = aLvd.lvdStats.platMaxX - aLvd.lvdStats.platMinX;
+    const bNum = bLvd.lvdStats.platMaxX - bLvd.lvdStats.platMinX;
     return (aNum - bNum) * mul;
   };
 
@@ -689,11 +718,14 @@ export default class App extends React.Component<AppProps, AppState> {
       case "Platform to Blastzone Top (max)":
         compareFn = this.platformToBlastzoneTopMaxCompareFn;
         break;
-      case "Platform Width Span":
-        compareFn = this.platformWidthSpanCompareFn;
+      case "Platform Height":
+        compareFn = this.platformHeightCompareFn;
         break;
       case "Platform Height Span":
         compareFn = this.platformHeightSpanCompareFn;
+        break;
+      case "Platform Width Span":
+        compareFn = this.platformWidthSpanCompareFn;
         break;
       default:
         compareFn = this.nameCompareFn;
