@@ -65,6 +65,10 @@ code {
   text-align: end;
 }
 
+.p-listbox .p-listbox-list .p-listbox-item.p-highlight {
+  background: rgba(0, 0, 0, 0.25);
+}
+
 .p-inputtext {
   padding: 0.125rem;
   background: rgba(0, 0, 0, 0.75);
@@ -99,6 +103,9 @@ code {
 
 .p-selectbutton .p-button {
   background: rgba(24, 24, 24, 0.75);
+  padding: 0.25rem 1.25rem;
+  text-align: center;
+  width: 100%;
 }
 
 .p-selectbutton .p-button.p-highlight {
@@ -111,6 +118,11 @@ code {
 
 .p-dropdown-panel .p-dropdown-items .p-dropdown-item-group {
   background: rgba(64, 64, 64, 0.75);
+  padding: 0.5rem 0.25rem;
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+  padding: 0.125rem;
 }
 
 .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
@@ -130,7 +142,7 @@ code {
   white-space: nowrap;
   overflow: hidden;
   flex: 1 1 auto;
-  width: auto;
+  width: 0;
   text-overflow: ellipsis;
   cursor: pointer;
 }
@@ -149,10 +161,4 @@ svg.p-icon {
 
 .p-checkbox .p-checkbox-box.p-highlight {
   background: #2dd4bf;
-}
-
-.p-selectbutton .p-button {
-  padding: 0.25rem 1.25rem;
-  text-align: center;
-  width: 100%;
 }

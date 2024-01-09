@@ -341,6 +341,13 @@ export default class App extends React.Component<AppProps, AppState> {
   ];
 
   stageListTemplate = (selectedStage: string): ReactNode => {
+    const idx = this.state.selectedStages.findIndex(
+      (other) => selectedStage == other
+    );
+    const length = this.state.selectedStages.length;
+    const hue = (idx * 360) / length;
+    const hslaStr = idx >= 0 ? this.makeHslaFromHue(hue) : "#FFFFFF";
+
     const stageName = selectedStage;
     const lvd = this.state.lvdMap.get(selectedStage);
     if (!lvd?.lvdStats) {
@@ -416,10 +423,10 @@ export default class App extends React.Component<AppProps, AppState> {
       .replace("Infinity", "N/A");
 
     return (
-      <>
+      <div style={{ color: hslaStr }}>
         {stageName}
         {stageSubtitle}
-      </>
+      </div>
     );
   };
 
@@ -755,7 +762,7 @@ export default class App extends React.Component<AppProps, AppState> {
     hueIndex: number
   ) => {
     const length = this.state.selectedStages.length;
-    const hue = (hueIndex * 360) / length + (length < 3 ? 22 : 0);
+    const hue = (hueIndex * 360) / length;
 
     // draw blast_zones
     ctx.lineWidth = 4;
@@ -830,7 +837,7 @@ export default class App extends React.Component<AppProps, AppState> {
 
   makeHslaFromHue = (hue: number) => {
     const s = 100;
-    const l = 50;
+    const l = 66;
     const a = 1;
 
     return `hsla(${hue}, ${s}%, ${l}%, ${a})`;
