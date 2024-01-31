@@ -180,6 +180,7 @@ export default class KnockbackCalculator extends React.Component<
               );
             }}
             color={Theme.blue}
+            maxSamplingDepth={1}
           />
           <Plot.OfX
             y={(y) => {
@@ -200,6 +201,7 @@ export default class KnockbackCalculator extends React.Component<
               return Math.ceil(hitstun);
             }}
             color={Theme.yellow}
+            minSamplingDepth={10}
           />
           {/* <Plot.OfX
             y={(y) => {
