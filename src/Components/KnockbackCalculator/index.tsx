@@ -1,15 +1,16 @@
 import React, { ReactNode } from "react";
-import logo from "../../logo.svg";
-import "./App.css";
-import { lvdService } from "../../Services/LvdService";
-import { Boundary, Collision, Lvd, LvdStats } from "../../Types";
-import { Checkbox } from "primereact/checkbox";
-import { ListBox } from "primereact/listbox";
-import { Dropdown } from "primereact/dropdown";
-import { SelectButton } from "primereact/selectbutton";
+import "mafs/core.css";
+import "./KnockbackCalculator.css";
 import { attackService } from "../../Services/AttackService";
+import { Coordinates, Mafs, Plot, Theme, Text, Debug } from "mafs";
+import { InputNumber } from "primereact/inputnumber";
+import { Checkbox, CheckboxChangeEvent } from "primereact/checkbox";
 
-interface KnockbackCalculatorProps {}
+interface KnockbackCalculatorProps {
+  onToggle: (e: CheckboxChangeEvent) => void;
+  plotWidth: number;
+  plotHeight: number;
+}
 
 interface KnockbackCalculatorState {
   percent: number; // percentage of the target
@@ -43,17 +44,137 @@ export default class KnockbackCalculator extends React.Component<
   render() {
     let { percent, damage, weight, kbg, wdsk, bkb, croundCancel, smashCharge } =
       this.state;
-    let knockback = attackService.calculateKnockback(
-      percent,
-      damage,
-      weight,
-      kbg,
-      wdsk,
-      bkb,
-      croundCancel,
-      smashCharge
+    return (
+      <>
+        <div className="sidebar-left">
+          <div className="sidebar-item">
+            <Checkbox checked={true} onChange={this.props.onToggle} />
+            <label> Show Knockback Calculator? </label>
+          </div>
+          <div className="sidebar-item">
+            <InputNumber
+              value={weight}
+              onValueChange={(e) => this.setState({ weight: e.value ?? 0 })}
+              min={0}
+              max={999.9}
+              minFractionDigits={0}
+              maxFractionDigits={0}
+              mode="decimal"
+              showButtons
+            />
+            <label> Weight </label>
+          </div>
+          <div className="sidebar-item">
+            <InputNumber
+              value={damage}
+              onValueChange={(e) => this.setState({ damage: e.value ?? 0 })}
+              min={0}
+              max={999.9}
+              minFractionDigits={1}
+              maxFractionDigits={2}
+              mode="decimal"
+              showButtons
+            />
+            <label> Damage </label>
+          </div>
+          <div className="sidebar-item">
+            <InputNumber
+              value={kbg}
+              onValueChange={(e) => this.setState({ kbg: e.value ?? 0 })}
+              min={0}
+              max={999.9}
+              minFractionDigits={0}
+              maxFractionDigits={0}
+              mode="decimal"
+              showButtons
+            />
+            <label> Knockback Growth </label>
+          </div>
+          <div className="sidebar-item">
+            <InputNumber
+              value={wdsk}
+              onValueChange={(e) => this.setState({ wdsk: e.value ?? 0 })}
+              min={0}
+              max={999.9}
+              minFractionDigits={0}
+              maxFractionDigits={0}
+              mode="decimal"
+              showButtons
+            />
+            <label> Set Knockback </label>
+          </div>
+          <div className="sidebar-item">
+            <InputNumber
+              value={bkb}
+              onValueChange={(e) => this.setState({ bkb: e.value ?? 0 })}
+              min={0}
+              max={999.9}
+              minFractionDigits={0}
+              maxFractionDigits={0}
+              mode="decimal"
+              showButtons
+            />
+            <label> Base Knockback </label>
+          </div>
+        </div>
+        <Mafs
+          viewBox={{ x: [0, 300] }}
+          zoom
+          width={this.props.plotWidth}
+          height={this.props.plotHeight}
+        >
+          <Debug.ViewportInfo />
+          <Coordinates.Cartesian
+            xAxis={{ lines: 10 }}
+            yAxis={{
+              lines: 10,
+              labels: (n) =>
+                n == attackService.TUMBLE_THRESHOLD
+                  ? `${n} (Tumble Threshold)`
+                  : n,
+            }}
+            subdivisions={10}
+          />
+          <Plot.OfX
+            y={(y) => {
+              return attackService.calculateKnockback(
+                y,
+                damage,
+                weight,
+                kbg,
+                wdsk,
+                bkb,
+                croundCancel,
+                smashCharge
+              );
+            }}
+            color={Theme.blue}
+          />
+          <Plot.OfX
+            y={(y) => {
+              let knockback = attackService.calculateKnockback(
+                y,
+                damage,
+                weight,
+                kbg,
+                wdsk,
+                bkb,
+                croundCancel,
+                smashCharge
+              );
+              let hitstun = attackService.calculateHitstun(knockback);
+              return Math.ceil(hitstun);
+            }}
+            color={Theme.yellow}
+          />
+          {/* <Plot.OfX
+            y={(y) => {
+              return attackService.TUMBLE_THRESHOLD;
+            }}
+            color={Theme.pink}
+          /> */}
+        </Mafs>
+      </>
     );
-    let hitstun = attackService.calculateHitstun(knockback);
-    return <></>;
   }
 }

@@ -26,7 +26,7 @@ function calculateKnockback(
   let knockback = percent / 10 + (percent * damage) / 20;
   knockback *= (200 / (weight + 100)) * 1.4;
   knockback += 18;
-  knockback *= kbg;
+  knockback *= kbg / 100;
   knockback += bkb;
   knockback *= ratio;
   return knockback;

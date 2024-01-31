@@ -7,6 +7,7 @@ import { Checkbox } from "primereact/checkbox";
 import { ListBox } from "primereact/listbox";
 import { Dropdown } from "primereact/dropdown";
 import { SelectButton } from "primereact/selectbutton";
+import KnockbackCalculator from "../KnockbackCalculator";
 
 interface AppProps {}
 
@@ -22,12 +23,12 @@ interface AppState {
   drawPTrainerPlatforms: boolean;
   drawShrunkenCameras: boolean;
   drawShrunkenBlastZones: boolean;
-  showStats: boolean;
   selectedFilter: string;
   selectedFilterFunc: (name: string) => boolean;
   selectedStages: string[];
   selectedSort: string;
   selectedSortDir: string;
+  toggleKnockbackCalculator: boolean;
   loading: boolean;
   lvdMap: Map<string, Lvd>;
   lvdSource: string;
@@ -51,12 +52,12 @@ export default class App extends React.Component<AppProps, AppState> {
       drawPTrainerPlatforms: false,
       drawShrunkenCameras: false,
       drawShrunkenBlastZones: false,
-      showStats: false,
       selectedFilter: "Legal Stages",
       selectedFilterFunc: this.legalFilterFunc,
       selectedStages: ["Battlefield"],
       selectedSort: "Name",
       selectedSortDir: "Ascending",
+      toggleKnockbackCalculator: false,
       loading: true,
       lvdMap: new Map<string, Lvd>(),
       lvdSource:
@@ -198,6 +199,22 @@ export default class App extends React.Component<AppProps, AppState> {
       );
     }
 
+    if (this.state.toggleKnockbackCalculator) {
+      return (
+        <div className="App">
+          <KnockbackCalculator
+            onToggle={(e) => {
+              this.setState({
+                toggleKnockbackCalculator: e.checked ?? true,
+              });
+            }}
+            plotWidth={window.innerWidth * devicePixelRatio * 2}
+            plotHeight={window.innerHeight * devicePixelRatio * 2}
+          />
+        </div>
+      );
+    }
+
     return (
       <div className="App">
         <canvas
@@ -208,65 +225,74 @@ export default class App extends React.Component<AppProps, AppState> {
           style={{ width: window.innerWidth, height: window.innerHeight }}
         />
         <div className="sidebar-left">
-          {!this.state.showStats && (
-            <>
-              <div className="sidebar-item">
-                <Checkbox
-                  checked={this.state.drawStages}
-                  onChange={(e) => {
-                    this.setState({ drawStages: e.checked ?? true });
-                  }}
-                />
-                <label> Draw Stages? </label>
-              </div>
-              <div className="sidebar-item">
-                <Checkbox
-                  checked={this.state.drawPlatforms}
-                  onChange={(e) => {
-                    this.setState({ drawPlatforms: e.checked ?? true });
-                  }}
-                />
-                <label> Draw Platforms? </label>
-              </div>
-              <div className="sidebar-item">
-                <Checkbox
-                  checked={this.state.drawBlastZones}
-                  onChange={(e) => {
-                    this.setState({ drawBlastZones: e.checked ?? true });
-                  }}
-                />
-                <label> Draw BlastZones? </label>
-              </div>
-              <div className="sidebar-item">
-                <Checkbox
-                  checked={this.state.drawCameras}
-                  onChange={(e) => {
-                    this.setState({ drawCameras: e.checked ?? false });
-                  }}
-                />
-                <label> Draw Camera? </label>
-              </div>
-              <div className="sidebar-item">
-                <Checkbox
-                  checked={false}
-                  onChange={(e) => {
-                    return; // TODO: support this!s
-                    this.setState({ loading: true }, async () => {
-                      this.setState({
-                        debug: e.checked ?? false,
-                        loading: false,
-                        lvdMap: await lvdService.initLvdFromUrl(
-                          lvdSource,
-                          e.checked
-                        ),
-                      });
+          <>
+            <div className="sidebar-item">
+              <Checkbox
+                checked={this.state.toggleKnockbackCalculator}
+                onChange={(e) => {
+                  this.setState({
+                    toggleKnockbackCalculator: e.checked ?? true,
+                  });
+                }}
+              />
+              <label> Show Knockback Calculator? </label>
+            </div>
+            <div className="sidebar-item">
+              <Checkbox
+                checked={this.state.drawStages}
+                onChange={(e) => {
+                  this.setState({ drawStages: e.checked ?? true });
+                }}
+              />
+              <label> Draw Stages? </label>
+            </div>
+            <div className="sidebar-item">
+              <Checkbox
+                checked={this.state.drawPlatforms}
+                onChange={(e) => {
+                  this.setState({ drawPlatforms: e.checked ?? true });
+                }}
+              />
+              <label> Draw Platforms? </label>
+            </div>
+            <div className="sidebar-item">
+              <Checkbox
+                checked={this.state.drawBlastZones}
+                onChange={(e) => {
+                  this.setState({ drawBlastZones: e.checked ?? true });
+                }}
+              />
+              <label> Draw BlastZones? </label>
+            </div>
+            <div className="sidebar-item">
+              <Checkbox
+                checked={this.state.drawCameras}
+                onChange={(e) => {
+                  this.setState({ drawCameras: e.checked ?? false });
+                }}
+              />
+              <label> Draw Camera? </label>
+            </div>
+            <div className="sidebar-item">
+              <Checkbox
+                checked={false}
+                onChange={(e) => {
+                  return; // TODO: support this!s
+                  this.setState({ loading: true }, async () => {
+                    this.setState({
+                      debug: e.checked ?? false,
+                      loading: false,
+                      lvdMap: await lvdService.initLvdFromUrl(
+                        lvdSource,
+                        e.checked
+                      ),
                     });
-                  }}
-                />
-                <label> Debug Mode? </label>
-              </div>
-            </>
-          )}
+                  });
+                }}
+              />
+              <label> Debug Mode? </label>
+            </div>
+          </>
         </div>
         <div className="sidebar-right">
           <Dropdown
