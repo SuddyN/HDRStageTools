@@ -151,7 +151,7 @@ code {
   width: auto;
 }
 
-svg.p-icon {
+.p-dropdown .p-dropdown-trigger svg.p-icon {
   margin: 0.125rem;
 }
 

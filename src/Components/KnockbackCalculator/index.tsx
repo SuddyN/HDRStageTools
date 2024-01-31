@@ -45,7 +45,7 @@ export default class KnockbackCalculator extends React.Component<
     let { percent, damage, weight, kbg, wdsk, bkb, croundCancel, smashCharge } =
       this.state;
     return (
-      <>
+      <div className="knockback-calculator">
         <div
           className="sidebar-left"
           style={{
@@ -210,7 +210,7 @@ export default class KnockbackCalculator extends React.Component<
             color={Theme.pink}
           /> */}
         </Mafs>
-      </>
+      </div>
     );
   }
 }
