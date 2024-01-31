@@ -1,4 +1,5 @@
 const CROUCH_CANCEL_KNOCKBACK_MUL = 0.666667;
+const ASDI_DOWN_MUL = 0.5;
 const SMASH_ATTACK_CHARGE_KNOCKBACK_MUL = 1.2;
 const HITSTUN_RATIO = 0.42;
 const TUMBLE_THRESHOLD = 80.0;
@@ -32,7 +33,10 @@ function calculateKnockback(
   return knockback;
 }
 
-function calculateHitstun(knockback: number) {
+function calculateHitstun(knockback: number, crouchCancel: boolean) {
+  if (knockback < TUMBLE_THRESHOLD && crouchCancel) {
+    knockback *= ASDI_DOWN_MUL;
+  }
   let hitstun = knockback * HITSTUN_RATIO;
   return hitstun;
 }

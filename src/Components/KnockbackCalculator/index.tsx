@@ -46,11 +46,18 @@ export default class KnockbackCalculator extends React.Component<
       this.state;
     return (
       <>
-        <div className="sidebar-left">
+        <div
+          className="sidebar-left"
+          style={{
+            background: "rgba(0, 0, 0, 0.95)",
+            borderRadius: "1rem",
+          }}
+        >
           <div className="sidebar-item">
             <Checkbox checked={true} onChange={this.props.onToggle} />
             <label> Show Knockback Calculator? </label>
           </div>
+          <div style={{ marginBottom: "0.5rem" }} />
           <div className="sidebar-item">
             <InputNumber
               value={weight}
@@ -116,6 +123,30 @@ export default class KnockbackCalculator extends React.Component<
             />
             <label> Base Knockback </label>
           </div>
+          <div className="sidebar-item">
+            <Checkbox
+              checked={croundCancel}
+              onChange={(e) =>
+                this.setState({
+                  croundCancel: e.checked ?? false,
+                  smashCharge: false,
+                })
+              }
+            />
+            <label> Is Crouch Canceling? </label>
+          </div>
+          <div className="sidebar-item">
+            <Checkbox
+              checked={smashCharge}
+              onChange={(e) =>
+                this.setState({
+                  smashCharge: e.checked ?? false,
+                  croundCancel: false,
+                })
+              }
+            />
+            <label> Is Charging Smash Attack? </label>
+          </div>
         </div>
         <Mafs
           viewBox={{ x: [0, 300] }}
@@ -162,7 +193,10 @@ export default class KnockbackCalculator extends React.Component<
                 croundCancel,
                 smashCharge
               );
-              let hitstun = attackService.calculateHitstun(knockback);
+              let hitstun = attackService.calculateHitstun(
+                knockback,
+                croundCancel
+              );
               return Math.ceil(hitstun);
             }}
             color={Theme.yellow}
