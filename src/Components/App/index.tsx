@@ -60,8 +60,7 @@ export default class App extends React.Component<AppProps, AppState> {
       toggleKnockbackCalculator: false,
       loading: true,
       lvdMap: new Map<string, Lvd>(),
-      lvdSource:
-        "https://suddyn.github.io/HDRStageTools/lvd/hdr-nightly/lvd.zip",
+      lvdSource: "https://suddyn.github.io/HDRStageTools/lvd/hdr-beta/lvd.zip",
     };
   }
 
