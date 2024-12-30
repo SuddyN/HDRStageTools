@@ -13,15 +13,17 @@ code {
     monospace;
 }
 
-.sidebar-left {
+.sidebar-right {
   position: absolute;
-  left: 0;
-  top: 0;
+  right: 0;
+  bottom: 0;
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-end;
   max-height: 100vh;
+  background: rgba(24, 24, 24, 0.6);
+  border-radius: 0.5rem;
 }
 
 .sidebar-item {
@@ -32,9 +34,9 @@ code {
   max-height: 100%;
 }
 
-.sidebar-right {
+.sidebar-left {
   position: absolute;
-  right: 0;
+  left: 0;
   top: 0;
   padding: 0.5rem;
   height: 100vh;
@@ -48,7 +50,7 @@ code {
 }
 
 .p-listbox {
-  background: rgba(24, 24, 24, 0.75);
+  background: rgba(24, 24, 24, 0.6);
 }
 
 .p-listbox .p-listbox-header {
@@ -62,7 +64,7 @@ code {
 
 .p-listbox .p-listbox-list .p-listbox-item {
   padding: 0.125rem 0.25rem;
-  text-align: end;
+  text-align: start;
 }
 
 .p-listbox .p-listbox-list .p-listbox-item.p-highlight {
@@ -71,7 +73,7 @@ code {
 
 .p-inputtext {
   padding: 0.125rem;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .lvdTable {
@@ -102,8 +104,8 @@ code {
 }
 
 .p-selectbutton .p-button {
-  background: rgba(24, 24, 24, 0.75);
-  padding: 0.25rem 1.25rem;
+  background: rgba(24, 24, 24, 0.8);
+  padding: 0.2rem 0.6rem;
   text-align: center;
   width: 100%;
 }
@@ -113,11 +115,11 @@ code {
 }
 
 .p-dropdown {
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .p-dropdown-panel .p-dropdown-items .p-dropdown-item-group {
-  background: rgba(64, 64, 64, 0.75);
+  background: rgba(64, 64, 64, 0.6);
   padding: 0.5rem 0.25rem;
 }
 
@@ -126,7 +128,7 @@ code {
 }
 
 .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .p-dropdown-panel {
@@ -156,7 +158,7 @@ code {
 }
 
 .p-checkbox .p-checkbox-box {
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .p-checkbox .p-checkbox-box.p-highlight {

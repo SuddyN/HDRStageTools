@@ -8,6 +8,75 @@ import { ListBox } from "primereact/listbox";
 import { Dropdown } from "primereact/dropdown";
 import { SelectButton } from "primereact/selectbutton";
 import KnockbackCalculator from "../KnockbackCalculator";
+import { stageListService } from "../../Services/StageListService";
+import "https://www.desmos.com/api/v1.9/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6";
+
+interface DesmosOptions {
+  keypad?: boolean;
+  graphpaper?: boolean;
+  expressions?: boolean;
+  settingsMenu?: boolean;
+  zoomButtons?: boolean;
+  showResetButtonOnGraphpaper?: boolean;
+  expressionsTopbar?: boolean;
+  pointsOfInterest?: boolean;
+  trace?: boolean;
+  border?: boolean;
+  lockViewport?: boolean;
+  expressionsCollapsed?: boolean;
+  capExpressionSize?: boolean;
+  images?: boolean;
+  folders?: boolean;
+  notes?: boolean;
+  sliders?: boolean;
+  actions?: boolean;
+  substitutions?: boolean;
+  links?: boolean;
+  qwertyKeyboard?: boolean;
+  distributions?: boolean;
+  restrictedFunctions?: boolean;
+  forceEnableGeometryFunctions?: boolean;
+  pasteGraphLink?: boolean;
+  pasteTableData?: boolean;
+  clearIntoDegreeMode?: boolean;
+  autosize?: boolean;
+  plotInequalities?: boolean;
+  plotImplicits?: boolean;
+  plotSingleVariableImplicitEquations?: boolean;
+  projectorMode?: boolean;
+  decimalToFraction?: boolean;
+  fontSize?: number;
+  invertedColors?: boolean;
+  sixKeyInput?: boolean;
+  brailleControls?: boolean;
+  audio?: boolean;
+  graphDescription?: string;
+  zoomFit?: boolean;
+  forceLogModeRegressions?: boolean;
+  defaultLogModeRegressions?: boolean;
+  logScales?: boolean;
+  tone?: boolean;
+  intervalComprehensions?: boolean;
+  muted?: boolean;
+  increaseLabelPrecision?: boolean;
+
+  degreeMode?: boolean;
+  showGrid?: boolean;
+  polarMode?: boolean;
+  showXAxis?: boolean;
+  showYAxis?: boolean;
+  xAxisNumbers?: boolean;
+  yAxisNumbers?: boolean;
+  polarNumbers?: boolean;
+  xAxisStep?: number;
+  yAxisStep?: number;
+  xAxisMinorSubdivisions?: number;
+  yAxisMinorSubdivisions?: number;
+  xAxisLabel?: string;
+  yAxisLabel?: string;
+  xAxisScale?: string;
+  yAxisScale?: string;
+}
 
 interface AppProps {}
 
@@ -28,14 +97,14 @@ interface AppState {
   selectedStages: string[];
   selectedSort: string;
   selectedSortDir: string;
-  toggleKnockbackCalculator: boolean;
   loading: boolean;
   lvdMap: Map<string, Lvd>;
   lvdSource: string;
 }
 
 export default class App extends React.Component<AppProps, AppState> {
-  canvas: HTMLCanvasElement | null = null;
+  canvas: HTMLDivElement | null = null;
+  calculator: any = null;
   zoom: number = 4;
 
   constructor(props: AppProps) {
@@ -53,11 +122,10 @@ export default class App extends React.Component<AppProps, AppState> {
       drawShrunkenCameras: false,
       drawShrunkenBlastZones: false,
       selectedFilter: "Legal Stages",
-      selectedFilterFunc: this.legalFilterFunc,
+      selectedFilterFunc: stageListService.legalFilterFunc,
       selectedStages: ["Battlefield"],
       selectedSort: "Name",
       selectedSortDir: "Ascending",
-      toggleKnockbackCalculator: false,
       loading: true,
       lvdMap: new Map<string, Lvd>(),
       lvdSource: "https://suddyn.github.io/HDRStageTools/lvd/hdr-beta/lvd.zip",
@@ -83,99 +151,40 @@ export default class App extends React.Component<AppProps, AppState> {
     prevState: Readonly<AppState>,
     snapshot?: any
   ): void {
-    this.draw();
+    if (this.calculator) {
+      this.calculator.setBlank();
+      this.draw();
+      const scale = 250;
+      const verticalOffset = 50;
+      const ratio = !this.canvas
+        ? 1.0
+        : this.canvas.offsetHeight / this.canvas.offsetWidth;
+      const horizontalRatio = ratio > 1 ? 1 : 1 / ratio;
+      const verticalRatio = ratio < 1 ? 1 : ratio;
+      this.calculator.setMathBounds({
+        left: -scale * horizontalRatio,
+        right: scale * horizontalRatio,
+        bottom: (verticalOffset - scale) * verticalRatio,
+        top: (verticalOffset + scale) * verticalRatio,
+      });
+    } else if (this.canvas) {
+      const options: DesmosOptions = {
+        keypad: false,
+        expressions: false,
+        expressionsTopbar: false,
+        expressionsCollapsed: true,
+        invertedColors: true,
+        xAxisStep: 10,
+        yAxisStep: 10,
+        xAxisScale: "linear",
+        yAxisScale: "linear",
+      };
+
+      // @ts-expect-error
+      this.calculator = Desmos.GraphingCalculator(this.canvas, options);
+    }
+    // this.draw();
   }
-
-  legalFilterFunc = (name: string): boolean => {
-    if (
-      [
-        "3D Land",
-        "Arena Ferox",
-        "Battlefield",
-        "Bowser's Castle",
-        "Bramble Blast",
-        "Brinstar Depths",
-        "Duel Battlefield",
-        "Final Destination",
-        "Fountain of Dreams",
-        "Fourside",
-        "Frigate Orpheon",
-        "Ganon's Tower",
-        "Garreg Mach Monastery",
-        "Green Greens",
-        "Hollow Bastion",
-        "Kalos Pokemon League",
-        "Kongo Falls",
-        "Lylat Cruise",
-        "Mario Galaxy",
-        "Moray Towers",
-        "Northern Cave",
-        "Palutena's Temple",
-        "Paper Mario",
-        "Pokemon Stadium 3",
-        "Realm of GameCube",
-        "Sky Sanctuary Zone",
-        "Skyworld",
-        "Smashville",
-        "Spear Pillar",
-        "Town & City",
-        "Unova Pokemon League",
-        "Venom",
-        "World 1-2",
-        "Yggdrasil's Altar (Part 2)",
-        "Yoshi's Story",
-      ].includes(name)
-    ) {
-      return true;
-    }
-    return false;
-  };
-
-  supportedFilterFunc = (name: string): boolean => {
-    if (this.legalFilterFunc(name)) {
-      return true;
-    }
-    if (
-      [
-        "Boxing Ring",
-        "Brinstar Depths",
-        "Deadline",
-        "Dream Land",
-        "Find Mii",
-        "Gerudo Valley",
-        "Hyrule Castle",
-        "Luigi's Mansion",
-        "Midgar",
-        "Mishima Dojo",
-        "New Pork City",
-        "Pokemon Stadium",
-        "Snake Train Chamber (Part 2)",
-        "Tomodachi Life",
-      ].includes(name)
-    ) {
-      return true;
-    }
-    return false;
-  };
-
-  gigaton2FilterFunc = (name: string): boolean => {
-    if (
-      [
-        "Hollow Bastion",
-        "Garreg Mach Monastery",
-        "Battlefield",
-        "Smashville",
-        "Bramble Blast",
-        "3D Land",
-        "Lylat Cruise",
-        "Realm of GameCube",
-        "Sky Sanctuary Zone",
-      ].includes(name)
-    ) {
-      return true;
-    }
-    return false;
-  };
 
   render() {
     const { lvdSource } = this.state;
@@ -198,102 +207,78 @@ export default class App extends React.Component<AppProps, AppState> {
       );
     }
 
-    if (this.state.toggleKnockbackCalculator) {
-      return (
-        <div className="App">
-          <KnockbackCalculator
-            onToggle={(e) => {
-              this.setState({
-                toggleKnockbackCalculator: e.checked ?? true,
-              });
-            }}
-            plotWidth={window.innerWidth * devicePixelRatio * 2}
-            plotHeight={window.innerHeight * devicePixelRatio * 2}
-          />
-        </div>
-      );
-    }
-
     return (
       <div className="App">
-        <canvas
+        {/* <canvas
           ref={(element) => (this.canvas = element)}
           width={window.innerWidth * devicePixelRatio * 2}
           height={window.innerHeight * devicePixelRatio * 2}
           color="blue"
           style={{ width: window.innerWidth, height: window.innerHeight }}
+        /> */}
+        <div
+          className="calculator"
+          style={{ width: "100vw", height: "100vh" }}
+          ref={(element) => (this.canvas = element)}
         />
-        <div className="sidebar-left">
-          <>
-            <div className="sidebar-item">
-              <Checkbox
-                checked={this.state.toggleKnockbackCalculator}
-                onChange={(e) => {
-                  this.setState({
-                    toggleKnockbackCalculator: e.checked ?? true,
-                  });
-                }}
-              />
-              <label> Show Knockback Calculator? </label>
-            </div>
-            <div className="sidebar-item">
-              <Checkbox
-                checked={this.state.drawStages}
-                onChange={(e) => {
-                  this.setState({ drawStages: e.checked ?? true });
-                }}
-              />
-              <label> Draw Stages? </label>
-            </div>
-            <div className="sidebar-item">
-              <Checkbox
-                checked={this.state.drawPlatforms}
-                onChange={(e) => {
-                  this.setState({ drawPlatforms: e.checked ?? true });
-                }}
-              />
-              <label> Draw Platforms? </label>
-            </div>
-            <div className="sidebar-item">
-              <Checkbox
-                checked={this.state.drawBlastZones}
-                onChange={(e) => {
-                  this.setState({ drawBlastZones: e.checked ?? true });
-                }}
-              />
-              <label> Draw BlastZones? </label>
-            </div>
-            <div className="sidebar-item">
-              <Checkbox
-                checked={this.state.drawCameras}
-                onChange={(e) => {
-                  this.setState({ drawCameras: e.checked ?? false });
-                }}
-              />
-              <label> Draw Camera? </label>
-            </div>
-            <div className="sidebar-item">
-              <Checkbox
-                checked={false}
-                onChange={(e) => {
-                  return; // TODO: support this!s
-                  this.setState({ loading: true }, async () => {
-                    this.setState({
-                      debug: e.checked ?? false,
-                      loading: false,
-                      lvdMap: await lvdService.initLvdFromUrl(
-                        lvdSource,
-                        e.checked
-                      ),
-                    });
-                  });
-                }}
-              />
-              <label> Debug Mode? </label>
-            </div>
-          </>
-        </div>
         <div className="sidebar-right">
+          <div className="sidebar-item">
+            <label> Draw Stages? </label>
+            <Checkbox
+              checked={this.state.drawStages}
+              onChange={(e) => {
+                this.setState({ drawStages: e.checked ?? true });
+              }}
+            />
+          </div>
+          <div className="sidebar-item">
+            <label> Draw Platforms? </label>
+            <Checkbox
+              checked={this.state.drawPlatforms}
+              onChange={(e) => {
+                this.setState({ drawPlatforms: e.checked ?? true });
+              }}
+            />
+          </div>
+          <div className="sidebar-item">
+            <label> Draw BlastZones? </label>
+            <Checkbox
+              checked={this.state.drawBlastZones}
+              onChange={(e) => {
+                this.setState({ drawBlastZones: e.checked ?? true });
+              }}
+            />
+          </div>
+          <div className="sidebar-item">
+            <label> Draw Camera? </label>
+            <Checkbox
+              checked={this.state.drawCameras}
+              onChange={(e) => {
+                this.setState({ drawCameras: e.checked ?? false });
+              }}
+            />
+          </div>
+          <div className="sidebar-item">
+            <label> Debug Mode? </label>
+            <Checkbox
+              checked={false}
+              onChange={(e) => {
+                return; // TODO: support this!s
+                this.setState({ loading: true }, async () => {
+                  this.setState({
+                    debug: e.checked ?? false,
+                    loading: false,
+                    lvdMap: await lvdService.initLvdFromUrl(
+                      lvdSource,
+                      e.checked
+                    ),
+                  });
+                });
+              }}
+            />
+          </div>
+        </div>
+        <div className="sidebar-left">
           <Dropdown
             className="listbox-sorter"
             value={this.state.selectedFilter}
@@ -312,13 +297,13 @@ export default class App extends React.Component<AppProps, AppState> {
                   };
                   break;
                 case "Legal Stages":
-                  filterFunc = this.legalFilterFunc;
+                  filterFunc = stageListService.legalFilterFunc;
                   break;
                 case "Supported Stages":
-                  filterFunc = this.supportedFilterFunc;
+                  filterFunc = stageListService.supportedFilterFunc;
                   break;
                 case "Gigaton Hammer 2":
-                  filterFunc = this.gigaton2FilterFunc;
+                  filterFunc = stageListService.gigaton2FilterFunc;
                   break;
                 default:
                   break;
@@ -812,126 +797,121 @@ export default class App extends React.Component<AppProps, AppState> {
   };
 
   draw = () => {
-    if (!this.canvas) {
-      console.error("could not draw because canvas is null or undefined");
+    if (!this.calculator) {
       return;
     }
-    const ctx = this.canvas.getContext("2d");
-    if (!ctx) {
-      console.error("could not draw because context is null or undefined");
-      return;
-    }
-    ctx.setTransform(
-      1.0,
-      0.0,
-      0.0,
-      -1.0,
-      this.canvas.width / 2,
-      this.canvas.height / 2
-    );
-    ctx.lineWidth = 1;
-    ctx.fillStyle = "rgb(30, 30, 30)";
-    ctx.globalCompositeOperation = "lighter";
-    ctx.clearRect(
-      -this.canvas.width / 2,
-      -this.canvas.height / 2,
-      this.canvas.width,
-      this.canvas.height
-    );
-    ctx.fillRect(
-      -this.canvas.width / 2,
-      -this.canvas.height / 2,
-      this.canvas.width,
-      this.canvas.height
-    );
-
     let hueIndex = 0;
-    this.state.lvdMap.forEach((name, lvd) => {
-      if (!this.state.selectedStages.includes(lvd)) {
+    this.state.lvdMap.forEach((lvd, name) => {
+      if (!this.state.selectedStages.includes(name)) {
         return;
       }
-      this.drawStage(ctx, lvd, name, hueIndex++);
+
+      this.drawStage(name, lvd, hueIndex++);
     });
   };
 
-  drawStage = (
-    ctx: CanvasRenderingContext2D,
-    name: string,
-    lvd: Lvd,
-    hueIndex: number
-  ) => {
+  drawStage = (name: string, lvd: Lvd, hueIndex: number) => {
+    if (!this.calculator) {
+      return;
+    }
+
     const length = this.state.selectedStages.length;
     const hue = (hueIndex * 360) / length;
-
-    // draw blast_zones
-    ctx.lineWidth = 4;
-    ctx.setLineDash([16, 16]);
+    // // draw blast_zones
     if (this.state.drawBlastZones && lvd.blast_zone[0]) {
-      this.drawBoundary(ctx, lvd.blast_zone[0], hue);
+      this.drawBoundary(name, lvd.blast_zone[0], hue);
     }
-
-    // draw camera_boundary
-    ctx.lineWidth = 4;
-    ctx.setLineDash([8, 8]);
+    // // draw camera_boundary
     if (this.state.drawCameras && lvd.camera_boundary[0]) {
-      this.drawBoundary(ctx, lvd.camera_boundary[0], hue);
+      this.drawBoundary(name, lvd.camera_boundary[0], hue);
     }
-
-    // draw collisions
-    ctx.lineWidth = 4;
-    ctx.setLineDash([]);
     for (const collision of lvd.collisions) {
       if (collision.col_flags.drop_through) {
         // platform
         if (this.state.drawPlatforms) {
-          this.drawCollision(ctx, collision, hue);
+          this.drawCollision(name, collision, hue);
         }
       } else {
         // stage
         if (this.state.drawStages) {
-          this.drawCollision(ctx, collision, hue);
+          this.drawCollision(name, collision, hue);
         }
       }
     }
   };
 
-  drawBoundary = (
-    ctx: CanvasRenderingContext2D,
-    boundary: Boundary,
-    hue: number
-  ) => {
-    if (!this.canvas) {
-      throw "canvas is null or undefined";
+  drawBoundary = (name: string, boundary: Boundary, hue: number) => {
+    if (!this.calculator) {
+      return;
     }
-    const zoom = this.zoom;
-    const { left, right, bottom, top } = boundary;
-    const width = right - left;
-    const height = top - bottom;
 
-    ctx.strokeStyle = this.makeHslaFromHue(hue);
-    ctx.strokeRect(left * zoom, bottom * zoom, width * zoom, height * zoom);
+    const { left, right, bottom, top } = boundary;
+    this.calculator.setExpression({
+      type: "table",
+      label: name,
+      showLabel: true,
+      columns: [
+        {
+          latex: "x",
+          label: name,
+          showLabel: true,
+          values: [left, right, right, left, left],
+          // @ts-expect-error
+          columnMode: Desmos.ColumnModes.POINTS_AND_LINES,
+          color: this.makeHexFromHue(hue),
+        },
+        {
+          latex: "y",
+          label: name,
+          showLabel: true,
+          values: [top, top, bottom, bottom, top],
+          // @ts-expect-error
+          columnMode: Desmos.ColumnModes.POINTS_AND_LINES,
+          color: this.makeHexFromHue(hue),
+        },
+      ],
+    });
   };
 
-  drawCollision = (
-    ctx: CanvasRenderingContext2D,
-    collision: Collision,
-    hue: number
-  ) => {
-    const zoom = this.zoom;
-    const path = collision.vertices;
-    ctx.beginPath();
-    ctx.moveTo(
-      (path[0].x + collision.entry.start_pos.x) * zoom,
-      (path[0].y + collision.entry.start_pos.y) * zoom
-    );
-    for (let i = 1; i < path.length; i++) {
-      ctx.lineTo(
-        (path[i].x + collision.entry.start_pos.x) * zoom,
-        (path[i].y + collision.entry.start_pos.y) * zoom
-      );
+  drawCollision = (name: string, collision: Collision, hue: number) => {
+    if (!this.calculator) {
+      return;
     }
-    ctx.strokeStyle = this.makeHslaFromHue(hue);
-    ctx.stroke();
+
+    const xValues = collision.vertices.map(
+      (vertex) => vertex.x + collision.entry.start_pos.x
+    );
+    const yValues = collision.vertices.map(
+      (vertex) => vertex.y + collision.entry.start_pos.y
+    );
+    xValues.push(xValues[0]);
+    yValues.push(yValues[0]);
+
+    this.calculator.setExpression({
+      type: "table",
+      label: name,
+      showLabel: true,
+      columns: [
+        {
+          latex: "x",
+          label: name,
+          showLabel: true,
+          values: xValues,
+          // @ts-expect-error
+          columnMode: Desmos.ColumnModes.POINTS_AND_LINES,
+          color: this.makeHexFromHue(hue),
+        },
+        {
+          latex: "y",
+          label: name,
+          showLabel: true,
+          values: yValues,
+          // @ts-expect-error
+          columnMode: Desmos.ColumnModes.POINTS_AND_LINES,
+          color: this.makeHexFromHue(hue),
+        },
+      ],
+    });
   };
 
   makeHslaFromHue = (hue: number) => {
@@ -940,5 +920,18 @@ export default class App extends React.Component<AppProps, AppState> {
     const a = 1;
 
     return `hsla(${hue}, ${s}%, ${l}%, ${a})`;
+  };
+
+  makeHexFromHue = (hue: number) => {
+    const l = 66 / 100;
+    const a = (100 * Math.min(l, 1 - l)) / 100;
+    const f = (n: number) => {
+      const k = (n + hue / 30) % 12;
+      const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+      return Math.round(255 * color)
+        .toString(16)
+        .padStart(2, "0"); // convert to Hex and prefix "0" if needed
+    };
+    return `#${f(0)}${f(8)}${f(4)}`;
   };
 }
