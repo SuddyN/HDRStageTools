@@ -84,49 +84,47 @@ export default class App extends React.Component<AppProps, AppState> {
     if (!this.calculator) {
       return;
     }
-    let hueIndex = 0;
     this.state.lvdMap.forEach((lvd, name) => {
-      const idx = this.state.selectedStages.findIndex((other) => name == other);
+      const idx = this.state.selectedStages.findIndex(
+        (other) => name === other
+      );
       if (idx < 0) {
         return;
       }
-      this.drawStage(name, lvd, hueIndex++);
+      this.drawStage(name, lvd, idx);
     });
   };
 
-  drawStage = (name: string, lvd: Lvd, hueIndex: number) => {
+  drawStage = (name: string, lvd: Lvd, idx: number) => {
     if (!this.calculator) {
       return;
     }
 
-    const length = this.state.selectedStages.length;
-    const hue = (hueIndex * 360) / length;
-
-    console.log(name, hueIndex, length, hue);
+    console.log(name, idx);
     // // draw blast_zones
     if (this.state.drawBlastZones && lvd.blast_zone[0]) {
-      this.drawBoundary(name, lvd.blast_zone[0], hue);
+      this.drawBoundary(name, lvd.blast_zone[0], idx);
     }
     // // draw camera_boundary
     if (this.state.drawCameras && lvd.camera_boundary[0]) {
-      this.drawBoundary(name, lvd.camera_boundary[0], hue);
+      this.drawBoundary(name, lvd.camera_boundary[0], idx);
     }
     for (const collision of lvd.collisions) {
       if (collision.col_flags.drop_through) {
         // platform
         if (this.state.drawPlatforms) {
-          this.drawCollision(name, collision, hue);
+          this.drawCollision(name, collision, idx);
         }
       } else {
         // stage
         if (this.state.drawStages) {
-          this.drawCollision(name, collision, hue);
+          this.drawCollision(name, collision, idx);
         }
       }
     }
   };
 
-  drawBoundary = (name: string, boundary: Boundary, hue: number) => {
+  drawBoundary = (name: string, boundary: Boundary, idx: number) => {
     if (!this.calculator) {
       return;
     }
@@ -144,7 +142,7 @@ export default class App extends React.Component<AppProps, AppState> {
           values: [left, right, right, left, left],
           points: true,
           lines: true,
-          color: this.makeHexFromHue(hue),
+          color: this.makeHexFromHueIndex(idx, true),
         },
         {
           latex: "y",
@@ -153,13 +151,13 @@ export default class App extends React.Component<AppProps, AppState> {
           values: [top, top, bottom, bottom, top],
           points: true,
           lines: true,
-          color: this.makeHexFromHue(hue),
+          color: this.makeHexFromHueIndex(idx, true),
         },
       ],
     });
   };
 
-  drawCollision = (name: string, collision: Collision, hue: number) => {
+  drawCollision = (name: string, collision: Collision, idx: number) => {
     if (!this.calculator) {
       return;
     }
@@ -185,7 +183,7 @@ export default class App extends React.Component<AppProps, AppState> {
           values: xValues,
           points: true,
           lines: true,
-          color: this.makeHexFromHue(hue),
+          color: this.makeHexFromHueIndex(idx, true),
         },
         {
           latex: "y",
@@ -194,7 +192,7 @@ export default class App extends React.Component<AppProps, AppState> {
           values: yValues,
           points: true,
           lines: true,
-          color: this.makeHexFromHue(hue),
+          color: this.makeHexFromHueIndex(idx, true),
         },
       ],
     });
@@ -219,9 +217,12 @@ export default class App extends React.Component<AppProps, AppState> {
         expressions: false,
         expressionsTopbar: false,
         expressionsCollapsed: true,
+        settingsMenu: false,
+        projectorMode: true,
         invertedColors: true,
-        xAxisStep: 10,
-        yAxisStep: 10,
+        increaseLabelPrecision: true,
+        xAxisStep: 5,
+        yAxisStep: 5,
         xAxisScale: "linear",
         yAxisScale: "linear",
       };
@@ -404,28 +405,37 @@ export default class App extends React.Component<AppProps, AppState> {
     },
   ];
 
-  makeHexFromHue = (hue: number) => {
+  makeHexFromHueIndex = (idx: number, invertedColors?: boolean) => {
+    console.log(this.state.selectedStages.length);
+    const h = (idx * 360) / this.state.selectedStages.length;
     const l = 66 / 100;
     const a = (100 * Math.min(l, 1 - l)) / 100;
     const f = (n: number) => {
-      const k = (n + hue / 30) % 12;
+      const k = (n + h / 30) % 12;
       const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
       return Math.round(255 * color)
         .toString(16)
         .padStart(2, "0"); // convert to Hex and prefix "0" if needed
     };
-    return `#${f(0)}${f(8)}${f(4)}`;
+    const hex = `${f(0)}${f(8)}${f(4)}`.toUpperCase();
+    if (invertedColors) {
+      const newHex = (Number(`0x1${hex}`) ^ 0xffffff)
+        .toString(16)
+        .substr(1)
+        .toUpperCase();
+      console.log(hex, newHex);
+      return `#${newHex}`;
+    }
+    return `#${hex}`;
   };
 
   stageListTemplate = (selectedStage: string): ReactNode => {
     const idx = this.state.selectedStages.findIndex(
-      (other) => selectedStage == other
+      (other) => selectedStage === other
     );
-    const length = this.state.selectedStages.length;
-    const hue = (idx * 360) / length;
-    const hslaStr = idx >= 0 ? this.makeHexFromHue(hue) : "#FFFFFF";
+    const hslaStr = idx >= 0 ? this.makeHexFromHueIndex(idx) : "#FFFFFF";
     if (idx > -1) {
-      console.log(selectedStage, idx, length, hue);
+      console.log(selectedStage, idx);
     }
 
     const lvd = this.state.lvdMap.get(selectedStage);
