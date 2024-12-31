@@ -107,13 +107,13 @@ export default class App extends React.Component<AppProps, AppState> {
     }
     // // draw camera_boundary
     if (this.state.drawCameras && lvd.camera_boundary[0]) {
-      this.drawBoundary(name, lvd.camera_boundary[0], idx);
+      this.drawBoundary(name, lvd.camera_boundary[0], idx, true);
     }
     for (const collision of lvd.collisions) {
       if (collision.col_flags.drop_through) {
         // platform
         if (this.state.drawPlatforms) {
-          this.drawCollision(name, collision, idx);
+          this.drawCollision(name, collision, idx, true);
         }
       } else {
         // stage
@@ -124,7 +124,12 @@ export default class App extends React.Component<AppProps, AppState> {
     }
   };
 
-  drawBoundary = (name: string, boundary: Boundary, idx: number) => {
+  drawBoundary = (
+    name: string,
+    boundary: Boundary,
+    idx: number,
+    isCamera?: boolean
+  ) => {
     if (!this.calculator) {
       return;
     }
@@ -142,6 +147,10 @@ export default class App extends React.Component<AppProps, AppState> {
           values: [left, right, right, left, left],
           points: true,
           lines: true,
+          lineWidth: 1.0,
+          pointSize: 6,
+          // @ts-expect-error
+          lineStyle: isCamera ? Desmos.Styles.DOTTED : Desmos.Styles.DASHED,
           color: this.makeHexFromHueIndex(idx, true),
         },
         {
@@ -151,13 +160,22 @@ export default class App extends React.Component<AppProps, AppState> {
           values: [top, top, bottom, bottom, top],
           points: true,
           lines: true,
+          lineWidth: 1.0,
+          pointSize: 6,
+          // @ts-expect-error
+          lineStyle: isCamera ? Desmos.Styles.DOTTED : Desmos.Styles.DASHED,
           color: this.makeHexFromHueIndex(idx, true),
         },
       ],
     });
   };
 
-  drawCollision = (name: string, collision: Collision, idx: number) => {
+  drawCollision = (
+    name: string,
+    collision: Collision,
+    idx: number,
+    isPlatform?: boolean
+  ) => {
     if (!this.calculator) {
       return;
     }
@@ -183,6 +201,8 @@ export default class App extends React.Component<AppProps, AppState> {
           values: xValues,
           points: true,
           lines: true,
+          lineWidth: isPlatform ? 1.0 : 1.6,
+          pointSize: isPlatform ? 6 : 8,
           color: this.makeHexFromHueIndex(idx, true),
         },
         {
@@ -192,6 +212,8 @@ export default class App extends React.Component<AppProps, AppState> {
           values: yValues,
           points: true,
           lines: true,
+          lineWidth: isPlatform ? 1.0 : 1.6,
+          pointSize: isPlatform ? 6 : 8,
           color: this.makeHexFromHueIndex(idx, true),
         },
       ],
@@ -284,7 +306,7 @@ export default class App extends React.Component<AppProps, AppState> {
         <div className="sidebar-right">
           <div className="sidebar-item">
             <label>
-              Draw Stages?
+              {"Draw Stages? "}
               <Checkbox
                 checked={this.state.drawStages}
                 onChange={(e) => {
@@ -295,7 +317,7 @@ export default class App extends React.Component<AppProps, AppState> {
           </div>
           <div className="sidebar-item">
             <label>
-              Draw Platforms?
+              {"Draw Platforms? "}
               <Checkbox
                 checked={this.state.drawPlatforms}
                 onChange={(e) => {
@@ -306,7 +328,7 @@ export default class App extends React.Component<AppProps, AppState> {
           </div>
           <div className="sidebar-item">
             <label>
-              Draw BlastZones?
+              {"Draw BlastZones? "}
               <Checkbox
                 checked={this.state.drawBlastZones}
                 onChange={(e) => {
@@ -317,8 +339,7 @@ export default class App extends React.Component<AppProps, AppState> {
           </div>
           <div className="sidebar-item">
             <label>
-              {" "}
-              Draw Camera?
+              {"Draw Camera? "}
               <Checkbox
                 checked={this.state.drawCameras}
                 onChange={(e) => {
