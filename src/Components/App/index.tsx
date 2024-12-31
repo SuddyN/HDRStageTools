@@ -14,6 +14,7 @@ import {
   SortMode,
   SortDir,
 } from "../../Services/StageListService";
+import "https://www.desmos.com/api/v1.9/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6";
 import { DesmosOptions } from "../../Types/desmos";
 
 const LVD_SOURCE: string =
