@@ -221,8 +221,6 @@ export default class App extends React.Component<AppProps, AppState> {
         projectorMode: true,
         invertedColors: true,
         increaseLabelPrecision: true,
-        xAxisStep: 5,
-        yAxisStep: 5,
         xAxisScale: "linear",
         yAxisScale: "linear",
       };
