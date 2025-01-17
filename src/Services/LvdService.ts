@@ -1,8 +1,7 @@
-import JSZip, { file } from "jszip";
+import JSZip from "jszip";
 import * as JSYaml from "js-yaml";
 import * as lodash from "lodash";
 import { Lvd, LvdStats, Vec2 } from "../Types";
-import { platform } from "os";
 
 async function initLvdFromUrl(
   url: string,
@@ -85,7 +84,7 @@ async function writeLvdFromZip(
         !stageLvd.camera_boundary ||
         !stageLvd.collisions
       ) {
-        throw `bad lvd for ${file.name}`;
+        throw new Error(`bad lvd for ${file.name}`);
       }
 
       alignLvd(stageLvd);
@@ -110,8 +109,7 @@ function alignLvd(lvd: Lvd) {
     return;
   }
 
-  const { left, right, top, bottom } =
-    lvd.blast_zone[0] ?? lvd.camera_boundary[0];
+  const { left, right } = lvd.blast_zone[0] ?? lvd.camera_boundary[0];
   const center: Vec2 = {
     x: (left + right) / 2,
     y: getMinSpawnLoc(lvd),
@@ -179,7 +177,7 @@ function lvdPartExists(name: string, other: string) {
   const d = name.split("/");
   const o = other.split("/");
   for (let i = 0; i < d.length - 1; i++) {
-    if (d[i] != o[i]) {
+    if (d[i] !== o[i]) {
       return false;
     }
   }
@@ -199,7 +197,7 @@ function lvdEqual(lvd: Lvd, other: Lvd) {
 
 function handleSimilarLvd(entry: [string, Lvd], lvdMap: Map<string, Lvd>) {
   for (const other of Array.from(lvdMap.entries())) {
-    if (entry[0] == other[0]) {
+    if (entry[0] === other[0]) {
       continue;
     }
     if (lvdEqual(entry[1], other[1])) {
@@ -239,7 +237,7 @@ function mergeLvd(lvdMap: Map<string, Lvd>, debug: boolean): Map<string, Lvd> {
     const fullName =
       baseName +
       (isNaN(altNum) ? "" : ` (Alt ${altNum})`) +
-      (isNaN(partNum) || partNum == 0 ? "" : ` (Part ${partNum + 1})`);
+      (isNaN(partNum) || partNum === 0 ? "" : ` (Part ${partNum + 1})`);
     newMap.set(fullName, entry[1]);
   }
 
@@ -327,7 +325,7 @@ function calcLvdStats(name: string, lvd: Lvd): void {
     if (
       Number.isFinite(platMinX) &&
       Number.isFinite(platMaxX) &&
-      platMinX != platMaxX
+      platMinX !== platMaxX
     ) {
       stats.platLengthMin = Math.min(stats.platLengthMin, platMaxX - platMinX);
       stats.platLengthMax = Math.max(stats.platLengthMax, platMaxX - platMinX);
