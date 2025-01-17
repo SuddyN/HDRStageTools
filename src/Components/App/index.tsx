@@ -66,7 +66,7 @@ export default class App extends React.Component<AppProps, AppState> {
       drawShrunkenBlastZones: false,
       selectedFilter: StageFilter.Legal,
       selectedFilterFunc: stageListService.getFilterFunc(StageFilter.Legal),
-      selectedStages: ["Battlefield"],
+      selectedStages: [],
       selectedSort: SortMode.Name,
       selectedSortDir: SortDir.Ascending,
       loading: true,
@@ -99,7 +99,6 @@ export default class App extends React.Component<AppProps, AppState> {
       return;
     }
 
-    console.log(name, idx);
     // // draw blast_zones
     if (this.state.drawBlastZones && lvd.blast_zone[0]) {
       this.drawBoundary(name, lvd.blast_zone[0], idx);
@@ -416,7 +415,6 @@ export default class App extends React.Component<AppProps, AppState> {
   ];
 
   makeHexFromHueIndex = (idx: number, invertedColors?: boolean) => {
-    console.log(this.state.selectedStages.length);
     const h = (idx * 360) / this.state.selectedStages.length;
     const l = 66 / 100;
     const a = (100 * Math.min(l, 1 - l)) / 100;
@@ -433,7 +431,6 @@ export default class App extends React.Component<AppProps, AppState> {
         .toString(16)
         .substr(1)
         .toUpperCase();
-      console.log(hex, newHex);
       return `#${newHex}`;
     }
     return `#${hex}`;
@@ -444,9 +441,6 @@ export default class App extends React.Component<AppProps, AppState> {
       (other) => selectedStage === other
     );
     const hslaStr = idx >= 0 ? this.makeHexFromHueIndex(idx) : "#FFFFFF";
-    if (idx > -1) {
-      console.log(selectedStage, idx);
-    }
 
     const lvd = this.state.lvdMap.get(selectedStage);
     if (!lvd?.lvdStats) {
