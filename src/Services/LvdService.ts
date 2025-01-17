@@ -10,9 +10,7 @@ async function initLvdFromUrl(
   const lvdMap = new Map<string, Lvd>();
 
   // load ult lvd
-  const ultBlob = await getBlobFromUrl(
-    "https://suddyn.github.io/HDRStageTools/lvd/ultimate/lvd.zip"
-  );
+  const ultBlob = await getBlobFromUrl("./lvd/ultimate/lvd.zip");
   await writeLvdFromZip(ultBlob, lvdMap);
 
   // load new lvd on top of ult lvd

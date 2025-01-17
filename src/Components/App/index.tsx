@@ -16,8 +16,7 @@ import {
 } from "../../Services/StageListService";
 import { elt, GraphingCalculator } from "desmos-react";
 
-const LVD_SOURCE: string =
-  "https://suddyn.github.io/HDRStageTools/lvd/hdr-beta/lvd.zip";
+const LVD_SOURCE: string = "./lvd/hdr-beta/lvd.zip";
 
 interface AppProps {}
 
