@@ -14,8 +14,7 @@ import {
   SortMode,
   SortDir,
 } from "../../Services/StageListService";
-import "https://www.desmos.com/api/v1.10/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6";
-import { DesmosOptions } from "../../Types/desmos";
+import { elt, GraphingCalculator } from "desmos-react";
 
 const LVD_SOURCE: string =
   "https://suddyn.github.io/HDRStageTools/lvd/hdr-beta/lvd.zip";
@@ -149,7 +148,6 @@ export default class App extends React.Component<AppProps, AppState> {
           lines: true,
           lineWidth: 1.0,
           pointSize: 6,
-          // @ts-expect-error
           lineStyle: isCamera ? Desmos.Styles.DOTTED : Desmos.Styles.DASHED,
           color: this.makeHexFromHueIndex(idx, true),
         },
@@ -162,7 +160,6 @@ export default class App extends React.Component<AppProps, AppState> {
           lines: true,
           lineWidth: 1.0,
           pointSize: 6,
-          // @ts-expect-error
           lineStyle: isCamera ? Desmos.Styles.DOTTED : Desmos.Styles.DASHED,
           color: this.makeHexFromHueIndex(idx, true),
         },
@@ -226,29 +223,34 @@ export default class App extends React.Component<AppProps, AppState> {
 
   async componentDidMount(): Promise<void> {
     const { lvdSource, debug } = this.state;
-    this.setState({
-      loading: false,
-      lvdMap: await lvdService.initLvdFromUrl(lvdSource, debug),
-    });
+    this.setState(
+      {
+        loading: false,
+        lvdMap: await lvdService.initLvdFromUrl(lvdSource, debug),
+      },
+      this.calculatorRender
+    );
     window.addEventListener("resize", this.resize);
     this.resize();
+  }
 
-    if (!this.calculator && this.canvas) {
-      const options: DesmosOptions = {
-        keypad: false,
-        expressions: false,
-        expressionsTopbar: false,
-        expressionsCollapsed: true,
-        settingsMenu: false,
-        projectorMode: true,
-        invertedColors: true,
-        increaseLabelPrecision: true,
-        xAxisScale: "linear",
-        yAxisScale: "linear",
-      };
-
-      // @ts-expect-error
-      this.calculator = Desmos.GraphingCalculator(this.canvas, options);
+  calculatorRender() {
+    if (this.calculator) {
+      this.calculator.setBlank();
+      this.draw();
+      const scale = 250;
+      const verticalOffset = 50;
+      const ratio = !this.canvas
+        ? 1.0
+        : this.canvas.offsetHeight / this.canvas.offsetWidth;
+      const horizontalRatio = ratio > 1 ? 1 : 1 / ratio;
+      const verticalRatio = ratio < 1 ? 1 : ratio;
+      this.calculator.setMathBounds({
+        left: -scale * horizontalRatio,
+        right: scale * horizontalRatio,
+        bottom: (verticalOffset - scale) * verticalRatio,
+        top: (verticalOffset + scale) * verticalRatio,
+      });
     }
   }
 
@@ -270,39 +272,28 @@ export default class App extends React.Component<AppProps, AppState> {
         </div>
       );
     }
-
-    if (this.calculator) {
-      this.calculator.setBlank();
-      this.draw();
-      const scale = 250;
-      const verticalOffset = 50;
-      const ratio = !this.canvas
-        ? 1.0
-        : this.canvas.offsetHeight / this.canvas.offsetWidth;
-      const horizontalRatio = ratio > 1 ? 1 : 1 / ratio;
-      const verticalRatio = ratio < 1 ? 1 : ratio;
-      this.calculator.setMathBounds({
-        left: -scale * horizontalRatio,
-        right: scale * horizontalRatio,
-        bottom: (verticalOffset - scale) * verticalRatio,
-        top: (verticalOffset + scale) * verticalRatio,
-      });
-    }
+    this.calculatorRender();
 
     return (
       <div className="App">
-        {/* <canvas
-          ref={(element) => (this.canvas = element)}
-          width={window.innerWidth * devicePixelRatio * 2}
-          height={window.innerHeight * devicePixelRatio * 2}
-          color="blue"
-          style={{ width: window.innerWidth, height: window.innerHeight }}
-        /> */}
-        <div
-          className="calculator"
-          style={{ width: "100vw", height: "100vh" }}
-          ref={(element) => (this.canvas = element)}
-        />
+        <GraphingCalculator
+          attributes={{
+            className: "calculator",
+            style: { width: "100vw", height: "100vh" },
+          }}
+          keypad={false}
+          expressions={false}
+          expressionsTopbar={false}
+          expressionsCollapsed={true}
+          settingsMenu={false}
+          projectorMode={true}
+          invertedColors={true}
+          ref={(c) => {
+            if (!c) return;
+            this.calculator = c;
+            this.canvas = elt(c);
+          }}
+        ></GraphingCalculator>
         <div className="sidebar-right">
           <div className="sidebar-item">
             <label>
