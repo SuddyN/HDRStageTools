@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react";
 import logo from "../../logo.svg";
 import "./App.css";
-import { lvdService } from "../../Services/LvdService";
-import { Boundary, Collision, Lvd } from "../../Types";
+import { lvdService } from "../../Lib/Lvd/services";
+import { Boundary, Collision, Lvd } from "../../Lib/Lvd/types";
 import { Checkbox } from "primereact/checkbox";
 import { ListBox } from "primereact/listbox";
 import { Dropdown } from "primereact/dropdown";
@@ -13,7 +13,7 @@ import {
   StageFilterFunc,
   SortMode,
   SortDir,
-} from "../../Services/StageListService";
+} from "../../Lib/StageList/services";
 import { elt, GraphingCalculator } from "desmos-react";
 
 const LVD_SOURCE: string = "./lvd/hdr-beta/lvd.zip";
