@@ -4,9 +4,12 @@ import { Lvd, LvdStats } from "../Types";
 
 export enum StageFilter {
   All = "All Stages",
-  Legal = "Legal Stages",
   Supported = "Supported Stages",
-  GigatonHammer2 = "Gigaton Hammer 2",
+  Legal = "Legal Stages",
+  Illegal = "Illegal Stages",
+  GigatonHammer3 = "Gigaton Hammer 3",
+  Undertow2024 = "Undertow 2024",
+  KaylaSpookySmash4 = "Kayla's Spooky Smash 4",
 }
 
 export type StageFilterFunc = (name: string) => boolean;
@@ -14,14 +17,23 @@ export type StageFilterFunc = (name: string) => boolean;
 const getFilterFunc = (name: string): StageFilterFunc => {
   let selectedFilterFunc;
   switch (name) {
-    case StageFilter.Legal:
-      selectedFilterFunc = legalFilterFunc;
-      break;
     case StageFilter.Supported:
       selectedFilterFunc = supportedFilterFunc;
       break;
-    case StageFilter.GigatonHammer2:
-      selectedFilterFunc = gigaton2FilterFunc;
+    case StageFilter.Legal:
+      selectedFilterFunc = legalFilterFunc;
+      break;
+    case StageFilter.Illegal:
+      selectedFilterFunc = illegalFilterFunc;
+      break;
+    case StageFilter.GigatonHammer3:
+      selectedFilterFunc = gigatonHammer3FilterFunc;
+      break;
+    case StageFilter.Undertow2024:
+      selectedFilterFunc = undertow2024FilterFunc;
+      break;
+    case StageFilter.KaylaSpookySmash4:
+      selectedFilterFunc = kaylaSpookySmash4FilterFunc;
       break;
     default:
       selectedFilterFunc = allFilterFunc;
@@ -29,8 +41,60 @@ const getFilterFunc = (name: string): StageFilterFunc => {
   return selectedFilterFunc;
 };
 
-const allFilterFunc = (name: string): boolean => {
-  return true;
+const gigatonHammer3FilterFunc = (name: string): boolean => {
+  if (
+    [
+      "3D Land",
+      "Battlefield",
+      "Bowser's Castle",
+      "Duel Battlefield",
+      "Garreg Mach Monastery",
+      "Hollow Bastion",
+      "Realm of GameCube",
+      "Smashville",
+    ].includes(name)
+  ) {
+    return true;
+  }
+  return false;
+};
+
+const undertow2024FilterFunc = (name: string): boolean => {
+  if (
+    [
+      "3D Land",
+      "Battlefield",
+      "Bramble Blast",
+      "Garreg Mach Monastery",
+      "Green Greens",
+      "Realm of GameCube",
+      "Sky Sanctuary Zone",
+      "Smashville",
+      "World 1-2",
+    ].includes(name)
+  ) {
+    return true;
+  }
+  return false;
+};
+
+const kaylaSpookySmash4FilterFunc = (name: string): boolean => {
+  if (
+    [
+      "3D Land",
+      "Battlefield",
+      "Bramble Blast",
+      "Garreg Mach Monastery",
+      "Green Greens",
+      "Lylat Cruise",
+      "Realm of GameCube",
+      "Sky Sanctuary Zone",
+      "Smashville",
+    ].includes(name)
+  ) {
+    return true;
+  }
+  return false;
 };
 
 const legalFilterFunc = (name: string): boolean => {
@@ -40,22 +104,30 @@ const legalFilterFunc = (name: string): boolean => {
       "Arena Ferox",
       "Battlefield",
       "Bowser's Castle",
+      "Boxing Ring",
       "Bramble Blast",
       "Brinstar Depths",
+      "Deadline",
       "Duel Battlefield",
       "Final Destination",
+      "Find Mii",
       "Fountain of Dreams",
       "Fourside",
       "Frigate Orpheon",
       "Ganon's Tower",
       "Garreg Mach Monastery",
+      "Gaur Plain",
+      "Great Bay",
       "Green Greens",
       "Hollow Bastion",
       "Kalos Pokemon League",
-      "Kongo Falls",
+      "Luigi's Mansion",
       "Lylat Cruise",
       "Mario Galaxy",
+      "Midgar",
+      "Mishima Dojo",
       "Moray Towers",
+      "New Pork City",
       "Northern Cave",
       "Palutena's Temple",
       "Paper Mario",
@@ -64,10 +136,13 @@ const legalFilterFunc = (name: string): boolean => {
       "Sky Sanctuary Zone",
       "Skyworld",
       "Smashville",
+      "Snake Train Chamber (Part 2)",
       "Spear Pillar",
+      "Super Happy Tree",
       "Town & City",
       "Unova Pokemon League",
       "Venom",
+      "WarioWare, Inc.",
       "World 1-2",
       "Yggdrasil's Altar (Part 2)",
       "Yoshi's Story",
@@ -84,20 +159,34 @@ const supportedFilterFunc = (name: string): boolean => {
   }
   if (
     [
-      "Boxing Ring",
+      "Balloon Fight",
+      "Big Battlefield",
       "Brinstar Depths",
-      "Deadline",
+      "Cloud Sea of Alrest",
+      "Coliseum",
+      "Dinosaur Land",
+      "Dracula's Castle",
       "Dream Land",
-      "Find Mii",
-      "Gerudo Valley",
-      "Hyrule Castle",
-      "Luigi's Mansion",
-      "Midgar",
-      "Mishima Dojo",
-      "New Pork City",
+      "Duck Hunt",
+      "Garden of Hope",
+      "Jungle Japes",
+      "Kongo Falls",
+      "Living Room",
+      "Minecraft World",
+      "Mushroom Kingdom",
       "Pokemon Stadium",
-      "Snake Train Chamber (Part 2)",
+      "Pilotwings",
+      "Pilotwings (Part 2)",
+      "Reset Bomb Forest",
+      "Skyloft",
+      "Spiral Mountain",
+      "Spring Stadium",
+      "Suzaku Castle",
       "Tomodachi Life",
+      "Umbra Clock Tower",
+      "Wii Fit Studio",
+      "Windy Hill Zone",
+      "Yoshi's Island",
     ].includes(name)
   ) {
     return true;
@@ -105,23 +194,12 @@ const supportedFilterFunc = (name: string): boolean => {
   return false;
 };
 
-const gigaton2FilterFunc = (name: string): boolean => {
-  if (
-    [
-      "Hollow Bastion",
-      "Garreg Mach Monastery",
-      "Battlefield",
-      "Smashville",
-      "Bramble Blast",
-      "3D Land",
-      "Lylat Cruise",
-      "Realm of GameCube",
-      "Sky Sanctuary Zone",
-    ].includes(name)
-  ) {
-    return true;
-  }
-  return false;
+const allFilterFunc = (name: string): boolean => {
+  return true;
+};
+
+const illegalFilterFunc = (name: string): boolean => {
+  return supportedFilterFunc(name) && !legalFilterFunc(name);
 };
 
 /// SORTING
