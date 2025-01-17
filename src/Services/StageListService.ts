@@ -44,8 +44,8 @@ const getFilterFunc = (name: string): StageFilterFunc => {
 const gigatonHammer3FilterFunc = (name: string): boolean => {
   if (
     [
-      "3D Land",
       "Battlefield",
+      "Bramble Blast",
       "Bowser's Castle",
       "Duel Battlefield",
       "Garreg Mach Monastery",
