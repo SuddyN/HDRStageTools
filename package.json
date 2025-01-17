@@ -1,7 +1,7 @@
 {
   "name": "hdr-stage-tools",
   "version": "0.1.0",
-  "homepage": "https://suddy.dev",
+  "homepage": "https://hdr.suddy.dev",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
