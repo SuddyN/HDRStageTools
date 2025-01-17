@@ -1,26 +1,21 @@
-const CROUCH_CANCEL_KNOCKBACK_MUL = 0.666667;
-const ASDI_DOWN_MUL = 0.5;
-const SMASH_ATTACK_CHARGE_KNOCKBACK_MUL = 1.2;
+import { AttackData, FighterData } from "./types";
+
 const HITSTUN_RATIO = 0.42;
+const CROUCH_CANCEL_KNOCKBACK_MUL = 2.0 / 3.0;
+const SMASH_ATTACK_CHARGE_KNOCKBACK_MUL = 1.2;
+const FLOOR_HUG_HITSTUN_MUL = 0.5;
 const TUMBLE_THRESHOLD = 80.0;
 
 function calculateKnockback(
-  percent: number, // percentage of the target
-  damage: number, // damage of the attack
-  weight: number, // weight of the target
-  kbg: number, // knockback growth
-  wdsk: number, // weight dependent set knockback
-  bkb: number, // base knockback
-  croundCancel: boolean,
-  smashCharge: boolean
-) {
-  // https://www.ssbwiki.com/Knockback#Melee_onward
-  let ratio = 1.0;
-  if (croundCancel) ratio *= CROUCH_CANCEL_KNOCKBACK_MUL;
-  if (smashCharge) ratio *= SMASH_ATTACK_CHARGE_KNOCKBACK_MUL;
+  attackData: AttackData,
+  fighterData: FighterData
+): number {
+  let { percent, weight } = fighterData;
+  let { damage, kbg, fkb, bkb } = attackData;
 
-  if (wdsk > 0.0) {
-    damage = wdsk;
+  // https://www.ssbwiki.com/Knockback#Melee_onward
+  if (fkb > 0.0) {
+    damage = fkb;
     percent = 10.0;
   }
 
@@ -29,21 +24,31 @@ function calculateKnockback(
   knockback += 18;
   knockback *= kbg / 100;
   knockback += bkb;
-  knockback *= ratio;
   return knockback;
 }
 
-function calculateHitstun(knockback: number, crouchCancel: boolean) {
-  if (knockback < TUMBLE_THRESHOLD && crouchCancel) {
-    knockback *= ASDI_DOWN_MUL;
+function modifyKnockback(
+  knockback: number,
+  isCrouchCancel: number,
+  isSmashAttackCharge: number
+): number {
+  if (isCrouchCancel) {
+    knockback *= CROUCH_CANCEL_KNOCKBACK_MUL;
+  } else if (isSmashAttackCharge) {
+    knockback *= SMASH_ATTACK_CHARGE_KNOCKBACK_MUL;
   }
-  let hitstun = knockback * HITSTUN_RATIO;
-  return hitstun;
+  return knockback;
 }
 
-export const attackService = {
-  HITSTUN_RATIO,
-  TUMBLE_THRESHOLD,
-  calculateKnockback,
-  calculateHitstun,
-};
+function calculateHitstun(knockback: number): number {
+  return Math.floor(knockback * HITSTUN_RATIO);
+}
+
+function modifyHitstun(hitstun: number, isFloorHug: number): number {
+  if (isFloorHug) {
+    hitstun *= FLOOR_HUG_HITSTUN_MUL;
+  }
+  return Math.floor(hitstun);
+}
+
+export const knockbackService = {};
