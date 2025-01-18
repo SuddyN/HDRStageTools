@@ -156,7 +156,7 @@ export class KnockbackCalcContext {
     this.yCharaSpeed = Math.max(this.yCharaSpeed - gravity, -fallSpeed);
   };
 
-  calculateTrajectory = (): Vec2[] => {
+  calcTrajectory = (): Vec2[] => {
     let trajectory: Vec2[] = [];
     for (let f = this.hitstun; f > 0; f--) {
       trajectory.push({ x: this.pos.x, y: this.pos.y });

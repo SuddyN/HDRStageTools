@@ -15,6 +15,8 @@ import {
   SortDir,
 } from "../../Lib/StageList/services";
 import { elt, GraphingCalculator } from "desmos-react";
+import { KnockbackCalcContext } from "../../Lib/Knockback/services";
+import { AttackData, FighterData } from "../../Lib/Knockback/types";
 
 const LVD_SOURCE: string = "./lvd/hdr-beta/lvd.zip";
 
@@ -90,6 +92,65 @@ export default class App extends React.Component<AppProps, AppState> {
         return;
       }
       this.drawStage(name, lvd, idx);
+    });
+
+    // temp
+    let attackData: AttackData = {
+      damage: 13,
+      angle: 45,
+      kbg: 70,
+      fkb: 0,
+      bkb: 80,
+    };
+    let fighterData: FighterData = {
+      percent: 100,
+      weight: 98,
+      gravity: 0.095,
+      gravityDamageFlyTop: 0.095,
+      fallSpeed: 1.8,
+      fallSpeedDamageFlyTop: 1.8,
+      startPos: { x: 0, y: 0 },
+      directionalInfluence: { x: 0, y: 0 },
+      automaticSmashDirectionalInfluence: { x: 0, y: 0 },
+      isGrounded: true,
+      isCrouching: false,
+      isChargingSmashAttack: false,
+    };
+    let knockbackCalcContext = new KnockbackCalcContext(
+      attackData,
+      fighterData
+    );
+    let trajectory = knockbackCalcContext.calcTrajectory();
+    let xValues: number[] = trajectory.map((t) => t.x);
+    let yValues: number[] = trajectory.map((t) => t.y);
+    console.log(trajectory);
+
+    this.calculator.setExpression({
+      type: "table",
+      label: "knockback",
+      showLabel: true,
+      columns: [
+        {
+          latex: "x",
+          label: "knockback x",
+          showLabel: true,
+          values: xValues,
+          points: true,
+          lines: true,
+          lineWidth: 1.0,
+          pointSize: 3,
+        },
+        {
+          latex: "y",
+          label: "knockback y",
+          showLabel: true,
+          values: yValues,
+          points: true,
+          lines: true,
+          lineWidth: 1.0,
+          pointSize: 3,
+        },
+      ],
     });
   };
 
