@@ -17,13 +17,16 @@ function calcKnockback(
 ): number {
   let { percent, weight } = fighterData;
   let { damage, kbg, fkb, bkb } = attackData;
+  percent += damage; // knockback is calculated with post-hit damage
 
-  // https://www.ssbwiki.com/Knockback#Melee_onward
+  // if fixed knockback is used, attack damage is set to fkb and percent is set to 10
   if (fkb > 0.0) {
     damage = fkb;
     percent = 10.0;
   }
 
+  // knockback formula
+  // https://www.ssbwiki.com/Knockback#Melee_onward
   let knockback = percent / 10 + (percent * damage) / 20;
   knockback *= (200 / (weight + 100)) * 1.4;
   knockback += 18;
@@ -43,7 +46,8 @@ function modifyKnockback(knockback: number, fighterData: FighterData): number {
 }
 
 function calcHitstun(knockback: number): number {
-  return Math.floor(knockback * HITSTUN_RATIO);
+  let hitstun = Math.floor(knockback * HITSTUN_RATIO);
+  return hitstun;
 }
 
 function modifyHitstun(hitstun: number, isFloorHug: number): number {
