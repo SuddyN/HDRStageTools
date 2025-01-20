@@ -14,9 +14,10 @@ import {
   SortMode,
   SortDir,
 } from "../../Lib/StageList/services";
-import { elt, GraphingCalculator } from "desmos-react";
+import { elt } from "desmos-react";
 import { KnockbackCalcContext } from "../../Lib/Knockback/services";
 import { AttackData, FighterData } from "../../Lib/Knockback/types";
+import { DesmosView } from "../DesmosView";
 
 const LVD_SOURCE: string = "./lvd/hdr-beta/lvd.zip";
 
@@ -335,24 +336,13 @@ export default class App extends React.Component<AppProps, AppState> {
 
     return (
       <div className="App">
-        <GraphingCalculator
-          attributes={{
-            className: "calculator",
-            style: { width: "100vw", height: "100vh" },
-          }}
-          keypad={false}
-          expressions={false}
-          expressionsTopbar={false}
-          expressionsCollapsed={true}
-          settingsMenu={false}
-          projectorMode={true}
-          invertedColors={true}
+        <DesmosView
           ref={(c) => {
             if (!c) return;
             this.calculator = c;
             this.canvas = elt(c);
           }}
-        ></GraphingCalculator>
+        />
         <div className="sidebar-right">
           <div className="sidebar-item">
             <label>
