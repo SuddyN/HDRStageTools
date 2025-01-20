@@ -259,6 +259,42 @@ export default class StageTool extends React.Component<
 
     return (
       <>
+        <div className="sidebar-left">
+          <Dropdown
+            className="listbox-sorter"
+            value={this.state.selectedFilter}
+            options={Object.values(StageFilter)}
+            onChange={(e) => {
+              this.setState({
+                selectedFilter: e.value,
+                selectedFilterFunc: stageListService.getFilterFunc(e.value),
+              });
+            }}
+          />
+          <Dropdown
+            className="listbox-sorter"
+            value={this.state.selectedSort}
+            options={this.groupedSorters}
+            optionLabel="label"
+            optionGroupLabel="label"
+            optionGroupChildren="items"
+            onChange={(e) => this.setState({ selectedSort: e.value })}
+          />
+          <SelectButton
+            value={this.state.selectedSortDir}
+            options={Object.values(SortDir)}
+            onChange={(e) => this.setState({ selectedSortDir: e.value })}
+            style={{ width: "100%", display: "flex" }}
+          />
+          <ListBox
+            multiple
+            filter
+            value={this.state.selectedStages}
+            options={this.lvdSorter()}
+            onChange={(e) => this.setState({ selectedStages: e.value })}
+            itemTemplate={this.stageListTemplate}
+          />
+        </div>
         <div className="sidebar-right">
           <div className="sidebar-item">
             <label>
@@ -304,42 +340,6 @@ export default class StageTool extends React.Component<
               />
             </label>
           </div>
-        </div>
-        <div className="sidebar-left">
-          <Dropdown
-            className="listbox-sorter"
-            value={this.state.selectedFilter}
-            options={Object.values(StageFilter)}
-            onChange={(e) => {
-              this.setState({
-                selectedFilter: e.value,
-                selectedFilterFunc: stageListService.getFilterFunc(e.value),
-              });
-            }}
-          />
-          <Dropdown
-            className="listbox-sorter"
-            value={this.state.selectedSort}
-            options={this.groupedSorters}
-            optionLabel="label"
-            optionGroupLabel="label"
-            optionGroupChildren="items"
-            onChange={(e) => this.setState({ selectedSort: e.value })}
-          />
-          <SelectButton
-            value={this.state.selectedSortDir}
-            options={Object.values(SortDir)}
-            onChange={(e) => this.setState({ selectedSortDir: e.value })}
-            style={{ width: "100%", display: "flex" }}
-          />
-          <ListBox
-            multiple
-            filter
-            value={this.state.selectedStages}
-            options={this.lvdSorter()}
-            onChange={(e) => this.setState({ selectedStages: e.value })}
-            itemTemplate={this.stageListTemplate}
-          />
         </div>
       </>
     );
