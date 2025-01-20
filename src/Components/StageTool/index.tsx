@@ -13,6 +13,7 @@ import {
 } from "../../Lib/StageList/services";
 import { KnockbackCalcContext } from "../../Lib/Knockback/services";
 import { AttackData, FighterData } from "../../Lib/Knockback/types";
+import StageSelector from "../StageSelector";
 
 interface StageToolProps {
   canvas: HTMLDivElement;
@@ -260,39 +261,24 @@ export default class StageTool extends React.Component<
     return (
       <>
         <div className="sidebar-left">
-          <Dropdown
-            className="listbox-sorter"
-            value={this.state.selectedFilter}
-            options={Object.values(StageFilter)}
-            onChange={(e) => {
+          <StageSelector
+            lvdSorter={this.lvdSorter}
+            selectedFilter={this.state.selectedFilter}
+            selectedFilterFunc={this.state.selectedFilterFunc}
+            selectedSort={this.state.selectedSort}
+            selectedSortDir={this.state.selectedSortDir}
+            selectedStages={this.state.selectedStages}
+            onChangeFilter={(e) => {
               this.setState({
                 selectedFilter: e.value,
                 selectedFilterFunc: stageListService.getFilterFunc(e.value),
               });
             }}
-          />
-          <Dropdown
-            className="listbox-sorter"
-            value={this.state.selectedSort}
-            options={this.groupedSorters}
-            optionLabel="label"
-            optionGroupLabel="label"
-            optionGroupChildren="items"
-            onChange={(e) => this.setState({ selectedSort: e.value })}
-          />
-          <SelectButton
-            value={this.state.selectedSortDir}
-            options={Object.values(SortDir)}
-            onChange={(e) => this.setState({ selectedSortDir: e.value })}
-            style={{ width: "100%", display: "flex" }}
-          />
-          <ListBox
-            multiple
-            filter
-            value={this.state.selectedStages}
-            options={this.lvdSorter()}
-            onChange={(e) => this.setState({ selectedStages: e.value })}
-            itemTemplate={this.stageListTemplate}
+            onChangeSort={(e) => this.setState({ selectedSort: e.value })}
+            onChangeSortDir={(e) => this.setState({ selectedSortDir: e.value })}
+            onChangeStages={(e) => this.setState({ selectedStages: e.value })}
+            groupedSorters={this.groupedSorters}
+            stageListTemplate={this.stageListTemplate}
           />
         </div>
         <div className="sidebar-right">
