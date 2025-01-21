@@ -26,6 +26,13 @@ export default class KnockbackViewer extends React.Component<
   render() {
     return (
       <>
+        <Panel>
+          <div className="font-small" style={{ maxWidth: "14rem" }}>
+            Please understand that the knockback calculations are likely
+            inaccurate, especially at high percents. They are untested and do
+            not include HDR's high knockback speed-up feature.
+          </div>
+        </Panel>
         <this.fighterPanel />
         <div className="p-panel p-component">
           <div className="p-panel-header justify-content-space-between">
