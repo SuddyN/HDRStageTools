@@ -2,6 +2,8 @@ import React, { ReactNode } from "react";
 import { AttackData, FighterData } from "../../Lib/Knockback/types";
 import { Panel, PanelHeaderTemplateOptions } from "primereact/panel";
 import { InputNumber } from "primereact/inputnumber";
+import { Button } from "primereact/button";
+import { DEFAULT_ATTACK } from "../StageTool";
 
 interface KnockbackViewerProps {
   fighterData: FighterData;
@@ -25,6 +27,21 @@ export default class KnockbackViewer extends React.Component<
     return (
       <>
         <this.fighterPanel />
+        <div className="p-panel p-component">
+          <div className="p-panel-header justify-content-space-between">
+            <Button
+              label="Add Attack"
+              style={{
+                padding: "0.125rem 0.25rem",
+                width: "100%",
+                height: "100%",
+              }}
+              onClick={() =>
+                this.props.setAttacks?.([...this.props.attacks, DEFAULT_ATTACK])
+              }
+            />
+          </div>
+        </div>
         {this.attackPanels()}
       </>
     );
@@ -68,6 +85,7 @@ export default class KnockbackViewer extends React.Component<
         }}
         headerTemplate={headerTemplate}
         toggleable
+        collapsed
       >
         <InputNumber
           id="weight"
@@ -180,6 +198,18 @@ export default class KnockbackViewer extends React.Component<
         return (
           <div className={className}>
             <span>Attack {idx + 1}</span>
+
+            <Button
+              label="Remove"
+              style={{
+                padding: "0.125rem 0.25rem",
+              }}
+              onClick={() => {
+                const attacks = this.props.attacks;
+                attacks.splice(idx, 1);
+                this.props.setAttacks?.(attacks);
+              }}
+            />
             <div>{options.togglerElement}</div>
           </div>
         );

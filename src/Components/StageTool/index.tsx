@@ -21,6 +21,29 @@ enum Mode {
   KnockbackViewer = "Knockback Viewer (BETA)",
 }
 
+export const DEFAULT_FIGHTER: FighterData = {
+  percent: 80,
+  weight: 94,
+  gravity: 0.095,
+  gravityDamageFlyTop: 0.095,
+  fallSpeed: 2.05,
+  fallSpeedDamageFlyTop: 2.05,
+  startPos: { x: 0, y: 0 },
+  directionalInfluence: { x: 0, y: 0 },
+  automaticSmashDirectionalInfluence: { x: 0, y: 0 },
+  isGrounded: true,
+  isCrouching: false,
+  isChargingSmashAttack: false,
+};
+
+export const DEFAULT_ATTACK: AttackData = {
+  damage: 13,
+  angle: 45,
+  kbg: 70,
+  fkb: 0,
+  bkb: 80,
+};
+
 interface StageToolProps {
   canvas: HTMLDivElement;
   calculator: Desmos.Calculator;
@@ -51,29 +74,8 @@ export default class StageTool extends React.Component<
     super(props);
     this.state = {
       mode: Mode.StageSelector,
-      fighterData: {
-        percent: 80,
-        weight: 94,
-        gravity: 0.095,
-        gravityDamageFlyTop: 0.095,
-        fallSpeed: 2.05,
-        fallSpeedDamageFlyTop: 2.05,
-        startPos: { x: 0, y: 0 },
-        directionalInfluence: { x: 0, y: 0 },
-        automaticSmashDirectionalInfluence: { x: 0, y: 0 },
-        isGrounded: true,
-        isCrouching: false,
-        isChargingSmashAttack: false,
-      },
-      attacks: [
-        {
-          damage: 13,
-          angle: 45,
-          kbg: 70,
-          fkb: 0,
-          bkb: 80,
-        },
-      ],
+      fighterData: DEFAULT_FIGHTER,
+      attacks: [],
       drawStages: true,
       drawPlatforms: true,
       drawBlastZones: true,
