@@ -14,6 +14,7 @@ import {
 import { KnockbackCalcContext } from "../../Lib/Knockback/services";
 import { AttackData, FighterData } from "../../Lib/Knockback/types";
 import StageSelector from "../StageSelector";
+import StageDrawOptions from "../StageDrawOptions";
 
 interface StageToolProps {
   canvas: HTMLDivElement;
@@ -22,20 +23,11 @@ interface StageToolProps {
   lvdMap: Map<string, Lvd>;
 }
 
-interface DrawOptions {
-  drawCameras: boolean;
-  drawBlastZones: boolean;
-  drawPlatforms: boolean;
+interface StageToolState {
   drawStages: boolean;
-  drawSpawns: boolean;
-  drawRespawns: boolean;
-  drawItemSpawners: boolean;
-  drawPTrainerPlatforms: boolean;
-  drawShrunkenCameras: boolean;
-  drawShrunkenBlastZones: boolean;
-}
-
-interface StageToolState extends DrawOptions {
+  drawPlatforms: boolean;
+  drawBlastZones: boolean;
+  drawCameras: boolean;
   selectedFilter: StageFilter;
   selectedFilterFunc: StageFilterFunc;
   selectedStages: string[];
@@ -50,16 +42,10 @@ export default class StageTool extends React.Component<
   constructor(props: StageToolProps) {
     super(props);
     this.state = {
-      drawCameras: false,
-      drawBlastZones: true,
-      drawPlatforms: true,
       drawStages: true,
-      drawSpawns: false,
-      drawRespawns: false,
-      drawItemSpawners: false,
-      drawPTrainerPlatforms: false,
-      drawShrunkenCameras: false,
-      drawShrunkenBlastZones: false,
+      drawPlatforms: true,
+      drawBlastZones: true,
+      drawCameras: false,
       selectedFilter: StageFilter.Legal,
       selectedFilterFunc: stageListService.getFilterFunc(StageFilter.Legal),
       selectedStages: [],
@@ -282,50 +268,24 @@ export default class StageTool extends React.Component<
           />
         </div>
         <div className="sidebar-right">
-          <div className="sidebar-item">
-            <label>
-              {"Draw Stages? "}
-              <Checkbox
-                checked={this.state.drawStages}
-                onChange={(e) => {
-                  this.setState({ drawStages: e.checked ?? true });
-                }}
-              />
-            </label>
-          </div>
-          <div className="sidebar-item">
-            <label>
-              {"Draw Platforms? "}
-              <Checkbox
-                checked={this.state.drawPlatforms}
-                onChange={(e) => {
-                  this.setState({ drawPlatforms: e.checked ?? true });
-                }}
-              />
-            </label>
-          </div>
-          <div className="sidebar-item">
-            <label>
-              {"Draw BlastZones? "}
-              <Checkbox
-                checked={this.state.drawBlastZones}
-                onChange={(e) => {
-                  this.setState({ drawBlastZones: e.checked ?? true });
-                }}
-              />
-            </label>
-          </div>
-          <div className="sidebar-item">
-            <label>
-              {"Draw Camera? "}
-              <Checkbox
-                checked={this.state.drawCameras}
-                onChange={(e) => {
-                  this.setState({ drawCameras: e.checked ?? false });
-                }}
-              />
-            </label>
-          </div>
+          <StageDrawOptions
+            drawStages={this.state.drawStages}
+            drawPlatforms={this.state.drawPlatforms}
+            drawBlastZones={this.state.drawBlastZones}
+            drawCameras={this.state.drawCameras}
+            onChangeStages={(e) => {
+              this.setState({ drawStages: e.checked ?? true });
+            }}
+            onChangePlatforms={(e) => {
+              this.setState({ drawPlatforms: e.checked ?? true });
+            }}
+            onChangeBlastzones={(e) => {
+              this.setState({ drawBlastZones: e.checked ?? true });
+            }}
+            onChangeCameras={(e) => {
+              this.setState({ drawCameras: e.checked ?? false });
+            }}
+          />
         </div>
       </>
     );
