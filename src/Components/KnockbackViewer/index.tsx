@@ -1,19 +1,7 @@
 import React, { ReactNode } from "react";
-import { ListBox, ListBoxChangeEvent } from "primereact/listbox";
-import { Dropdown, DropdownChangeEvent } from "primereact/dropdown";
-import { SelectButton, SelectButtonChangeEvent } from "primereact/selectbutton";
-import {
-  StageFilter,
-  StageFilterFunc,
-  SortMode,
-  SortDir,
-} from "../../Lib/StageList/services";
 import { AttackData, FighterData } from "../../Lib/Knockback/types";
 import { Panel, PanelHeaderTemplateOptions } from "primereact/panel";
-import { Avatar } from "primereact/avatar";
-import { Menu } from "primereact/menu";
 import { InputNumber } from "primereact/inputnumber";
-import { FloatLabel } from "primereact/floatlabel";
 
 interface KnockbackViewerProps {
   fighterData: FighterData;
@@ -47,21 +35,26 @@ export default class KnockbackViewer extends React.Component<
       const className = `${options.className} justify-content-space-between`;
       return (
         <div className={className}>
-          <FloatLabel>
-            <InputNumber
-              id="percent"
-              value={fighterData.percent}
-              onChange={(e) => {
-                this.props.setFighterData?.({
-                  ...fighterData,
-                  percent: e.value ?? fighterData.percent,
-                });
-              }}
-              min={0}
-              max={999.9}
-            />
-            <label htmlFor="percent"> Percent</label>
-          </FloatLabel>
+          <label htmlFor="percent" style={{ paddingRight: "0.25rem" }}>
+            Defender
+          </label>
+          <InputNumber
+            id="percent"
+            value={fighterData.percent}
+            onChange={(e) => {
+              this.props.setFighterData?.({
+                ...fighterData,
+                percent: e.value ?? fighterData.percent,
+              });
+            }}
+            min={0}
+            max={999.9}
+            minFractionDigits={1}
+            maxFractionDigits={1}
+            suffix="%"
+            showButtons
+            step={0.5}
+          />
           <div>{options.togglerElement}</div>
         </div>
       );
@@ -69,7 +62,13 @@ export default class KnockbackViewer extends React.Component<
 
     const { fighterData } = this.props;
     return (
-      <Panel headerTemplate={headerTemplate} toggleable>
+      <Panel
+        style={{
+          textAlign: "start",
+        }}
+        headerTemplate={headerTemplate}
+        toggleable
+      >
         <InputNumber
           id="weight"
           value={fighterData.weight}
@@ -79,8 +78,16 @@ export default class KnockbackViewer extends React.Component<
               weight: e.value ?? fighterData.weight,
             });
           }}
+          min={0}
+          max={200}
+          minFractionDigits={0}
+          maxFractionDigits={0}
+          showButtons
+          step={1}
         />
-        <label htmlFor="weight"> Weight</label>
+        <label htmlFor="weight" className="font-small">
+          Weight
+        </label>
         <br />
         <InputNumber
           id="gravity"
@@ -91,8 +98,16 @@ export default class KnockbackViewer extends React.Component<
               gravity: e.value ?? fighterData.gravity,
             });
           }}
+          min={0}
+          max={1}
+          minFractionDigits={4}
+          maxFractionDigits={4}
+          showButtons
+          step={0.0005}
         />
-        <label htmlFor="gravity"> Gravity</label>
+        <label htmlFor="gravity" className="font-small">
+          Gravity
+        </label>
         <br />
         <InputNumber
           id="gravityDamageFlyTop"
@@ -103,8 +118,16 @@ export default class KnockbackViewer extends React.Component<
               gravityDamageFlyTop: e.value ?? fighterData.gravityDamageFlyTop,
             });
           }}
+          min={0}
+          max={1}
+          minFractionDigits={4}
+          maxFractionDigits={4}
+          showButtons
+          step={0.0005}
         />
-        <label htmlFor="gravityDamageFlyTop"> Gravity (Tumble)</label>
+        <label htmlFor="gravityDamageFlyTop" className="font-small">
+          Gravity (Tumble)
+        </label>
         <br />
         <InputNumber
           id="fallSpeed"
@@ -115,8 +138,16 @@ export default class KnockbackViewer extends React.Component<
               fallSpeed: e.value ?? fighterData.fallSpeed,
             });
           }}
+          min={0}
+          max={10}
+          minFractionDigits={4}
+          maxFractionDigits={4}
+          showButtons
+          step={0.0005}
         />
-        <label htmlFor="fallSpeed"> Fall Speed</label>
+        <label htmlFor="fallSpeed" className="font-small">
+          Fall Speed
+        </label>
         <br />
         <InputNumber
           id="fallSpeedDamageFlyTop"
@@ -128,8 +159,16 @@ export default class KnockbackViewer extends React.Component<
                 e.value ?? fighterData.fallSpeedDamageFlyTop,
             });
           }}
+          min={0}
+          max={10}
+          minFractionDigits={4}
+          maxFractionDigits={4}
+          showButtons
+          step={0.0005}
         />
-        <label htmlFor="fallSpeedDamageFlyTop"> Fall Speed (Tumble)</label>
+        <label htmlFor="fallSpeedDamageFlyTop" className="font-small">
+          Fall Speed (Tumble)
+        </label>
       </Panel>
     );
   };
@@ -148,7 +187,13 @@ export default class KnockbackViewer extends React.Component<
 
       const attackData = this.props.attacks[idx];
       return (
-        <Panel headerTemplate={headerTemplate} toggleable>
+        <Panel
+          style={{
+            textAlign: "start",
+          }}
+          headerTemplate={headerTemplate}
+          toggleable
+        >
           <InputNumber
             id="damage"
             value={attackData.damage}
@@ -160,8 +205,17 @@ export default class KnockbackViewer extends React.Component<
               };
               this.props.setAttacks?.(attacks);
             }}
+            min={0}
+            max={999.9}
+            minFractionDigits={1}
+            maxFractionDigits={1}
+            suffix="%"
+            showButtons
+            step={0.1}
           />
-          <label htmlFor="damage"> Damage</label>
+          <label htmlFor="damage" className="font-small">
+            Damage
+          </label>
           <br />
           <InputNumber
             id="angle"
@@ -174,8 +228,17 @@ export default class KnockbackViewer extends React.Component<
               };
               this.props.setAttacks?.(attacks);
             }}
+            min={0}
+            max={360} // TODO: support 361
+            minFractionDigits={0}
+            maxFractionDigits={0}
+            suffix="°"
+            showButtons
+            step={1}
           />
-          <label htmlFor="angle"> Angle</label>
+          <label htmlFor="angle" className="font-small">
+            Angle
+          </label>
           <br />
           <InputNumber
             id="kbg"
@@ -188,8 +251,16 @@ export default class KnockbackViewer extends React.Component<
               };
               this.props.setAttacks?.(attacks);
             }}
+            min={0}
+            max={1000}
+            minFractionDigits={0}
+            maxFractionDigits={0}
+            showButtons
+            step={1}
           />
-          <label htmlFor="kbg"> Knockback Growth</label>
+          <label htmlFor="kbg" className="font-small">
+            Knockback Growth
+          </label>
           <br />
           <InputNumber
             id="fkb"
@@ -202,8 +273,16 @@ export default class KnockbackViewer extends React.Component<
               };
               this.props.setAttacks?.(attacks);
             }}
+            min={0}
+            max={1000}
+            minFractionDigits={0}
+            maxFractionDigits={0}
+            showButtons
+            step={1}
           />
-          <label htmlFor="fkb"> Fixed Knockback</label>
+          <label htmlFor="fkb" className="font-small">
+            Fixed Knockback
+          </label>
           <br />
           <InputNumber
             id="bkb"
@@ -216,8 +295,16 @@ export default class KnockbackViewer extends React.Component<
               };
               this.props.setAttacks?.(attacks);
             }}
+            min={0}
+            max={1000}
+            minFractionDigits={0}
+            maxFractionDigits={0}
+            showButtons
+            step={1}
           />
-          <label htmlFor="bkb"> Base Knockback</label>
+          <label htmlFor="bkb" className="font-small">
+            Base Knockback
+          </label>
         </Panel>
       );
     };

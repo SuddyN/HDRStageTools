@@ -164,3 +164,51 @@ code {
 .p-checkbox .p-checkbox-box.p-highlight {
   background: #2dd4bf;
 }
+
+.p-button.p-button-icon-only {
+  width: auto;
+}
+
+.p-panel .p-panel-header .p-panel-header-icon {
+  width: auto;
+  height: auto;
+}
+
+.p-panel.p-panel-toggleable .p-panel-header {
+  padding: 0.125rem 0.25rem;
+}
+
+.p-panel .p-panel-content {
+  padding: 0.125rem 0.25rem;
+}
+
+.p-inputnumber {
+  padding: 0.125rem 0.25rem;
+}
+
+.p-inputnumber-input {
+  width: 4rem;
+}
+
+.font-small {
+  font-size: small;
+}
+
+.p-icon {
+  width: auto;
+  height: auto;
+}
+
+.p-panel {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.p-panel .p-panel-header {
+  background: rgba(0, 0, 0, 0.6);
+  min-width: 14rem;
+  min-height: 2.75rem;
+}
+
+.p-panel .p-panel-content {
+  background: rgba(24, 24, 24, 0.6);
+}
