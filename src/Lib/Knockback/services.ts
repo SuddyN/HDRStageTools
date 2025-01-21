@@ -4,7 +4,7 @@ import { AttackData, FighterData } from "./types";
 const HITSTUN_RATIO = 0.42;
 const CROUCH_CANCEL_KNOCKBACK_MUL = 2.0 / 3.0;
 const SMASH_ATTACK_CHARGE_KNOCKBACK_MUL = 1.2;
-const FLOOR_HUG_HITSTUN_MUL = 0.5;
+// const FLOOR_HUG_HITSTUN_MUL = 0.5;
 const DAMAGE_SPEED_MUL = 0.03;
 const TUMBLE_THRESHOLD = 80.0;
 const DAMAGE_FLY_TOP_RADIANS_LW = 1.22173;
@@ -50,12 +50,12 @@ function calcHitstun(knockback: number): number {
   return hitstun;
 }
 
-function modifyHitstun(hitstun: number, isFloorHug: number): number {
-  if (isFloorHug) {
-    hitstun *= FLOOR_HUG_HITSTUN_MUL;
-  }
-  return Math.floor(hitstun);
-}
+// function modifyHitstun(hitstun: number, isFloorHug: number): number {
+//   if (isFloorHug) {
+//     hitstun *= FLOOR_HUG_HITSTUN_MUL;
+//   }
+//   return Math.floor(hitstun);
+// }
 
 function calcLaunchRadians(attackData: AttackData): number {
   let { angle } = attackData;

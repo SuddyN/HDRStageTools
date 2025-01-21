@@ -1,9 +1,5 @@
 import React, { ReactNode } from "react";
 import { Boundary, Collision, Lvd } from "../../Lib/Lvd/types";
-import { Checkbox } from "primereact/checkbox";
-import { ListBox } from "primereact/listbox";
-import { Dropdown } from "primereact/dropdown";
-import { SelectButton } from "primereact/selectbutton";
 import {
   stageListService,
   StageFilter,
