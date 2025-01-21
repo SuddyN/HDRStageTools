@@ -35,10 +35,13 @@ export default class App extends React.Component<AppProps, AppState> {
 
   async componentDidMount(): Promise<void> {
     const { lvdSource } = this.state;
-    this.setState({
-      loading: false,
-      lvdMap: await lvdService.initLvdFromUrl(lvdSource, false),
-    });
+    this.setState(
+      {
+        loading: false,
+        lvdMap: await lvdService.initLvdFromUrl(lvdSource, false),
+      },
+      this.forceUpdate
+    );
     window.addEventListener("resize", this.resize);
     this.resize();
   }
