@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { Lvd, LvdStats } from "../../Types";
+import { Lvd, LvdStats } from "../../Lib/Lvd/types";
 import { DataTable } from "primereact/datatable";
 import { Column, ColumnBodyOptions } from "primereact/column";
 import { ListBox } from "primereact/listbox";

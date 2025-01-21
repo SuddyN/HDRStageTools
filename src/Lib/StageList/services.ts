@@ -1,4 +1,4 @@
-import { Lvd, LvdStats } from "../Types";
+import { Lvd, LvdStats } from "../Lvd/types";
 
 /// STAGELISTS
 

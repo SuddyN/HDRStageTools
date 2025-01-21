@@ -1,7 +1,7 @@
 import JSZip from "jszip";
 import * as JSYaml from "js-yaml";
 import * as lodash from "lodash";
-import { Lvd, LvdStats, Vec2 } from "../Types";
+import { Lvd, LvdStats, Vec2 } from "../Lvd/types";
 
 async function initLvdFromUrl(
   url: string,
