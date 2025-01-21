@@ -47,7 +47,21 @@ export default class KnockbackViewer extends React.Component<
       const className = `${options.className} justify-content-space-between`;
       return (
         <div className={className}>
-          <span>Fighter Data</span>
+          <FloatLabel>
+            <InputNumber
+              id="percent"
+              value={fighterData.percent}
+              onChange={(e) => {
+                this.props.setFighterData?.({
+                  ...fighterData,
+                  percent: e.value ?? fighterData.percent,
+                });
+              }}
+              min={0}
+              max={999.9}
+            />
+            <label htmlFor="percent"> Percent</label>
+          </FloatLabel>
           <div>{options.togglerElement}</div>
         </div>
       );
@@ -56,20 +70,6 @@ export default class KnockbackViewer extends React.Component<
     const { fighterData } = this.props;
     return (
       <Panel headerTemplate={headerTemplate} toggleable>
-        <InputNumber
-          id="percent"
-          value={fighterData.percent}
-          onChange={(e) => {
-            this.props.setFighterData?.({
-              ...fighterData,
-              percent: e.value ?? fighterData.percent,
-            });
-          }}
-          min={0}
-          max={999.9}
-        />
-        <label htmlFor="percent"> Percent</label>
-        <br />
         <InputNumber
           id="weight"
           value={fighterData.weight}
