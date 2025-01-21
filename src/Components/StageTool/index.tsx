@@ -11,6 +11,15 @@ import { KnockbackCalcContext } from "../../Lib/Knockback/services";
 import { AttackData, FighterData } from "../../Lib/Knockback/types";
 import StageSelector from "../StageSelector";
 import StageDrawOptions from "../StageDrawOptions";
+import { Dropdown } from "primereact/dropdown";
+import KnockbackViewer from "../KnockbackViewer";
+
+enum Mode {
+  HideSidebar = "Hide Sidebar",
+  StageSelector = "Stage Selector",
+  // KnockbackComparator = "Knockback Comparator",
+  KnockbackViewer = "Knockback Viewer (BETA)",
+}
 
 interface StageToolProps {
   canvas: HTMLDivElement;
@@ -20,6 +29,9 @@ interface StageToolProps {
 }
 
 interface StageToolState {
+  mode: Mode;
+  fighterData: FighterData;
+  attacks: AttackData[];
   drawStages: boolean;
   drawPlatforms: boolean;
   drawBlastZones: boolean;
@@ -38,6 +50,30 @@ export default class StageTool extends React.Component<
   constructor(props: StageToolProps) {
     super(props);
     this.state = {
+      mode: Mode.StageSelector,
+      fighterData: {
+        percent: 80,
+        weight: 94,
+        gravity: 0.095,
+        gravityDamageFlyTop: 0.095,
+        fallSpeed: 2.05,
+        fallSpeedDamageFlyTop: 2.05,
+        startPos: { x: 0, y: 0 },
+        directionalInfluence: { x: 0, y: 0 },
+        automaticSmashDirectionalInfluence: { x: 0, y: 0 },
+        isGrounded: true,
+        isCrouching: false,
+        isChargingSmashAttack: false,
+      },
+      attacks: [
+        {
+          damage: 13,
+          angle: 45,
+          kbg: 70,
+          fkb: 0,
+          bkb: 80,
+        },
+      ],
       drawStages: true,
       drawPlatforms: true,
       drawBlastZones: true,
@@ -51,6 +87,12 @@ export default class StageTool extends React.Component<
   }
 
   draw = () => {
+    // draw knockback
+    this.state.attacks.forEach((attackData) => {
+      this.drawKnockback(attackData, this.state.fighterData);
+    });
+
+    // draw stages
     this.props.lvdMap.forEach((lvd, name) => {
       const idx = this.state.selectedStages.findIndex(
         (other) => name === other
@@ -60,29 +102,9 @@ export default class StageTool extends React.Component<
       }
       this.drawStage(name, lvd, idx);
     });
+  };
 
-    // temp
-    let attackData: AttackData = {
-      damage: 13,
-      angle: 45,
-      kbg: 70,
-      fkb: 0,
-      bkb: 80,
-    };
-    let fighterData: FighterData = {
-      percent: 100,
-      weight: 98,
-      gravity: 0.095,
-      gravityDamageFlyTop: 0.095,
-      fallSpeed: 1.8,
-      fallSpeedDamageFlyTop: 1.8,
-      startPos: { x: 0, y: 0 },
-      directionalInfluence: { x: 0, y: 0 },
-      automaticSmashDirectionalInfluence: { x: 0, y: 0 },
-      isGrounded: true,
-      isCrouching: false,
-      isChargingSmashAttack: false,
-    };
+  drawKnockback = (attackData: AttackData, fighterData: FighterData) => {
     let knockbackCalcContext = new KnockbackCalcContext(
       attackData,
       fighterData
@@ -243,25 +265,43 @@ export default class StageTool extends React.Component<
     return (
       <>
         <div className="sidebar-left">
-          <StageSelector
-            lvdSorter={this.lvdSorter}
-            selectedFilter={this.state.selectedFilter}
-            selectedFilterFunc={this.state.selectedFilterFunc}
-            selectedSort={this.state.selectedSort}
-            selectedSortDir={this.state.selectedSortDir}
-            selectedStages={this.state.selectedStages}
-            onChangeFilter={(e) => {
-              this.setState({
-                selectedFilter: e.value,
-                selectedFilterFunc: stageListService.getFilterFunc(e.value),
-              });
-            }}
-            onChangeSort={(e) => this.setState({ selectedSort: e.value })}
-            onChangeSortDir={(e) => this.setState({ selectedSortDir: e.value })}
-            onChangeStages={(e) => this.setState({ selectedStages: e.value })}
-            groupedSorters={this.groupedSorters}
-            stageListTemplate={this.stageListTemplate}
+          <Dropdown
+            className="listbox-sorter"
+            value={this.state.mode}
+            options={Object.values(Mode)}
+            onChange={(e) => this.setState({ mode: e.target.value })}
           />
+          {this.state.mode === Mode.StageSelector && (
+            <StageSelector
+              lvdSorter={this.lvdSorter}
+              selectedFilter={this.state.selectedFilter}
+              selectedFilterFunc={this.state.selectedFilterFunc}
+              selectedSort={this.state.selectedSort}
+              selectedSortDir={this.state.selectedSortDir}
+              selectedStages={this.state.selectedStages}
+              onChangeFilter={(e) => {
+                this.setState({
+                  selectedFilter: e.value,
+                  selectedFilterFunc: stageListService.getFilterFunc(e.value),
+                });
+              }}
+              onChangeSort={(e) => this.setState({ selectedSort: e.value })}
+              onChangeSortDir={(e) =>
+                this.setState({ selectedSortDir: e.value })
+              }
+              onChangeStages={(e) => this.setState({ selectedStages: e.value })}
+              groupedSorters={this.groupedSorters}
+              stageListTemplate={this.stageListTemplate}
+            />
+          )}
+          {this.state.mode === Mode.KnockbackViewer && (
+            <KnockbackViewer
+              fighterData={this.state.fighterData}
+              attacks={this.state.attacks}
+              setFighterData={(f) => this.setState({ fighterData: f })}
+              setAttacks={(a) => this.setState({ attacks: a })}
+            />
+          )}
         </div>
         <div className="sidebar-right">
           <StageDrawOptions
