@@ -13,12 +13,13 @@ import StageSelector from "../StageSelector";
 import StageDrawOptions from "../StageDrawOptions";
 import { Dropdown } from "primereact/dropdown";
 import KnockbackViewer from "../KnockbackViewer";
+import KnockbackComparator from "../KnockbackComparator";
 
 enum Mode {
   HideSidebar = "Hide Sidebar",
   StageSelector = "Stage Selector",
-  // KnockbackComparator = "Knockback Comparator",
   KnockbackViewer = "Knockback Viewer (BETA)",
+  KnockbackComparator = "Knockback Comparator",
 }
 
 export const DEFAULT_FIGHTER: FighterData = {
@@ -89,9 +90,16 @@ export default class StageTool extends React.Component<
   }
 
   draw = () => {
+    if (this.state.mode === Mode.KnockbackComparator) {
+      this.state.attacks.forEach((attackData) => {
+        this.drawKnockbackPlot(attackData, this.state.fighterData);
+      });
+      return;
+    }
+
     // draw knockback
     this.state.attacks.forEach((attackData) => {
-      this.drawKnockback(attackData, this.state.fighterData);
+      this.drawKnockbackInstance(attackData, this.state.fighterData);
     });
 
     // draw stages
@@ -106,7 +114,32 @@ export default class StageTool extends React.Component<
     });
   };
 
-  drawKnockback = (attackData: AttackData, fighterData: FighterData) => {
+  drawKnockbackPlot = (attackData: AttackData, fighterData: FighterData) => {
+    let { damage, kbg, fkb, bkb } = attackData;
+    let { weight } = fighterData;
+    let x = `x+${damage}`;
+    if (fkb > 0.0) {
+      damage = fkb;
+      x = "10";
+    }
+    let latex = `y=\\left(\\left(\\left(\\left(\\left(\\frac{${x}}{10}+\\left(${x}\\right)\\cdot\\frac{${damage}}{20}\\right)\\cdot\\frac{200}{${weight}+100}\\cdot1.4\\right)+18\\right)\\cdot${
+      kbg / 100
+    }\\right)+${bkb}\\right)`;
+    this.props.calculator.setExpression({
+      type: "expression",
+      showLabel: true,
+      latex,
+      lineStyle: Desmos.Styles.SOLID,
+      lineWidth: 1.0,
+      lines: true,
+      points: false,
+    });
+  };
+
+  drawKnockbackInstance = (
+    attackData: AttackData,
+    fighterData: FighterData
+  ) => {
     let knockbackCalcContext = new KnockbackCalcContext(
       attackData,
       fighterData
@@ -298,6 +331,14 @@ export default class StageTool extends React.Component<
           )}
           {this.state.mode === Mode.KnockbackViewer && (
             <KnockbackViewer
+              fighterData={this.state.fighterData}
+              attacks={this.state.attacks}
+              setFighterData={(f) => this.setState({ fighterData: f })}
+              setAttacks={(a) => this.setState({ attacks: a })}
+            />
+          )}
+          {this.state.mode === Mode.KnockbackComparator && (
+            <KnockbackComparator
               fighterData={this.state.fighterData}
               attacks={this.state.attacks}
               setFighterData={(f) => this.setState({ fighterData: f })}
