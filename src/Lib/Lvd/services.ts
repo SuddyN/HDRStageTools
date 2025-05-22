@@ -460,7 +460,7 @@ const LVD_NAME_MAP: Map<string, string> = new Map<string, string>([
   ["mariobros", "Mario Bros"],
   ["metroid_kraid", "Brinstar Depths"],
   ["metroid_norfair", "Norfair"],
-  ["metroid_orpheon", "Frigate Orpheon"],
+  ["metroid_orpheon", "Frigate Husk"],
   ["metroid_zebesdx", "Brinstar"],
   ["mg_shadowmoses", "Shadow Moses Island"],
   ["mother_fourside", "Fourside"],

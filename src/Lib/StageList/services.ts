@@ -7,6 +7,7 @@ export enum StageFilter {
   Supported = "Supported Stages",
   Legal = "Legal Stages",
   Illegal = "Illegal Stages",
+  Seasonal_v0_48_10 = "Seasonal v0.48.10",
   GigatonHammer3 = "Gigaton Hammer 3",
   Undertow2024 = "Undertow 2024",
   KaylaSpookySmash4 = "Kayla's Spooky Smash 4",
@@ -25,6 +26,9 @@ const getFilterFunc = (name: string): StageFilterFunc => {
       break;
     case StageFilter.Illegal:
       selectedFilterFunc = illegalFilterFunc;
+      break;
+    case StageFilter.Seasonal_v0_48_10:
+      selectedFilterFunc = seasonal_v0_48_10FilterFunc;
       break;
     case StageFilter.GigatonHammer3:
       selectedFilterFunc = gigatonHammer3FilterFunc;
@@ -50,6 +54,25 @@ const gigatonHammer3FilterFunc = (name: string): boolean => {
       "Duel Battlefield",
       "Garreg Mach Monastery",
       "Hollow Bastion",
+      "Realm of GameCube",
+      "Smashville",
+    ].includes(name)
+  ) {
+    return true;
+  }
+  return false;
+};
+
+const seasonal_v0_48_10FilterFunc = (name: string): boolean => {
+  if (
+    [
+      "Battlefield",
+      "Bramble Blast",
+      "Frigate Husk",
+      "Garreg Mach Monastery",
+      "Great Bay",
+      "Hollow Bastion",
+      "Mario Galaxy",
       "Realm of GameCube",
       "Smashville",
     ].includes(name)
@@ -113,7 +136,7 @@ const legalFilterFunc = (name: string): boolean => {
       "Find Mii",
       "Fountain of Dreams",
       "Fourside",
-      "Frigate Orpheon",
+      "Frigate Husk",
       "Ganon's Tower",
       "Garreg Mach Monastery",
       "Gaur Plain",
