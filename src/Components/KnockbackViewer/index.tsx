@@ -3,7 +3,7 @@ import { AttackData, FighterData } from "../../Lib/Knockback/types";
 import { Panel, PanelHeaderTemplateOptions } from "primereact/panel";
 import { InputNumber } from "primereact/inputnumber";
 import { Button } from "primereact/button";
-import { DEFAULT_ATTACK } from "../StageTool";
+import { DEFAULT_ATTACK, makeHexFromHueIndex } from "../StageTool";
 
 interface KnockbackViewerProps {
   fighterData: FighterData;
@@ -201,10 +201,14 @@ export default class KnockbackViewer extends React.Component<
   attackPanels = () => {
     const attackPanel = (idx: number) => {
       const headerTemplate = (options: PanelHeaderTemplateOptions) => {
+        const hslaStr =
+          idx >= 0
+            ? makeHexFromHueIndex(idx, this.props.attacks.length)
+            : "#FFFFFF";
         const className = `${options.className} justify-content-space-between`;
         return (
           <div className={className}>
-            <span>Attack {idx + 1}</span>
+            <span style={{ color: hslaStr }}>Attack {idx + 1}</span>
 
             <Button
               label="Remove"

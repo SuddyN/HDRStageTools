@@ -91,15 +91,15 @@ export default class StageTool extends React.Component<
 
   draw = () => {
     if (this.state.mode === Mode.KnockbackComparator) {
-      this.state.attacks.forEach((attackData) => {
-        this.drawKnockbackPlot(attackData, this.state.fighterData);
+      this.state.attacks.forEach((attackData, idx) => {
+        this.drawKnockbackPlot(attackData, this.state.fighterData, idx);
       });
       return;
     }
 
     // draw knockback
-    this.state.attacks.forEach((attackData) => {
-      this.drawKnockbackInstance(attackData, this.state.fighterData);
+    this.state.attacks.forEach((attackData, idx) => {
+      this.drawKnockbackInstance(attackData, this.state.fighterData, idx);
     });
 
     // draw stages
@@ -114,7 +114,11 @@ export default class StageTool extends React.Component<
     });
   };
 
-  drawKnockbackPlot = (attackData: AttackData, fighterData: FighterData) => {
+  drawKnockbackPlot = (
+    attackData: AttackData,
+    fighterData: FighterData,
+    idx: number
+  ) => {
     let { damage, kbg, fkb, bkb } = attackData;
     let { weight } = fighterData;
     let x = `x+${damage}`;
@@ -133,12 +137,14 @@ export default class StageTool extends React.Component<
       lineWidth: 1.0,
       lines: true,
       points: false,
+      color: makeHexFromHueIndex(idx, this.state.attacks.length, true),
     });
   };
 
   drawKnockbackInstance = (
     attackData: AttackData,
-    fighterData: FighterData
+    fighterData: FighterData,
+    idx: number
   ) => {
     let knockbackCalcContext = new KnockbackCalcContext(
       attackData,
@@ -167,6 +173,7 @@ export default class StageTool extends React.Component<
           lines: true,
           lineWidth: 1.0,
           pointSize: 3,
+          color: makeHexFromHueIndex(idx, this.state.attacks.length, true),
         },
       ],
     });
@@ -214,7 +221,11 @@ export default class StageTool extends React.Component<
           lineWidth: 1.0,
           pointSize: 3,
           lineStyle: isCamera ? Desmos.Styles.DOTTED : Desmos.Styles.DASHED,
-          color: this.makeHexFromHueIndex(idx, true),
+          color: makeHexFromHueIndex(
+            idx,
+            this.state.selectedStages.length,
+            true
+          ),
         },
         {
           latex: "y",
@@ -224,7 +235,11 @@ export default class StageTool extends React.Component<
           lineWidth: 1.0,
           pointSize: 3,
           lineStyle: isCamera ? Desmos.Styles.DOTTED : Desmos.Styles.DASHED,
-          color: this.makeHexFromHueIndex(idx, true),
+          color: makeHexFromHueIndex(
+            idx,
+            this.state.selectedStages.length,
+            true
+          ),
         },
       ],
     });
@@ -255,7 +270,11 @@ export default class StageTool extends React.Component<
           lines: true,
           lineWidth: isPlatform ? 1.0 : 1.6,
           pointSize: isPlatform ? 3 : 4,
-          color: this.makeHexFromHueIndex(idx, true),
+          color: makeHexFromHueIndex(
+            idx,
+            this.state.selectedStages.length,
+            true
+          ),
         },
         {
           latex: "y",
@@ -264,7 +283,11 @@ export default class StageTool extends React.Component<
           lines: true,
           lineWidth: isPlatform ? 1.0 : 1.6,
           pointSize: isPlatform ? 3 : 4,
-          color: this.makeHexFromHueIndex(idx, true),
+          color: makeHexFromHueIndex(
+            idx,
+            this.state.selectedStages.length,
+            true
+          ),
         },
       ],
     });
@@ -405,33 +428,14 @@ export default class StageTool extends React.Component<
     },
   ];
 
-  makeHexFromHueIndex = (idx: number, invertedColors?: boolean) => {
-    const h = (idx * 360) / this.state.selectedStages.length;
-    const l = 66 / 100;
-    const a = (100 * Math.min(l, 1 - l)) / 100;
-    const f = (n: number) => {
-      const k = (n + h / 30) % 12;
-      const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
-      return Math.round(255 * color)
-        .toString(16)
-        .padStart(2, "0"); // convert to Hex and prefix "0" if needed
-    };
-    const hex = `${f(0)}${f(8)}${f(4)}`.toUpperCase();
-    if (invertedColors) {
-      const newHex = (Number(`0x1${hex}`) ^ 0xffffff)
-        .toString(16)
-        .substr(1)
-        .toUpperCase();
-      return `#${newHex}`;
-    }
-    return `#${hex}`;
-  };
-
   stageListTemplate = (selectedStage: string): ReactNode => {
     const idx = this.state.selectedStages.findIndex(
       (other) => selectedStage === other
     );
-    const hslaStr = idx >= 0 ? this.makeHexFromHueIndex(idx) : "#FFFFFF";
+    const hslaStr =
+      idx >= 0
+        ? makeHexFromHueIndex(idx, this.state.selectedStages.length)
+        : "#FFFFFF";
 
     const lvd = this.props.lvdMap.get(selectedStage);
     if (!lvd?.lvdStats) {
@@ -470,3 +474,29 @@ export default class StageTool extends React.Component<
     return lvdStatsArray.map((e) => e.name); // map to string arr
   };
 }
+
+export const makeHexFromHueIndex = (
+  idx: number,
+  length: number,
+  invertedColors?: boolean
+) => {
+  const h = (idx * 360) / length;
+  const l = 66 / 100;
+  const a = (100 * Math.min(l, 1 - l)) / 100;
+  const f = (n: number) => {
+    const k = (n + h / 30) % 12;
+    const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+    return Math.round(255 * color)
+      .toString(16)
+      .padStart(2, "0"); // convert to Hex and prefix "0" if needed
+  };
+  const hex = `${f(0)}${f(8)}${f(4)}`.toUpperCase();
+  if (invertedColors) {
+    const newHex = (Number(`0x1${hex}`) ^ 0xffffff)
+      .toString(16)
+      .substr(1)
+      .toUpperCase();
+    return `#${newHex}`;
+  }
+  return `#${hex}`;
+};
