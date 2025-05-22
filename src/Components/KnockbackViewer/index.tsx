@@ -135,26 +135,6 @@ export default class KnockbackViewer extends React.Component<
         </label>
         <br />
         <InputNumber
-          id="gravityDamageFlyTop"
-          value={fighterData.gravityDamageFlyTop}
-          onChange={(e) => {
-            this.props.setFighterData?.({
-              ...fighterData,
-              gravityDamageFlyTop: e.value ?? fighterData.gravityDamageFlyTop,
-            });
-          }}
-          min={0}
-          max={1}
-          minFractionDigits={4}
-          maxFractionDigits={4}
-          showButtons
-          step={0.0005}
-        />
-        <label htmlFor="gravityDamageFlyTop" className="font-small">
-          Gravity (Tumble)
-        </label>
-        <br />
-        <InputNumber
           id="fallSpeed"
           value={fighterData.fallSpeed}
           onChange={(e) => {
@@ -172,27 +152,6 @@ export default class KnockbackViewer extends React.Component<
         />
         <label htmlFor="fallSpeed" className="font-small">
           Fall Speed
-        </label>
-        <br />
-        <InputNumber
-          id="fallSpeedDamageFlyTop"
-          value={fighterData.fallSpeedDamageFlyTop}
-          onChange={(e) => {
-            this.props.setFighterData?.({
-              ...fighterData,
-              fallSpeedDamageFlyTop:
-                e.value ?? fighterData.fallSpeedDamageFlyTop,
-            });
-          }}
-          min={0}
-          max={10}
-          minFractionDigits={4}
-          maxFractionDigits={4}
-          showButtons
-          step={0.0005}
-        />
-        <label htmlFor="fallSpeedDamageFlyTop" className="font-small">
-          Fall Speed (Tumble)
         </label>
       </Panel>
     );

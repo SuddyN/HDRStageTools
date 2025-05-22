@@ -2,13 +2,13 @@ import { Vec2 } from "../Lvd/types";
 import { AttackData, FighterData } from "./types";
 
 const HITSTUN_RATIO = 0.42;
+const HITSUSTUN_GRAVITY_MIN = 0.11;
+const HITSUSTUN_GRAVITY_MAX = 0.17;
 const CROUCH_CANCEL_KNOCKBACK_MUL = 2.0 / 3.0;
 const SMASH_ATTACK_CHARGE_KNOCKBACK_MUL = 1.2;
 // const FLOOR_HUG_HITSTUN_MUL = 0.5;
 const DAMAGE_SPEED_MUL = 0.03;
 const TUMBLE_THRESHOLD = 80.0;
-const DAMAGE_FLY_TOP_RADIANS_LW = 1.22173;
-const DAMAGE_FLY_TOP_RADIANS_HI = 1.919862;
 const DAMAGE_AIR_BRAKE = 0.051;
 const ROUNDING_ERROR = 0.0000001;
 
@@ -156,8 +156,15 @@ export class KnockbackCalcContext {
         this.launchSpeed.y *= dir;
       }
     }
+
+    // clamp gravity to hitstun gravity range
+    let gravity = Math.max(
+      Math.min(this.fighterData.gravity, HITSUSTUN_GRAVITY_MAX),
+      HITSUSTUN_GRAVITY_MIN
+    );
+
     this.yCharaSpeed = Math.max(
-      this.yCharaSpeed - this.fighterData.gravity,
+      this.yCharaSpeed - gravity,
       -this.fighterData.fallSpeed
     );
   };

@@ -4,9 +4,7 @@ export interface FighterData {
   percent: number;
   weight: number;
   gravity: number;
-  gravityDamageFlyTop: number;
   fallSpeed: number;
-  fallSpeedDamageFlyTop: number;
   startPos: Vec2;
   directionalInfluence: Vec2;
   automaticSmashDirectionalInfluence: Vec2;
