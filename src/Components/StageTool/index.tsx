@@ -398,7 +398,11 @@ export default class StageTool extends React.Component<
   groupedSorters = [
     {
       label: "General",
-      items: this.createSortLabels([SortMode.Name, SortMode.StageWidth]),
+      items: this.createSortLabels([
+        SortMode.Name,
+        SortMode.StageWidth,
+        SortMode.StageAsymmetry,
+      ]),
     },
     {
       label: "Platforms",

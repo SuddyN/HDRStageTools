@@ -54,6 +54,12 @@ export default class LvdTable extends React.Component<
             sortable
           />
           <Column
+            header="Stage Asymmetry"
+            field="stageAsymmetry"
+            body={(e: LvdStats) => (e.stageMaxX + e.stageMinX).toFixed(2)}
+            sortable
+          />
+          <Column
             header="Platforms"
             field="platNum"
             body={(e: LvdStats) => e.platNum.toFixed(0)}

@@ -235,6 +235,7 @@ export enum SortDir {
 export enum SortMode {
   Name = "Name",
   StageWidth = "Stage Width",
+  StageAsymmetry = "Stage Asymmetry",
   PlatCount = "Platform Count",
   BZoneLeft = "Blastzone Left",
   BZoneRight = "Blastzone Right",
@@ -273,6 +274,9 @@ const getSortSubtitle = (
       break;
     case SortMode.StageWidth:
       sortSub += lvd.lvdStats.stageWidth.toFixed(1);
+      break;
+    case SortMode.StageAsymmetry:
+      sortSub += (lvd.lvdStats.stageMaxX + lvd.lvdStats.stageMinX).toFixed(2);
       break;
     case SortMode.BZoneLeft:
       sortSub += (lvd.blast_zone[0]?.left * -1).toFixed(0);
@@ -339,6 +343,8 @@ const getSortFunc = (name: string): StageSortFunc => {
       return platNumCompareFn;
     case SortMode.StageWidth:
       return stageWidthCompareFn;
+    case SortMode.StageAsymmetry:
+      return stageAsymmetryCompareFn;
     case SortMode.BZoneLeft:
       return blastzoneLeftCompareFn;
     case SortMode.BZoneRight:
@@ -654,6 +660,27 @@ const platformWidthSpanCompareFn = (
   }
   const aNum = aLvd.lvdStats.platMaxX - aLvd.lvdStats.platMinX;
   const bNum = bLvd.lvdStats.platMaxX - bLvd.lvdStats.platMinX;
+  return (aNum - bNum) * mul;
+};
+
+const stageAsymmetryCompareFn = (
+  selectedSortDir: SortDir,
+  lvdMap: Map<string, Lvd>,
+  a: LvdStats,
+  b: LvdStats
+): number => {
+  const mul = selectedSortDir === SortDir.Ascending ? 1 : -1;
+  const aLvd = lvdMap.get(a.name);
+  const bLvd = lvdMap.get(b.name);
+  if (!aLvd?.lvdStats) {
+    return -1 * mul;
+  }
+  if (!bLvd?.lvdStats) {
+    return 1 * mul;
+  }
+
+  const aNum = aLvd.lvdStats.stageMaxX + aLvd.lvdStats.stageMinX;
+  const bNum = bLvd.lvdStats.stageMaxX + bLvd.lvdStats.stageMinX;
   return (aNum - bNum) * mul;
 };
 
