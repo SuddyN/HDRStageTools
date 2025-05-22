@@ -10,6 +10,7 @@ const TUMBLE_THRESHOLD = 80.0;
 const DAMAGE_FLY_TOP_RADIANS_LW = 1.22173;
 const DAMAGE_FLY_TOP_RADIANS_HI = 1.919862;
 const DAMAGE_AIR_BRAKE = 0.051;
+const ROUNDING_ERROR = 0.0000001;
 
 function calcKnockback(
   attackData: AttackData,
@@ -95,10 +96,8 @@ export class KnockbackCalcContext {
   launchSpeed: Vec2;
   yCharaSpeed: number;
   isTumble: boolean;
-  isDamageFlyTop: boolean;
   pos: Vec2;
   posPrev: Vec2;
-  decay: Vec2;
   speedUpMul: number;
   constructor(attackData: AttackData, fighterData: FighterData) {
     this.attackData = attackData;
@@ -115,49 +114,52 @@ export class KnockbackCalcContext {
     );
     this.yCharaSpeed = 0;
     this.isTumble = this.knockback >= TUMBLE_THRESHOLD;
-    this.isDamageFlyTop =
-      this.launchRadians >= DAMAGE_FLY_TOP_RADIANS_LW &&
-      this.launchRadians <= DAMAGE_FLY_TOP_RADIANS_HI;
     this.pos = { x: fighterData.startPos.x, y: fighterData.startPos.y };
     this.posPrev = { x: fighterData.startPos.x, y: fighterData.startPos.y };
-    this.decay = {
-      x: DAMAGE_AIR_BRAKE * Math.abs(Math.cos(this.launchRadians)),
-      y: DAMAGE_AIR_BRAKE * Math.abs(Math.sin(this.launchRadians)),
-    };
     this.speedUpMul = 1; // TODO: calculate this
   }
 
   step = () => {
-    // TODO: step through knockback once
+    if (Math.abs(this.launchSpeed.x) < ROUNDING_ERROR) {
+      this.launchSpeed.x = 0;
+    }
+    if (Math.abs(this.launchSpeed.y) < ROUNDING_ERROR) {
+      this.launchSpeed.y = 0;
+    }
+
+    let kbAngle = Math.atan2(this.launchSpeed.y, this.launchSpeed.x);
+    let decay = {
+      x: DAMAGE_AIR_BRAKE * Math.abs(Math.cos(kbAngle)),
+      y: DAMAGE_AIR_BRAKE * Math.abs(Math.sin(kbAngle)),
+    };
+
     this.posPrev.x = this.pos.x;
     this.posPrev.y = this.pos.y;
     this.pos.x += this.launchSpeed.x;
     this.pos.y += this.launchSpeed.y + this.yCharaSpeed;
     if (this.launchSpeed.x !== 0) {
       let dir = Math.sign(this.launchSpeed.x);
-      this.launchSpeed.x = Math.abs(this.launchSpeed.x) - this.decay.x;
+      this.launchSpeed.x = Math.abs(this.launchSpeed.x) - decay.x;
       if (this.launchSpeed.x < 0) {
         this.launchSpeed.x = 0;
       } else {
         this.launchSpeed.x *= dir;
       }
     }
+
     if (this.launchSpeed.y !== 0) {
       let dir = Math.sign(this.launchSpeed.y);
-      this.launchSpeed.y = Math.abs(this.launchSpeed.y) - this.decay.y;
+      this.launchSpeed.y = Math.abs(this.launchSpeed.y) - decay.y;
       if (this.launchSpeed.y < 0) {
         this.launchSpeed.y = 0;
       } else {
         this.launchSpeed.y *= dir;
       }
     }
-    let gravity = this.isDamageFlyTop
-      ? this.fighterData.gravityDamageFlyTop
-      : this.fighterData.gravity;
-    let fallSpeed = this.isDamageFlyTop
-      ? this.fighterData.fallSpeedDamageFlyTop
-      : this.fighterData.fallSpeed;
-    this.yCharaSpeed = Math.max(this.yCharaSpeed - gravity, -fallSpeed);
+    this.yCharaSpeed = Math.max(
+      this.yCharaSpeed - this.fighterData.gravity,
+      -this.fighterData.fallSpeed
+    );
   };
 
   calcTrajectory = (): Vec2[] => {
