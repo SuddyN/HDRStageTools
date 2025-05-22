@@ -158,9 +158,9 @@ code {
   margin: 0.125rem;
 }
 
-.p-checkbox .p-checkbox-box {
+/* .p-checkbox .p-checkbox-box {
   background: rgba(0, 0, 0, 0.6);
-}
+} */
 
 .p-checkbox .p-checkbox-box.p-highlight {
   background: #2dd4bf;
