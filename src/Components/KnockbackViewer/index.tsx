@@ -208,7 +208,9 @@ export default class KnockbackViewer extends React.Component<
         const className = `${options.className} justify-content-space-between`;
         return (
           <div className={className}>
-            <span style={{ color: hslaStr }}>Attack {idx + 1}</span>
+            <span style={{ color: hslaStr, paddingLeft: "0.25rem" }}>
+              Attack {idx + 1}
+            </span>
 
             <Button
               label="Remove"
@@ -220,6 +222,15 @@ export default class KnockbackViewer extends React.Component<
                 attacks.splice(idx, 1);
                 this.props.setAttacks?.(attacks);
               }}
+            />
+            <Button
+              label="Copy"
+              style={{
+                padding: "0.125rem 0.25rem",
+              }}
+              onClick={() =>
+                this.props.setAttacks?.([...this.props.attacks, attackData])
+              }
             />
             <div>{options.togglerElement}</div>
           </div>
