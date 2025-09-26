@@ -7,6 +7,7 @@ export enum StageFilter {
   Supported = "Supported Stages",
   Legal = "Legal Stages",
   Illegal = "Illegal Stages",
+  Seasonal_v0_49_6 = "Seasonal v0.49.6",
   Seasonal_v0_48_10 = "Seasonal v0.48.10",
   GigatonHammer3 = "Gigaton Hammer 3",
   Undertow2024 = "Undertow 2024",
@@ -26,6 +27,9 @@ const getFilterFunc = (name: string): StageFilterFunc => {
       break;
     case StageFilter.Illegal:
       selectedFilterFunc = illegalFilterFunc;
+      break;
+    case StageFilter.Seasonal_v0_49_6:
+      selectedFilterFunc = seasonal_v0_49_6FilterFunc;
       break;
     case StageFilter.Seasonal_v0_48_10:
       selectedFilterFunc = seasonal_v0_48_10FilterFunc;
@@ -56,6 +60,25 @@ const gigatonHammer3FilterFunc = (name: string): boolean => {
       "Hollow Bastion",
       "Realm of GameCube",
       "Smashville",
+    ].includes(name)
+  ) {
+    return true;
+  }
+  return false;
+};
+
+const seasonal_v0_49_6FilterFunc = (name: string): boolean => {
+  if (
+    [
+      "Battlefield",
+      "Bramble Blast",
+      "Frigate Husk",
+      "Garreg Mach Monastery",
+      "Hollow Bastion",
+      "Northern Cave",
+      "Realm of GameCube",
+      "Smashville",
+      "Sky Sanctuary Zone",
     ].includes(name)
   ) {
     return true;
@@ -147,7 +170,6 @@ const legalFilterFunc = (name: string): boolean => {
       "Luigi's Mansion",
       "Lylat Cruise",
       "Mario Galaxy",
-      "Midgar",
       "Mishima Dojo",
       "Moray Towers",
       "New Pork City",
@@ -195,6 +217,7 @@ const supportedFilterFunc = (name: string): boolean => {
       "Jungle Japes",
       "Kongo Falls",
       "Living Room",
+      "Midgar",
       "Minecraft World",
       "Mushroom Kingdom",
       "Pokemon Stadium",
@@ -204,6 +227,7 @@ const supportedFilterFunc = (name: string): boolean => {
       "Skyloft",
       "Spiral Mountain",
       "Spring Stadium",
+      "Summit",
       "Suzaku Castle",
       "Tomodachi Life",
       "Umbra Clock Tower",
