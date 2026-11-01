@@ -60,6 +60,7 @@ interface StageToolState {
   drawCameras: boolean;
   drawSpawns: boolean;
   drawRespawns: boolean;
+  showSpawnCoords: boolean;
   selectedFilter: StageFilter;
   selectedFilterFunc: StageFilterFunc;
   selectedStages: string[];
@@ -83,6 +84,7 @@ export default class StageTool extends React.Component<
       drawCameras: false,
       drawSpawns: false,
       drawRespawns: false,
+      showSpawnCoords: false,
       selectedFilter: StageFilter.Legal,
       selectedFilterFunc: stageListService.getFilterFunc(StageFilter.Legal),
       selectedStages: [],
@@ -225,7 +227,7 @@ export default class StageTool extends React.Component<
       this.props.calculator.setExpression({
         type: "expression",
         latex: `(${x},${y})`,
-        label,
+        label: this.state.showSpawnCoords ? `${label} (${x}, ${y})` : label,
         showLabel: true,
         labelOrientation: Desmos.LabelOrientations.ABOVE,
         pointStyle: isRespawn ? Desmos.Styles.OPEN : Desmos.Styles.POINT,
@@ -418,6 +420,7 @@ export default class StageTool extends React.Component<
             }}
             drawSpawns={this.state.drawSpawns}
             drawRespawns={this.state.drawRespawns}
+            showSpawnCoords={this.state.showSpawnCoords}
             onChangeCameras={(e) => {
               this.setState({ drawCameras: e.checked ?? false });
             }}
@@ -426,6 +429,9 @@ export default class StageTool extends React.Component<
             }}
             onChangeRespawns={(e) => {
               this.setState({ drawRespawns: e.checked ?? false });
+            }}
+            onChangeSpawnCoords={(e) => {
+              this.setState({ showSpawnCoords: e.checked ?? false });
             }}
           />
         </div>

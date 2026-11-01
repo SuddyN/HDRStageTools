@@ -8,6 +8,7 @@ interface StageDrawOptionsProps {
   drawCameras: boolean;
   drawSpawns?: boolean;
   drawRespawns?: boolean;
+  showSpawnCoords?: boolean;
   drawItemSpawners?: boolean;
   drawPTrainerPlatforms?: boolean;
   drawShrunkenBlastZones?: boolean;
@@ -18,6 +19,7 @@ interface StageDrawOptionsProps {
   onChangeCameras?: (event: CheckboxChangeEvent) => void;
   onChangeSpawns?: (event: CheckboxChangeEvent) => void;
   onChangeRespawns?: (event: CheckboxChangeEvent) => void;
+  onChangeSpawnCoords?: (event: CheckboxChangeEvent) => void;
 }
 
 interface StageDrawOptionsState {}
@@ -85,6 +87,15 @@ export default class StageDrawOptions extends React.Component<
             <Checkbox
               checked={this.props.drawRespawns ?? false}
               onChange={this.props.onChangeRespawns}
+            />
+          </label>
+        </div>
+        <div className="sidebar-item">
+          <label>
+            {"Show Spawn Coords? "}
+            <Checkbox
+              checked={this.props.showSpawnCoords ?? false}
+              onChange={this.props.onChangeSpawnCoords}
             />
           </label>
         </div>
