@@ -5,7 +5,7 @@ import { Lvd, LvdStats, Vec2 } from "../Lvd/types";
 
 async function initLvdFromUrl(
   url: string,
-  debug?: boolean
+  debug?: boolean,
 ): Promise<Map<string, Lvd>> {
   const lvdMap = new Map<string, Lvd>();
 
@@ -61,7 +61,7 @@ async function getBlobFromUrl(url: string): Promise<Blob> {
 
 async function writeLvdFromZip(
   blob: Blob,
-  baseMap: Map<string, Lvd>
+  baseMap: Map<string, Lvd>,
 ): Promise<void> {
   const jszip = new JSZip();
   const zip = await jszip.loadAsync(blob);
@@ -373,19 +373,19 @@ function calcLvdStats(name: string, lvd: Lvd): void {
 
       stats.stageMinX = Math.min(
         stats.stageMinX,
-        vert.x + stage.entry.start_pos.x
+        vert.x + stage.entry.start_pos.x,
       );
       stats.stageMaxX = Math.max(
         stats.stageMaxX,
-        vert.x + stage.entry.start_pos.x
+        vert.x + stage.entry.start_pos.x,
       );
       stats.stageMinY = Math.min(
         stats.stageMinY,
-        vert.y + stage.entry.start_pos.y
+        vert.y + stage.entry.start_pos.y,
       );
       stats.stageMaxY = Math.max(
         stats.stageMaxY,
-        vert.y + stage.entry.start_pos.y
+        vert.y + stage.entry.start_pos.y,
       );
     });
   });
@@ -438,7 +438,7 @@ const LVD_NAME_MAP: Map<string, string> = new Map<string, string>([
   ["kart_circuitx", "Figure-8 Circuit"],
   ["kirby_cave", "Great Cave Offensive"],
   ["kirby_fountain", "Fountain of Dreams"],
-  ["kirby_gameboy", "Dream Land GB"],
+  ["kirby_gameboy", "Butter Building"],
   ["kirby_greens", "Green Greens"],
   ["kirby_halberd", "Halberd"],
   ["kirby_pupupu64", "Dream Land"],
@@ -506,11 +506,11 @@ const LVD_NAME_MAP: Map<string, string> = new Map<string, string>([
   ["zelda_gerudo", "Gerudo Valley"],
   ["zelda_greatbay", "Great Bay"],
   ["zelda_hyrule", "Hyrule Castle"],
-  ["zelda_oldin", "Bridge of Eldin"],
+  ["zelda_oldin", "Royal Sanctum"],
   ["zelda_pirates", "Ganon's Tower"],
   ["zelda_skyward", "Skyloft"],
   ["zelda_temple", "Temple"],
-  ["zelda_tower", "Great Plateau Tower"],
+  ["zelda_tower", "Poke Floats"],
   ["zelda_train", "Spirit Train"],
 ]);
 

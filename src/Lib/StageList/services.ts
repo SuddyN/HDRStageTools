@@ -3,15 +3,12 @@ import { Lvd, LvdStats } from "../Lvd/types";
 /// STAGELISTS
 
 export enum StageFilter {
-  All = "All Stages",
-  Supported = "Supported Stages",
+  Seasonal_v0_50_8 = "Seasonal v0.50.8",
   Legal = "Legal Stages",
   Illegal = "Illegal Stages",
-  Seasonal_v0_49_6 = "Seasonal v0.49.6",
-  Seasonal_v0_48_10 = "Seasonal v0.48.10",
-  GigatonHammer3 = "Gigaton Hammer 3",
-  Undertow2024 = "Undertow 2024",
-  KaylaSpookySmash4 = "Kayla's Spooky Smash 4",
+  Supported = "Supported Stages",
+  Unsupported = "Unsupported Stages",
+  All = "All Stages",
 }
 
 export type StageFilterFunc = (name: string) => boolean;
@@ -19,8 +16,8 @@ export type StageFilterFunc = (name: string) => boolean;
 const getFilterFunc = (name: string): StageFilterFunc => {
   let selectedFilterFunc;
   switch (name) {
-    case StageFilter.Supported:
-      selectedFilterFunc = supportedFilterFunc;
+    case StageFilter.Seasonal_v0_50_8:
+      selectedFilterFunc = seasonal_v0_50_8FilterFunc;
       break;
     case StageFilter.Legal:
       selectedFilterFunc = legalFilterFunc;
@@ -28,20 +25,11 @@ const getFilterFunc = (name: string): StageFilterFunc => {
     case StageFilter.Illegal:
       selectedFilterFunc = illegalFilterFunc;
       break;
-    case StageFilter.Seasonal_v0_49_6:
-      selectedFilterFunc = seasonal_v0_49_6FilterFunc;
+    case StageFilter.Supported:
+      selectedFilterFunc = supportedFilterFunc;
       break;
-    case StageFilter.Seasonal_v0_48_10:
-      selectedFilterFunc = seasonal_v0_48_10FilterFunc;
-      break;
-    case StageFilter.GigatonHammer3:
-      selectedFilterFunc = gigatonHammer3FilterFunc;
-      break;
-    case StageFilter.Undertow2024:
-      selectedFilterFunc = undertow2024FilterFunc;
-      break;
-    case StageFilter.KaylaSpookySmash4:
-      selectedFilterFunc = kaylaSpookySmash4FilterFunc;
+    case StageFilter.Unsupported:
+      selectedFilterFunc = unsupportedFilterFunc;
       break;
     default:
       selectedFilterFunc = allFilterFunc;
@@ -49,190 +37,17 @@ const getFilterFunc = (name: string): StageFilterFunc => {
   return selectedFilterFunc;
 };
 
-const gigatonHammer3FilterFunc = (name: string): boolean => {
+const seasonal_v0_50_8FilterFunc = (name: string): boolean => {
   if (
     [
       "Battlefield",
-      "Bramble Blast",
-      "Bowser's Castle",
-      "Duel Battlefield",
-      "Garreg Mach Monastery",
-      "Hollow Bastion",
-      "Realm of GameCube",
-      "Smashville",
-    ].includes(name)
-  ) {
-    return true;
-  }
-  return false;
-};
-
-const seasonal_v0_49_6FilterFunc = (name: string): boolean => {
-  if (
-    [
-      "Battlefield",
-      "Bramble Blast",
       "Frigate Husk",
-      "Garreg Mach Monastery",
       "Hollow Bastion",
       "Northern Cave",
-      "Realm of GameCube",
-      "Smashville",
-      "Sky Sanctuary Zone",
-    ].includes(name)
-  ) {
-    return true;
-  }
-  return false;
-};
-
-const seasonal_v0_48_10FilterFunc = (name: string): boolean => {
-  if (
-    [
-      "Battlefield",
-      "Bramble Blast",
-      "Frigate Husk",
-      "Garreg Mach Monastery",
-      "Great Bay",
-      "Hollow Bastion",
-      "Mario Galaxy",
-      "Realm of GameCube",
-      "Smashville",
-    ].includes(name)
-  ) {
-    return true;
-  }
-  return false;
-};
-
-const undertow2024FilterFunc = (name: string): boolean => {
-  if (
-    [
-      "3D Land",
-      "Battlefield",
-      "Bramble Blast",
-      "Garreg Mach Monastery",
-      "Green Greens",
-      "Realm of GameCube",
-      "Sky Sanctuary Zone",
-      "Smashville",
-      "World 1-2",
-    ].includes(name)
-  ) {
-    return true;
-  }
-  return false;
-};
-
-const kaylaSpookySmash4FilterFunc = (name: string): boolean => {
-  if (
-    [
-      "3D Land",
-      "Battlefield",
-      "Bramble Blast",
-      "Garreg Mach Monastery",
-      "Green Greens",
-      "Lylat Cruise",
-      "Realm of GameCube",
-      "Sky Sanctuary Zone",
-      "Smashville",
-    ].includes(name)
-  ) {
-    return true;
-  }
-  return false;
-};
-
-const legalFilterFunc = (name: string): boolean => {
-  if (
-    [
-      "3D Land",
-      "Arena Ferox",
-      "Battlefield",
-      "Bowser's Castle",
-      "Boxing Ring",
-      "Bramble Blast",
-      "Brinstar Depths",
-      "Deadline",
-      "Duel Battlefield",
-      "Final Destination",
-      "Find Mii",
-      "Fountain of Dreams",
-      "Fourside",
-      "Frigate Husk",
-      "Ganon's Tower",
-      "Garreg Mach Monastery",
-      "Gaur Plain",
-      "Great Bay",
-      "Green Greens",
-      "Hollow Bastion",
-      "Kalos Pokemon League",
-      "Luigi's Mansion",
-      "Lylat Cruise",
-      "Mario Galaxy",
-      "Mishima Dojo",
-      "Moray Towers",
-      "New Pork City",
-      "Northern Cave",
-      "Palutena's Temple",
-      "Paper Mario",
       "Pokemon Stadium 3",
-      "Realm of GameCube",
-      "Sky Sanctuary Zone",
-      "Skyworld",
+      "Royal Sanctum",
       "Smashville",
-      "Snake Train Chamber (Part 2)",
       "Spear Pillar",
-      "Super Happy Tree",
-      "Town & City",
-      "Unova Pokemon League",
-      "Venom",
-      "WarioWare, Inc.",
-      "World 1-2",
-      "Yggdrasil's Altar (Part 2)",
-      "Yoshi's Story",
-    ].includes(name)
-  ) {
-    return true;
-  }
-  return false;
-};
-
-const supportedFilterFunc = (name: string): boolean => {
-  if (legalFilterFunc(name)) {
-    return true;
-  }
-  if (
-    [
-      "Balloon Fight",
-      "Big Battlefield",
-      "Brinstar Depths",
-      "Cloud Sea of Alrest",
-      "Coliseum",
-      "Dinosaur Land",
-      "Dracula's Castle",
-      "Dream Land",
-      "Duck Hunt",
-      "Garden of Hope",
-      "Jungle Japes",
-      "Kongo Falls",
-      "Living Room",
-      "Midgar",
-      "Minecraft World",
-      "Mushroom Kingdom",
-      "Pokemon Stadium",
-      "Pilotwings",
-      "Pilotwings (Part 2)",
-      "Reset Bomb Forest",
-      "Skyloft",
-      "Spiral Mountain",
-      "Spring Stadium",
-      "Summit",
-      "Suzaku Castle",
-      "Tomodachi Life",
-      "Umbra Clock Tower",
-      "Wii Fit Studio",
-      "Windy Hill Zone",
       "Yoshi's Island",
     ].includes(name)
   ) {
@@ -241,12 +56,131 @@ const supportedFilterFunc = (name: string): boolean => {
   return false;
 };
 
-const allFilterFunc = (name: string): boolean => {
+const unsupportedFilterFunc = (name: string): boolean => {
+  if (
+    [
+      "75m",
+      "Big Blue",
+      "Boxing Ring",
+      "Butter Building", // TODO: really need to fix this one
+      "Distant Planet",
+      "Figure-8 Circuit",
+      "Flat Zone X",
+      "Gamer",
+      "Great Cave Offensive",
+      "Halberd",
+      "King of Fighters Stadium",
+      "Mario Bros",
+      "Mementos",
+      "Mushroom Kingdom II",
+      "Mushroomy Kingdom",
+      "Mute City SNES",
+      "New Donk City Hall",
+      "Norfair", // TODO: needs fixed
+      "Onett",
+      "Pac-Land",
+      "Peach's Castle",
+      "Pictochat 2",
+      "Pilotwings",
+      "Pilotwings (Part 2)",
+      "Poke Floats",
+      "Port Town Aero Dive",
+      "Prism Tower",
+      "Rainbow Cruise",
+      "Saffron City",
+      "Saffron City (Alt 1)",
+      "Shadow Moses Island",
+      "Spirit Train",
+      "Super Mario Maker",
+      "Suzaku Castle (Alt 1)",
+      "Temple",
+      "Wuhu Island", // TODO: needs fixed
+      "settingstage (Alt 1)",
+    ].includes(name)
+  ) {
+    return true;
+  }
+  return false;
+};
+
+const supportedFilterFunc = (name: string): boolean => {
+  // opposite of unsupported stages
+  if (unsupportedFilterFunc(name)) {
+    return false;
+  }
   return true;
 };
 
 const illegalFilterFunc = (name: string): boolean => {
-  return supportedFilterFunc(name) && !legalFilterFunc(name);
+  // unsupported stages always excluded
+  if (unsupportedFilterFunc(name)) {
+    return false;
+  }
+
+  // illegal stages
+  if (
+    [
+      "Balloon Fight",
+      "Big Battlefield",
+      "Brinstar",
+      "Cloud Sea of Alrest",
+      "Coliseum",
+      "Corneria",
+      "Corneria (Alt 1)",
+      "Deadline (Alt 1)",
+      "Delfino Plaza",
+      "Dracula's Castle",
+      "Duck Hunt",
+      "Garden of Hope",
+      "Gaur Plain",
+      "Hanenbow",
+      "Hyrule Castle",
+      "Jungle Japes",
+      "Kongo Falls",
+      "Living Room",
+      "Luigi's Mansion",
+      "Lylat Cruise (Alt 1)",
+      "Magicant",
+      "Mario Circuit",
+      "Midgar",
+      "Minecraft World",
+      "Minecraft World (Part 5)",
+      "Mushroom Kingdom",
+      "Paper Mario",
+      "Pokemon Stadium",
+      "Reset Bomb Forest",
+      "Skyloft",
+      "Snake Train Chamber (Part 2)",
+      "Spiral Mountain",
+      "Spring Stadium",
+      "Summit",
+      "Temple (Alt 1)",
+      "Tomodachi Life",
+      "Tortimer Island",
+      "Umbra Clock Tower",
+      "Wii Fit Studio",
+      "Wily Castle",
+    ].includes(name)
+  ) {
+    return true;
+  }
+  return false;
+};
+
+const legalFilterFunc = (name: string): boolean => {
+  // unsupported stages always excluded
+  if (unsupportedFilterFunc(name)) {
+    return false;
+  }
+  // otherwise opposite of illegal stages
+  if (illegalFilterFunc(name)) {
+    return false;
+  }
+  return true;
+};
+
+const allFilterFunc = (name: string): boolean => {
+  return true;
 };
 
 /// SORTING
@@ -280,13 +214,13 @@ export type StageSortFunc = (
   selectedSortDir: SortDir,
   lvdMap: Map<string, Lvd>,
   a: LvdStats,
-  b: LvdStats
+  b: LvdStats,
 ) => number;
 
 const getSortSubtitle = (
   selectedSort: SortMode,
   selectedSortDir: SortDir,
-  lvd: Lvd
+  lvd: Lvd,
 ): string => {
   let sortSub = "";
   if (!lvd.lvdStats) {
@@ -316,12 +250,12 @@ const getSortSubtitle = (
       break;
     case SortMode.BZoneWidth:
       sortSub += (lvd.blast_zone[0]?.right - lvd.blast_zone[0]?.left).toFixed(
-        0
+        0,
       );
       break;
     case SortMode.BZoneHeight:
       sortSub += (lvd.blast_zone[0]?.top - lvd.blast_zone[0]?.bottom).toFixed(
-        0
+        0,
       );
       break;
     case SortMode.StageToBZoneLeft:
@@ -405,7 +339,7 @@ const nameCompareFn = (
   selectedSortDir: SortDir,
   lvdMap: Map<string, Lvd>,
   a: LvdStats,
-  b: LvdStats
+  b: LvdStats,
 ): number => {
   const mul = selectedSortDir === SortDir.Ascending ? 1 : -1;
   if (a.name < b.name) return -1 * mul;
@@ -417,7 +351,7 @@ const platNumCompareFn = (
   selectedSortDir: SortDir,
   lvdMap: Map<string, Lvd>,
   a: LvdStats,
-  b: LvdStats
+  b: LvdStats,
 ): number => {
   const mul = selectedSortDir === SortDir.Ascending ? 1 : -1;
   return (a.platNum - b.platNum) * mul;
@@ -427,7 +361,7 @@ const stageWidthCompareFn = (
   selectedSortDir: SortDir,
   lvdMap: Map<string, Lvd>,
   a: LvdStats,
-  b: LvdStats
+  b: LvdStats,
 ): number => {
   const mul = selectedSortDir === SortDir.Ascending ? 1 : -1;
   return (a.stageWidth - b.stageWidth) * mul;
@@ -437,7 +371,7 @@ const blastzoneLeftCompareFn = (
   selectedSortDir: SortDir,
   lvdMap: Map<string, Lvd>,
   a: LvdStats,
-  b: LvdStats
+  b: LvdStats,
 ): number => {
   const mul = selectedSortDir === SortDir.Ascending ? 1 : -1;
   const aBlstZone = lvdMap.get(a.name)?.blast_zone[0];
@@ -455,7 +389,7 @@ const blastzoneRightCompareFn = (
   selectedSortDir: SortDir,
   lvdMap: Map<string, Lvd>,
   a: LvdStats,
-  b: LvdStats
+  b: LvdStats,
 ): number => {
   const mul = selectedSortDir === SortDir.Ascending ? 1 : -1;
   const aBlstZone = lvdMap.get(a.name)?.blast_zone[0];
@@ -473,7 +407,7 @@ const blastzoneTopCompareFn = (
   selectedSortDir: SortDir,
   lvdMap: Map<string, Lvd>,
   a: LvdStats,
-  b: LvdStats
+  b: LvdStats,
 ): number => {
   const mul = selectedSortDir === SortDir.Ascending ? 1 : -1;
   const aBlstZone = lvdMap.get(a.name)?.blast_zone[0];
@@ -491,7 +425,7 @@ const blastzoneBottomCompareFn = (
   selectedSortDir: SortDir,
   lvdMap: Map<string, Lvd>,
   a: LvdStats,
-  b: LvdStats
+  b: LvdStats,
 ): number => {
   const mul = selectedSortDir === SortDir.Ascending ? 1 : -1;
   const aBlstZone = lvdMap.get(a.name)?.blast_zone[0];
@@ -509,7 +443,7 @@ const blastzoneWidthCompareFn = (
   selectedSortDir: SortDir,
   lvdMap: Map<string, Lvd>,
   a: LvdStats,
-  b: LvdStats
+  b: LvdStats,
 ): number => {
   const mul = selectedSortDir === SortDir.Ascending ? 1 : -1;
   const aBlstZone = lvdMap.get(a.name)?.blast_zone[0];
@@ -529,7 +463,7 @@ const blastzoneHeightCompareFn = (
   selectedSortDir: SortDir,
   lvdMap: Map<string, Lvd>,
   a: LvdStats,
-  b: LvdStats
+  b: LvdStats,
 ): number => {
   const mul = selectedSortDir === SortDir.Ascending ? 1 : -1;
   const aBlstZone = lvdMap.get(a.name)?.blast_zone[0];
@@ -549,7 +483,7 @@ const stageToBlastzoneLeftCompareFn = (
   selectedSortDir: SortDir,
   lvdMap: Map<string, Lvd>,
   a: LvdStats,
-  b: LvdStats
+  b: LvdStats,
 ): number => {
   const mul = selectedSortDir === SortDir.Ascending ? 1 : -1;
   const aLvd = lvdMap.get(a.name);
@@ -569,7 +503,7 @@ const stageToBlastzoneRightCompareFn = (
   selectedSortDir: SortDir,
   lvdMap: Map<string, Lvd>,
   a: LvdStats,
-  b: LvdStats
+  b: LvdStats,
 ): number => {
   const mul = selectedSortDir === SortDir.Ascending ? 1 : -1;
   const aLvd = lvdMap.get(a.name);
@@ -589,7 +523,7 @@ const platformToBlastzoneTopMinCompareFn = (
   selectedSortDir: SortDir,
   lvdMap: Map<string, Lvd>,
   a: LvdStats,
-  b: LvdStats
+  b: LvdStats,
 ): number => {
   const mul = selectedSortDir === SortDir.Ascending ? 1 : -1;
   const aLvd = lvdMap.get(a.name);
@@ -609,7 +543,7 @@ const platformToBlastzoneTopMaxCompareFn = (
   selectedSortDir: SortDir,
   lvdMap: Map<string, Lvd>,
   a: LvdStats,
-  b: LvdStats
+  b: LvdStats,
 ): number => {
   const mul = selectedSortDir === SortDir.Ascending ? 1 : -1;
   const aLvd = lvdMap.get(a.name);
@@ -629,7 +563,7 @@ const platformHeightCompareFn = (
   selectedSortDir: SortDir,
   lvdMap: Map<string, Lvd>,
   a: LvdStats,
-  b: LvdStats
+  b: LvdStats,
 ): number => {
   const mul = selectedSortDir === SortDir.Ascending ? 1 : -1;
   const aLvd = lvdMap.get(a.name);
@@ -651,7 +585,7 @@ const platformHeightSpanCompareFn = (
   selectedSortDir: SortDir,
   lvdMap: Map<string, Lvd>,
   a: LvdStats,
-  b: LvdStats
+  b: LvdStats,
 ): number => {
   const mul = selectedSortDir === SortDir.Ascending ? 1 : -1;
   const aLvd = lvdMap.get(a.name);
@@ -671,7 +605,7 @@ const platformWidthSpanCompareFn = (
   selectedSortDir: SortDir,
   lvdMap: Map<string, Lvd>,
   a: LvdStats,
-  b: LvdStats
+  b: LvdStats,
 ): number => {
   const mul = selectedSortDir === SortDir.Ascending ? 1 : -1;
   const aLvd = lvdMap.get(a.name);
@@ -691,7 +625,7 @@ const stageAsymmetryCompareFn = (
   selectedSortDir: SortDir,
   lvdMap: Map<string, Lvd>,
   a: LvdStats,
-  b: LvdStats
+  b: LvdStats,
 ): number => {
   const mul = selectedSortDir === SortDir.Ascending ? 1 : -1;
   const aLvd = lvdMap.get(a.name);
