@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { Boundary, Collision, Lvd } from "../../Lib/Lvd/types";
+import { Boundary, Collision, Lvd, Spawn } from "../../Lib/Lvd/types";
 import {
   stageListService,
   StageFilter,
@@ -58,6 +58,8 @@ interface StageToolState {
   drawPlatforms: boolean;
   drawBlastZones: boolean;
   drawCameras: boolean;
+  drawSpawns: boolean;
+  drawRespawns: boolean;
   selectedFilter: StageFilter;
   selectedFilterFunc: StageFilterFunc;
   selectedStages: string[];
@@ -79,6 +81,8 @@ export default class StageTool extends React.Component<
       drawPlatforms: true,
       drawBlastZones: true,
       drawCameras: false,
+      drawSpawns: false,
+      drawRespawns: false,
       selectedFilter: StageFilter.Legal,
       selectedFilterFunc: stageListService.getFilterFunc(StageFilter.Legal),
       selectedStages: [],
@@ -103,7 +107,7 @@ export default class StageTool extends React.Component<
     // draw stages
     this.props.lvdMap.forEach((lvd, name) => {
       const idx = this.state.selectedStages.findIndex(
-        (other) => name === other
+        (other) => name === other,
       );
       if (idx < 0) {
         return;
@@ -115,7 +119,7 @@ export default class StageTool extends React.Component<
   drawKnockbackPlot = (
     attackData: AttackData,
     fighterData: FighterData,
-    idx: number
+    idx: number,
   ) => {
     let { damage, kbg, fkb, bkb } = attackData;
     let { weight } = fighterData;
@@ -142,11 +146,11 @@ export default class StageTool extends React.Component<
   drawKnockbackInstance = (
     attackData: AttackData,
     fighterData: FighterData,
-    idx: number
+    idx: number,
   ) => {
     let knockbackCalcContext = new KnockbackCalcContext(
       attackData,
-      fighterData
+      fighterData,
     );
     let trajectory = knockbackCalcContext.calcTrajectory();
     let xValues: string[] = trajectory.map((t) => t.x.toString());
@@ -199,13 +203,43 @@ export default class StageTool extends React.Component<
         }
       }
     }
+    // draw spawns and respawns last so they sit on top of the stage
+    if (this.state.drawSpawns) {
+      this.drawSpawns(name, lvd.spawns, idx);
+    }
+    if (this.state.drawRespawns) {
+      this.drawSpawns(name, lvd.respawns, idx, true);
+    }
+  };
+
+  drawSpawns = (
+    name: string,
+    spawns: Spawn[],
+    idx: number,
+    isRespawn?: boolean,
+  ) => {
+    spawns.forEach((spawn, i) => {
+      const x = Number(spawn.pos.x.toFixed(4));
+      const y = Number(spawn.pos.y.toFixed(4));
+      const label = `${isRespawn ? "R" : "S"}${getSpawnNumber(spawn, i)}`;
+      this.props.calculator.setExpression({
+        type: "expression",
+        latex: `(${x},${y})`,
+        label,
+        showLabel: true,
+        labelOrientation: Desmos.LabelOrientations.ABOVE,
+        pointStyle: isRespawn ? Desmos.Styles.OPEN : Desmos.Styles.POINT,
+        dragMode: Desmos.DragModes.NONE,
+        color: makeHexFromHueIndex(idx, this.state.selectedStages.length, true),
+      });
+    });
   };
 
   drawBoundary = (
     name: string,
     boundary: Boundary,
     idx: number,
-    isCamera?: boolean
+    isCamera?: boolean,
   ) => {
     const { left, right, bottom, top } = boundary;
     this.props.calculator.setExpression({
@@ -222,7 +256,7 @@ export default class StageTool extends React.Component<
           color: makeHexFromHueIndex(
             idx,
             this.state.selectedStages.length,
-            true
+            true,
           ),
         },
         {
@@ -236,7 +270,7 @@ export default class StageTool extends React.Component<
           color: makeHexFromHueIndex(
             idx,
             this.state.selectedStages.length,
-            true
+            true,
           ),
         },
       ],
@@ -247,13 +281,13 @@ export default class StageTool extends React.Component<
     name: string,
     collision: Collision,
     idx: number,
-    isPlatform?: boolean
+    isPlatform?: boolean,
   ) => {
     const xValues = collision.vertices.map(
-      (vertex) => vertex.x + collision.entry.start_pos.x
+      (vertex) => vertex.x + collision.entry.start_pos.x,
     );
     const yValues = collision.vertices.map(
-      (vertex) => vertex.y + collision.entry.start_pos.y
+      (vertex) => vertex.y + collision.entry.start_pos.y,
     );
     xValues.push(xValues[0]);
     yValues.push(yValues[0]);
@@ -271,7 +305,7 @@ export default class StageTool extends React.Component<
           color: makeHexFromHueIndex(
             idx,
             this.state.selectedStages.length,
-            true
+            true,
           ),
         },
         {
@@ -284,7 +318,7 @@ export default class StageTool extends React.Component<
           color: makeHexFromHueIndex(
             idx,
             this.state.selectedStages.length,
-            true
+            true,
           ),
         },
       ],
@@ -382,8 +416,16 @@ export default class StageTool extends React.Component<
             onChangeBlastzones={(e) => {
               this.setState({ drawBlastZones: e.checked ?? true });
             }}
+            drawSpawns={this.state.drawSpawns}
+            drawRespawns={this.state.drawRespawns}
             onChangeCameras={(e) => {
               this.setState({ drawCameras: e.checked ?? false });
+            }}
+            onChangeSpawns={(e) => {
+              this.setState({ drawSpawns: e.checked ?? false });
+            }}
+            onChangeRespawns={(e) => {
+              this.setState({ drawRespawns: e.checked ?? false });
             }}
           />
         </div>
@@ -432,7 +474,7 @@ export default class StageTool extends React.Component<
 
   stageListTemplate = (selectedStage: string): ReactNode => {
     const idx = this.state.selectedStages.findIndex(
-      (other) => selectedStage === other
+      (other) => selectedStage === other,
     );
     const hslaStr =
       idx >= 0
@@ -446,7 +488,7 @@ export default class StageTool extends React.Component<
     const stageSubtitle = stageListService.getSortSubtitle(
       this.state.selectedSort,
       this.state.selectedSortDir,
-      lvd
+      lvd,
     );
 
     return (
@@ -470,17 +512,22 @@ export default class StageTool extends React.Component<
     // sort
     let compareFn = stageListService.getSortFunc(selectedSort);
     lvdStatsArray = lvdStatsArray.sort(
-      compareFn.bind(this, this.state.selectedSortDir, lvdMap)
+      compareFn.bind(this, this.state.selectedSortDir, lvdMap),
     );
 
     return lvdStatsArray.map((e) => e.name); // map to string arr
   };
 }
 
+const getSpawnNumber = (spawn: Spawn, i: number): number => {
+  const match = spawn.entry.name.match(/(\d+)$/);
+  return match ? parseInt(match[1]) : i + 1;
+};
+
 export const makeHexFromHueIndex = (
   idx: number,
   length: number,
-  invertedColors?: boolean
+  invertedColors?: boolean,
 ) => {
   const h = (idx * 360) / length;
   const l = 66 / 100;
