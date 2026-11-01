@@ -3,7 +3,7 @@ import { Lvd, LvdStats } from "../Lvd/types";
 /// STAGELISTS
 
 export enum StageFilter {
-  Seasonal_v0_50_8 = "Seasonal v0.50.8",
+  // Seasonal_v0_50_8 = "Seasonal v0.50.8",
   Legal = "Legal Stages",
   Illegal = "Illegal Stages",
   Supported = "Supported Stages",
@@ -16,9 +16,9 @@ export type StageFilterFunc = (name: string) => boolean;
 const getFilterFunc = (name: string): StageFilterFunc => {
   let selectedFilterFunc;
   switch (name) {
-    case StageFilter.Seasonal_v0_50_8:
-      selectedFilterFunc = seasonal_v0_50_8FilterFunc;
-      break;
+    // case StageFilter.Seasonal_v0_50_8:
+    //   selectedFilterFunc = seasonal_v0_50_8FilterFunc;
+    //   break;
     case StageFilter.Legal:
       selectedFilterFunc = legalFilterFunc;
       break;
@@ -37,24 +37,24 @@ const getFilterFunc = (name: string): StageFilterFunc => {
   return selectedFilterFunc;
 };
 
-const seasonal_v0_50_8FilterFunc = (name: string): boolean => {
-  if (
-    [
-      "Battlefield",
-      "Frigate Husk",
-      "Hollow Bastion",
-      "Northern Cave",
-      "Pokemon Stadium 3",
-      "Royal Sanctum",
-      "Smashville",
-      "Spear Pillar",
-      "Yoshi's Island",
-    ].includes(name)
-  ) {
-    return true;
-  }
-  return false;
-};
+// const seasonal_v0_50_8FilterFunc = (name: string): boolean => {
+//   if (
+//     [
+//       "Battlefield",
+//       "Frigate Husk",
+//       "Northern Cave",
+//       "Pokemon Stadium 3",
+//       "Royal Sanctum",
+//       "Sky Sanctuary Zone",
+//       "Smashville",
+//       "Spear Pillar",
+//       "Yoshi's Island",
+//     ].includes(name)
+//   ) {
+//     return true;
+//   }
+//   return false;
+// };
 
 const unsupportedFilterFunc = (name: string): boolean => {
   if (
