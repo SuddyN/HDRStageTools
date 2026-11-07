@@ -9,6 +9,8 @@ import {
 } from "../../Lib/StageList/services";
 import { KnockbackCalcContext } from "../../Lib/Knockback/services";
 import { AttackData, FighterData } from "../../Lib/Knockback/types";
+import { stageTagService } from "../../Lib/StageTags/services";
+import { TagSelection } from "../../Lib/StageTags/types";
 import StageSelector from "../StageSelector";
 import StageDrawOptions from "../StageDrawOptions";
 import { Dropdown } from "primereact/dropdown";
@@ -66,6 +68,7 @@ interface StageToolState {
   selectedStages: string[];
   selectedSort: SortMode;
   selectedSortDir: SortDir;
+  selectedTags: TagSelection;
 }
 
 export default class StageTool extends React.Component<
@@ -90,6 +93,7 @@ export default class StageTool extends React.Component<
       selectedStages: [],
       selectedSort: SortMode.Name,
       selectedSortDir: SortDir.Ascending,
+      selectedTags: stageTagService.emptySelection(),
     };
   }
 
@@ -382,6 +386,17 @@ export default class StageTool extends React.Component<
                 this.setState({ selectedSortDir: e.value })
               }
               onChangeStages={(e) => this.setState({ selectedStages: e.value })}
+              selectedTags={this.state.selectedTags}
+              onChangeTags={(category, tags) =>
+                this.setState((prev) => ({
+                  selectedTags: { ...prev.selectedTags, [category]: tags },
+                }))
+              }
+              onClearTags={() =>
+                this.setState({
+                  selectedTags: stageTagService.emptySelection(),
+                })
+              }
               groupedSorters={this.groupedSorters}
               stageListTemplate={this.stageListTemplate}
             />
@@ -510,6 +525,14 @@ export default class StageTool extends React.Component<
     const { selectedSort } = this.state;
     let lvdStatsArray = Array.from(lvdMap.entries()).flatMap((entry) => {
       if (!entry[1].lvdStats || !this.state.selectedFilterFunc(entry[0])) {
+        return [];
+      }
+      if (
+        !stageTagService.matchesSelection(
+          stageTagService.getStageTags(entry[1]),
+          this.state.selectedTags,
+        )
+      ) {
         return [];
       }
       return [entry[1].lvdStats];

@@ -8,6 +8,8 @@ import {
   SortMode,
   SortDir,
 } from "../../Lib/StageList/services";
+import { TAG_COLORS } from "../../Lib/StageTags/services";
+import { SizeTag, TagCategory, TagSelection } from "../../Lib/StageTags/types";
 
 interface StageSelectorProps {
   groupedSorters: {
@@ -28,6 +30,9 @@ interface StageSelectorProps {
   onChangeSort?: (event: DropdownChangeEvent) => void;
   onChangeSortDir?: (event: SelectButtonChangeEvent) => void;
   onChangeStages?: (event: ListBoxChangeEvent) => void;
+  selectedTags: TagSelection;
+  onChangeTags: (category: TagCategory, tags: SizeTag[]) => void;
+  onClearTags: () => void;
 }
 
 interface StageSelectorState {}
@@ -40,6 +45,51 @@ export default class StageSelector extends React.Component<
     super(props);
     this.state = {};
   }
+
+  tagTemplate = (tag: SizeTag): ReactNode => {
+    return (
+      <span className="tag-filter-option">
+        <span
+          className="tag-filter-dot"
+          style={{ backgroundColor: TAG_COLORS[tag] }}
+        />
+        {tag[0]}
+      </span>
+    );
+  };
+
+  tagFilterPanel = (): ReactNode => {
+    const { selectedTags } = this.props;
+    const anySelected = Object.values(TagCategory).some(
+      (category) => selectedTags[category].length > 0,
+    );
+    return (
+      <div className="tag-filter-panel">
+        {Object.values(TagCategory).map((category) => (
+          <div className="tag-filter-row" key={category}>
+            <span className="tag-filter-label">{category}</span>
+            <SelectButton
+              multiple
+              className="tag-filter-buttons"
+              value={selectedTags[category]}
+              options={Object.values(SizeTag)}
+              itemTemplate={this.tagTemplate}
+              onChange={(e) => this.props.onChangeTags(category, e.value ?? [])}
+            />
+          </div>
+        ))}
+        {anySelected && (
+          <button
+            type="button"
+            className="tag-filter-clear"
+            onClick={this.props.onClearTags}
+          >
+            Clear tags
+          </button>
+        )}
+      </div>
+    );
+  };
 
   render() {
     return (
@@ -72,6 +122,12 @@ export default class StageSelector extends React.Component<
           options={this.props.lvdSorter()}
           onChange={this.props.onChangeStages}
           itemTemplate={this.props.stageListTemplate}
+          filterTemplate={(options) => (
+            <div className="tag-filter-header">
+              {options.element as unknown as ReactNode}
+              {this.tagFilterPanel()}
+            </div>
+          )}
         />
       </>
     );
